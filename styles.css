@@ -60,3 +60,30 @@ body{background:var(--paper);letter-spacing:-.005em}
   .coming{padding-bottom:68px}
   .coming-object{min-height:270px}
 }
+
+/* menu + vector motion */
+.header-actions{display:flex;align-items:center;gap:10px}
+.menu-toggle{width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:transparent;display:grid;place-content:center;gap:4px;padding:0;cursor:pointer;transition:background .2s,transform .2s}
+.menu-toggle span{width:16px;height:1.5px;background:var(--ink);display:block;transition:transform .25s,opacity .2s}
+.menu-toggle:hover{background:var(--white);transform:rotate(-4deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+.site-menu{position:fixed;inset:0;z-index:20;background:rgba(248,242,232,.94);backdrop-filter:blur(14px);animation:menuIn .32s ease both}
+.site-menu[hidden]{display:none}
+.site-menu-inner{position:relative;max-width:1180px;margin:auto;padding:120px 32px 60px;min-height:100%;display:flex;flex-direction:column;align-items:flex-start}
+.site-menu-inner:after{content:"";position:absolute;right:10%;bottom:8%;width:180px;height:100px;border:2px solid var(--coral);border-left-color:transparent;border-radius:50%;transform:rotate(-18deg);opacity:.7}
+.menu-close{position:absolute;right:32px;top:28px;border:0;background:none;font-size:32px;color:var(--ink);cursor:pointer}
+.site-menu a{font:600 clamp(36px,6vw,68px)/1.02 Fraunces,serif;color:var(--ink);text-decoration:none;margin:8px 0;transition:color .2s,transform .2s}
+.site-menu a:hover{color:var(--coral);transform:translateX(8px)}
+.menu-note{margin-top:35px;color:#697276;font-size:16px}
+.hero-vector{position:absolute;width:220px;height:180px;right:-2%;bottom:5%;overflow:visible;opacity:.58;pointer-events:none}
+.hero-vector path{fill:none;stroke:var(--coral);stroke-width:2;stroke-linecap:round;stroke-dasharray:300;stroke-dashoffset:300;animation:drawLine 2.2s .3s ease forwards}
+.hero-vector path:nth-child(2){animation-delay:.7s}
+.hero-vector circle{fill:var(--yellow);animation:popDot .7s 1.5s ease both;transform-origin:center}
+.hero-vector circle:nth-of-type(2){animation-delay:1.8s}
+@keyframes menuIn{from{opacity:0}to{opacity:1}}
+@keyframes drawLine{to{stroke-dashoffset:0}}
+@keyframes popDot{from{transform:scale(0)}to{transform:scale(1)}}
+@media(max-width:800px){.site-menu-inner{padding:100px 24px 50px}.menu-close{right:20px;top:18px}.hero-vector{width:150px;height:125px;right:0;bottom:1%;opacity:.45}.header-actions{gap:6px}}
+@media(prefers-reduced-motion:reduce){.site-menu,.hero-vector path,.hero-vector circle{animation:none}.hero-vector path{stroke-dashoffset:0}}
