@@ -8,19 +8,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#" aria-label="Nyitóoldal"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 72 34" role="img"><path d="M36 17c-8-13-30-13-30 0s22 13 30 0 30-13 30 0-22 13-30 0Z"></path><circle cx="20" cy="17" r="2.8"></circle><circle cx="52" cy="17" r="2.8"></circle></svg></span><span>egy kis hely</span><small data-i18n="brandTag">gondolatoknak, kérdéseknek, neked</small></a>
-    <div class="language-switcher" role="group" aria-label="Nyelvválasztó">
-      <button class="lang active" data-lang="hu">HU</button>
-      <button class="lang" data-lang="en">EN</button>
-      <button class="lang" data-lang="de">DE</button>
-      <button class="lang" data-lang="fr">FR</button>
+    <div class="header-actions">
+      <div class="language-switcher" role="group" aria-label="Nyelvválasztó">
+        <button class="lang active" data-lang="hu">HU</button>
+        <button class="lang" data-lang="en">EN</button>
+        <button class="lang" data-lang="de">DE</button>
+        <button class="lang" data-lang="fr">FR</button>
+      </div>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteMenu" aria-label="Menü megnyitása"><span></span><span></span><span></span></button>
     </div>
   </header>
+  <nav class="site-menu" id="siteMenu" aria-label="Főmenü" hidden>
+    <div class="site-menu-inner">
+      <button class="menu-close" id="menuClose" type="button" aria-label="Menü bezárása">×</button>
+      <p class="eyebrow" data-i18n="menuEyebrow">egy kis navigáció</p>
+      <a href="#questions" data-i18n="menuQuestions">Ami ismerős</a>
+      <a href="#quiz" data-i18n="menuQuiz">Kérdőív</a>
+      <a href="#coming" data-i18n="menuComing">Ami készül</a>
+      <p class="menu-note" data-i18n="menuNote">Nem kell sietned. Nézz körül.</p>
+    </div>
+  </nav>
 
   <main>
     <section class="hero section-shell">
@@ -41,7 +54,7 @@
           </div>
           <div class="pencil"><span></span></div>
         </div>
-        <div class="doodle doodle-dot">· · ·</div>
+        <div class="doodle doodle-dot">· · ·</div><svg class="hero-vector" viewBox="0 0 220 180" aria-hidden="true"><path d="M12 112C54 18 144 16 208 80"></path><path d="M40 150C84 94 138 88 204 122"></path><circle cx="34" cy="64" r="5"></circle><circle cx="190" cy="42" r="4"></circle></svg>
         <p class="art-note" data-i18n="artNote">nem kell mindent ma</p><a class="scroll-cue" href="#questions" aria-label="Görgess tovább"><span>↓</span><small data-i18n="scrollCue">nézz körül</small></a>
       </div>
     </section>
@@ -126,6 +139,6 @@
   <footer class="footer section-shell">
     <span>✦</span><span data-i18n="footer">egy kis hely a nagy napok között</span><span>✦</span>
   </footer>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=7"></script>
 </body>
 </html>
