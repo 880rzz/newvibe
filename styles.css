@@ -92,3 +92,10 @@ body{background:var(--paper);letter-spacing:-.005em}
 .site-header{position:fixed;top:0;left:0;right:0;width:100%;z-index:30;background:rgba(248,242,232,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 body{padding-top:78px}
 @media(max-width:800px){body{padding-top:68px}.site-header{padding-left:20px;padding-right:20px}}
+
+/* brand lockup: infinity mark in its own left column */
+.brand{display:grid;grid-template-columns:34px max-content;grid-template-rows:auto auto;column-gap:5px;row-gap:0;align-items:center}
+.brand-mark{grid-column:1;grid-row:1 / span 2;margin:0}
+.brand>span:not(.brand-mark){grid-column:2;grid-row:1;line-height:1.05}
+.brand small{grid-column:2;grid-row:2;width:auto;margin:2px 0 0;color:#697276;font-size:9px;line-height:1.2}
+@media(max-width:800px){.brand{grid-template-columns:30px max-content}.brand-mark{width:30px}.brand small{font-size:8px}}
