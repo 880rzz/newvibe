@@ -1,0 +1,35 @@
+# New Vibe · Egy kis hely
+
+> Játékos, többnyelvű önreflexiós weboldal és készülő papíralapú termékvonal.
+
+## Rövid leírás
+
+Az Egy kis hely olyan látogatóknak szól, akik sok mindent tartanak fejben, másokra figyelnek, vagy szeretnének néhány percet saját magukra fordítani. Az oldal nem diagnosztizál, nem jósol, és nem helyettesít pszichológiai vagy egészségügyi segítséget.
+
+## Mit talál az oldalon?
+
+- Rövid, kérdésalapú önreflexiós tartalmak.
+- Játékos, hat kérdéses önfigyelmi kérdőív.
+- Négy nyelv: magyar, angol, német és francia.
+- Helyi böngészőmentés az utolsó kérdőív-eredményhez; nincs szükség regisztrációra.
+- Egy készülő, kézbe vehető füzet- és kártyadoboz-koncepció előképe.
+
+## Hang és pozicionálás
+
+A hang meleg, emberi, ítélkezésmentes és elgondolkodtató. A projekt nem kínál azonnali megoldást: először helyet ad a felismerésnek és a saját kérdéseknek.
+
+## Biztonság és pontosság
+
+A kérdőív eredménye pillanatnyi önreflexiós tükör, nem személyiségdiagnózis, mentális egészségügyi értékelés vagy szakmai tanács. Egészségügyi vagy krízishelyzetben megfelelő szakemberhez kell fordulni.
+
+## Nyelvek
+
+A tartalom elérhető: hu, en, de, fr.
+
+## Kanonikus URL
+
+https://880rzz.github.io/newvibe/
+
+## Forrás
+
+A nyilvános forráskód: https://github.com/880rzz/newvibe
