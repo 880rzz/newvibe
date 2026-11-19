@@ -44,3 +44,18 @@ window.refreshQuizLanguage=()=>{if(!card.hidden)render();};
 window.getLastReflection=()=>{try{return JSON.parse(localStorage.getItem(QUIZ_SAVE_KEY))}catch(e){return null}};
 }
 initQuiz();
+
+const menuToggle=document.getElementById("menuToggle");
+const siteMenu=document.getElementById("siteMenu");
+const menuClose=document.getElementById("menuClose");
+function setMenu(open){
+  if(!menuToggle||!siteMenu)return;
+  siteMenu.hidden=!open;
+  menuToggle.setAttribute("aria-expanded",String(open));
+  document.body.classList.toggle("menu-open",open);
+  if(open) menuClose.focus(); else menuToggle.focus();
+}
+menuToggle?.addEventListener("click",()=>setMenu(siteMenu.hidden));
+menuClose?.addEventListener("click",()=>setMenu(false));
+siteMenu?.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setMenu(false)));
+document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!siteMenu.hidden)setMenu(false)});
