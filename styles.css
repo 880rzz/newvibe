@@ -87,3 +87,8 @@ body{background:var(--paper);letter-spacing:-.005em}
 @keyframes popDot{from{transform:scale(0)}to{transform:scale(1)}}
 @media(max-width:800px){.site-menu-inner{padding:100px 24px 50px}.menu-close{right:20px;top:18px}.hero-vector{width:150px;height:125px;right:0;bottom:1%;opacity:.45}.header-actions{gap:6px}}
 @media(prefers-reduced-motion:reduce){.site-menu,.hero-vector path,.hero-vector circle{animation:none}.hero-vector path{stroke-dashoffset:0}}
+
+/* fixed header */
+.site-header{position:fixed;top:0;left:0;right:0;width:100%;z-index:30;background:rgba(248,242,232,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+body{padding-top:78px}
+@media(max-width:800px){body{padding-top:68px}.site-header{padding-left:20px;padding-right:20px}}
