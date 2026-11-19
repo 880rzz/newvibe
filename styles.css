@@ -99,3 +99,18 @@ body{padding-top:78px}
 .brand>span:not(.brand-mark){grid-column:2;grid-row:1;line-height:1.05}
 .brand small{grid-column:2;grid-row:2;width:auto;margin:2px 0 0;color:#697276;font-size:9px;line-height:1.2}
 @media(max-width:800px){.brand{grid-template-columns:30px max-content}.brand-mark{width:30px}.brand small{font-size:8px}}
+
+/* keep desktop palette on mobile */
+@media(max-width:800px){
+  html,body{background:var(--paper);color:var(--ink)}
+  .site-header{background:rgba(248,242,232,.94);border-bottom-color:var(--line)}
+  .lang{background:transparent;color:var(--ink);border-color:rgba(38,50,56,.16)}
+  .lang.active,.lang:hover{background:var(--ink);color:var(--paper)}
+  .menu-toggle{background:var(--paper);color:var(--ink);border-color:var(--line)}
+  .site-menu{background:rgba(248,242,232,.96)}
+  .site-menu a{color:var(--ink)}
+  .quiz-card,.quiz-result{background:#fff9ec;color:var(--ink)}
+  .quiz-option{background:transparent;color:var(--ink);border-color:var(--line)}
+  .question-panel{background:var(--ink);color:var(--paper)}
+  .coming-object{background:var(--sage)}
+}
