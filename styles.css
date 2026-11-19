@@ -114,3 +114,8 @@ body{padding-top:78px}
   .question-panel{background:var(--ink);color:var(--paper)}
   .coming-object{background:var(--sage)}
 }
+
+/* consistent arrow glyphs across breakpoints */
+.button span,.scroll-cue>span{font-family:Arial,sans-serif;font-size:18px!important;font-weight:400;line-height:1;display:inline-block;transform:none}
+.scroll-cue>span{font-size:25px!important}
+@media(max-width:800px){.button span,.scroll-cue>span{font-size:18px!important}.scroll-cue>span{font-size:25px!important}}
