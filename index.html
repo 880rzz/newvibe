@@ -13,7 +13,7 @@
 <body>
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#" aria-label="Nyitóoldal"><span class="brand-mark">✦</span><span>egy kis hely</span></a>
+    <a class="brand" href="#" aria-label="Nyitóoldal"><span class="brand-mark">✦</span><span>egy kis hely</span><small data-i18n="brandTag">gondolatoknak, kérdéseknek, neked</small></a>
     <div class="language-switcher" role="group" aria-label="Nyelvválasztó">
       <button class="lang active" data-lang="hu">HU</button>
       <button class="lang" data-lang="en">EN</button>
@@ -42,7 +42,7 @@
           <div class="pencil"><span></span></div>
         </div>
         <div class="doodle doodle-dot">· · ·</div>
-        <p class="art-note" data-i18n="artNote">nem kell mindent ma</p>
+        <p class="art-note" data-i18n="artNote">nem kell mindent ma</p><a class="scroll-cue" href="#questions" aria-label="Görgess tovább"><span>↓</span><small data-i18n="scrollCue">nézz körül</small></a>
       </div>
     </section>
 
@@ -52,12 +52,25 @@
         <h2 data-i18n="recognitionTitle">Talán nem több válaszra van szükséged.</h2>
       </div>
       <div class="card-grid">
-        <article class="note-card coral"><span class="card-pin">●</span><p data-i18n="card1">Mindenkihez van egy kérdésed. Magadhoz mikor volt?</p></article>
-        <article class="note-card blue tilt-left"><span class="card-pin">✦</span><p data-i18n="card2">Egész nap intézed az életet, este pedig nem tudod, mi történt veled.</p></article>
-        <article class="note-card yellow tilt-right"><span class="card-pin">—</span><p data-i18n="card3">Tele van a fejed. Üres lapot mégsem találsz.</p></article>
+        <article class="note-card coral"><div class="card-face card-front"><span class="card-pin">●</span><p data-i18n="card1">Mindenkihez van egy kérdésed. Magadhoz mikor volt?</p></div><div class="card-face card-back"><p data-i18n="card1Back">Mi lenne az első mondat, ha nem kellene szépen kezdened?</p></div></article>
+        <article class="note-card blue tilt-left"><div class="card-face card-front"><span class="card-pin">✦</span><p data-i18n="card2">Egész nap intézed az életet, este pedig nem tudod, mi történt veled.</p></div><div class="card-face card-back"><p data-i18n="card2Back">Hol vagy te ebben a napban?</p></div></article>
+        <article class="note-card yellow tilt-right"><div class="card-face card-front"><span class="card-pin">—</span><p data-i18n="card3">Tele van a fejed. Üres lapot mégsem találsz.</p></div><div class="card-face card-back"><p data-i18n="card3Back">Mi kerülne rá, ha most nem kellene hasznosnak lennie?</p></div></article>
       </div>
     </section>
 
+
+    <section class="not-needed section-shell">
+      <div class="not-needed-copy">
+        <p class="eyebrow" data-i18n="notNeededEyebrow">nem kell</p>
+        <h2 data-i18n="notNeededTitle">Nem kell ma mindent megértened.</h2>
+      </div>
+      <div class="not-needed-list">
+        <p data-i18n="not1">Nem kell tökéletesen rendszerezettnek lenned.</p>
+        <p data-i18n="not2">Nem kell minden kérdésre tudnod a választ.</p>
+        <p data-i18n="not3">Nem kell újabb teljesítményt kipréselned magadból.</p>
+        <p data-i18n="not4">Nem kell készen lenned.</p>
+      </div>
+    </section>
     <section class="question-section section-shell">
       <div class="question-panel">
         <span class="quote-mark">“</span>
@@ -79,7 +92,7 @@
       <div class="coming-copy">
         <p class="eyebrow" data-i18n="comingEyebrow">valami készül</p>
         <h2 data-i18n="comingTitle">Hamarosan érkezik valami, amit nemcsak elolvasni lehet, hanem kézbe venni is.</h2>
-        <p data-i18n="comingLede">Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.</p>
+        <p data-i18n="comingLede">Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.</p><p class="coming-line" data-i18n="comingLine">Egy lap. Egy kérdés. Egy kis hely.</p>
         <button class="button button-ink" type="button" id="interest" data-i18n="comingCta">Szeretnék hallani róla <span>↗</span></button>
         <p class="form-note" id="interest-note" aria-live="polite"></p>
       </div>
