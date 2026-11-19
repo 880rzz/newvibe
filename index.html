@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Egy hely annak, ami benned történik. Valami kézzelfogható készül." />
+  <title>Helyet hagyni annak, ami benned történik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Nyitóoldal"><span class="brand-mark">✦</span><span>egy kis hely</span></a>
+    <div class="language-switcher" role="group" aria-label="Nyelvválasztó">
+      <button class="lang active" data-lang="hu">HU</button>
+      <button class="lang" data-lang="en">EN</button>
+      <button class="lang" data-lang="de">DE</button>
+      <button class="lang" data-lang="fr">FR</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="eyebrow">egy kérdés, ami maradhat</p>
+        <h1 data-i18n="heroTitle">Mikor volt utoljára helyed saját magadnak?</h1>
+        <p class="hero-lede" data-i18n="heroLede">Nem egy újabb módszer. Nem egy újabb lista. Csak egy kis tér annak, amit napközben talán mindig későbbre hagysz.</p>
+        <a class="button button-coral" href="#coming" data-i18n="heroCta">Szeretnék hallani róla <span>↗</span></a>
+      </div>
+      <div class="hero-art" aria-label="Nyitott füzet egy ceruzával" role="img">
+        <div class="doodle doodle-sun">✳</div>
+        <div class="paper paper-back"></div>
+        <div class="notebook">
+          <div class="page page-left"></div>
+          <div class="page page-right">
+            <span class="scribble-line"></span><span class="sun">☼</span>
+            <span class="paper-swatch blue"></span><span class="paper-swatch green"></span>
+          </div>
+          <div class="pencil"><span></span></div>
+        </div>
+        <div class="doodle doodle-dot">· · ·</div>
+        <p class="art-note" data-i18n="artNote">nem kell mindent ma</p>
+      </div>
+    </section>
+
+    <section class="recognition section-shell" id="questions">
+      <div class="section-heading">
+        <p class="eyebrow" data-i18n="recognitionEyebrow">ismerős?</p>
+        <h2 data-i18n="recognitionTitle">Talán nem több válaszra van szükséged.</h2>
+      </div>
+      <div class="card-grid">
+        <article class="note-card coral"><span class="card-pin">●</span><p data-i18n="card1">Mindenkihez van egy kérdésed. Magadhoz mikor volt?</p></article>
+        <article class="note-card blue tilt-left"><span class="card-pin">✦</span><p data-i18n="card2">Egész nap intézed az életet, este pedig nem tudod, mi történt veled.</p></article>
+        <article class="note-card yellow tilt-right"><span class="card-pin">—</span><p data-i18n="card3">Tele van a fejed. Üres lapot mégsem találsz.</p></article>
+      </div>
+    </section>
+
+    <section class="question-section section-shell">
+      <div class="question-panel">
+        <span class="quote-mark">“</span>
+        <h2 data-i18n="questionTitle">Mi lenne, ha nem kellene azonnal rendbe tenni mindent?</h2>
+        <div class="question-list">
+          <p><span>01</span><span data-i18n="q1">Mit cipelsz magaddal nap mint nap?</span></p>
+          <p><span>02</span><span data-i18n="q2">Mit halasztasz mindig későbbre?</span></p>
+          <p><span>03</span><span data-i18n="q3">Mi az, amire másoknak már tudsz figyelmet adni, magadnak még nem?</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="coming section-shell" id="coming">
+      <div class="coming-object">
+        <div class="peek-paper"><span data-i18n="peekText">ide még kerül valami</span></div>
+        <div class="coming-pencil"></div>
+        <div class="coming-star">✦</div>
+      </div>
+      <div class="coming-copy">
+        <p class="eyebrow" data-i18n="comingEyebrow">valami készül</p>
+        <h2 data-i18n="comingTitle">Hamarosan érkezik valami, amit nemcsak elolvasni lehet, hanem kézbe venni is.</h2>
+        <p data-i18n="comingLede">Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.</p>
+        <button class="button button-ink" type="button" id="interest" data-i18n="comingCta">Szeretnék hallani róla <span>↗</span></button>
+        <p class="form-note" id="interest-note" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section-shell">
+    <span>✦</span><span data-i18n="footer">egy kis hely a nagy napok között</span><span>✦</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
