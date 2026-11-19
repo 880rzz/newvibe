@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=16" />
+  <link rel="stylesheet" href="styles.css?v=17" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -41,7 +41,7 @@
         <p class="eyebrow" data-i18n="eyebrow">egy kérdés, ami maradhat</p>
         <h1 data-i18n="heroTitle">Mikor volt utoljára helyed saját magadnak?</h1>
         <p class="hero-lede" data-i18n="heroLede">Nem egy újabb módszer. Nem egy újabb lista. Csak egy kis tér annak, amit napközben talán mindig későbbre hagysz.</p>
-        <a class="button button-coral" href="#coming" data-i18n="heroCta">Szeretnék hallani róla <span>↗</span></a>
+        <a class="button button-coral" href="#coming" data-i18n="heroCta">Szeretnék hallani róla <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></a>
       </div>
       <div class="hero-art" aria-label="Nyitott füzet egy ceruzával" role="img">
         <div class="doodle doodle-sun">✳</div>
@@ -55,7 +55,7 @@
           <div class="pencil"><span></span></div>
         </div>
         <div class="doodle doodle-dot">· · ·</div><svg class="hero-vector" viewBox="0 0 220 180" aria-hidden="true"><path d="M12 112C54 18 144 16 208 80"></path><path d="M40 150C84 94 138 88 204 122"></path><circle cx="34" cy="64" r="5"></circle><circle cx="190" cy="42" r="4"></circle></svg>
-        <p class="art-note" data-i18n="artNote">nem kell mindent ma</p><a class="scroll-cue" href="#questions" aria-label="Görgess tovább"><span>↓</span><small data-i18n="scrollCue">nézz körül</small></a>
+        <p class="art-note" data-i18n="artNote">nem kell mindent ma</p><a class="scroll-cue" href="#questions" aria-label="Görgess tovább"><span class="scroll-arrow" aria-hidden="true"><svg viewBox="0 0 20 24"><path d="M10 2v18M4 14l6 6 6-6"></path></svg></span><small data-i18n="scrollCue">nézz körül</small></a>
       </div>
     </section>
 
@@ -78,7 +78,7 @@
         <p class="eyebrow" data-i18n="quizEyebrow">egy kis önfigyelem</p>
         <h2 data-i18n="quizTitle">Mi van most igazán veled?</h2>
         <p data-i18n="quizIntro">Nincs jó vagy rossz válasz. Csak válaszd azt, amelyik ma egy kicsit közelebb van hozzád.</p>
-        <button class="button button-coral" id="startQuiz" type="button" data-i18n="quizStart">Kezdjük el <span>↗</span></button>
+        <button class="button button-coral" id="startQuiz" type="button" data-i18n="quizStart">Kezdjük el <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></button>
       </div>
       <div class="quiz-card" id="quizCard" hidden>
         <div class="quiz-meta"><span id="quizCount">1 / 6</span><span id="quizProgressLabel" data-i18n="quizProgress">egy pillanat csak</span></div>
@@ -130,7 +130,7 @@
         <p class="eyebrow" data-i18n="comingEyebrow">valami készül</p>
         <h2 data-i18n="comingTitle">Hamarosan érkezik valami, amit nemcsak elolvasni lehet, hanem kézbe venni is.</h2>
         <p data-i18n="comingLede">Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.</p><p class="coming-line" data-i18n="comingLine">Egy lap. Egy kérdés. Egy kis hely.</p>
-        <button class="button button-ink" type="button" id="interest" data-i18n="comingCta">Szeretnék hallani róla <span>↗</span></button>
+        <button class="button button-ink" type="button" id="interest" data-i18n="comingCta">Szeretnék hallani róla <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></button>
         <p class="form-note" id="interest-note" aria-live="polite"></p>
       </div>
     </section>
