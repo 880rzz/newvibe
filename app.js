@@ -28,14 +28,14 @@ results:[
 ["The one carrying an unspoken sentence","Something in you is asking for attention. It does not need to be solved or explained beautifully yet.","What is one sentence you could say to yourself today?"]]},
 de:{questions:[],results:[]},fr:{questions:[],results:[]}};
 function initQuiz(){
-let lang=current,step=0,scores=[0,0,0,0],answers=[];
+let lang=current,step=0,scores=[0,0,0,0],answers=[];\nconst QUIZ_SAVE_KEY="newvibe.lastReflection";
 const card=document.getElementById("quizCard"),intro=document.querySelector(".quiz-intro"),result=document.getElementById("quizResult");
 const data=()=>quizData[lang].questions.length?quizData[lang]:quizData.en;
 function render(){const d=data(),q=d.questions[step];document.getElementById("quizCount").textContent=`${step+1} / ${d.questions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/d.questions.length)*100}%`;document.getElementById("quizQuestion").textContent=q[0];const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q[1].forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
-function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const winner=scores.indexOf(Math.max(...scores)),r=data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];document.getElementById("resultQuestion").textContent=r[2];card.hidden=true;result.hidden=false}}
+function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const winner=scores.indexOf(Math.max(...scores)),r=data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];\nconst reflection={language:lang,title:r[0],text:r[1],question:r[2],savedAt:new Date().toISOString()};try{localStorage.setItem(QUIZ_SAVE_KEY,JSON.stringify(reflection))}catch(e){}\ncard.hidden=true;result.hidden=false}}
 document.getElementById("startQuiz").onclick=()=>{intro.hidden=true;card.hidden=false;result.hidden=true;step=0;scores=[0,0,0,0];render();card.scrollIntoView({behavior:"smooth",block:"center"})};
 document.getElementById("quizBack").onclick=()=>{if(step){scores[answers[step]]--;step--;render()}};
 document.getElementById("quizAgain").onclick=()=>{result.hidden=true;intro.hidden=false;intro.scrollIntoView({behavior:"smooth",block:"center"})};
-window.refreshQuizLanguage=()=>{if(!card.hidden)render();};
+window.refreshQuizLanguage=()=>{if(!card.hidden)render();};\nwindow.getLastReflection=()=>{try{return JSON.parse(localStorage.getItem(QUIZ_SAVE_KEY))}catch(e){return null}};
 }
 initQuiz();
