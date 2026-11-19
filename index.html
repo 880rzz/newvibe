@@ -59,6 +59,30 @@
     </section>
 
 
+
+    <section class="quiz section-shell" id="quiz">
+      <div class="quiz-intro">
+        <p class="eyebrow" data-i18n="quizEyebrow">egy kis önfigyelem</p>
+        <h2 data-i18n="quizTitle">Mi van most igazán veled?</h2>
+        <p data-i18n="quizIntro">Nincs jó vagy rossz válasz. Csak válaszd azt, amelyik ma egy kicsit közelebb van hozzád.</p>
+        <button class="button button-coral" id="startQuiz" type="button" data-i18n="quizStart">Kezdjük el <span>↗</span></button>
+      </div>
+      <div class="quiz-card" id="quizCard" hidden>
+        <div class="quiz-meta"><span id="quizCount">1 / 6</span><span id="quizProgressLabel" data-i18n="quizProgress">egy pillanat csak</span></div>
+        <div class="progress"><span id="quizProgress"></span></div>
+        <h3 id="quizQuestion"></h3>
+        <div class="quiz-options" id="quizOptions"></div>
+        <button class="quiz-back" id="quizBack" type="button" data-i18n="quizBack">← vissza</button>
+      </div>
+      <div class="quiz-result" id="quizResult" hidden>
+        <p class="eyebrow" data-i18n="resultEyebrow">amit most talán hordozol</p>
+        <div class="result-mark">✦</div>
+        <h3 id="resultTitle"></h3>
+        <p id="resultText"></p>
+        <p class="result-question" id="resultQuestion"></p>
+        <button class="button button-ink" id="quizAgain" type="button" data-i18n="quizAgain">Megnézem még egyszer</button>
+      </div>
+    </section>
     <section class="not-needed section-shell">
       <div class="not-needed-copy">
         <p class="eyebrow" data-i18n="notNeededEyebrow">nem kell</p>
