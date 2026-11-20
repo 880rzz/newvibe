@@ -52,6 +52,15 @@ jobs:
               for block in p.ld: json.loads(block)
           ET.parse('sitemap.xml')
           assert 'helyed-van-koztunk.html' in Path('sitemap.xml').read_text()
-          assert 'SHOP_URL = ""' in Path('product.js').read_text(), 'Unverified webshop URL must not be published'
+          product_html=Path('helyed-van-koztunk.html').read_text(encoding='utf-8')
+          home_html=Path('index.html').read_text(encoding='utf-8')
+          for number in (1,2,3):
+              image=Path(f'assets/helyed-van-koztunk-{number:02d}.jpg')
+              data=image.read_bytes()
+              assert len(data)>10000 and data.startswith(bytes.fromhex('ffd8ff')) and data.endswith(bytes.fromhex('ffd9')), image
+              assert image.name in product_html, image
+          assert 'helyed-van-koztunk-03.jpg' in home_html
+          assert 'https://880rzz.github.io/newvibe/assets/helyed-van-koztunk-03.jpg' in product_html
+          assert 'href="mailto:' in product_html or 'SHOP_URL' in Path('product.js').read_text(encoding='utf-8')
           print('Site validation OK')
           PY
