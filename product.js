@@ -6,7 +6,7 @@ const content = {
     type:"beszélgetésindító kártyacsomag",subtitle:"Bántalmazás és kiközösítés",
     lede:"Vannak helyzetek, amelyekről nehéz elkezdeni beszélni. Ez a kártyacsomag kérdésekkel és kapaszkodókkal segít szavakat találni, segítséget kérni és meghallgatni egymást.",
     explore:"Ismerd meg a kártyákat",shopJump:"Vásárlási információ",creator:"Tervezte és összeállította: Sajbán-Frőhner Alexandra",
-    imageNote:"A csomagolás tipográfiai előnézete; a termékfotók feltöltése folyamatban.",aboutEyebrow:"nem kell egyedül",aboutTitle:"A beszélgetés néha egyetlen mondattal kezdődik.",
+    imageNote:"Az eredeti Helyed van köztünk kártyacsomag.",aboutEyebrow:"nem kell egyedül",aboutTitle:"A beszélgetés néha egyetlen mondattal kezdődik.",
     aboutText:"A bántásról, fenyegetésről vagy kiközösítésről beszélni nem mindig könnyű. A „Helyed van köztünk” nem kész válaszokat ígér: megnevezhető helyzeteket, tisztázó kérdéseket és olyan mondatokat kínál, amelyek segíthetnek elindítani egy biztonságos beszélgetést.",
     topicsEyebrow:"miről nyithat beszélgetést?",topicsTitle:"Helyzetek, amelyeket érdemes komolyan venni.",
     t1:"Amikor valakit bántanak",d1:"Bántó szavak, fenyegetés, kiközösítés, zsarolás és az ismétlődő bántalmazás felismerése.",
@@ -24,7 +24,7 @@ const content = {
     type:"conversation and support cards",subtitle:"Bullying, abuse and exclusion",
     lede:"Some experiences are difficult to put into words. These cards offer questions and gentle prompts to help start a conversation, ask for support and listen to one another.",
     explore:"Explore the cards",shopJump:"Purchase information",creator:"Created and compiled by Sajbán-Frőhner Alexandra",
-    imageNote:"Typographic packaging preview; product photographs are being prepared.",aboutEyebrow:"you are not alone",aboutTitle:"Sometimes a conversation begins with one sentence.",
+    imageNote:"The original Helyed van köztünk card pack.",aboutEyebrow:"you are not alone",aboutTitle:"Sometimes a conversation begins with one sentence.",
     aboutText:"It is not always easy to talk about bullying, threats or exclusion. Helyed van köztünk does not promise ready-made answers. It offers recognisable situations, clarifying questions and useful phrases for beginning a safer conversation.",
     topicsEyebrow:"topics worth talking about",topicsTitle:"Situations that deserve to be taken seriously.",
     t1:"When someone is hurt",d1:"Hurtful words, threats, exclusion, blackmail and recognising repeated bullying.",
@@ -42,7 +42,7 @@ const content = {
     type:"Gesprächs- und Hilfekarten",subtitle:"Mobbing, Gewalt und Ausgrenzung",
     lede:"Über manche Erlebnisse zu sprechen, fällt schwer. Diese Karten bieten Fragen und Anregungen, um Worte zu finden, Hilfe zu suchen und einander zuzuhören.",
     explore:"Die Karten kennenlernen",shopJump:"Informationen zum Kauf",creator:"Konzipiert und zusammengestellt von Sajbán-Frőhner Alexandra",
-    imageNote:"Typografische Verpackungsvorschau; die Produktfotos werden vorbereitet.",aboutEyebrow:"du bist nicht allein",aboutTitle:"Manchmal beginnt ein Gespräch mit einem einzigen Satz.",
+    imageNote:"Die Originalverpackung von Helyed van köztünk.",aboutEyebrow:"du bist nicht allein",aboutTitle:"Manchmal beginnt ein Gespräch mit einem einzigen Satz.",
     aboutText:"Über Mobbing, Drohungen oder Ausgrenzung zu sprechen, ist nicht immer leicht. Helyed van köztünk verspricht keine fertigen Antworten, sondern bietet konkrete Situationen, klärende Fragen und mögliche Formulierungen für ein sicheres Gespräch.",
     topicsEyebrow:"worüber kann man sprechen?",topicsTitle:"Situationen, die ernst genommen werden sollten.",
     t1:"Wenn jemand verletzt wird",d1:"Beleidigungen, Drohungen, Ausgrenzung, Erpressung und wiederholtes Mobbing erkennen.",
@@ -60,7 +60,7 @@ const content = {
     type:"cartes de discussion et de soutien",subtitle:"Harcèlement, maltraitance et exclusion",
     lede:"Certaines expériences sont difficiles à raconter. Ces cartes proposent des questions et des pistes pour trouver les mots, demander de l’aide et s’écouter.",
     explore:"Découvrir les cartes",shopJump:"Informations d’achat",creator:"Conçu et rassemblé par Sajbán-Frőhner Alexandra",
-    imageNote:"Aperçu typographique de l’emballage ; les photos du produit sont en préparation.",aboutEyebrow:"tu n’es pas seul·e",aboutTitle:"Parfois, une conversation commence par une phrase.",
+    imageNote:"La boîte originale des cartes Helyed van köztünk.",aboutEyebrow:"tu n’es pas seul·e",aboutTitle:"Parfois, une conversation commence par une phrase.",
     aboutText:"Parler de harcèlement, de menaces ou d’exclusion n’est pas toujours facile. Helyed van köztünk ne promet pas de réponses toutes faites : il propose des situations concrètes, des questions de clarification et des formulations pour ouvrir un dialogue plus sûr.",
     topicsEyebrow:"de quoi peut-on parler ?",topicsTitle:"Des situations qui méritent d’être prises au sérieux.",
     t1:"Quand quelqu’un est maltraité",d1:"Paroles blessantes, menaces, exclusion, chantage et répétition du harcèlement.",
@@ -77,6 +77,18 @@ const content = {
 function setProductLanguage(lang) {
   const t=content[lang]||content.hu;
   document.documentElement.lang=lang;
+  const galleryCaptions={
+    hu:["A kártyák történeteket és kérdéseket hoznak közelebb.","Különböző helyzetekből indulhat beszélgetés."],
+    en:["The cards bring real situations and questions into view.","Different situations can open different conversations."],
+    de:["Die Karten machen Situationen und Fragen anschaulich.","Unterschiedliche Situationen können ein Gespräch eröffnen."],
+    fr:["Les cartes illustrent des situations et suscitent des questions.","Chaque situation peut ouvrir une conversation."]
+  };
+  const captions=galleryCaptions[lang]||galleryCaptions.hu;
+  const firstCaption=document.querySelector('[data-i18n="galleryOneCaption"]');
+  const secondCaption=document.querySelector('[data-i18n="galleryTwoCaption"]');
+  if(firstCaption)firstCaption.textContent=captions[0];
+  if(secondCaption)secondCaption.textContent=captions[1];
+
   document.querySelectorAll("[data-i18n]").forEach(el=>{if(Object.hasOwn(t,el.dataset.i18n))el.textContent=t[el.dataset.i18n];});
   document.querySelectorAll(".lang").forEach(button=>{const active=button.dataset.lang===lang;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});
   const shopButton=document.getElementById("shopButton");
