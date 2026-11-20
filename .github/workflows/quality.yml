@@ -1,0 +1,57 @@
+name: Static site quality
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check app.js
+          node --check product.js
+      - name: Internal links, assets, JSON-LD and sitemap
+        run: |
+          python3 - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          import json
+          import xml.etree.ElementTree as ET
+          class Audit(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids=set()
+                  self.links=[]
+                  self.ld=[]
+                  self.in_ld=False
+              def handle_starttag(self,tag,attrs):
+                  d=dict(attrs)
+                  if 'id' in d: self.ids.add(d['id'])
+                  if tag=='a' and 'href' in d: self.links.append(d['href'])
+                  if tag in ('script',) and d.get('type')=='application/ld+json': self.in_ld=True
+                  if tag in ('img','script','link') and d.get('src','').startswith('assets/'):
+                      self.links.append(d['src'])
+                  if tag=='link' and d.get('href','').startswith('assets/'): self.links.append(d['href'])
+              def handle_data(self,data):
+                  if self.in_ld: self.ld.append(data)
+              def handle_endtag(self,tag):
+                  if tag=='script': self.in_ld=False
+          for file in ('index.html','helyed-van-koztunk.html'):
+              p=Audit();p.feed(Path(file).read_text(encoding='utf-8'))
+              for raw in p.links:
+                  if raw.startswith(('#','mailto:','https://','http://')): continue
+                  assert Path(raw.split('#')[0].split('?')[0]).exists(), (file,raw)
+              for raw in p.links:
+                  if raw.startswith('#') and raw!='#':
+                      assert raw[1:] in p.ids, (file,raw)
+              for block in p.ld: json.loads(block)
+          ET.parse('sitemap.xml')
+          assert 'helyed-van-koztunk.html' in Path('sitemap.xml').read_text()
+          assert 'SHOP_URL = ""' in Path('product.js').read_text(), 'Unverified webshop URL must not be published'
+          print('Site validation OK')
+          PY
