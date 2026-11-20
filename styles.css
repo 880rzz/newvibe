@@ -246,3 +246,21 @@ html,body{max-width:100%;overflow-x:hidden}
   .product-hero h1{font-size:35px}
 }
 @media(prefers-reduced-motion:reduce){.product-page *{transition-duration:0s!important;animation-duration:0s!important}}
+
+
+/* Home-page card-set spotlight, sharing the actual product-page primitive. */
+.coming-object .product-pack-preview{width:min(225px,75%);height:304px;padding:11px;transform:rotate(10deg);margin:7px 0 0;box-shadow:8px 12px 0 rgba(39,50,56,.12)}
+.coming-object .product-pack-face{padding:25px 8px 23px;border-radius:13px}
+.coming-object .product-pack-face>p{font-size:28px}
+.coming-object .product-pack-face>small{font-size:9px}
+.coming-object .product-pack-drawing{font-size:39px}
+.coming-object .product-pack-drawing span{font-size:52px}
+.coming-copy .button{margin-top:2px}
+@media(max-width:800px){
+  .coming-object .product-pack-preview{width:185px;height:251px;margin-top:15px}
+  .coming-object .product-pack-face>p{font-size:23px}
+  .coming-object .product-pack-face>small{font-size:8px}
+  .coming-object .product-pack-face{padding:23px 7px 18px}
+  .coming-object .product-pack-drawing{font-size:31px}
+  .coming-object .product-pack-drawing span{font-size:44px}
+}
