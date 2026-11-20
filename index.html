@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Játékos, többnyelvű önreflexiós tér gondolatoknak, kérdéseknek és annak, ami benned történik. Hamarosan kézzelfogható formában is." />
+  <meta name="description" content="Játékos önreflexiós tér és a Helyed van köztünk kártyacsomag bemutatása, amely a bántalmazásról és kiközösítésről segít beszélgetést kezdeni." />
   <link rel="canonical" href="https://880rzz.github.io/newvibe/" />
   <meta name="author" content="New Vibe" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -11,7 +11,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="egy kis hely · New Vibe" />
   <meta property="og:title" content="Egy kis hely saját magadnak" />
-  <meta property="og:description" content="Játékos, többnyelvű önreflexiós tér gondolatoknak, kérdéseknek és annak, ami benned történik." />
+  <meta property="og:description" content="Önreflexiós kérdések és a Helyed van köztünk segítő kártyacsomag." />
   <meta property="og:url" content="https://880rzz.github.io/newvibe/" />
   <meta property="og:image" content="https://880rzz.github.io/newvibe/assets/newvibe-og.jpg" />
   <meta property="og:image:width" content="1600" />
@@ -19,14 +19,14 @@
   <meta property="og:image:alt" content="Meleg papírtextúrájú füzet és kártyadoboz New Vibe színvilágban" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Egy kis hely saját magadnak" />
-  <meta name="twitter:description" content="Egy kérdés, egy kis tér, egy közelgő kézzelfogható ötlet." />
+  <meta name="twitter:description" content="Önreflexiós kérdések és a Helyed van köztünk segítő kártyacsomag." />
   <meta name="twitter:image" content="https://880rzz.github.io/newvibe/assets/newvibe-og.jpg" />
 
   <title>Helyet hagyni annak, ami benned történik</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=17" />
+  <link rel="stylesheet" href="styles.css?v=19" />
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -55,7 +55,7 @@
         "description":"Önreflexiós landing page és játékos kérdőív, amely nem diagnosztizál és nem ígér azonnali megoldást.",
         "isPartOf":{"@id":"https://880rzz.github.io/newvibe/#website"},
         "about":{"@id":"https://880rzz.github.io/newvibe/#organization"},
-        "dateModified":"2026-11-19"
+        "dateModified":"2026-11-20"
       }
     ]
   }
@@ -81,7 +81,8 @@
       <p class="eyebrow" data-i18n="menuEyebrow">egy kis navigáció</p>
       <a href="#questions" data-i18n="menuQuestions">Ami ismerős</a>
       <a href="#quiz" data-i18n="menuQuiz">Kérdőív</a>
-      <a href="#coming" data-i18n="menuComing">Ami készül</a>
+      <a href="#coming" data-i18n="menuComing">A kártyacsomag</a>
+      <a href="helyed-van-koztunk.html" data-i18n="menuProduct">Helyed van köztünk</a>
       <p class="menu-note" data-i18n="menuNote">Nem kell sietned. Nézz körül.</p>
     </div>
   </nav>
@@ -92,7 +93,7 @@
         <p class="eyebrow" data-i18n="eyebrow">egy kérdés, ami maradhat</p>
         <h1 data-i18n="heroTitle">Mikor volt utoljára helyed saját magadnak?</h1>
         <p class="hero-lede" data-i18n="heroLede">Nem egy újabb módszer. Nem egy újabb lista. Csak egy kis tér annak, amit napközben talán mindig későbbre hagysz.</p>
-        <a class="button button-coral" href="#coming" data-i18n="heroCta">Szeretnék hallani róla <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></a>
+        <a class="button button-coral" href="#coming" data-i18n="heroCta">Kártyacsomag megismerése <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></a>
       </div>
       <div class="hero-art" aria-label="Nyitott füzet egy ceruzával" role="img">
         <div class="doodle doodle-sun">✳</div>
@@ -173,16 +174,13 @@
 
     <section class="coming section-shell" id="coming">
       <div class="coming-object">
-        <div class="peek-paper"><img src="assets/newvibe-product-mockup.jpg" alt="Füzet és kártyadoboz egymásra rendezve egy meleg, papíros reklámfotón" /><span class="peek-caption" data-i18n="peekText">ide még kerül valami</span></div>
-        <div class="coming-pencil"></div>
-        <div class="coming-star">✦</div>
+        <img class="coming-product-photo" src="assets/helyed-van-koztunk-03.jpg" alt="Helyed van köztünk – a bántalmazásról és kiközösítésről szóló segítő kártyacsomag eredeti doboza" width="800" height="800" loading="lazy" decoding="async">
       </div>
       <div class="coming-copy">
-        <p class="eyebrow" data-i18n="comingEyebrow">valami készül</p>
-        <h2 data-i18n="comingTitle">Hamarosan érkezik valami, amit nemcsak elolvasni lehet, hanem kézbe venni is.</h2>
-        <p data-i18n="comingLede">Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.</p><p class="coming-line" data-i18n="comingLine">Egy lap. Egy kérdés. Egy kis hely.</p>
-        <button class="button button-ink" type="button" id="interest" data-i18n="comingCta">Szeretnék hallani róla <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></button>
-        <p class="form-note" id="interest-note" aria-live="polite"></p>
+        <p class="eyebrow" data-i18n="comingEyebrow">a kártyacsomag</p>
+        <h2 data-i18n="comingTitle">Helyed van köztünk.</h2>
+        <p data-i18n="comingLede">Beszélgetésindító és segítő kártyacsomag bántalmazás és kiközösítés témájában. Amikor fontos, hogy a nehéz dolgokról is lehessen beszélni.</p><p class="coming-line" data-i18n="comingLine">Egy kérdés. Egy beszélgetés. Egy hely köztünk.</p>
+        <a class="button button-ink" href="helyed-van-koztunk.html" data-i18n="comingCta">Megismerem a kártyacsomagot</a>
       </div>
     </section>
   </main>
@@ -190,6 +188,6 @@
   <footer class="footer section-shell">
     <span>✦</span><span data-i18n="footer">egy kis hely a nagy napok között</span><span>✦</span>
   </footer>
-  <script src="app.js?v=8"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>

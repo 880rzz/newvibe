@@ -1,35 +1,28 @@
 # New Vibe · Egy kis hely
 
-> Játékos, többnyelvű önreflexiós weboldal és készülő papíralapú termékvonal.
+> Játékos, négynyelvű önreflexiós weboldal; a „Helyed van köztünk” kártyacsomag bemutatóoldalával.
 
-## Rövid leírás
+## Oldalak
 
-Az Egy kis hely olyan látogatóknak szól, akik sok mindent tartanak fejben, másokra figyelnek, vagy szeretnének néhány percet saját magukra fordítani. Az oldal nem diagnosztizál, nem jósol, és nem helyettesít pszichológiai vagy egészségügyi segítséget.
+- Kezdőlap: https://880rzz.github.io/newvibe/
+- Helyed van köztünk – termékismertető: https://880rzz.github.io/newvibe/helyed-van-koztunk.html
 
-## Mit talál az oldalon?
+## Helyed van köztünk
 
-- Rövid, kérdésalapú önreflexiós tartalmak.
-- Játékos, hat kérdéses önfigyelmi kérdőív.
-- Négy nyelv: magyar, angol, német és francia.
-- Helyi böngészőmentés az utolsó kérdőív-eredményhez; nincs szükség regisztrációra.
-- Egy készülő, kézbe vehető füzet- és kártyadoboz-koncepció előképe.
+Beszélgetésindító és segítő kártyacsomag a bántalmazás és kiközösítés témájában. Tervezte és összeállította: Sajbán-Frőhner Alexandra. A csomagoláson megadott kreatív műhely: Diófa Műhely.
 
-## Hang és pozicionálás
+A kapcsolódó segítő harmonika 16 rövid részben foglalkozik többek között a bántás felismerésével, segítségkéréssel, biztonságos felnőtt keresésével, online bántalmazással, testi határokkal és az azonnali segítség elérhetőségeivel. A termék célja a beszélgetés támogatása, nem diagnózis, kezelés vagy a szakmai gyermekvédelmi beavatkozás helyettesítése.
 
-A hang meleg, emberi, ítélkezésmentes és elgondolkodtató. A projekt nem kínál azonnali megoldást: először helyet ad a felismerésnek és a saját kérdéseknek.
+A bemutatott csomag magyar nyelvű. Az ismertető magyarul, angolul, németül és franciául olvasható. A webshop terméklinkje, ára és készletadata jelenleg nincs igazolva; ezekre nincs nyilvános állítás az oldalon. Vásárlási érdeklődéshez a csomagoláson megadott alkotói e-mail használható.
 
-## Biztonság és pontosság
+## Egy kis hely
 
-A kérdőív eredménye pillanatnyi önreflexiós tükör, nem személyiségdiagnózis, mentális egészségügyi értékelés vagy szakmai tanács. Egészségügyi vagy krízishelyzetben megfelelő szakemberhez kell fordulni.
+Önreflexiós tartalmak és hat kérdéses, nem diagnosztikus önfigyelmi kérdőív, négy nyelven (hu, en, de, fr). A kérdőív az utolsó eredményt a látogató böngészőjében tárolhatja; regisztráció nem kell hozzá.
 
-## Nyelvek
+## Biztonság
 
-A tartalom elérhető: hu, en, de, fr.
-
-## Kanonikus URL
-
-https://880rzz.github.io/newvibe/
+Az önreflexiós tartalmak és a kártyák nem helyettesítenek pszichológiai, egészségügyi vagy krízissegítséget. Közvetlen veszély esetén: 112; Magyarországon gyermekeknek és értük aggódóknak Kék Vonal: 116 111.
 
 ## Forrás
 
-A nyilvános forráskód: https://github.com/880rzz/newvibe
+Nyilvános forráskód: https://github.com/880rzz/newvibe
