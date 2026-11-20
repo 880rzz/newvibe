@@ -171,3 +171,78 @@ html,body{max-width:100%;overflow-x:hidden}
 .scroll-arrow svg{width:18px;height:22px;display:block}
 .button .arrow-icon{transition:transform .2s ease}.button:hover .arrow-icon{transform:translate(2px,-2px)}
 @media(max-width:800px){.arrow-icon svg{width:17px;height:17px}.scroll-arrow svg{width:18px;height:22px}}
+
+
+/* Helyed van köztünk — inherits New Vibe's typography, palette and navigation. */
+.product-page a:focus-visible,.product-page button:focus-visible {outline:3px solid var(--yellow);outline-offset:4px}
+.product-breadcrumb{display:flex;gap:9px;padding-top:35px;padding-bottom:12px;color:#697276;font-size:12px;letter-spacing:.03em}
+.product-breadcrumb a{color:inherit;text-underline-offset:3px}
+.product-hero{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:clamp(30px,5vw,75px);align-items:center;padding-top:35px;padding-bottom:100px}
+.product-hero h1,.product-intro h2,.product-topic-section h2,.product-use h2,.product-purchase h2{font:600 clamp(36px,4.5vw,57px)/1.07 Fraunces,serif;letter-spacing:-.05em;margin:0;overflow-wrap:normal;word-break:normal}
+.product-hero h1{max-width:670px}
+.product-subtitle{font:600 clamp(21px,2.3vw,29px)/1.25 Fraunces,serif;color:#784454;margin:14px 0 0}
+.product-lede{font-size:clamp(17px,1.6vw,20px);line-height:1.65;color:#4b565a;max-width:550px;margin:27px 0 28px}
+.product-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.product-meta{font-size:13px;color:#667277;margin-top:25px;max-width:500px}
+.product-visual{position:relative;min-width:0;background:#e4e5d8;border-radius:44% 48% 39% 47%;min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px}
+.product-pack-preview{width:min(300px,83%);height:415px;background:#b98f67;padding:15px;border-radius:10px 10px 5px 5px;box-shadow:14px 16px 0 rgba(39,50,56,.13);position:relative;margin:13px 0 5px;transform:rotate(4deg);display:flex;align-items:stretch}
+.product-pack-preview:before{content:"";position:absolute;inset:0;border:1px solid rgba(71,37,24,.16);border-radius:inherit;pointer-events:none}
+.product-pack-tab{position:absolute;width:75%;height:44px;border-radius:14px 14px 0 0;background:#b98f67;left:12.5%;top:-32px;z-index:-1}
+.product-pack-tab:before{content:"";position:absolute;left:34%;right:34%;top:10px;height:12px;background:#e4e5d8;border-radius:100px}
+.product-pack-face{flex:1;border-radius:20px;background:#fffaf2;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:37px 17px 33px;color:#603148}
+.product-pack-face>p{font:600 38px/1.04 Fraunces,serif;letter-spacing:-.04em;margin:0}
+.product-pack-face>small{font:500 12px/1.45 "DM Sans",sans-serif;max-width:190px}
+.product-pack-drawing{font:600 58px/1 Fraunces,serif;color:#df745b}
+.product-pack-drawing span{font-size:85px;color:#7895ae;vertical-align:middle}
+.product-visual-note{font-size:11px;line-height:1.4;text-align:center;color:#61716a;max-width:280px;margin:20px 0 0}
+.product-intro{padding-top:18px;padding-bottom:90px;max-width:1030px}
+.product-intro h2{max-width:870px;font-size:clamp(31px,3.8vw,48px)}
+.product-intro>p:last-child{color:#4b565a;max-width:760px;font-size:18px;line-height:1.72;margin:24px 0 0}
+.product-topic-section{padding-top:76px;padding-bottom:110px;border-top:1px solid var(--line)}
+.product-topic-section h2{font-size:clamp(31px,3.7vw,47px);max-width:780px}
+.product-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:45px}
+.product-topics article{background:#fff9ec;border:1px solid var(--line);border-radius:17px;padding:29px 30px 32px;min-width:0}
+.product-topics article>span{font:700 12px "DM Sans",sans-serif;color:var(--coral)}
+.product-topics h3{font:600 clamp(22px,2.2vw,29px)/1.14 Fraunces,serif;letter-spacing:-.03em;margin:17px 0 12px}
+.product-topics p{color:#536067;line-height:1.65;margin:0;font-size:15px}
+.product-quote{padding-bottom:95px}
+.product-quote .question-panel{padding:clamp(32px,6vw,65px)}
+.product-quote .question-panel h2{font-size:clamp(28px,3.8vw,46px);line-height:1.18;max-width:950px}
+.product-quote .question-panel .eyebrow{color:#efb39d}
+.product-quote .question-panel>p:last-child{color:#d6ddd7;margin-top:24px;font-size:12px}
+.product-use{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;padding-bottom:120px}
+.product-use h2{font-size:clamp(31px,3.6vw,46px)}
+.product-use-copy p{margin:0 0 22px;color:#4b565a;line-height:1.7;font-size:17px}
+.product-use-copy p:last-child{font-size:13px;border-left:3px solid var(--coral);padding:0 0 0 18px}
+.product-purchase{padding-bottom:105px}
+.product-purchase-panel{background:#d4dcd0;border-radius:24px;padding:clamp(30px,6vw,65px);max-width:100%;text-align:left}
+.product-purchase h2{font-size:clamp(34px,3.8vw,50px)}
+.product-purchase-panel>p:not(.eyebrow){max-width:680px;margin:22px 0 25px;font-size:17px;line-height:1.65}
+.product-purchase-panel>p.product-purchase-note{font-size:12px;color:#536067;margin:20px 0 0}
+.product-page .footer a{color:inherit;text-underline-offset:3px}
+@media(max-width:800px){
+  .product-breadcrumb{padding-top:25px}
+  .product-hero{grid-template-columns:1fr;gap:24px;padding-top:25px;padding-bottom:65px}
+  .product-hero h1{font-size:clamp(34px,8.5vw,48px)}
+  .product-subtitle{font-size:23px}
+  .product-lede{font-size:17px}
+  .product-visual{min-height:490px;max-width:560px;width:100%;margin:auto}
+  .product-pack-preview{height:365px;width:min(260px,80%)}
+  .product-pack-face>p{font-size:33px}
+  .product-intro{padding-bottom:65px}
+  .product-intro>p:last-child{font-size:16px}
+  .product-topic-section{padding-top:58px;padding-bottom:70px}
+  .product-topics{grid-template-columns:1fr;gap:15px;margin-top:30px}
+  .product-topics article{padding:22px 24px}
+  .product-quote{padding-bottom:70px}
+  .product-use{grid-template-columns:1fr;gap:18px;padding-bottom:75px}
+  .product-use-copy p{font-size:16px}
+  .product-purchase{padding-bottom:70px}
+}
+@media(max-width:380px){
+  .product-visual{min-height:430px}
+  .product-pack-preview{height:345px;width:236px}
+  .product-actions>.button{width:100%;justify-content:center}
+  .product-hero h1{font-size:35px}
+}
+@media(prefers-reduced-motion:reduce){.product-page *{transition-duration:0s!important;animation-duration:0s!important}}
