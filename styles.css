@@ -185,16 +185,14 @@ html,body{max-width:100%;overflow-x:hidden}
 .product-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .product-meta{font-size:13px;color:#667277;margin-top:25px;max-width:500px}
 .product-visual{position:relative;min-width:0;background:#e4e5d8;border-radius:44% 48% 39% 47%;min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px}
-.product-pack-preview{width:min(300px,83%);height:415px;background:#b98f67;padding:15px;border-radius:10px 10px 5px 5px;box-shadow:14px 16px 0 rgba(39,50,56,.13);position:relative;margin:13px 0 5px;transform:rotate(4deg);display:flex;align-items:stretch}
-.product-pack-preview:before{content:"";position:absolute;inset:0;border:1px solid rgba(71,37,24,.16);border-radius:inherit;pointer-events:none}
-.product-pack-tab{position:absolute;width:75%;height:44px;border-radius:14px 14px 0 0;background:#b98f67;left:12.5%;top:-32px;z-index:-1}
-.product-pack-tab:before{content:"";position:absolute;left:34%;right:34%;top:10px;height:12px;background:#e4e5d8;border-radius:100px}
-.product-pack-face{flex:1;border-radius:20px;background:#fffaf2;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:37px 17px 33px;color:#603148}
-.product-pack-face>p{font:600 38px/1.04 Fraunces,serif;letter-spacing:-.04em;margin:0}
-.product-pack-face>small{font:500 12px/1.45 "DM Sans",sans-serif;max-width:190px}
-.product-pack-drawing{font:600 58px/1 Fraunces,serif;color:#df745b}
-.product-pack-drawing span{font-size:85px;color:#7895ae;vertical-align:middle}
-.product-visual-note{font-size:11px;line-height:1.4;text-align:center;color:#61716a;max-width:280px;margin:20px 0 0}
+.product-visual{background:transparent;border-radius:0;min-height:0;padding:0;display:block}
+.product-photo-hero{width:100%;margin:0}
+.product-photo-hero img{width:100%;height:auto;display:block;border-radius:22px;box-shadow:10px 14px 0 rgba(39,50,56,.08)}
+.product-visual-note{font-size:12px;line-height:1.5;text-align:left;color:#61716a;max-width:100%;margin:20px 0 0}
+.product-gallery{display:grid;grid-template-columns:1.08fr .92fr;gap:30px;align-items:start;padding-top:0;padding-bottom:95px}
+.product-gallery figure{min-width:0;margin:0}
+.product-gallery img{display:block;width:100%;height:auto;max-width:100%;border-radius:17px;box-shadow:0 8px 20px rgba(39,50,56,.07)}
+.product-gallery figcaption{font-size:13px;line-height:1.5;color:#61716a;margin-top:13px}
 .product-intro{padding-top:18px;padding-bottom:90px;max-width:1030px}
 .product-intro h2{max-width:870px;font-size:clamp(31px,3.8vw,48px)}
 .product-intro>p:last-child{color:#4b565a;max-width:760px;font-size:18px;line-height:1.72;margin:24px 0 0}
@@ -248,19 +246,13 @@ html,body{max-width:100%;overflow-x:hidden}
 @media(prefers-reduced-motion:reduce){.product-page *{transition-duration:0s!important;animation-duration:0s!important}}
 
 
-/* Home-page card-set spotlight, sharing the actual product-page primitive. */
-.coming-object .product-pack-preview{width:min(225px,75%);height:304px;padding:11px;transform:rotate(10deg);margin:7px 0 0;box-shadow:8px 12px 0 rgba(39,50,56,.12)}
-.coming-object .product-pack-face{padding:25px 8px 23px;border-radius:13px}
-.coming-object .product-pack-face>p{font-size:28px}
-.coming-object .product-pack-face>small{font-size:9px}
-.coming-object .product-pack-drawing{font-size:39px}
-.coming-object .product-pack-drawing span{font-size:52px}
+/* Actual product photography, with original proportions preserved. */
+.coming-object .coming-product-photo{display:block;width:min(285px,78%);height:auto;max-height:330px;object-fit:contain;transform:rotate(7deg);border-radius:15px;box-shadow:8px 12px 0 rgba(39,50,56,.1)}
 .coming-copy .button{margin-top:2px}
 @media(max-width:800px){
-  .coming-object .product-pack-preview{width:185px;height:251px;margin-top:15px}
-  .coming-object .product-pack-face>p{font-size:23px}
-  .coming-object .product-pack-face>small{font-size:8px}
-  .coming-object .product-pack-face{padding:23px 7px 18px}
-  .coming-object .product-pack-drawing{font-size:31px}
-  .coming-object .product-pack-drawing span{font-size:44px}
+  .product-visual{min-height:0;max-width:560px;padding:0}
+  .product-gallery{grid-template-columns:1fr;gap:28px;padding-bottom:70px}
+  .product-gallery figure{max-width:640px}
+  .coming-object .coming-product-photo{width:min(210px,77%);max-height:255px}
 }
+@media(max-width:380px){.product-visual{min-height:0}}
