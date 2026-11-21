@@ -506,3 +506,10 @@ html,body.fep-page{overflow-x:clip}
  .fep-page .fep-motion-collection{width:86px}
 }
 @media(prefers-reduced-motion:reduce){.fep-page .fep-motion-hero-bookmark,.fep-page .fep-home-portrait{animation:none!important;transform:none!important}}
+
+/* Category motifs and individual publication symbols (decorative, not product images). */
+.fep-page .fep-catalog-category{display:flow-root}
+.fep-page .fep-category-scene{float:right;width:clamp(92px,11vw,145px);height:auto;margin:-13px 0 12px 23px;pointer-events:none}
+.fep-page .fep-product-title-motif{float:right;width:clamp(88px,9vw,122px);max-width:33%;height:auto;margin:-13px 0 12px 18px;pointer-events:none}
+.fep-page .fep-product .fep-detail-list{clear:both}
+@media(max-width:570px){.fep-page .fep-category-scene{width:88px;margin:0 0 9px 12px}.fep-page .fep-product-title-motif{width:84px;margin:0 0 8px 10px}}
