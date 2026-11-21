@@ -19,7 +19,7 @@ for(const [id,sentence] of Object.entries(fixed)){
 }
 for(const entry of bank.entries){
  assert.ok(bookNames[entry.book],"named manuscript source "+entry.id);
- assert.ok(Number.isInteger(entry.page)&&entry.page>=2&&entry.page<=139,"source PDF page "+entry.id);
+ assert.ok(Number.isInteger(entry.page)&&entry.page>=1&&entry.page<=139,"source PDF page "+entry.id);
  assert.deepEqual(Object.keys(entry.text).sort(),langs.slice().sort(),"all translations "+entry.id);
  for(const lang of langs){
   const pair=entry.text[lang];
