@@ -159,3 +159,16 @@
 .footer{flex-wrap:wrap}
 .fep-top-link:focus-visible,.fep-arrow-link:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:3px}
 @media(prefers-reduced-motion:reduce){.fep-vector-icon,.fep-up-icon{transition:none!important;transform:none!important}}
+
+/* Email pre-order disclosure: calm, consistent across all nine products. */
+.fep-preorder{scroll-margin-top:30px}
+.fep-preorder-label,.fep-preorder-mini{font-size:12px!important;line-height:1.35!important;font-weight:700!important;letter-spacing:.012em;color:#425e4b!important;margin:0 0 12px!important}
+.fep-preorder-label{display:inline-block;padding:5px 11px;border:1px solid #b3c6af;border-radius:99px;background:#f0f5ea}
+.fep-preorder-mini{margin:0 0 9px!important}
+.fep-preorder-note{font-size:12px!important;color:#5b6970!important;margin:15px 0 0!important;line-height:1.5!important}
+.fep-preorder-caveat{font-size:13px!important;line-height:1.6!important;border-left:3px solid #a67b62;padding-left:13px;color:#624f49!important}
+.fep-preorder-cta{display:inline-flex;align-items:center;gap:9px;max-width:100%;white-space:normal;min-height:44px}
+.fep-preorder-intro{font-size:15px;line-height:1.65;color:#425e4b;max-width:730px;margin:15px 0 25px}
+.fep-home-preorder-strip{max-width:880px;margin:18px 0}
+.fep-mini-product .fep-preorder-mini{margin-bottom:7px!important}
+@media(max-width:570px){.fep-preorder-cta{width:100%;justify-content:center}.fep-preorder-intro{font-size:14px}}

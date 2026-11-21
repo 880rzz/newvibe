@@ -31,6 +31,13 @@ const newDiofaHomeCopy={
 };
 for(const lang of ["en","hu","de","fr"])Object.assign(fepExtra[lang],newDiofaHomeCopy[lang]);
 
+const fepPreorderHomeCopy={
+ en:{homePreorderIntro:"Email pre-orders are now open for all nine publications. Choose a product to send a request; the webshop and prices will follow.",homePreorderMini:"Pre-order by email"},
+ hu:{homePreorderIntro:"Mind a kilenc kiadványra leadható e-mailes előrendelési igény. Válassz egy terméket, majd írd meg, hány példányt szeretnél. A webshop és az árak később érkeznek.",homePreorderMini:"Előrendelés e-mailben"},
+ de:{homePreorderIntro:"Für alle neun Publikationen ist jetzt eine Vorbestellungsanfrage per E-Mail möglich. Wähle die Ausgabe; Webshop und Preise folgen.",homePreorderMini:"Per E-Mail vorbestellbar"},
+ fr:{homePreorderIntro:"Les neuf publications peuvent dès maintenant faire l'objet d'une demande de précommande par e-mail. Choisissez un produit ; la boutique et les prix suivront.",homePreorderMini:"Précommande par e-mail"}
+};
+for(const lang of ["en","hu","de","fr"])Object.assign(fepExtra[lang],fepPreorderHomeCopy[lang]);
 for(const lang of ["en","hu","de","fr"]){Object.assign(extras[lang],fepExtra[lang],{brandTag:fepBrandLines[lang]});Object.assign(copy[lang],fepExtra[lang]);}
 const fepLangs=["en","hu","de","fr"];
 const fepLinks={catalog:"catalog/",about:"about/",card:"products/helyed-van-koztunk.html",adhd:"products/lepesrol-lepesre-2027.html",workbook:"products/egy-kis-ter.html",prayer:"products/veled-a-mindennapokban.html",worldStories:"products/mesek-a-vilag-korul.html",worldColoring:"products/mesek-a-vilag-korul-szinezo.html",workshopBook:"products/na-most-mit-csinaljak.html"};

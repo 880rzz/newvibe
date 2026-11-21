@@ -74,6 +74,13 @@ const content = {
     purchaseEyebrow:"la prochaine étape",purchaseTitle:"Helyed van köztünk",purchaseText:"Le lien vérifié de la boutique en ligne n’est pas encore disponible sur cette page. Vous pouvez contacter directement la créatrice.",purchaseCta:"Contacter la créatrice",purchaseShop:"Voir la boutique",purchaseNote:"Aucun prix, stock ou délai de livraison n’est indiqué sans informations de boutique vérifiées.",backHome:"retour à Un peu d’espace"
   }
 };
+const cardPreorderCopy={
+ hu:{purchaseEyebrow:"előrendelés",purchaseText:"A Helyed van köztünk kártyacsomagra már most leadható előrendelési igény e-mailben. Írd meg a kért példányszámot. Az e-mail nem jelent automatikus visszaigazolást vagy fizetési kötelezettséget.",purchaseCta:"Előrendelés e-mailben",purchaseNote:"A webshop és az árak még készülnek. Fizetési adatot ne küldj e-mailben.",subject:"For Every Path – előrendelés: Helyed van köztünk",body:"Szia Alexandra!\n\nSzeretném előrendelni a Helyed van köztünk kártyacsomagot.\nKért példányszám: \nKérdésem: \n\nTudomásul veszem, hogy ez nem automatikus rendelés-visszaigazolás."},
+ en:{purchaseEyebrow:"pre-order",purchaseText:"You can now request a pre-order of Helyed van köztünk by email. Please indicate the number of copies. Sending the email is not an automatic order confirmation or payment obligation.",purchaseCta:"Pre-order by email",purchaseNote:"The webshop and prices are in preparation. Do not send payment details by email.",subject:"For Every Path – pre-order: Helyed van köztünk",body:"Hello Alexandra,\n\nI would like to pre-order Helyed van köztünk.\nQuantity requested: \nQuestion: \n\nI understand this is not an automatic order confirmation."},
+ de:{purchaseEyebrow:"Vorbestellung",purchaseText:"Du kannst jetzt per E-Mail eine Vorbestellung für Helyed van köztünk anfragen. Bitte nenne die gewünschte Anzahl. Die E-Mail bedeutet keine automatische Bestellbestätigung und keine Zahlungspflicht.",purchaseCta:"Per E-Mail vorbestellen",purchaseNote:"Webshop und Preise folgen. Bitte keine Zahlungsdaten per E-Mail senden.",subject:"For Every Path – Vorbestellung: Helyed van köztünk",body:"Hallo Alexandra,\n\nich möchte Helyed van köztünk vorbestellen.\nGewünschte Anzahl: \nFrage: \n\nIch weiß, dass dies noch keine Bestellbestätigung ist."},
+ fr:{purchaseEyebrow:"précommande",purchaseText:"Vous pouvez désormais demander une précommande de Helyed van köztünk par e-mail. Indiquez le nombre d'exemplaires. L'envoi ne vaut pas confirmation automatique et n'entraîne aucun paiement.",purchaseCta:"Précommander par e-mail",purchaseNote:"La boutique et les prix sont en préparation. N'envoyez pas de données bancaires par e-mail.",subject:"For Every Path – précommande : Helyed van köztünk",body:"Bonjour Alexandra,\n\nJe souhaite précommander Helyed van köztünk.\nNombre d'exemplaires : \nQuestion : \n\nJe comprends que ce message ne confirme pas une commande."}
+};
+for(const lang of ["en","hu","de","fr"])Object.assign(content[lang],cardPreorderCopy[lang]);
 function setProductLanguage(lang) {
   const t=content[lang]||content.hu;
   document.documentElement.lang=lang;
@@ -95,6 +102,7 @@ function setProductLanguage(lang) {
   if (SHOP_URL && /^https:\/\//i.test(SHOP_URL)) {
     shopButton.href=SHOP_URL;shopButton.target="_blank";shopButton.rel="noopener noreferrer";shopButton.textContent=t.purchaseShop;
   }
+  else {const draft=cardPreorderCopy[lang]||cardPreorderCopy.hu;shopButton.href="mailto:diofamuhelykozosseg@gmail.com?subject="+encodeURIComponent(draft.subject)+"&body="+encodeURIComponent(draft.body);shopButton.removeAttribute("target");shopButton.removeAttribute("rel");shopButton.textContent=t.purchaseCta;}
   document.title="Helyed van köztünk | For Every Path";
 }
 document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setProductLanguage(btn.dataset.lang)));
