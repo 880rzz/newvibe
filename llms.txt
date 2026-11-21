@@ -15,7 +15,7 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 - Collection: https://880rzz.github.io/newvibe/catalog/
 - About / Editorial & AI Trust: https://880rzz.github.io/newvibe/about/
 
-## Six product editions
+## Nine product editions
 - Helyed van köztünk: https://880rzz.github.io/newvibe/products/helyed-van-koztunk.html
   A 36-card illustrated discussion deck on bullying and exclusion with 16-part safety/help leaflet. Real product photos available.
 - Egy kis tér: https://880rzz.github.io/newvibe/products/egy-kis-ter.html
@@ -28,6 +28,13 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 
 - Veled a mindennapokban: https://880rzz.github.io/newvibe/products/veled-a-mindennapokban.html
   30-day Catholic prayer and reflection journal in Hungarian, 84 A5 pages, manuscript dated 2026-11-18; Scriptures cited from Káldi-Neovulgáta (KNB) and Catechism (KEK). The manuscript discloses AI assistance. No physical print, ecclesiastical approval or independent theological review has been confirmed; the product image is an AI concept, not a real printed book photograph.
+
+- Mesék a világ körül: https://880rzz.github.io/newvibe/products/mesek-a-vilag-korul.html
+  Diófa Műhely Hungarian A4 story collection, 131 pages, 42 countries and 42 folktales, legends and literary stories. Source revision 2026-11-19. The manuscript itself flags unresolved rights and translation issues; commercial rights are not verified.
+- Mesék a világ körül – 42 színező: https://880rzz.github.io/newvibe/products/mesek-a-vilag-korul-szinezo.html
+  Companion Hungarian 42-page A4 set of line-art coloring pages keyed to the 42 stories. Print files only, rights review pending.
+- Na, most mit csináljak?: https://880rzz.github.io/newvibe/products/na-most-mit-csinaljak.html
+  Diófa Műhely A4 activity/story book, 139 pages, 32 stories for ages 8–11. Based on Sajbán-Frőhner Alexandra's editorial concept; source acknowledges AI-assisted text and illustration. Fictional Kóka-inspired settings do not imply institutional affiliation.
 
 ## Truthfulness and safeguards
 No product prices or live webshop links. No unverified offers, company identifiers, awards, reviews, clinician endorsements, clinical efficacy, or availability claims.
