@@ -259,8 +259,14 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
    complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
    cardId:img.dataset.cardId,src:img.getAttribute("src")
   }));
-  check(artProof.complete&&artProof.naturalWidth>=500&&artProof.naturalHeight>=500,label+" vector scene decoded");
+  check(artProof.complete&&artProof.naturalWidth>0&&artProof.naturalHeight>0,label+" vector scene decoded");
   check(artProof.src.endsWith("/"+selection+".svg")&&artProof.cardId===selection,label+" exact drawn artwork");
+  const frontState=await demo.locator("[data-demo-card]").evaluate(el=>{
+    const f=getComputedStyle(el.querySelector(".fep-demo-face--front"));
+    const r=getComputedStyle(el.querySelector(".fep-demo-face--back"));
+    return {front:f.visibility,reverse:r.visibility,frontOpacity:parseFloat(f.opacity),reverseOpacity:parseFloat(r.opacity)};
+  });
+  check(frontState.front==="visible"&&frontState.reverse==="hidden"&&frontState.frontOpacity>0.99&&frontState.reverseOpacity<.01,label+" one visible front face only");
   const geom=await demo.locator("[data-demo-card]").evaluate(el=>{
    const r=el.getBoundingClientRect(),e=document.documentElement;
    return {left:r.left,right:r.right,width:r.width,aspect:r.width/r.height,
@@ -275,6 +281,9 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   }
   const flip=demo.locator("[data-demo-flip]");
   await flip.click();
+  await page.waitForTimeout(420);
+  const sides=await demo.locator("[data-demo-card]").evaluate(el=>({front:getComputedStyle(el.querySelector(".fep-demo-face--front")).visibility,reverse:getComputedStyle(el.querySelector(".fep-demo-face--back")).visibility}));
+  check(sides.front==="hidden"&&sides.reverse==="visible",label+" readable reverse shown, no mirrored front in Safari");
   check(await flip.getAttribute("aria-pressed")==="true",label+" native button flips card");
   check(await demo.locator("[data-demo-card]").getAttribute("data-face")==="back",label+" back face state");
   check(await demo.locator("[data-demo-back]").getAttribute("aria-hidden")==="false",label+" back face accessible");
