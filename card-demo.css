@@ -1,0 +1,40 @@
+/* Helyed van köztünk — five-card, local-only vector demonstration.
+   Entire component is scoped; no styles applied to other products. */
+.fep-page .fep-card-demo{margin-block:clamp(44px,6.5vw,92px);color:#29473d}
+.fep-page .fep-demo-head{max-width:710px;margin:0 auto clamp(24px,3.5vw,44px);text-align:center}
+.fep-page .fep-demo-kicker{margin:0 0 12px;font:700 12px/1.4 "DM Sans",sans-serif;letter-spacing:.15em;text-transform:uppercase;color:#a96857}
+.fep-page .fep-demo-head h2{font:600 clamp(27px,3.3vw,43px)/1.16 Fraunces,Georgia,serif;letter-spacing:-.025em;margin:0 0 14px;color:#2d483e}
+.fep-page .fep-demo-head>p:last-child{margin:0;font:400 clamp(15px,1.6vw,18px)/1.68 "DM Sans",sans-serif;color:#586b60}
+.fep-page .fep-demo-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:clamp(24px,5vw,85px);max-width:1090px;margin:auto}
+.fep-page .fep-demo-stage{min-width:0;display:flex;flex-direction:column;align-items:center}
+.fep-page .fep-demo-card{position:relative;width:min(100%,385px);aspect-ratio:63/88;perspective:1400px;isolation:isolate}
+.fep-page .fep-demo-card-inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .83s cubic-bezier(.2,.72,.23,1)}
+.fep-page .fep-demo-card[data-face="back"] .fep-demo-card-inner{transform:rotateY(180deg)}
+.fep-page .fep-demo-face{position:absolute;inset:0;display:flex;flex-direction:column;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:1px solid rgba(54,80,66,.25);border-radius:17px;overflow:hidden;box-shadow:10px 14px 0 rgba(49,85,72,.08),0 22px 45px rgba(47,65,54,.11);background:#faf6ed}
+.fep-page .fep-demo-face--front{padding:7.7% 7.5% 0}
+.fep-page .fep-demo-face--back{transform:rotateY(180deg);padding:7% 7.5% 6.5%;background:#fff9f0;justify-content:space-between;gap:8px}
+.fep-page .fep-demo-frontheader{z-index:2;position:relative;display:flex;flex-direction:column;gap:7px;min-height:28%}
+.fep-page .fep-demo-mark{font:600 clamp(10px,1.2vw,13px)/1.3 "DM Sans",sans-serif;color:#765568}
+.fep-page .fep-demo-title{margin:0;font:650 clamp(23px,2.8vw,32px)/1.15 Fraunces,Georgia,serif;letter-spacing:-.025em;color:#52394b}
+.fep-page .fep-demo-art{position:absolute;inset:8% 0 0;z-index:1;overflow:hidden}
+.fep-page .fep-demo-art img{width:100%;height:100%;object-fit:cover;display:block;animation:fep-demo-gentle 9s ease-in-out infinite}
+.fep-page .fep-demo-frontfooter{position:absolute;z-index:3;bottom:4.5%;right:6%;display:flex;justify-content:center;align-items:center;min-width:43px;height:34px;padding:0 10px;background:#fff9f0;border-radius:7px;font:700 14px/1 "DM Sans",sans-serif;color:#5c4a4b}
+.fep-page .fep-demo-backtop{display:flex;flex-direction:column;gap:6px}
+.fep-page .fep-demo-backcategory{margin:0;font:700 clamp(9px,.95vw,12px)/1.4 "DM Sans",sans-serif;color:#b47762;letter-spacing:.07em;text-transform:uppercase}
+.fep-page .fep-demo-backtitle{margin:0;font:600 clamp(20px,2.2vw,28px)/1.15 Fraunces,Georgia,serif;color:#51384a}
+.fep-page .fep-demo-story{margin:0;font:500 clamp(11.5px,1.2vw,15px)/1.45 "DM Sans",sans-serif;color:#3b4c43}
+.fep-page .fep-demo-questions{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.fep-page .fep-demo-questions li{font:600 clamp(11.5px,1.2vw,15px)/1.4 "DM Sans",sans-serif;color:#315548}
+.fep-page .fep-demo-questions li:before{content:"•";display:inline;margin-inline-end:7px;color:#be7966}
+.fep-page .fep-demo-pass{margin:0;font:400 clamp(10px,1.1vw,12px)/1.45 "DM Sans",sans-serif;color:#6d7d70;border-top:1px solid rgba(49,85,72,.13);padding-top:10px}
+.fep-page .fep-demo-flip{min-width:min(100%,270px);min-height:46px;margin-top:24px;text-align:center}
+.fep-page .fep-demo-micro{max-width:400px;margin:14px 0 0;text-align:center;font:400 12px/1.6 "DM Sans",sans-serif;color:#738076}
+.fep-page .fep-demo-explanation{min-width:0;padding:clamp(20px,3vw,38px);border-radius:20px;border:1px solid rgba(49,85,72,.17);background:#fff9ef}
+.fep-page .fep-demo-explanation h3{font:600 clamp(23px,2.3vw,31px)/1.2 Fraunces,Georgia,serif;margin:7px 0 16px;letter-spacing:-.02em}
+.fep-page .fep-demo-explanation>p:not(.fep-demo-kicker){margin:0 0 16px;font:400 clamp(15px,1.5vw,17px)/1.72 "DM Sans",sans-serif;color:#586a5d}
+.fep-page .fep-demo-explanation .fep-demo-source{font-size:12px!important;line-height:1.65!important;color:#748077!important;border-top:1px solid rgba(49,85,72,.14);padding-top:16px;margin:22px 0 0!important}
+.fep-page .fep-demo-card button:focus-visible,.fep-page .fep-demo-flip:focus-visible{outline:3px solid #c47763;outline-offset:5px}
+@keyframes fep-demo-gentle{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.01)}}
+@media(max-width:800px){.fep-page .fep-demo-layout{grid-template-columns:1fr;gap:34px}.fep-page .fep-demo-card{width:min(100%,385px)}.fep-page .fep-demo-explanation{max-width:580px;width:100%;margin:auto}}
+@media(max-width:390px){.fep-page .fep-demo-card{width:min(100%,303px)}.fep-page .fep-demo-face--back{padding:6% 6% 5%;gap:5px}.fep-page .fep-demo-backtop{gap:4px}.fep-page .fep-demo-story{font-size:12px;line-height:1.35}.fep-page .fep-demo-questions{gap:5px}.fep-page .fep-demo-questions li{font-size:11.5px;line-height:1.35}.fep-page .fep-demo-pass{font-size:10px;padding-top:6px}}
+@media(prefers-reduced-motion:reduce){.fep-page .fep-demo-card-inner{transition:none!important}.fep-page .fep-demo-art img{animation:none!important}}
