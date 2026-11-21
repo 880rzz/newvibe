@@ -14,6 +14,10 @@ A 2026-11-21-i második iPhone-visszajelzés nyomán az oldal külön javítást
 
 Nyolc új, önálló animált SVG került a főoldal, katalógus, bemutatkozás és a kilenc kiadvány oldalának négynyelvű vizuális rendszerébe. Alexandra valódi portréja bitazonosan a RAW Materials Trade repóból lett átemelve; nem generált portré. A motívumok a nyomdai kéziratokból indulnak ki, de új szerkesztői vektoros illusztrációk, nem pontos PDF-kivonatok. [Eszközjegyzék, proveniencia és mozgásszabályok](docs/SVG_MOTION_MANIFEST.md).
 
+## SVG szerkesztői rendszer — 12 egyedi vektoros elem
+
+A #20 kiadás nyolc eredeti SVG-jelenete és Alexandra valódi, forrásazonos portréja megmarad. Négy kiegészítő SVG külön karaktert ad a színezőnek és a `Na, most mit csináljak?` kiadványnak, valamint visszafogott vonalrajzot a kezdőlapi kártya- és alkotói szakaszokhoz. Nincs dupla illusztráció vagy új animációs JavaScript. A részletes motívumlista, szerkesztői származás és QA: [SVG_MOTION_MANIFEST.md](docs/SVG_MOTION_MANIFEST.md).
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

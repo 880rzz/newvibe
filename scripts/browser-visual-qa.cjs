@@ -155,6 +155,34 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     for(const lang of langs){
      for(const width of widths)await pageAudit(page,engine,lang,"home",width,origin);
      for(const kind of ["about","catalog"])for(const width of [390,1440])await pageAudit(page,engine,lang,kind,width,origin);
+     // Verify that the additional manuscript-inspired SVGs really render in both engines,
+     // instead of accepting file existence or HTML assertions as proof.
+     for(const entry of [
+      ["home","index.html",".fep-recognition-inkline","editorial-handline.svg"],
+      ["about","about/index.html",".fep-how-made-mark","workshop-tree.svg"],
+      ["coloring","products/mesek-a-vilag-korul-szinezo.html",".fep-product-title-motif","coloring-crayon.svg"],
+      ["craft","products/na-most-mit-csinaljak.html",".fep-product-title-motif","craft-table.svg"]
+     ]){
+      const [kind,pathName,selector,assetName]=entry;
+      await page.setViewportSize({width:390,height:900});
+      await page.goto(origin+prefix(lang)+pathName,{waitUntil:"domcontentloaded"});
+      const node=page.locator(selector);
+      check(await node.count()===1,engine+" "+lang+" "+kind+" SVG present exactly once");
+      await node.scrollIntoViewIfNeeded();
+      await node.evaluate(img=>img.decode());
+      const proof=await node.evaluate(img=>({
+       complete:img.complete,naturalWidth:img.naturalWidth,
+       src:img.getAttribute("src"),width:img.getBoundingClientRect().width,
+       overflow:document.documentElement.scrollWidth-innerWidth
+      }));
+      check(proof.complete&&proof.naturalWidth>0,engine+" "+lang+" "+kind+" SVG decoded");
+      check(proof.src.endsWith(assetName),engine+" "+lang+" "+kind+" unique motif mapped");
+      check(proof.width>30&&proof.width<250,engine+" "+lang+" "+kind+" SVG not oversized");
+      check(proof.overflow<2,engine+" "+lang+" "+kind+" zero horizontal overflow");
+      await node.screenshot({
+       path:path.join(destination,engine+"-"+lang+"-"+kind+"-new-svg.png"),animations:"disabled"
+      });
+     }
     }
    }finally{
     check(runtimeErrors.length===0,engine+" no JavaScript runtime exceptions: "+runtimeErrors.join("; "));

@@ -1,6 +1,6 @@
 "use strict";
 const fs=require("node:fs"),crypto=require("node:crypto"),assert=require("node:assert/strict"),path=require("node:path");
-const assets=["bookmark-pencil","speech-thread","world-stories","bench-bag","desk-chair","folded-help","planner-tabs","journal-candle"];
+const assets=["bookmark-pencil","speech-thread","world-stories","bench-bag","desk-chair","folded-help","planner-tabs","journal-candle","coloring-crayon","craft-table","workshop-tree","editorial-handline"];
 for(const key of assets){
  const s=fs.readFileSync("assets/svg-motion/"+key+".svg","utf8");
  assert.match(s,/^<svg[^>]+viewBox="[\d ]+"/,"responsive viewBox: "+key);
@@ -21,13 +21,25 @@ for(const lang of ["en","hu","de","fr"]){
  const pages=["index.html","about/index.html","catalog/index.html",...slugs.map(x=>"products/"+x+".html")];
  for(const file of pages){
   const s=fs.readFileSync(base+file,"utf8");routes++;
-  assert.ok(s.includes("catalog.css?v=8"),lang+"/"+file+" stylesheet cache version");
+  assert.ok(s.includes("catalog.css?v=9"),lang+"/"+file+" stylesheet cache version");
   const svgImages=[...s.matchAll(/<img[^>]+class="[^"]*(?:fep-motion-|fep-category-scene|fep-product-title-motif|fep-portrait-accent)[^"]*"[^>]*>/g)].map(m=>m[0]);
   for(const img of svgImages){scenes++;assert.ok(img.includes('alt=""')&&img.includes('aria-hidden="true"'),lang+"/"+file+" decorative imagery accessibility");}
   const assets=[...s.matchAll(/src="([^"]+assets\/(?:svg-motion|portraits)\/[^"]+)"/g)].map(m=>m[1]);
   for(const href of assets){
    const filename=path.normalize(path.join(path.dirname(base+file),href));
    assert.ok(fs.existsSync(filename),lang+"/"+file+" missing local image "+href);
+  }
+  if(file==="index.html"){
+   assert.ok(s.includes('class="fep-recognition-inkline"'),lang+" editorial headline line");
+  }
+  if(file==="about/index.html"){
+   assert.ok(s.includes('class="fep-how-made-mark"'),lang+" manuscript workshop mark");
+  }
+  if(file==="products/mesek-a-vilag-korul-szinezo.html"){
+   assert.ok(s.includes("assets/svg-motion/coloring-crayon.svg"),lang+" distinct colouring page motif");
+  }
+  if(file==="products/na-most-mit-csinaljak.html"){
+   assert.ok(s.includes("assets/svg-motion/craft-table.svg"),lang+" distinct craft workshop motif");
   }
   if(file==="index.html"){
    assert.ok(s.includes("fep-home-portrait"),lang+" genuine portrait homepage");
@@ -43,4 +55,4 @@ for(const lang of ["en","hu","de","fr"]){
 }
 assert.equal(routes,48);
 assert.ok(scenes>=64,"at least 64 original SVG placements in localized pages");
-console.log("Vector release contract: "+routes+" routes, "+scenes+" SVG motifs, 8 assets and exact Alexandra portrait verified.");
+console.log("Vector release contract: "+routes+" routes, "+scenes+" SVG motifs, 12 assets and exact Alexandra portrait verified.");
