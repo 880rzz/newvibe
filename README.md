@@ -14,6 +14,10 @@ A 2026-11-21-i második iPhone-visszajelzés nyomán az oldal külön javítást
 
 Nyolc új, önálló animált SVG került a főoldal, katalógus, bemutatkozás és a kilenc kiadvány oldalának négynyelvű vizuális rendszerébe. Alexandra valódi portréja bitazonosan a RAW Materials Trade repóból lett átemelve; nem generált portré. A motívumok a nyomdai kéziratokból indulnak ki, de új szerkesztői vektoros illusztrációk, nem pontos PDF-kivonatok. [Eszközjegyzék, proveniencia és mozgásszabályok](docs/SVG_MOTION_MANIFEST.md).
 
+## Bőséges kilenctermékes bemutatók — 2026. november 21.
+
+A **kilenc eredeti magyar kiadvány** mind a négy nyelven részletes, egyedi termékismertetővel rendelkezik (36 termékoldal): kézirati motívumból épített történeti bevezető, három alapos magyarázó bekezdés, három ellenőrzött jellemző, kiemelt szerkesztői mondat és a kiadványhoz rendelt SVG-motívum. A négy katalógus összesen 36 kibővített termékkártyát tartalmaz. A feleslegesen ismételt „AI és szerkesztői átláthatóság” promóciós blokk eltávolítva a termékoldalakról; Alexandra valódi, E/1-es alkotói folyamatismertetése a bemutatkozó oldalon maradt. Megőrzött grafikai alap: a #20 kiadás nyolc eredeti SVG-jelenete, a kategória- és termékdíszek, valamint a Raw Materials Trade repóból átvett, módosítatlan Alexandra-portré, `assets/portraits/alexandra-sajban-frohner.webp`. Fájl- és állításforrások: [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md). Közös stílus: `catalog.css?v=9`.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

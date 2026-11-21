@@ -63,3 +63,7 @@ Branch → PR → CI → merge → Pages → exact-live readback → képernyők
 - Nyolc új, szerkesztői SVG motívum született a nyomdai PDF-ek vizuális részleteiből, de nem pontos vektoros másolatként; a nyomdai források nem nyilvánosak.
 - Négy nyelven azonos képi szerkezet, 48/48 közös `catalog.css?v=8`; mobil és desktop QA, reduced-motion támogatás, nincs overflow.
 - Képi forrásjegyzék, SVG-pozíciók és a portré eredeti Git-azonosítója: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md).
+
+## 2026. november 21. — Termékszerkesztés a már éles SVG #20 kiadásra építve
+
+A generikus AI-bemutatkozó dobozt **nem** szabad a termékek végére visszatenni. A kilenc magyar kiadvány 4 nyelvű ismertetőjében 3 tartalmi bekezdés, leíró lead, három pontos tény és egy egyedi, kézzel rajzolt SVG-motívum van. A 4 katalógus × 9 kártyája részletesebb, két gyors jellemzővel. A #20 eredeti SVG-jeleneteit, kategória- és termékdíszeit és Alexandra valódi, Raw Materials Trade-ből átvett, közvetlenül tárolt WebP-fotóját megtartottuk. Közös stílus v9. A fordított webes ismertetőket nem szabad lefordított nyomtatott kiadásnak nevezni. Források: [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md).

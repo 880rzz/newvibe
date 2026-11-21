@@ -273,6 +273,16 @@ A nyolc önálló SVG a kéziratok képi motívumaiból készült, saját rajzú
 Alexandra eredeti, változtatás nélkül átvett portréja a `strangerfake01/RawMaterialsTrade` repóból: `assets/images/team/alexandra-sajban-frohner.webp` → `assets/portraits/alexandra-sajban-frohner.webp`; eredeti és másolati Git blob SHA `e155107f4f12a9bbf35c4f0c57b0f4df8e96f855`. A kép a négy főoldal szerzői blokkjában és a négy bemutatkozó oldalon látható. Nem AI-generált arckép. A képkredit és engedélyezési nyilatkozat a tényleges jogtulajdonos adatain alapulhat csak.
 
 A díszítő SVG-k az EN/HU/DE/FR nézetekben egyformán szerepelnek, belső animációs CSS-sel és `prefers-reduced-motion` fallbackkel; mind a 48 lokalizált oldal új `catalog.css?v=8` cache-verziót használ. A főoldali CTA-k továbbra is mélyzöldek, a lábléc szöveges, az eredeti PDF-források tiltása változatlan. Külön validálás: `scripts/svg-motion-smoke.cjs`, Chromium/WebKit renderelt QA.
+### 2026-11-21 — Kilenc részletes terméknarratíva + #20 SVG-rendszer integráció
+
+Az előrendelési katalógus szerkesztése kilenc termékre, négy nyelvre kiterjed: **36 részletes termékoldal + 36 kibővített katalóguskártya**. Minden termékoldalon három tartalmi magyarázó bekezdés, célzott bevezető, három megalapozott jellemző, kiemelt gondolat és animált SVG-motívum jelenik meg, miközben a #20-as fejlesztésben élesített eredeti nyolc SVG-jelenet, termékcím-illusztrációk és Alexandra eredeti fotója megmaradnak. A minden termékoldalon ismétlődő generikus AI-trust banner megszűnt; az első személyű alkotói tájékoztatás Alexandra oldalán marad.
+
+**Fotóforrás:** `assets/portraits/alexandra-sajban-frohner.webp` — a `strangerfake01/RawMaterialsTrade` `assets/images/team/alexandra-sajban-frohner.webp` 800 × 800 pixeles eredeti WebP-jének pontos, helyben kiszolgált másolata (Git blob SHA: `e155107f4f12a9bbf35c4f0c57b0f4df8e96f855`). Nem RMT-vállalati együttműködés. A `catalog.css?v=9` tartalmazza a kibővített kártyák mobil/desktop ritmusát, az eredeti #20 SVG-komponensekkel együtt.
+
+**Forrásspecifikus korlátok:** a kiadványok magyar nyelvűek; a 42 országos mesekönyv és kísérő színező kereskedelmi jogainak igazolása külön folyamat; nincsen fiktív webshop, orvosi/pszichológiai, intézményi vagy egyházi jóváhagyási állítás. Privát kézirati PDF továbbra sem tölthető fel. A pontos forrás- és jogosultsági különbségek a [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md) fájlban szerepelnek.
+
+**CI/QA:** mind a 48 lokalizált HTML-oldal CSS-v9 paritás, 4×9 részletes termékleírás, 4×9 bőséges katalógus, 9 SVG-motívum, #20 8 SVG-jelenet és fotó-képellenőrzés. WebKit és Chromium renderelt kép + mobil/desktop böngészőellenőrzés külön release-kapu.
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
