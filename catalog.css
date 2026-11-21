@@ -353,7 +353,7 @@ body.fep-menu-open{overflow:hidden}
  .fep-page .site-menu .fep-menu-link,.fep-page .site-menu .fep-category-disclosure summary{font-size:clamp(29px,7.4vw,37px)}
  .fep-page .site-menu .fep-category-list{padding-left:13px;margin-top:7px}
  .fep-page .site-menu .fep-category-list a{font-size:15px;padding:7px 0}
- .fep-page .site-menu-inner:after{right:-10%;bottom:8%;opacity:.38}
+ .fep-page .site-menu-inner:after{right:5%;bottom:8%;opacity:.38}
  .fep-page .fep-home-hero .fep-restored-art{min-height:300px;max-width:100%;overflow:hidden}
  .fep-page .fep-home-hero .fep-restored-art .notebook{width:min(320px,86%);height:240px;transform:scale(.76) rotate(-6deg);transform-origin:center}
  .fep-page .fep-home-hero .fep-restored-art .paper-back{width:175px;height:230px;left:23%;top:35px}
