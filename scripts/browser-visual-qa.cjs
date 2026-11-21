@@ -75,6 +75,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   }
   check(snapshot.notes.length===3,label+" three original note cards");
    check(new Set(snapshot.notes.map(card=>card.sentenceId)).size===3&&snapshot.notes.every(card=>card.sentenceId),label+" three unique source-backed sentence IDs");
+   check(new Set(snapshot.notes.map(card=>card.source.split(" · ").slice(0,-1).join(" · "))).size===3,label+" three different manuscript source titles");
    check(snapshot.notes.every(card=>card.source.includes(" · ")&&card.front.length>9&&card.aria===card.front),label+" visible manuscript provenance and accurate accessible names");
    check(snapshot.notes.every(card=>card.scrollH<=card.clientH+2),label+" full front sentence and source fit without clipping");
   for(const [i,card] of snapshot.notes.entries()){
