@@ -1,0 +1,51 @@
+/* For Every Path — restrained editorial SVG & motion system, 2026-11-21.
+ * Original hand-drawn vector reinterpretations, not extracted printing plates.
+ * Each SVG is decorative and non-interactive; text, navigation and cards remain first.
+ */
+.fep-page .fep-editorial-hero-glyphs{position:absolute;inset:0;pointer-events:none;z-index:5;isolation:isolate}
+.fep-page .fep-editorial-hero-glyphs img{position:absolute;display:block;height:auto;object-fit:contain;opacity:.9;pointer-events:none;filter:drop-shadow(3px 5px 0 rgba(31,74,61,.09))}
+.fep-page .fep-editorial-hero-bookmark{width:74px;right:3%;top:0;animation:fep-editorial-hover 9s ease-in-out infinite}
+.fep-page .fep-editorial-hero-pencil{width:76px;bottom:0;left:3%;animation:fep-editorial-hover 10.2s ease-in-out -4s infinite}
+.fep-page .fep-editorial-hero-stars{width:50px;left:5%;top:20%;animation:fep-editorial-breathe 8.6s ease-in-out -2s infinite}
+.fep-page .fep-editorial-underline{display:block;width:clamp(95px,14vw,155px);height:31px;object-fit:contain;object-position:left center;margin:9px 0 -3px;opacity:.75;animation:fep-editorial-breathe 9s ease-in-out infinite}
+.fep-page .fep-editorial-divider{display:flex;align-items:center;justify-content:center;max-width:100%;min-height:27px;padding-block:0;margin:8px auto 0;pointer-events:none}
+.fep-page .fep-editorial-divider img{display:block;width:min(290px,45vw);height:48px;object-fit:contain;opacity:.35;animation:fep-editorial-breathe 12s ease-in-out infinite}
+.fep-page .fep-about-motif-row{display:flex;align-items:center;justify-content:flex-end;gap:22px;min-height:108px;margin:2px 0 18px;pointer-events:none}
+.fep-page .fep-about-motif-row img{height:98px;max-width:135px;width:auto;object-fit:contain;opacity:.92}
+.fep-page .fep-about-motif-row img:first-child{animation:fep-editorial-hover 9.6s ease-in-out infinite}
+.fep-page .fep-about-motif-row img:last-child{animation:fep-editorial-hover 11s ease-in-out -5s infinite}
+.fep-page .fep-catalog-category{position:relative;isolation:isolate}
+.fep-page .fep-category-motif{position:absolute;top:-20px;right:1%;display:block;width:82px;height:75px;object-fit:contain;opacity:.84;pointer-events:none;animation:fep-editorial-hover 10.5s ease-in-out infinite}
+.fep-page .fep-catalog-category .fep-category-title,.fep-page .fep-catalog-category .fep-category-lede{position:relative;z-index:1;max-width:calc(100% - 96px)}
+.fep-page .fep-product-media{position:relative}
+.fep-page .fep-product-motif{display:block;width:clamp(78px,11vw,127px);height:96px;max-width:100%;object-fit:contain;object-position:right center;margin:10px 0 0 auto;opacity:.94;pointer-events:none;animation:fep-editorial-hover 10.8s ease-in-out infinite}
+@keyframes fep-editorial-hover{0%,100%{transform:translate3d(0,0,0) rotate(-1.7deg)}50%{transform:translate3d(0,-5px,0) rotate(1.5deg)}}
+@keyframes fep-editorial-breathe{0%,100%{opacity:.7;transform:scale(.98)}50%{opacity:.96;transform:scale(1.025)}}
+@media(max-width:850px){
+ .fep-page .fep-editorial-hero-bookmark{width:58px;right:6%;top:1%}
+ .fep-page .fep-editorial-hero-pencil{width:62px;left:1%;bottom:1%}
+ .fep-page .fep-editorial-hero-stars{width:40px;left:4%;top:25%}
+ .fep-page .fep-category-motif{width:69px;height:62px;top:-8px;right:0}
+ .fep-page .fep-catalog-category .fep-category-title,.fep-page .fep-catalog-category .fep-category-lede{max-width:calc(100% - 74px)}
+ .fep-page .fep-product-motif{height:75px;width:95px}
+}
+@media(max-width:570px){
+ .fep-page .fep-editorial-hero-bookmark{width:47px;top:4%;right:4%}
+ .fep-page .fep-editorial-hero-pencil{width:50px;left:0;bottom:2%}
+ .fep-page .fep-editorial-hero-stars{width:32px;top:24%;left:5%}
+ .fep-page .fep-editorial-underline{width:103px;height:24px;margin-top:7px}
+ .fep-page .fep-editorial-divider img{height:38px;width:184px}
+ .fep-page .fep-about-motif-row{justify-content:center;min-height:86px;gap:8px;margin-bottom:10px}
+ .fep-page .fep-about-motif-row img{height:77px;max-width:112px}
+ .fep-page .fep-category-motif{top:0;width:50px;height:54px}
+ .fep-page .fep-catalog-category .fep-category-title,.fep-page .fep-catalog-category .fep-category-lede{max-width:calc(100% - 57px)}
+ .fep-page .fep-product-motif{height:62px;width:82px;margin-top:3px}
+}
+@media(prefers-reduced-motion:reduce){
+ .fep-page .fep-editorial-hero-glyphs img,
+ .fep-page .fep-editorial-underline,
+ .fep-page .fep-editorial-divider img,
+ .fep-page .fep-about-motif-row img,
+ .fep-page .fep-category-motif,
+ .fep-page .fep-product-motif{animation:none!important;transform:none!important;transition:none!important}
+}
