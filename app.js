@@ -104,10 +104,10 @@ hu:{questions:[
 ["Mi segítene most a legtöbbet?",["Ha valaki levenne rólam valamit.","Ha nem kellene mindent egyedül kitalálnom.","Ha nem kellene teljesítenem.","Ha végre megérteném, mi zajlik bennem."]],
 ["Melyik mondatot lenne jó ma elhinni?",["Nem kell mindent nekem tartanom.","Lehet lassan is.","A bizonytalanság nem kudarc.","Amit érzek, annak lehet helye."]]],
 results:[
-["Aki túl sok mindent tart fejben","Sok minden rajtad múlik, ezért könnyű elfelejteni, hogy neked is lehet szükséged megtartásra. Talán most nem újabb feladatra, hanem egy kis tehermentesítésre vágysz.","Mi az, amit ma nem kellene egyedül továbbvinned?"],
-["Aki valami új küszöbén áll","Benned már mozog valami, csak még nem kapott nevet. Nem kell most azonnal döntened. Elég lehet észrevenni, merre húz a figyelmed.","Mi az a következő apró lépés, amely nem sürget, csak hív?"],
-["Aki helyet keres magának","Nem biztos, hogy több struktúrára van szükséged. Lehet, hogy először olyan helyre, ahol nem kell hasznosnak, erősnek vagy késznek lenned.","Milyen lenne ma tíz perc, amelynek semmi más célja nincs?"],
-["Aki egy kimondatlan mondatot hordoz","Van benned valami, ami figyelmet kér. Nem kell rögtön megoldani vagy szépen elmagyarázni. Talán az első lépés csak annyi, hogy elismered: ott van.","Mi az az egy mondat, amelyet magadnak már el tudnál mondani?"]]},
+["Ma sok minden rajtad van","Sok minden rajtad múlik, ezért könnyű elfelejteni, hogy neked is lehet szükséged megtartásra. Talán most nem újabb feladatra, hanem egy kis tehermentesítésre vágysz.","Mi az, amit ma nem kellene egyedül továbbvinned?"],
+["Egy következő, kicsi lépés","Benned már mozog valami, csak még nem kapott nevet. Nem kell most azonnal döntened. Elég lehet észrevenni, merre húz a figyelmed.","Mi az a következő apró lépés, amely nem sürget, csak hív?"],
+["Egy kis szabad tér","Nem biztos, hogy több struktúrára van szükséged. Lehet, hogy először olyan helyre, ahol nem kell hasznosnak, erősnek vagy késznek lenned.","Milyen lenne ma tíz perc, amelynek semmi más célja nincs?"],
+["Egy mondat, amelynek hely kell","Van benned valami, ami figyelmet kér. Nem kell rögtön megoldani vagy szépen elmagyarázni. Talán az első lépés csak annyi, hogy elismered: ott van.","Mi az az egy mondat, amelyet magadnak már el tudnál mondani?"]]},
 en:{questions:[
 ["What happens inside you when the world finally goes quiet?",["I feel relief, then another task appears.","I don't know what to do with the silence.","I can finally hear what I push down during the day.","I feel a little afraid of what might come up."]],
 ["Which sentence feels closest today?",["Everyone is counting on me.","I would like to finally begin something.","I am not sure what I need.","I just want a little air."]],
@@ -116,10 +116,10 @@ en:{questions:[
 ["What would help most right now?",["If someone took something off my plate.","If I didn't have to figure everything out alone.","If I didn't have to perform.","If I understood what is happening inside me."]],
 ["Which sentence would be good to believe today?",["I don't have to carry everything.","It is okay to go slowly.","Uncertainty is not failure.","What I feel is allowed to have a place."]]],
 results:[
-["The one carrying too much in their head","A lot depends on you, so it is easy to forget that you also deserve support. Maybe you are not looking for another task, but for some relief.","What is one thing you do not have to carry alone today?"],
-["The one at the edge of something new","Something is already moving in you, it just has not found its name yet. You do not have to decide immediately.","What small next step could gently call you forward?"],
-["The one looking for room","You may not need more structure first. You may need a place where you do not have to be useful, strong, or ready.","What would ten minutes with no purpose feel like today?"],
-["The one carrying an unspoken sentence","Something in you is asking for attention. It does not need to be solved or explained beautifully yet.","What is one sentence you could say to yourself today?"]]},
+["A day with many responsibilities","A lot depends on you, so it is easy to forget that you also deserve support. Maybe you are not looking for another task, but for some relief.","What is one thing you do not have to carry alone today?"],
+["A possible next step","Something is already moving in you, it just has not found its name yet. You do not have to decide immediately.","What small next step could gently call you forward?"],
+["A moment with some room","You may not need more structure first. You may need a place where you do not have to be useful, strong, or ready.","What would ten minutes with no purpose feel like today?"],
+["A sentence waiting for space","Something in you is asking for attention. It does not need to be solved or explained beautifully yet.","What is one sentence you could say to yourself today?"]]},
 de:{questions:[
 ["Was passiert in dir, wenn es endlich ruhig wird?",["Ich bin erleichtert, aber sofort fällt mir Neues ein.","Ich weiß nicht, was ich mit der Stille anfangen soll.","Ich bemerke endlich, was tagsüber untergeht.","Ein wenig Angst, weil so viel auftaucht."]],
 ["Welcher Satz passt heute am ehesten?",["Alle verlassen sich auf mich.","Ich möchte endlich irgendwo anfangen.","Ich weiß gerade nicht, was ich brauche.","Ich bräuchte einfach eine Pause."]],
@@ -128,10 +128,10 @@ de:{questions:[
 ["Was würde dir heute am meisten helfen?",["Wenn jemand mir etwas abnimmt.","Wenn ich nicht alles allein planen müsste.","Wenn ich nicht leisten müsste.","Wenn ich meine Gefühle besser verstünde."]],
 ["Was wäre heute ein hilfreicher Gedanke?",["Ich muss nicht alles tragen.","Ich darf langsam vorgehen.","Unsicherheit ist kein Scheitern.","Meine Gefühle dürfen Platz haben."]]],
 results:[
-["Wenn du viel trägst","Du kümmerst dich um vieles. Vielleicht brauchst du gerade Entlastung statt einer weiteren Aufgabe.","Was könntest du heute abgeben?"],
-["Wenn etwas Neues beginnt","Ein neuer Schritt muss nicht groß sein. Du musst heute nicht alles entscheiden.","Was wäre ein machbarer nächster Schritt?"],
-["Wenn du Platz brauchst","Vielleicht brauchst du zuerst einen Moment ohne Erwartungen.","Wie fühlen sich zehn Minuten ohne Ziel an?"],
-["Wenn Worte fehlen","Nicht alles muss sofort erklärt werden. Du darfst erst einmal bemerken, was da ist.","Welchen Satz kannst du dir selbst schon sagen?"]]},
+["Heute ist vieles auf deinen Schultern","Du kümmerst dich um vieles. Vielleicht brauchst du gerade Entlastung statt einer weiteren Aufgabe.","Was könntest du heute abgeben?"],
+["Ein möglicher nächster Schritt","Ein neuer Schritt muss nicht groß sein. Du musst heute nicht alles entscheiden.","Was wäre ein machbarer nächster Schritt?"],
+["Ein Moment nur für dich","Vielleicht brauchst du zuerst einen Moment ohne Erwartungen.","Wie fühlen sich zehn Minuten ohne Ziel an?"],
+["Ein Satz, der noch Zeit braucht","Nicht alles muss sofort erklärt werden. Du darfst erst einmal bemerken, was da ist.","Welchen Satz kannst du dir selbst schon sagen?"]]},
 fr:{questions:[
 ["Que ressens-tu quand tout devient enfin calme ?",["Du soulagement, puis une nouvelle tâche arrive.","Je ne sais pas quoi faire du silence.","J'entends enfin ce que j'ignorais.","Une petite peur de ce qui remonte."]],
 ["Quelle phrase te ressemble aujourd'hui ?",["Tout le monde compte sur moi.","J'aimerais enfin commencer quelque chose.","Je ne sais pas vraiment ce qu'il me faut.","J'ai juste besoin de souffler."]],
@@ -140,24 +140,30 @@ fr:{questions:[
 ["Qu'est-ce qui t'aiderait aujourd'hui ?",["Qu'on m'enlève une tâche.","Ne pas tout décider seul·e.","Ne rien devoir prouver.","Comprendre un peu mieux ce que je ressens."]],
 ["Quelle pensée aimerais-tu garder ?",["Je n'ai pas à tout porter.","Je peux avancer doucement.","L'incertitude n'est pas un échec.","Mes émotions ont le droit d'exister."]]],
 results:[
-["Quand tu portes trop","Tu portes de nombreuses responsabilités. Peut-être qu'un peu de soutien t'aiderait plus qu'une tâche de plus.","Que pourrais-tu partager aujourd'hui ?"],
-["Au début de quelque chose","Tu n'as pas besoin de tout décider tout de suite. Un petit pas peut suffire.","Quel serait ton prochain pas possible ?"],
-["Quand tu cherches ta place","Peut-être as-tu d'abord besoin d'un moment sans objectif.","À quoi ressembleraient dix minutes sans rien produire ?"],
-["Quand les mots manquent","Tout ne doit pas être expliqué immédiatement. Tu peux commencer par reconnaître ce qui est là.","Quelle phrase peux-tu déjà te dire ?"]]}};
+["Une journée bien chargée","Tu portes de nombreuses responsabilités. Peut-être qu'un peu de soutien t'aiderait plus qu'une tâche de plus.","Que pourrais-tu partager aujourd'hui ?"],
+["Un prochain petit pas","Tu n'as pas besoin de tout décider tout de suite. Un petit pas peut suffire.","Quel serait ton prochain pas possible ?"],
+["Un moment pour toi","Peut-être as-tu d'abord besoin d'un moment sans objectif.","À quoi ressembleraient dix minutes sans rien produire ?"],
+["Une phrase qui attend","Tout ne doit pas être expliqué immédiatement. Tu peux commencer par reconnaître ce qui est là.","Quelle phrase peux-tu déjà te dire ?"]]}};
+const checkinMixed={
+ hu:["Több minden is fontos ma","Lehet, hogy egyszerre többféle dolog foglalkoztat. Nem szükséges egyetlen kategóriát választanod.","Melyik kérdés volt az, amelyiknél megálltál egy pillanatra?"],
+ en:["More than one thing matters","Several themes may be present at once. You do not need to fit into one category.","Which question made you pause for a moment?"],
+ de:["Mehreres ist heute wichtig","Vielleicht beschäftigen dich mehrere Themen gleichzeitig. Du musst dich nicht auf eine Kategorie festlegen.","Bei welcher Frage hast du kurz innegehalten?"],
+ fr:["Plusieurs choses comptent","Plusieurs sujets peuvent te toucher à la fois. Il n'est pas nécessaire de choisir une catégorie.","Quelle question t'a fait réfléchir un instant ?"]
+};
 function initQuiz(){
 let lang=current,step=0,scores=[0,0,0,0],answers=[];
 // Reflection answers are transient and never saved or submitted.
 const card=document.getElementById("quizCard"),intro=document.querySelector(".quiz-intro"),result=document.getElementById("quizResult");
 const data=()=>quizData[lang]?.questions.length?quizData[lang]:quizData.en;
 function render(){const d=data(),q=d.questions[step];document.getElementById("quizCount").textContent=`${step+1} / ${d.questions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/d.questions.length)*100}%`;document.getElementById("quizProgress").setAttribute("aria-valuenow",String(step+1));document.getElementById("quizQuestion").textContent=q[0];const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q[1].forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
-function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const winner=scores.indexOf(Math.max(...scores)),r=data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
+function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const max=Math.max(...scores),winner=scores.indexOf(max),tied=scores.filter(value=>value===max).length>1,r=tied?checkinMixed[lang]:data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
 const product=document.getElementById("quizProductLink"),label=document.getElementById("quizProductLabel");
- if(product&&label){const isPlanning=winner===1;product.dataset.langLink=isPlanning?"catalog":"workbook";product.href=fepBase+(lang==="en"?"":lang+"/")+(isPlanning?fepLinks.catalog:fepLinks.workbook);label.textContent=isPlanning?fepQuizUi[lang].quizBrowseCta:fepQuizUi[lang].quizProductCta;}
-card.hidden=true;result.hidden=false}}
-document.getElementById("startQuiz").onclick=()=>{intro.hidden=true;card.hidden=false;result.hidden=true;step=0;scores=[0,0,0,0];render();card.scrollIntoView({behavior:"smooth",block:"center"})};
+ if(product&&label){const isPlanning=winner===1||tied;product.dataset.langLink=isPlanning?"catalog":"workbook";product.href=fepBase+(lang==="en"?"":lang+"/")+(isPlanning?fepLinks.catalog:fepLinks.workbook);label.textContent=isPlanning?fepQuizUi[lang].quizBrowseCta:fepQuizUi[lang].quizProductCta;}
+card.hidden=true;result.hidden=false;document.getElementById("resultTitle").focus()}}
+document.getElementById("startQuiz").onclick=()=>{intro.hidden=true;card.hidden=false;result.hidden=true;step=0;scores=[0,0,0,0];answers=[];render();card.scrollIntoView({behavior:"smooth",block:"center"})};
 document.getElementById("quizBack").onclick=()=>{if(step){step--;const previous=answers[step];if(Number.isInteger(previous))scores[previous]--;answers.length=step;render()}};
 document.getElementById("quizAgain").onclick=()=>{result.hidden=true;intro.hidden=false;intro.scrollIntoView({behavior:"smooth",block:"center"})};
-window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];render();}};
+window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];render();}if(!result.hidden){result.hidden=true;intro.hidden=false;step=0;scores=[0,0,0,0];answers=[];}};
 
 }
 initQuiz();
