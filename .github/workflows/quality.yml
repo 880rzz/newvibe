@@ -51,7 +51,7 @@ jobs:
                       assert raw[1:] in p.ids, (file,raw)
               for block in p.ld: json.loads(block)
           ET.parse('sitemap.xml')
-          assert 'helyed-van-koztunk.html' in Path('sitemap.xml').read_text()
+          assert 'products/helyed-van-koztunk.html' in Path('sitemap.xml').read_text()
           product_html=Path('helyed-van-koztunk.html').read_text(encoding='utf-8')
           home_html=Path('index.html').read_text(encoding='utf-8')
           for number in (1,2,3):
@@ -62,5 +62,55 @@ jobs:
           assert 'helyed-van-koztunk-03.jpg' in home_html
           assert 'https://880rzz.github.io/newvibe/assets/helyed-van-koztunk-03.jpg' in product_html
           assert 'href="mailto:' in product_html or 'SHOP_URL' in Path('product.js').read_text(encoding='utf-8')
+
+          # For Every Path: validate all four localized routes and the expanding product registry.
+          from urllib.parse import urlsplit
+          langs=('en','hu','de','fr')
+          slugs=('helyed-van-koztunk','egy-kis-ter','lepesrol-lepesre-2027','tanari-hataridonaplo-2027-szines','tanari-hataridonaplo-2027-letisztult')
+          origin='https://880rzz.github.io/newvibe/'
+          expected_pages=[]
+          for lang in langs:
+              base=Path('.') if lang=='en' else Path(lang)
+              for suffix in ('index.html','catalog/index.html','about/index.html',*(f'products/{s}.html' for s in slugs)):
+                  expected_pages.append(base/suffix)
+          for filename in expected_pages:
+              assert filename.is_file(), ('missing localized page',str(filename))
+              html=filename.read_text(encoding='utf-8')
+              p=Audit();p.feed(html)
+              assert '<link rel="canonical"' in html and 'hreflang="x-default"' in html,filename
+              assert 'foreverypath.com' not in html.split('<link rel="canonical"')[1].split('>')[0],filename
+              assert 'For Every Path' in html,filename
+              for block in p.ld:
+                  parsed=json.loads(block)
+                  assert parsed.get('@context')=='https://schema.org',filename
+                  for entity in parsed.get('@graph',[]):
+                      if entity.get('@type')=='Product':
+                          assert 'offers' not in entity and 'aggregateRating' not in entity,filename
+                      assert entity.get('@type')!='Organization',('unverified company',filename)
+              for raw in p.links:
+                  if not raw or raw.startswith(('#','mailto:','https://','http://','tel:','javascript:')): continue
+                  path=raw.split('#')[0].split('?')[0]
+                  if not path:continue
+                  target=(filename.parent/path)
+                  assert target.exists(),('missing local link',str(filename),raw)
+              for code in langs:
+                  assert f'hreflang="{code}"' in html,('missing alternate',filename,code)
+          root=ET.parse('sitemap.xml').getroot()
+          namespace={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
+          locs=[i.text for i in root.findall('s:url/s:loc',namespace)]
+          assert len(locs)==len(expected_pages)==32,(len(locs),len(expected_pages))
+          assert len(set(locs))==32
+          for f in expected_pages:
+              rel=f.as_posix()
+              expected=origin+('' if rel=='index.html' else rel.removesuffix('index.html'))
+              if '/products/' in rel:expected=origin+rel
+              assert expected in locs,('missing sitemap URL',expected)
+          manifest=json.loads(Path('catalog.json').read_text(encoding='utf-8'))
+          assert len(manifest['products'])==5
+          assert all(p['shop_url'] is None and p['price'] is None for p in manifest['products'])
+          assert manifest['planned_domain']=='foreverypath.com'
+          assert 'AI' in Path('ai.txt').read_text() and 'For Every Path' in Path('llms.txt').read_text()
+          assert not Path('CNAME').exists(),'Custom domain must not be enabled before DNS/SSL verification'
+
           print('Site validation OK')
           PY
