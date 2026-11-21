@@ -37,7 +37,7 @@ for(const lang of ["en","hu","de","fr"]){
 }
 assert.match(css,/\.fep-page \.fep-alexandra-portrait\{[^}]*max-width:500px/,"author portrait max width");
 assert.match(css,/\.fep-page \.fep-alexandra-portrait>img:first-child\{[^}]*aspect-ratio:1\/1/,"uncropped square original photograph");
-assert.ok(css.includes("padding:clamp(82px,9vh,96px) 32px 48px;align-items:flex-start;justify-content:flex-start"),"menu overlay top aligned instead of vertically centered");
-assert.ok(css.includes("padding:62px 19px 35px;justify-content:flex-start"),"mobile overlay has compact leading space");
-assert.ok(css.includes("top:clamp(108px,13vh,130px);transform:none"),"sidebar moment aligned with navigation top");
+assert.ok(css.includes("padding:36px 32px 48px;align-items:flex-start;justify-content:flex-start"),"menu overlay top aligned instead of vertically centered");
+assert.ok(css.includes("padding:24px 19px 35px;justify-content:flex-start"),"mobile overlay has compact leading space");
+assert.ok(css.includes("top:clamp(50px,7vh,66px);transform:none"),"sidebar moment aligned with navigation top");
 console.log("48 locale cache, symmetric CTAs, text-only footer and first-person intro source checks passed.");
