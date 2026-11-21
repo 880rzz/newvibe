@@ -436,3 +436,8 @@ body.fep-menu-open{overflow:hidden}
 @keyframes fep-note-pulse{0%,100%{transform:scale(.82)}50%{transform:scale(1.2)}}
 @media(max-width:600px){.fep-page .fep-restored-notecard,.fep-page .fep-restored-notecard.tilt-left,.fep-page .fep-restored-notecard.tilt-right{box-shadow:6px 8px 0 rgba(31,74,61,.11),0 14px 23px rgba(31,74,61,.08)}.fep-page .fep-home-hero{padding-top:14px}.fep-page .fep-restored-recognition .card-grid{gap:23px}}
 @media(prefers-reduced-motion:reduce){.fep-page .fep-restored-notecard,.fep-page .fep-restored-notecard .fep-note-doodle,.fep-page .fep-restored-notecard .fep-note-doodle-line,.fep-page .fep-restored-notecard .fep-note-doodle-dot{animation:none!important;transform:none!important}}
+
+/* Sticky scroll containment and anchor offsets for current header height. */
+html,body.fep-page{overflow-x:clip}
+.fep-page #quiz,.fep-page .fep-catalog-category,.fep-page #content{scroll-margin-top:94px}
+@media(max-width:600px){.fep-page #quiz,.fep-page .fep-catalog-category,.fep-page #content{scroll-margin-top:75px}}
