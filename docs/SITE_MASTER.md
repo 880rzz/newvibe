@@ -667,3 +667,12 @@ CI-kontraktus: a `scripts/card-demo-smoke.cjs` 20 determinisztikus kiválasztás
 **Kanonikus stílus:** `catalog.css?v=12`, egységes `.fep-preorder-final`, `.fep-preorder-final-actions` és `.fep-preorder-more` szabályok; nincs route-specifikus CSS és nincs az előrendelést az első képernyőbe visszaemelő JavaScript. A `#preorder` közvetlen hivatkozás továbbra is működik, de alapesetben a látogató a részletes termékbemutató után találja a blokkot.
 
 **Kiadási teszt:** `scripts/preorder-handoff-smoke.cjs`, `scripts/product-story-smoke.cjs` ellenőrzi az e-mail-levelek 36/36 egyezőségét, a blokk helyét és egyediségét. `scripts/preorder-click-qa.cjs` a valódi Chromium/WebKit kattintást és a lábléctávolságot ellenőrzi 36 termékoldalon. `scripts/browser-visual-qa.cjs` az iPhone 320/390 szélességet, a harmonikus másodlagos gomb színét, a CTA-k egyediségét, a vízszintes scroll hiányát, a lábléc-elválasztóval való ütközést és a mobilos képernyőképeket auditálja. Production lezáráshoz új main SHA és 48 oldal + 20 asset byte-pontos éles egyezése szükséges.
+
+
+## 2026-11-21 — Menü felső térközének javítása, négy nyelven
+
+**Gyökérok:** a `.site-menu-inner` teljes viewportmagasságban `justify-content:center` mellett a navigáció függőleges középre csúszott. A 1440 × 900-as desktop referenciaképen az első felirat körülbelül 288 px alatt kezdődött. A fix `justify-content:flex-start`, a felső belső tér `clamp(82px,9vh,96px)`; mobilon (max-width:560px) 62 px. A zárógomb fixen látható marad, az első menüpont nem fed át vezérlőt.
+
+**Kártya:** 1120 px és legalább 620 px magas kijelzőn a `.fep-menu-moment` a menü tartalmának elejéhez igazodik (`top:clamp(108px,13vh,130px)`) a korábbi `top:50%;transform:translateY(-50%)` helyett. A keskeny nézetekben a navigáció után, normál dokumentumfolyamban marad. Sem a négy nyelvű szövegek, sem a holdfázis-kalkuláció vagy a menü működése nem változik.
+
+**Cache / regresszió:** 48/48 HTML `catalog.css?v=14`; `scripts/visual-design-smoke.cjs`, `scripts/menu-moment-smoke.cjs`, `scripts/browser-visual-qa.cjs` és a GitHub Actions quality-kapu ellenőrzi az egységes verziót, a felső térközt, a kártya/nav ütközésmentességét, az Escape/zárógombot és a vízszintes túlfutást. Élesítés csak sikeres CI, GitHub Pages deployment és exact-live ellenőrzés után tekinthető lezártnak.
