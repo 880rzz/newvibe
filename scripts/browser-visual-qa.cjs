@@ -161,11 +161,14 @@ async function pageAudit(page,engine,lang,kind,width,origin){
       note:rect(overlay.querySelector(".menu-note")),
       nav:[...overlay.querySelectorAll(".fep-menu-link,.fep-category-disclosure summary")].map(rect),
       scrollX:overlay.scrollWidth-overlay.clientWidth,
+      background:getComputedStyle(overlay).backgroundColor,
+      backdrop:getComputedStyle(overlay).backdropFilter,
       close:rect(overlay.querySelector(".menu-close"))
     };
   });
   const collision=(a,b)=>a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;
   check(layout.scrollX<2,label+" expanded menu has no horizontal scroll");
+  check(layout.background.startsWith("rgb(")&&layout.backdrop==="none",label+" opaque uncluttered menu background");
   check(layout.nav.every(rect=>!collision(rect,layout.card)),label+" editorial card never overlaps navigation");
   if(width===1440)check(layout.card.left>width/2,label+" right column has deliberate separation");
   else check(layout.card.top>=layout.note.bottom-1,label+" compact menu card follows navigation");
