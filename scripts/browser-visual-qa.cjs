@@ -252,7 +252,8 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   check(await demo.locator("[data-demo-title]").textContent().then(x=>x.trim().length>3),label+" randomized card title");
   check(await demo.locator("[data-demo-explanation]").textContent().then(x=>x.trim().length>80),label+" localized interpretation");
   const art=demo.locator("[data-demo-svg]");
-  await art.scrollIntoViewIfNeeded();
+  // Animated SVGs never become Playwright-stable; DOM scrolling is the correct input-neutral check.
+  await art.evaluate(img=>img.scrollIntoView({block:"center",behavior:"instant"}));
   await art.evaluate(img=>img.decode());
   const artProof=await art.evaluate(img=>({
    complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
