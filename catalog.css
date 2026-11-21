@@ -174,3 +174,19 @@
 .fep-preorder a:focus-visible,.fep-preorder-compact:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
 @media(max-width:570px){.fep-preorder-action{width:100%;white-space:normal}.fep-preorder-compact{padding:11px 0;min-height:44px}}
 @media(prefers-reduced-motion:reduce){.fep-preorder-icon{transition:none!important}}
+
+/* Check-in journey: restrained content bridge across every localized entrance. */
+.fep-checkin-bridge{display:flex;align-items:center;justify-content:space-between;gap:36px;padding-top:44px;padding-bottom:44px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fep-checkin-bridge>div{max-width:710px}
+.fep-checkin-bridge h2{font:600 clamp(25px,3vw,38px)/1.2 Fraunces,serif;margin:8px 0 14px}
+.fep-checkin-bridge p{font-size:16px;line-height:1.65;margin:0 0 12px}
+.fep-checkin-bridge .fep-checkin-note,.fep-quiz-boundary{font-size:13px;line-height:1.65;color:#56636b}
+.fep-checkin-link{flex:0 0 auto;white-space:normal}
+.fep-catalog-checkin{max-width:810px;line-height:1.65;margin:14px 0 26px}
+.fep-catalog-checkin .fep-arrow-link{display:inline-flex;gap:8px;align-items:center;margin-left:5px;white-space:normal}
+.quiz .fep-quiz-boundary{max-width:670px;margin:12px 0}
+.fep-quiz-next{border-top:1px solid rgba(39,50,56,.17);padding-top:18px;margin-top:22px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.fep-quiz-next p{margin:0}
+.fep-quiz-next .fep-quiz-next-title{font-weight:600;margin-top:2px}
+.fep-quiz-next .fep-arrow-link{display:inline-flex;align-items:center;gap:8px}
+@media(max-width:690px){.fep-checkin-bridge{flex-direction:column;align-items:flex-start;gap:20px;padding-top:33px;padding-bottom:33px}.fep-catalog-checkin .fep-arrow-link{display:flex;margin:11px 0 0}.fep-checkin-bridge h2{font-size:29px}}
