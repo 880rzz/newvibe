@@ -64,6 +64,6 @@ Run the GitHub Actions static quality workflow on each PR. Verify all 48 localiz
 
 ## Pre-order workflow (November 2026)
 - 36 localized product pages show the email pre-order CTA and non-confirmation terms.
-- All four catalogues and localized homepages expose pre-order email links for the nine editions. The English-first interactive homepage localizes its email pre-order links in `app.js`.
+- All four localized catalogues and all 36 product pages provide e-mail preorder links. The four editorial homepages intentionally contain NO full product list or per-product preorder buttons; they lead to the catalogs. The shared `app.js` handles only the voluntary in-memory 30/6 check-in.
 - The `catalog.json` manifest records pre-order **request intake** separately from physical production status. `shop_url` and `price` remain `null`.
 - Confirm the legal operating entity, written preorder/sales terms, consumer information and privacy notice before transforming email requests into binding orders. Do not email bank-card details.
