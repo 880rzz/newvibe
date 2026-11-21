@@ -290,37 +290,55 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   check(await flip.getAttribute("aria-pressed")==="true",label+" native button flips card");
   check(await demo.locator("[data-demo-card]").getAttribute("data-face")==="back",label+" back face state");
   check(await demo.locator("[data-demo-back]").getAttribute("aria-hidden")==="false",label+" back face accessible");
-  const backImg=demo.locator("[data-demo-original-back]");
-  await backImg.evaluate(img=>img.decode());
   const reverse=await demo.evaluate(el=>{
    const back=el.querySelector("[data-demo-back]");
-   const image=el.querySelector("[data-demo-original-back]");
-   const box=back.getBoundingClientRect(),imageBox=image.getBoundingClientRect();
-   const transcript=el.querySelector(".fep-demo-transcript");
+   const layout=back.querySelector(".fep-demo-back-layout");
+   const footer=back.querySelector(".fep-demo-back-footer");
+   const box=back.getBoundingClientRect();
+   const last=footer.getBoundingClientRect();
+   const story=back.querySelector("[data-demo-story]");
+   const questionNodes=[...back.querySelectorAll(".fep-demo-back-list li")];
    return {
-    loaded:image.complete,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,
-    src:image.getAttribute("src"),cardId:image.dataset.cardId,
-    height:back.clientHeight,scrollHeight:back.scrollHeight,
-    imageHeight:imageBox.height,faceHeight:box.height,
-    imageWidth:imageBox.width,faceWidth:box.width,
-    story:transcript.querySelector("[data-demo-story]").textContent.trim().length,
-    questionCount:transcript.querySelectorAll(".fep-demo-questions li").length,
-    transcriptOpen:transcript.open
+     height:back.clientHeight,scrollHeight:back.scrollHeight,
+     innerHeight:layout.clientHeight,innerScrollHeight:layout.scrollHeight,
+     footerBottom:last.bottom,cardBottom:box.bottom,
+     story:story.textContent.trim().length,
+     questionCount:questionNodes.length,
+     questionsFullyPopulated:questionNodes.every(n=>n.textContent.trim().length>15),
+     typography:getComputedStyle(back.querySelector(".fep-demo-back-title")).fontFamily,
+     originalButtonHidden:el.querySelector("[data-demo-original-trigger]").hidden
    };
   });
-  check(reverse.loaded&&reverse.naturalWidth>=800&&reverse.naturalHeight>=1100,label+" original printed reverse WebP decoded");
-  check(reverse.src.endsWith("/"+selection+"-back.webp")&&reverse.cardId===selection,label+" original back matches front number");
-  check(reverse.story>60&&reverse.questionCount===2,label+" accessible original or translated scenario plus two questions");
-  check(reverse.scrollHeight<=reverse.height+3,label+" original printed back fits without vertical clipping");
-  check(reverse.imageHeight>=reverse.faceHeight-3&&reverse.imageWidth>=reverse.faceWidth-3,label+" entire printed reverse displayed");
-  check(reverse.transcriptOpen===(lang!=="hu"),label+" translated transcript opens for non-Hungarian visitors");
+  check(reverse.story>60&&reverse.questionCount===2&&reverse.questionsFullyPopulated,label+" original card situation and two readable questions in native HTML");
+  check(reverse.scrollHeight<=reverse.height+3&&reverse.innerScrollHeight<=reverse.innerHeight+3&&reverse.footerBottom<=reverse.cardBottom+3,label+" editorial reverse text fits without vertical clipping");
+  check(reverse.typography.includes("Fraunces"),label+" editorial reverse uses site serif display font");
+  check(!reverse.originalButtonHidden,label+" original printed back action revealed after flip");
   if([320,390,1440].includes(width)){
    await demo.locator("[data-demo-card]").screenshot({
     path:path.join(destination,engine+"-"+lang+"-card-demo-"+width+"-back.png"),animations:"disabled"
    });
   }
+  const originalTrigger=demo.locator("[data-demo-original-trigger]");
+  await originalTrigger.click();
+  const printDialog=demo.locator("[data-demo-original-dialog]");
+  check(await printDialog.evaluate(el=>el.open),label+" original printed reverse opens as accessible modal");
+  const backImg=demo.locator("[data-demo-original-back]");
+  await backImg.evaluate(img=>img.decode());
+  const originalProof=await backImg.evaluate(img=>({
+    complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+    cardId:img.dataset.cardId,src:img.getAttribute("src"),
+    dialogOpen:img.closest("dialog").open
+  }));
+  check(originalProof.complete&&originalProof.naturalWidth>=800&&originalProof.naturalHeight>=1100&&originalProof.dialogOpen,label+" original printed back image decoded in modal");
+  check(originalProof.src.endsWith("/"+selection+"-back.webp")&&originalProof.cardId===selection,label+" original printed back matches selected front");
+  if(width===390){
+   await printDialog.screenshot({path:path.join(destination,engine+"-"+lang+"-card-demo-390-original-back.png"),animations:"disabled"});
+  }
+  await demo.locator("[data-demo-original-close]").click();
+  check(!await printDialog.evaluate(el=>el.open),label+" original printed reverse modal closes");
   await flip.click();
   check(await flip.getAttribute("aria-pressed")==="false",label+" can return to front");
+  check(await originalTrigger.isHidden(),label+" printed original link only appears on digital reverse");
  }
  if(width===390&&["helyed-van-koztunk","egy-kis-ter","mesek-a-vilag-korul"].includes(slug)){
   const imgName=engine+"-"+lang+"-"+slug+"-390-story.png";
