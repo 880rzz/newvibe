@@ -6,6 +6,12 @@ Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor 
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**
 
+## Tartalmi és UX-audit / Check-in journey
+
+A 2026. november 21-i, tíz helyben ellenőrzött nyomdai forrás alapján készült ellenőrzés: [SITE_EDITORIAL_UX_AUDIT_2026-11-21.md](docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md).
+
+A „Hogy vagy?” / *How are you?* önkéntes, hatkérdéses felnőtt önreflexiós belépési pont a négy nyelvű katalógusból és honlapról is elérhető. Az eredmény gondolatindító, nem diagnózis és nem automatikus termékalkalmassági értékelés; a válaszokat nem tároljuk. A publikus repóba teljes PDF-kézirat nem tölthető fel, ezt a CI ellenőrzi.
+
 ## Hosting
 Current published host: https://880rzz.github.io/newvibe/
 Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or replace canonical/sitemap until DNS, TLS, GitHub Pages custom-domain verification and production URL checks succeed.
