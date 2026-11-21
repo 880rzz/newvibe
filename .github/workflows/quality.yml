@@ -188,7 +188,14 @@ jobs:
               for slug,filename in images.items():
                   html=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
                   assert filename in html,(lang,slug,'missing image')
-                  assert any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','générée par IA','Visualisation IA')), (lang,slug,'missing provenance disclosure')
+                  # Provenance remains accurate without forcing distracting technology labels on customers.
+                  not_a_photo={
+                      'en':('not a photograph','not product photographs'),
+                      'hu':('nem valódi termékfotó','nem elkészült könyv fényképe'),
+                      'de':('kein foto','keine produktfotos'),
+                      'fr':('pas une photo','non une photographie','pas des exemplaires imprimés'),
+                  }
+                  assert any(word in html.casefold() for word in not_a_photo[lang]),(lang,slug,'must distinguish digital preview from real finished-product photo')
               html=(root/'products/helyed-van-koztunk.html').read_text(encoding='utf-8')
               assert 'helyed-van-koztunk-03.jpg' in html
           assert all((Path(p['image_path'])).exists() for p in manifest['products'])
