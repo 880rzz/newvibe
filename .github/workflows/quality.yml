@@ -53,6 +53,7 @@ jobs:
           node scripts/home-ux-smoke.cjs
           node scripts/menu-design-smoke.cjs
           node scripts/visual-design-smoke.cjs
+          node scripts/card-gallery-smoke.cjs
           node scripts/product-story-smoke.cjs
           node scripts/svg-motion-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
