@@ -8,7 +8,7 @@ Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor 
 
 A #24-es kiadás a kilenc termékből mind a négy nyelven részletes, forrásalapú (probléma → használható válasz → magyarázat → kiemelt adatok) termékoldalt hozott létre, a katalógus képaláírásának levágását pedig megoldotta. A jelen kiegészítés visszaemeli az **eredeti, 2026-11-21 előtti `Helyed van köztünk` oldal két további valódi termékfotóját** az összes HU/EN/DE/FR kártyaoldalra, lokalizált alt szövegekkel és képaláírásokkal. A források: `assets/helyed-van-koztunk-01.jpg`, `assets/helyed-van-koztunk-02.jpg`; a már meglévő hero `03.jpg` változatlan marad. Mivel az eredeti `.product-gallery` reszponzív stílus létezik a `styles.css` fájlban, nem kell új stylesheet-specifikusságot vagy cache-verziót hozzáadni.
 
-Mind a 36 termékoldal tartalmi ismertetése után egy közös, lokalizált, valódi CTA-gomb vezet a meglévő e-mailes előrendelési blokk `#preorder` horgonyára; mellette a katalógusra vezető szöveges visszalépés. A CTA nem jelenti azt, hogy online fizetés, végleges ár vagy automatikus rendelésigazolás működik. Az új linksor célja, hogy a hosszú történet után a vásárló egyértelműen visszataláljon a következő lépéshez. A korábbi `fep-product-story`, `fep-story-path`, SVG motívumok, Alexandra portréja, 48 URL, négy nyelv és `catalog.css?v=10` változatlan.
+Mind a 36 termékoldal tartalmi ismertetése után egy közös, lokalizált, valódi CTA-gomb vezet a meglévő e-mailes előrendelési blokk `#preorder` horgonyára; mellette a katalógusra vezető szöveges visszalépés. A CTA nem jelenti azt, hogy online fizetés, végleges ár vagy automatikus rendelésigazolás működik. Az új linksor célja, hogy a hosszú történet után a vásárló egyértelműen visszataláljon a következő lépéshez. A korábbi `fep-product-story`, `fep-story-path`, SVG motívumok, Alexandra portréja, 48 URL, négy nyelv és `catalog.css?v=11` változatlan.
 
 A CI a 36 horgonyt és a négy valósfotó-galériát a `scripts/card-gallery-smoke.cjs` ellenőrzéssel védi. A GitHub Pages élesítése csak sikeres CI/Chromium/WebKit QA után zárható.
 ## Aktuális vizuális helyreállítás — 2026-11-21
@@ -31,7 +31,7 @@ Az első termékbemutató (ff44da034440) és a későbbi előrendelési verzió 
 
 A 14:07-es iPhone-képen látható levágott képaláírás gyökéroka az overflow:hidden lekerekített képmaskon belüli pozicionálás volt. A figcaption most a képmaskon kívül áll, minden nyelven teljesen megjelenítendő. A közönségnek szánt oldalon nem ismétlődik általános technológiai szöveg; a szemléltető borítólátványok nem állíthatók késztermékfotónak, a valódi kártyafotót külön jelöljük. A tényleges eredet ellenőrzése a gépi provenienciában megmarad.
 
-Regressziós kapu: scripts/product-story-smoke.cjs, 48/48 CSS-paritás catalog.css?v=10, Chromium és WebKit renderelt QA. Részletes specifikáció: docs/SITE_MASTER.md, 8. fejezet.
+Regressziós kapu: scripts/product-story-smoke.cjs, 48/48 CSS-paritás catalog.css?v=11, Chromium és WebKit renderelt QA. Részletes specifikáció: docs/SITE_MASTER.md, 8. fejezet.
 
 ## Új termék felvitele / Product onboarding
 
@@ -107,3 +107,7 @@ Run the GitHub Actions static quality workflow on each PR. Verify all 48 localiz
 - All four localized catalogues and all 36 product pages provide e-mail preorder links. The four editorial homepages intentionally contain NO full product list or per-product preorder buttons; they lead to the catalogs. The shared `app.js` handles only the voluntary in-memory 30/6 check-in.
 - The `catalog.json` manifest records pre-order **request intake** separately from physical production status. `shop_url` and `price` remain `null`.
 - Confirm the legal operating entity, written preorder/sales terms, consumer information and privacy notice before transforming email requests into binding orders. Do not email bank-card details.
+
+## 2026-11-21 — Menü cache-verzió és 4-nyelvű QA
+
+A menükártya minden egyes HU/EN/DE/FR oldalon a `site-menu.js?v=2` és a `catalog.css?v=11` verzióazonosítókon keresztül töltődik. A 48/48 HTML-paritás, a holdfázisok és az 320–1440 px széles képernyőkre kiterjedő teljesmenü-ellenőrzés a CI része. A menü bezárása görgetés közben is elérhető. Részletek: `docs/SITE_MASTER.md`.
