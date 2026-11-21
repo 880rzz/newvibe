@@ -36,6 +36,7 @@ for(const lang of langs){
  assert.ok(html.indexOf('id="quiz"')<html.indexOf("fep-home-collection-bridge"),lang+" quiz before catalogue");
  assert.ok(html.includes(strings[lang][0])&&html.includes(strings[lang][1]),lang+" text");
  assert.equal((html.match(/class="fep-card"/g)||[]).length,0,lang+" catalogue not duplicated");
+ if(lang!=="en") assert.ok(!/<a\\b[^>]*href="\\.\\.\\//.test(html),lang+" no English-site fallback on local home links");
  const scriptsBase=lang==="en"?"":"../";
  assert.ok(html.includes('src="'+scriptsBase+'checkin-bank.js?v=1"'),lang+" bank script exists");
  assert.ok(html.includes('src="'+scriptsBase+'app.js?v=15"'),lang+" app script exists");
@@ -82,7 +83,7 @@ for(const lang of langs){
  assert.equal(dom.quizResult.hidden,false,lang+" result visible");
  assert.equal(dom.quizCard.hidden,true,lang+" question hidden after finish");
  assert.ok(dom.resultTitle.textContent.length>3&&dom.resultText.textContent.length>20,lang+" result copy");
- assert.ok(dom.quizProductLink.href.startsWith(lang==="en"?"":"../"),lang+" product href locale");
+ assert.ok(dom.quizProductLink.href.startsWith("products/")||dom.quizProductLink.href.startsWith("catalog/"),lang+" links must resolve within this localized homepage");
  assert.equal(settings.size,0,lang+" no recorded quiz answers");
  dom.quizAgain.click();
  assert.equal(dom.quizCount.textContent,"1 / 6",lang+" restarts fresh six");
