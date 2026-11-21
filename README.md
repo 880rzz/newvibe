@@ -10,6 +10,10 @@ A #16 kiadás után iPhone-képernyőképekkel jelzett **sötét CTA-k, nem rög
 
 A 2026-11-21-i második iPhone-visszajelzés nyomán az oldal külön javítást kapott: a főoldali gombok szimmetrikus belső térközt, minden footer szöveges Impresszum / hogyan készült / kapcsolati linkeket kap; Alexandra szerzői oldala kézirat-alapú, első személyű EN/HU/DE/FR verzió. További részletek a [SITE_MASTER.md](docs/SITE_MASTER.md) 8. fejezetében. Az Impresszum kötelező jogi adatait a vállalkozás valós igazolásával lehet teljessé tenni.
 
+## Termékbemutatók és Alexandra fotója — 2026-11-21
+
+A kilenc kiadvány HU/EN/DE/FR termékoldalán bőséges, tényszerű, személyes történettel dolgozó szerkesztői fejezet készült, a négy katalógus mind a 9 kártyája hosszabb bevezetőt kapott. A generikus AI-átláthatósági kiemelőblokk nem szerepel többé a termékoldalakon. Alexandra eredeti fotója az érintett kezdőlapokon és bemutatkozó oldalakon látható, helyi SVG-konténerbe csomagolt, eredeti WebP pixeltartalommal. Forrásrészletek és tartalmi korlátok: [forrásmátrix](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md). A PDF-kéziratok továbbra is privátak.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

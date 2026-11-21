@@ -266,6 +266,14 @@ A következő iPhone-képernyőképek szerint a főoldali másodlagos CTA-n a sz
 **Impresszum:** négy `about/#impressum` horgony, mindegyiken csak megerősített alkotói név, műhelynév és e-mail. Nem lehet kitalált székhely, adószám, nyilvántartási vagy cégazonosító; a jogilag kötelező adatok teljessége igazolás és jogi ellenőrzés után zárható. Az oldal továbbra sem online pénztár.
 
 **QA:** `scripts/visual-design-smoke.cjs` őrizze a 48/48 CSS-paritást, Impresszum/hogyan-készült horgonyokat, a gombmentes footert és a szimmetrikus CTA-t. Valós mobil Safari és desktop vizuális ellenőrzés nélkül nincs teljes vizuális jóváhagyás.
+### 2026-11-21 — Bővebb kilenc termékleírás, eredeti portré és személyes vizuális rendszer
+
+A teljes, 36 oldalas termékrész (`9 termék × HU/EN/DE/FR`) egyedi, kéziratokból értelmezett hárombekezdéses szerkesztői ismertetést, célcsoport/használati narratívát, három tényszerű jellemzőt, kiemelt mondatot és egyedi animált SVG-motívumot kapott. A négy katalógusoldalon mind a 9 kártya részletesebb előnézetet és két adatcímkét tartalmaz. A termékoldalakról a generikus ismételt „AI és szerkesztői átláthatóság” blokk eltűnt; az alkotó egyes szám első személyben tartott, valódi készítési folyamata a bemutatkozó oldalon marad.
+
+**Személyes arculat:** Sajbán-Frőhner Alexandra tényleges, eredeti portréfotója a `strangerfake01/RawMaterialsTrade/assets/images/team/alexandra-sajban-frohner.webp` forrásból egy saját tárhelyen kiszolgált SVG-konténerben, módosítatlan WebP képtartalommal. A kép a 4 bemutatkozó oldalon és a 4 főoldal szerzői részében jelenik meg. Forrásazonosító és jogi állításkorlátok: [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md).
+
+A közös CSS `catalog.css?v=8`. Kötelező QA: 48 lokalizált oldal, 36 termékismertető, 36 oldalon hiányzó generikus trust-blokk, 36 egyedi SVG megjelenítés, 4 × 9 gazdag katalóguskártya, 8 portréblokk, mobil és desktop, WebKit, Chromium, reduced motion. A `#19` korábbi release QA-ja nem helyettesíti az új tartalom saját ellenőrzését.
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
