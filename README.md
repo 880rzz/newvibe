@@ -112,6 +112,6 @@ Run the GitHub Actions static quality workflow on each PR. Verify all 48 localiz
 
 A menükártya minden egyes HU/EN/DE/FR oldalon a `site-menu.js?v=2` és a `catalog.css?v=11` verzióazonosítókon keresztül töltődik. A 48/48 HTML-paritás, a holdfázisok és az 320–1440 px széles képernyőkre kiterjedő teljesmenü-ellenőrzés a CI része. A menü bezárása görgetés közben is elérhető. Részletek: `docs/SITE_MASTER.md`.
 
-## Ötlapos Helyed van köztünk demó
+## Helyed van köztünk – eredeti kártyaképek
 
-A kártyacsomag négy nyelvű termékoldalán egyetlen kártya sorsolódik az eredeti 36-ból kiválasztott öt helyzet közül; a látogató megfordíthatja, elolvashatja a két kérdést és a magyarázatot. Az új animált SVG-k helyzetábrázolások, **nem** az eredeti nyomdai grafikák digitális másolatai. A sorsolás helyben, mentés és követés nélkül működik. A részleteket és forrásoldalakat a `docs/SITE_MASTER.md` tartalmazza.
+A négy nyelvű termékoldali demó öt **eredeti, 63 × 88 mm-es nyomdai kártya mindkét oldalát** mutatja a hozzájuk tartozó, PDF-ből kivágott WebP képeken: 01, 07, 13, 20, 35. A látogató oldalmegnyitásonként egyet kap, megfordíthatja, és elolvashatja a helyzetet és a két eredeti kérdést. Az idegen nyelvű digitális szöveg külön fordítás; az eredeti nyomtatott lapok magyarul készültek. A forráspárok és a 10 SHA-256 hash a `docs/SITE_MASTER.md` és `scripts/card-demo-smoke.cjs` fájlokban ellenőrizhetők. Nincs tárolás vagy követés.
