@@ -1,85 +1,66 @@
-# For Every Path – teljes oldalas tartalmi és UX-audit
+# For Every Path — tartalmi, felhasználói és adatbiztonsági audit
 
-**Dátum:** 2026-11-21  
-**Alap:** a felhasználó által ismét feltöltött tíz PDF (csak helyi olvasásra), a `880rzz/newvibe` repó forrása, a négy nyelvű honlap/katalógus/termékoldalak, a `catalog.json`, a JS és a GitHub Actions.  
-**Fájlbiztonság:** **egyetlen forrás-PDF sem kerül a nyilvános repóba**. Az alábbi megállapítások kizárólag szöveges, publikálható terméktények; a teljes eredeti állományok nincsenek mellékelve.
+**Frissítve:** 2026-11-21  
+**Források:** a felhasználó által feltöltött 10 eredeti PDF, kizárólag a munkakörnyezetben átnézve; a `880rzz/newvibe` repó négy nyelvű honlapjai, katalógusai, termékoldalai, az `app.js`, a `catalog.json` és a CI.
 
-## Státuszfrissítés (2026-11-21)
+> **Aktuális kiadói státusz:** Sajbán-Frőhner Alexandra 2026-11-21-én megerősítette, hogy **mind a kilenc katalógustermék végleges, szakmailag jóváhagyott és a kínálat része**. Az eredeti, korábbi dátumú forrás-PDF-ek szerkesztési státuszmegjelöléseit a továbbiakban nem jelenítjük meg aktuális termékstátuszként. A jelenlegi rendelési csatorna e-mailes előrendelési igény; az online webshop, az ár és a megrendelés visszaigazolása ettől független.
 
-A készítő megerősítette, hogy az összes megjelenített kiadvány tartalma végleges, hibamentesnek tekintett és **szakmailag jóváhagyott**. Ez a nyilvános termékoldalakon és a géppel olvasható mezőkben felülírja a korábbi „lektorálásra vár” és „review pending” szövegeket. A szerkesztői jóváhagyás nem egyenlő a fizikai készlet igazolásával vagy valamely intézmény hivatalos támogatásával.
+## 1. Az oldal lényege és az olvasói út
 
-## 1. A weboldal feladata, a felhasználó valódi útja
+A **For Every Path** Sajbán-Frőhner Alexandra önálló alkotói kiadványainak katalógusa. A **Diófa Műhely** több kiadványon műhelymegjelölésként szerepel; ettől még nem állítunk önálló jogi társaságot, támogatást vagy intézményi együttműködést.
 
-A **For Every Path** Sajbán-Frőhner Alexandra alkotói kollekcióját mutatja be, amelyben egyes kiadványok a **Diófa Műhely** megjelölést viselik. A Diófa Műhelyt nem kezeljük bizonyítottan külön cégként vagy intézményként. A legfontosabb látogatói kérdések: *Mi ez? Nekem / a családomnak való? Magyar nyelvű a kiadvány? Milyen formátumban készül? Mi a következő lépés?*
+A látogató néhány másodpercen belül értse, **mi a kiadvány, kinek való, milyen nyelvű, hogyan működik, és hogyan kérhető**. A nemzetközi EN/DE/FR oldalak a magyar nyelvű kiadványokat ismertetik; nem ígérnek lefordított fizikai kiadást.
 
-**Kívánatos út:** szándék/élethelyzet → (opcionális „Hogy vagy?” önreflexió, csak felnőtteknek) → megfelelő témájú kiadványok felfedezése → konkrét kiadványoldal → termékspecifikus e-mailes előrendelési igény. A kérdéssor **nem diagnosztizál, nem kategorizál személyiséget, nem kötelező**, és nem lehet látszat-szakvélemény vagy agresszív értékesítési funnel.
+**Elsődleges UX-út:** élethelyzet vagy cél → kiadványok áttekintése → megfelelő termék → e-mailes előrendelési igény. **Opcionális második út:** „Hogy vagy?” → hat rövid, felnőtteknek szóló önreflexiós kérdés → semleges gondolatindító → szabadon választható témakapcsolódás az *Egy kis tér* kiadványhoz vagy a teljes katalógushoz.
 
-## 2. Ellenőrzött források és termékek
+## 2. A tíz PDF-ből ellenőrzött terméktények
 
-| Termék | A helyben megvizsgált forrás tényei | Termékoldali kulcsállítás / feltétel |
-|---|---|---|
-| **Helyed van köztünk** | 72 nyomdai oldal = 36 kétoldalas, 63 × 88 mm-es helyzetkártya; egy **különálló** 2 oldalas A4 nyomdai fájlban 16 paneles, kétoldalas segítő harmonika | A harmonika mint önálló kiegészítő forrás jelölendő; fizikai csomagba kerülése nem bizonyított. Gyermekvédelmi sürgős segítség nem helyettesíthető a kártyákkal |
-| **Egy kis tér** | 72 oldal, 24 hétköznapi helyzet, 3 kitöltött minta, 6 külön munkalap; 18+; szerkesztett, AI-közreműködésű munkakézirat (2026-11-19) | Nem terápia, nem diagnosztika. A készítő 2026-11-21-én végleges és szakmailag jóváhagyott tartalomként erősítette meg |
-| **Lépésről lépésre – 2027** | 200 oldal; magyar nyelvű ADHD-tervező felnőtteknek, hónapok, hetek, ügyintézés, háztartás, tanulás, visszatekintés, kímélő napok; A4 nyomtatási útmutató | Nem általános egészségügyi megoldás, nem diagnosztikai eszköz; a „Hogy vagy?” eredménye alapján **nem** címkézhető valaki ADHD-snak |
-| **Határidőnapló tanároknak – 2027** | Két 156 oldalas változat, színes és letisztult/sötét borító; egyébként közös tervezési tartalom: éves, havi, heti lapok, értekezlet, kiadások, reflektálás | Borítóváltozat, nem két más tartalmú termék vagy nemek szerinti kötelező besorolás |
-| **Veled a mindennapokban** | 84 oldalas, magyar A5-ös, 30 napos katolikus imanapló; Szentírás és KEK hivatkozások, kérdések, írólapok; AI-közreműködés jelölve | A szakmai tartalmi jóváhagyást a készítő megerősítette; hivatalos egyházi intézményi ajánlás ettől külön állítás. A vallási érdeklődés nem következtethető ki a hangulat-kérdéssorból |
-| **Mesék a világ körül** | 131 oldal, 42 országhoz kapcsolódó népmese, monda és irodalmi történet; saját szerkesztett magyar szövegek és forrásjegyzék, 2026-11-19-es felülvizsgált kézirat | A korábbi forrás a felhasználási jogokról külön kérdéseket tartalmazott. A szerkesztői jóváhagyást a készítő megerősítette; az üzleti felhasználási jogok igazolása külön dokumentáció |
-| **Mesék a világ körül – 42 színező** | 42 oldal, ugyanazon történetekhez társított külön színező-illusztrációk | Kísérő kiadvány, szakmailag jóváhagyott tartalommal, külön kezelendő kereskedelmi feltételekkel |
-| **Na, most mit csináljak?** | 139 oldal, 32 történet és alkotófeladat, 8–11 éveseknek, Kóka és közösségi élmények ihletése, kitalált szereplőkkel/helyzetekkel | Valódi helyi intézményeket vagy közösségeket **nem** állíthatunk partnernek, megrendelőnek vagy jóváhagyónak |
+| Termék | Tartalom / felhasználás | Publikációs státusz |
+| --- | --- | --- |
+| **Helyed van köztünk** | 72 nyomdai oldal, 36 kétoldalas, 63 × 88 mm helyzetkártya. A 16 paneles segítő harmonika külön, két A4 oldalas forrásként szerepel | Végleges, szakmailag jóváhagyott; a kártyákról valódi fotók állnak rendelkezésre |
+| **Egy kis tér** | 72 oldal, 24 hétköznapi helyzet, 3 kitöltött példa, 6 munkalap; felnőtteknek (18+) | Végleges, szakmailag jóváhagyott |
+| **Lépésről lépésre — 2027** | 200 oldalas, magyar nyelvű ADHD-tervező felnőtteknek; havi/heti, ügyintézési és önreflexiós lapok | Végleges, szakmailag jóváhagyott |
+| **Határidőnapló tanároknak — 2027** | 156 oldal, éves/havi/heti tervezés, tanári jegyzetek; színes és letisztult borítóváltozat | Mindkét termékváltozat végleges és jóváhagyott |
+| **Veled a mindennapokban** | 84 oldal, A5, 30 napos magyar katolikus imanapló; szentírási/KEK hivatkozások és írólapok | Végleges, szakmailag jóváhagyott; a szakmai jóváhagyást ne keverjük egyházi intézményi támogatással |
+| **Mesék a világ körül** | 131 oldal, 42 ország 42 története: népmesék, mondák és irodalmi történetek | Végleges, szakmailag jóváhagyott |
+| **Mesék a világ körül — 42 színező** | 42 darab A4-es színezőlap az olvasókönyvhöz | Végleges, szakmailag jóváhagyott |
+| **Na, most mit csináljak?** | 139 oldal, 32 történet és alkotófeladat 8–11 éveseknek; Kóka ihlette kitalált helyzetek | Végleges, szakmailag jóváhagyott |
 
-**Fontos:** a fenti kilenc termékoldal két tanári borítóváltozattal számol. A `Helyed van köztünk` segítő harmonika **külön PDF-forrás**, nem feltétlenül tizedik megvásárolható termék.
+A kilenc katalógustermékben a tanári napló két borítóváltozata külön termékként szerepel. A *Helyed van köztünk* 16 paneles segítő harmonikája **külön kiegészítő anyag**, nem automatikusan egy tizedik termék. A tartalom szakmai jóváhagyása nem helyettesíti az eladási feltételek és egyes intézményi állítások külön igazolását.
 
-## 3. Talált felhasználói problémák és javítások
+## 3. Tartalmi és UX-módosítások
 
-### A. „Hogy vagy?” nem volt rendszerszintű belépési pont
+### Opcionális „Hogy vagy?” út
 
-**Kiinduló állapot:** a hat kérdés és négyféle lehetséges önreflexiós eredmény csak az interaktív alapoldalon volt jelen. A három lokalizált kezdőlap és négy katalógus nem adott ehhez egyértelmű utat. Az eredményből nem volt tartalmi továbbmenet, és a felület elmentette az eredményt a böngésző helyi tárhelyébe.
+- A kérdéssor mind a négy katalógusból és a HU/DE/FR kezdőlapról egyértelműen elérhető; az interaktív felület EN/HU/DE/FR szöveget használ.
+- Hat önreflexiós kérdés felnőtteknek; nem klinikai teszt, diagnózis, terápiás állítás vagy személyiségbesorolás.
+- A korábbi „típuscímkéket” helyzethez kötött, semleges megfogalmazások váltják; döntetlen eredményhez semleges szöveg tartozik.
+- Az eredmény opcionálisan kapcsolódhat az *Egy kis tér* önreflexiós munkafüzethez, vagy megnyitható a teljes kollekció; sem ADHD-diagnózis, sem hitbeli érdeklődés nem vezethető le válaszokból.
+- A választ és az eredményt nem mentjük tartós böngészőtárhelyre és nem küldjük el. A külön választott nyelvpreferencia tárolása megmarad.
 
-**Javítás:**
-- EN/HU/DE/FR katalógusokból és a három statikus lokalizált kezdőlapról közvetlen belépő a megfelelő nyelven megnyíló interaktív kérdéssorba;
-- világos tájékoztatás: hat kérdés, felnőttek, önreflexió, **nem pszichológiai mérés / diagnózis**;
-- az eredménynél választható, tartalmilag indokolt olvasási út: `Egy kis tér` munkafüzet vagy a teljes katalógus; **nincs diagnózisból levezetett ADHD- vagy hitbeli termékajánlás**;
-- a döntetlen eredménynek saját, semleges megfogalmazása van;
-- a személyiségcímkéző eredményfejlécek szituatív címekké váltak;
-- **az önreflexiós válaszok és eredmények nem kerülnek localStorage-ba**; az interakció során memóriában maradnak. A felhasználó által választott webhelynyelv továbbra is tárolható;
-- a nyelvváltás tisztán visszaállítja a kérdéssor állapotát, nem keveri a korábbi nyelvű eredményt az újjal.
+### Termékállapot és felhasználói döntés
 
-### B. Előrendelés láthatósága és információs hierarchia
+- Mind a 36 termékoldal címe mellett egységes előrendelési badge van.
+- A **végleges, szakmailag jóváhagyott kiadási státusz** helyettesíti a régi, forrásfájl-dátumokhoz kapcsolódó előkészítési megjegyzéseket az EN/HU/DE/FR termékoldalakon, az About felületeken és a strukturált termékadatokban.
+- Az AI-generált vagy szerkesztői termékképek továbbra is pontosan **digitális borítólátványként** szerepelnek, nem valós termékfotóként. A valódi kártyacsomag-fotók valódi fotóként vannak megjelölve.
+- Nincs kitalált ár, készlet, checkout, `Offer` vagy fizetési folyamat. Az e-mail csak előrendelési **igényt** küld; az ár, szállítás és egyéb feltételek egyeztetése külön történik.
 
-**Kiinduló állapot:** minden termékoldalon volt tényleges `mailto:` és külön előrendelési blokk, de a főcím előtt a kézirat/gyártási állapot dominált. A látogató ezt az elérhetőség hiányának érthette.
+### Kiegészítő anyag
 
-**Javítás:** 36 termékoldalon, közvetlenül a cím előtt egységes EN/HU/DE/FR „e-mailben előrendelhető” jelzés. A belső `production_status` és jogi figyelmeztetések nem lettek meghamisítva vagy eltávolítva. Sem ár, sem webshop-URL, sem `Offer` schema nem lett kitalálva.
+A *Helyed van köztünk* termékoldal külön nevezi meg a 16 paneles segítő harmonikát. Nem találunk ki további csomagváltozatokat vagy árakat.
 
-### C. Kiegészítő segédanyag félreérthető státusza
+## 4. A forrás-PDF-ek nyilvános repóból kizárva
 
-A `Helyed van köztünk` kártyaszett szövege a 16 paneles segítő harmonikát úgy kezelte, mintha bizonyítottan a nyomtatott csomagban lenne. Mind a négy nyelvben elkülönül: a harmonika nyomdai kiegészítő forrás, a tényleges mellékelése külön megerősítendő.
+A 2026-11-21-i GitHub-vizsgálat során a `main` és a 11 további hozzáférhető ág aktuális teljes fájlfájában **nem szerepelt PDF**. Ez a jelenlegi Git-fákra érvényes; nem a teljes korábbi commit-történet forenzikus bizonyítása.
 
-### D. Visszatérő tartalmi/UX kockázatok
+Az új `.github/workflows/quality.yml` tiltó kapu automatikusan elutasítja a publikus repóba beküldött közvetlen PDF, DOC/DOCX, INDD, PSD, EPUB forrásokat, a PDF-fájlfejléccel rendelkező átnevezett fájlokat és a ZIP/JAR állományban elhelyezett ilyen forrásokat. A **tíz feltöltött PDF nem került be a repóba**. A weboldalon csak ellenőrzött termékadatok és nyilvánosságra szánt képek maradnak.
 
-- Az EN interaktív és a HU/DE/FR statikus kezdőlapi architektúra **nem teljesen azonos**. A mostani átjárás a kérdéssort elérhetővé teszi, de teljes komponensparitás későbbi strukturális refaktorral érhető el.
-- Az illusztratív/AI borítók **nem valódi késztermék-fotók**. Végleges nyomtatott fotó nélkül ezt minden felületen jelölni kell.
-- A tényleges termékek **magyar nyelvűek**; a négyoldali fordítás termékismertető, nem egy négy nyelven gyártott termék ígérete.
-- Az elektronikus e-mailes igény nem önálló, visszaigazolt fogyasztói rendelés. Ár, szállítás, fizetés, elállási és adatvédelmi feltételek szükségesek bármely kötő megrendelés elfogadása előtt.
-- A 2027-es tervezők évszámát és kiadását a keresőfelületeken sem lehet időtlen, általános termékként félrecímkézni.
-- A gyermekeknek szóló segítő kiadványok nem helyettesítenek valós bántalmazási/gyermekvédelmi támogatást.
+## 5. A technikai QA és élesítés értelmezése
 
-## 4. PDF-mentesség bizonyítéka és védelme
+Ellenőrizendő: négy nyelvű navigáció; 36 termékoldal; 4 katalógus és 4 kezdőlap; `mailto:` cím, tárgy és termék; termékváltozatok; SVG nyilak és vissza-a-tetejére; nyelvi és képeredet-paritás; HTML/JSON-LD/canonical/hreflang/sitemap; mobil/desktop; billentyűzet és fókusz; HTTP elérhetőség.
 
-**Ellenőrzés a GitHubon:** a `main` és a 2026-11-21-én elérhető további tizenegy ág teljes fájlfája az ellenőrzés időpontjában **0 darab `.pdf` fájlt** mutatott. Ez a pillanatnyi ágállományokra vonatkozik; a teljes Git-objektumtörténet forenzikus vizsgálatával nem egyenértékű.
+A GitHub Actions sikeressége a statikus hibák ellenőrzése, **nem önmagában képernyős UX vagy valós fizetési teszt**. Kiadáskor külön ellenőrizni kell az élő URL-eket és a Pages-deploymentet. A webshop élesítésekor külön kell kialakítani és jóváhagyni a valós értékesítőre szabott fogyasztói, adatvédelmi és fizetési tájékoztatást.
 
-**Megelőzés:** `.github/workflows/quality.yml` új kapuja hibára fut közvetlenül feltöltött PDF, DOC/DOCX, INDD, PSD, EPUB, PDF-mágikus fejlécű átnevezett állomány vagy ZIP/JAR belsejébe helyezett ilyen forrás esetén. Az eredeti forrás-PDF-eket a GitHub Connectoron keresztül nem küldtük és nem is küldjük fel.
+## 6. Következő termékek szabálya
 
-## 5. Ellenőrzés és nyitott tételek
-
-**Automatikus ellenőrzések:** minden kilenc termék mind a négy nyelven, termékstátusz, CTA, belső link, SVG ikon, HTML/meta/JSON-LD/sitemap, kérdéssor-biztonság, ZIP- és fájlforrás-tiltás. Külön kontroll a Hogy vagy?-hoz vezető hét katalógus/kezdőlapi bejáratra.
-
-**Külön jóváhagyást / bizonyítékot igényel:**
-- kiadói/értékesítői jogi identitás és tájékoztatás (Impressum, GDPR, fogyasztóvédelmi szerződési feltételek);
-- mesék, fordítások, színezők publikálási jogosultságai;
-- hivatalos egyházi intézményi ajánlás csak igazolt megbízás vagy dokumentum alapján állítható;
-- valódi termékfotók, nyomdai példányok, csomagösszetétel, egyértelmű ár és szállítás;
-- teljes mobil/desktop, éles URL-ek és billentyűzetes **vizuális** ellenőrzés. Automatizált CI nem pótolja a képernyős QA-t.
-
-## 6. Mérce a következő termékekhez
-
-Az új termékhez a `docs/NEW_PRODUCT_PLAYBOOK.md` az elsődleges folyamat. A *Hogy vagy?* rendszer eredményét **ne** bővítsük ki automatikus, diagnosztikus termékajánlóra. Új ajánlási út csak célcsoporti logika, látható tartalmi indoklás és négy nyelvű ellenőrzés után kerülhet be. A teljes eredeti nyomdai PDF-nek **nincs helye a publikus repositoryban**.
+Az új kiadványoknál a `docs/NEW_PRODUCT_PLAYBOOK.md` a kötelező folyamat. Minden új termék külön 4 nyelvű termékoldalt, katalóguskártyát, valós kép- és forrásmegjelölést, egyértelmű e-mailes előrendelési lehetőséget és CI-tesztet kap. **A mostani kilenc végleges, jóváhagyott kiadvány státuszát nem szabad régebbi PDF-megjegyzések alapján visszaminősíteni.**
