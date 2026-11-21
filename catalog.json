@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "brand": "For Every Path",
+  "independent_creator": "Sajbán-Frőhner Alexandra",
+  "planned_domain": "foreverypath.com",
+  "canonical_origin": "https://880rzz.github.io/newvibe/",
+  "languages": [
+    "en",
+    "hu",
+    "de",
+    "fr"
+  ],
+  "physical_product_language": "hu",
+  "online_shop": {
+    "status": "not_connected",
+    "price_display": "in_future_shop_only"
+  },
+  "products": [
+    {
+      "id": "helyed-van-koztunk",
+      "slug": "helyed-van-koztunk",
+      "original_language": "hu",
+      "production_status": "physical_product_photographed",
+      "shop_url": null,
+      "price": null,
+      "image_type": "original_product_photo",
+      "variants": null
+    },
+    {
+      "id": "egy-kis-ter",
+      "slug": "egy-kis-ter",
+      "original_language": "hu",
+      "production_status": "editorial_manuscript_unreviewed",
+      "shop_url": null,
+      "price": null,
+      "image_type": "cover_concept_not_manufactured",
+      "variants": null
+    },
+    {
+      "id": "lepesrol-lepesre-2027",
+      "slug": "lepesrol-lepesre-2027",
+      "original_language": "hu",
+      "production_status": "print_files_only",
+      "shop_url": null,
+      "price": null,
+      "image_type": "cover_concept_not_manufactured",
+      "variants": null
+    },
+    {
+      "id": "tanari-hataridonaplo-2027-szines",
+      "slug": "tanari-hataridonaplo-2027-szines",
+      "original_language": "hu",
+      "production_status": "print_files_only",
+      "shop_url": null,
+      "price": null,
+      "image_type": "cover_concept_not_manufactured",
+      "variants": "teacher_planner_cover"
+    },
+    {
+      "id": "tanari-hataridonaplo-2027-letisztult",
+      "slug": "tanari-hataridonaplo-2027-letisztult",
+      "original_language": "hu",
+      "production_status": "print_files_only",
+      "shop_url": null,
+      "price": null,
+      "image_type": "cover_concept_not_manufactured",
+      "variants": "teacher_planner_cover"
+    }
+  ]
+}
