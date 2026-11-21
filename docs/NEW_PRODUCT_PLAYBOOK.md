@@ -55,7 +55,7 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 
 | Nyelv | Kártya-státusz | Elsődleges CTA | Másodlagos tájékoztatás |
 | --- | --- | --- | --- |
-| HU | Előrendelés e-mailben | Előrendelés e-mailben | Árak hamarosan · Webshop készül |
+| HU | Előrendelhető e-mailben | Előrendelés e-mailben | Árak hamarosan · Webshop készül |
 | EN | Pre-order by email | Pre-order by email | Prices to follow · Webshop coming soon |
 | DE | Per E-Mail vorbestellbar | Per E-Mail vorbestellen | Preise folgen · Webshop in Vorbereitung |
 | FR | Précommande par e-mail | Précommander par e-mail | Prix à venir · Boutique en préparation |
