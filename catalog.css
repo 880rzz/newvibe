@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap");
 /* For Every Path: additive design system, preserving the original NewVibe palette */
 .fep-featured-collection{padding-top:75px;padding-bottom:105px;border-top:1px solid var(--line)}
 .fep-featured-heading{max-width:720px}
@@ -101,3 +102,6 @@
 .fep-page .fep-featured-grid .fep-mini-product{overflow:hidden}
 @media(max-width:850px){.fep-hero-art>.fep-collection-image{max-height:340px}}
 @media(max-width:570px){.fep-card .fep-concept-image{height:250px}.fep-mini-product>.fep-concept-image{height:240px}.fep-concept-caption{font-size:10px;bottom:9px}}
+
+/* Keyboard parity for the interactive stationery-style question cards. */
+.note-card:focus-visible{outline:3px solid var(--yellow);outline-offset:6px}
