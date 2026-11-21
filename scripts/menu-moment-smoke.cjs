@@ -73,7 +73,7 @@ for(const lang of ["en","hu","de","fr"]){
   const base=lang==="en"?"":lang+"/";
   for(const page of ["index.html","catalog/index.html","about/index.html",...slugs.map(slug=>"products/"+slug+".html")]){
     const content=fs.readFileSync(base+page,"utf8");
-    const expectedCssVersion=page.startsWith("products/")?12:11;
+    const expectedCssVersion=page==="about/index.html"?13:page.startsWith("products/")?12:11;
     const cssRef="catalog.css?v="+expectedCssVersion;
     assert.equal(content.split(cssRef).length-1,1,lang+" "+page+" exact stylesheet version");
     if(expectedCssVersion===12)assert.ok(!content.includes("catalog.css?v=11"),lang+" "+page+" old product CSS not referenced");
