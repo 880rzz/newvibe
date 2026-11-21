@@ -273,6 +273,10 @@ A nyolc önálló SVG a kéziratok képi motívumaiból készült, saját rajzú
 Alexandra eredeti, változtatás nélkül átvett portréja a `strangerfake01/RawMaterialsTrade` repóból: `assets/images/team/alexandra-sajban-frohner.webp` → `assets/portraits/alexandra-sajban-frohner.webp`; eredeti és másolati Git blob SHA `e155107f4f12a9bbf35c4f0c57b0f4df8e96f855`. A kép a négy főoldal szerzői blokkjában és a négy bemutatkozó oldalon látható. Nem AI-generált arckép. A képkredit és engedélyezési nyilatkozat a tényleges jogtulajdonos adatain alapulhat csak.
 
 A díszítő SVG-k az EN/HU/DE/FR nézetekben egyformán szerepelnek, belső animációs CSS-sel és `prefers-reduced-motion` fallbackkel; mind a 48 lokalizált oldal új `catalog.css?v=8` cache-verziót használ. A főoldali CTA-k továbbra is mélyzöldek, a lábléc szöveges, az eredeti PDF-források tiltása változatlan. Külön validálás: `scripts/svg-motion-smoke.cjs`, Chromium/WebKit renderelt QA.
+### Eredeti SVG-galéria és finomított motívumok — 2026-11-21
+
+A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandra megerősített valódi portréját integrálta. A következő fejlesztés ezt **nem duplikálja**: négy kiegészítő, újrarajzolt motívumot vezet be a színező, a közös alkotás, a „Hogyan készült?” szerkesztői szakasz és a kezdőlapi gondolatkártyák címsora számára. A 12 SVG forrás egyetlen `assets/svg-motion/` könyvtárban van, a 48 lokalizált oldalt közös `catalog.css` vezérli. Az ábrák dekoratívak, nem termékfotók és nem közvetlen nyomdai forrásmásolatok. Részletek és bizonyítékok: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md). Az animációk megszűnnek csökkentett mozgás beállításnál.
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
