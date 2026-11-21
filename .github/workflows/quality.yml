@@ -241,7 +241,7 @@ jobs:
                   html=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
                   assert image_file in html and f'<h1>{item["slug"]}' not in html
                   assert item['shop_url'] is None
-                  assert 'offers' not in html.lower()
+                  assert '"offers"' not in html.lower(),(slug,lang,'no structured product offer')
                   assert '84 pages' not in html, (slug,lang,'wrong imported journal facts')
                   catalog=(root/'catalog/index.html').read_text(encoding='utf-8')
                   assert f'products/{slug}.html' in catalog and image_file in catalog
