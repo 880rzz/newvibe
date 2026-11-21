@@ -83,6 +83,19 @@ async function pageAudit(page,engine,lang,kind,width,origin){
    check(!intersects,label+" note "+i+"/"+j+" no collision");
   }
  }
+ if(kind==="catalog"){
+  const cap=await page.locator(".fep-collection-note").evaluate(el=>{
+   const r=el.getBoundingClientRect();
+   const mask=document.querySelector(".fep-catalog-hero-figure .fep-hero-art").getBoundingClientRect();
+   return {top:r.top,bottom:r.bottom,maskBottom:mask.bottom,scroll:el.scrollWidth,client:el.clientWidth,height:r.height,text:el.textContent.trim()};
+  });
+  check(cap.top>=cap.maskBottom-1,label+" collection caption outside art mask");
+  check(cap.height>=16&&cap.text.length>20,label+" collection caption visible text");
+  check(cap.scroll<=cap.client+1,label+" collection caption not horizontally clipped");
+  if(width===390)await page.locator(".fep-catalog-hero-figure").screenshot({
+   path:path.join(destination,engine+"-"+lang+"-catalog-390-caption.png"),animations:"disabled"
+  });
+ }
  if(kind==="about"){
   check(snapshot.imprint,label+" visible legal-section anchor");
   check(snapshot.howMade,label+" editorial-process anchor");
@@ -141,6 +154,43 @@ async function pageAudit(page,engine,lang,kind,width,origin){
  }
  process.stdout.write("CHECK "+label+" "+JSON.stringify({overflow:snapshot.overflow,cta:snapshot.ctas.map(x=>({left:x.padLeft,right:x.padRight})),footerLinks:snapshot.footer?.linkCount,notes:snapshot.notes.length})+"\n");
 }
+async function detailedProductAudit(page,engine,lang,slug,width,origin){
+ await page.setViewportSize({width,height:900});
+ await page.goto(origin+prefix(lang)+"products/"+slug+".html",{waitUntil:"domcontentloaded",timeout:30000});
+ await page.evaluate(()=>document.fonts.ready);
+ const proof=await page.evaluate(()=>{
+  const rect=el=>{const r=el.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height}};
+  const story=document.querySelector(".fep-product-story"),cards=[...document.querySelectorAll(".fep-story-path article")];
+  const labels=[...document.querySelectorAll(".fep-detail-list section")];
+  return {lang:document.documentElement.lang,overflow:document.documentElement.scrollWidth-innerWidth,
+   story:story?rect(story):null,cards:cards.map(rect),labels:labels.length,
+   paragraphs:story?.querySelectorAll(".fep-story-copy>p").length||0,
+   facts:story?.querySelectorAll(".fep-story-facts li").length||0,
+   imageNote:!!document.querySelector(".fep-product-media .fep-photo-note"),
+   mailto:!!document.querySelector(".fep-availability a[href^='mailto:']")};
+ });
+ const label=engine+" "+lang+"/products/"+slug+" @"+width;
+ check(proof.lang===lang,label+" language");
+ check(proof.overflow<2,label+" no horizontal scroll");
+ check(proof.story&&proof.story.width<=width+1,label+" deep story contained");
+ check(proof.cards.length===2,label+" two paper cards");
+ check(proof.paragraphs===3,label+" three editorial paragraphs");
+ check(proof.facts===3,label+" three grounded facts");
+ check(proof.labels===3,label+" original three questions preserved");
+ check(proof.imageNote,label+" visual provenance note");
+ check(proof.mailto,label+" email preorder preserved");
+ if(proof.cards.length===2){
+  const a=proof.cards[0],b=proof.cards[1];
+  const crossing=a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;
+  check(!crossing,label+" problem and solution cards do not overlap");
+  for(const [i,r] of proof.cards.entries())check(r.left>=-1&&r.right<=width+1,label+" card "+i+" contained");
+ }
+ if(width===390&&["helyed-van-koztunk","egy-kis-ter","mesek-a-vilag-korul"].includes(slug)){
+  const imgName=engine+"-"+lang+"-"+slug+"-390-story.png";
+  await page.locator(".fep-product-story").screenshot({path:path.join(destination,imgName),animations:"disabled"});
+ }
+}
+
 (async()=>{
  await start();
  const origin="http://127.0.0.1:"+server.address().port;
@@ -155,6 +205,11 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     for(const lang of langs){
      for(const width of widths)await pageAudit(page,engine,lang,"home",width,origin);
      for(const kind of ["about","catalog"])for(const width of [390,1440])await pageAudit(page,engine,lang,kind,width,origin);
+     // Every product must have a readable problem-to-solution section on mobile.
+     const productSlugs=["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"];
+     for(const slug of productSlugs)await detailedProductAudit(page,engine,lang,slug,390,origin);
+     for(const slug of ["helyed-van-koztunk","egy-kis-ter","mesek-a-vilag-korul"])await detailedProductAudit(page,engine,lang,slug,1440,origin);
+
      // Verify that the additional manuscript-inspired SVGs really render in both engines,
      // instead of accepting file existence or HTML assertions as proof.
      for(const entry of [
