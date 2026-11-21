@@ -101,9 +101,9 @@ A fenti táblában minden elérési út a kanonikus bázishoz értendő. **12 ol
 
 Mindegyik termékoldal célja a következők tisztázása: mi ez, kinek szól, mit tartalmaz, hogyan használható, hogyan küldhető előrendelési igény, és mi a kép vagy a forrás valódi státusza. Az oldalakat `Product` típusú, kizárólag ellenőrzött mezőkből álló struktúrált adat egészíti ki.
 
-### About / Editorial & AI Trust
+### About / Alexandra és a szerkesztés folyamata
 
-Alkotói személyazonosítás, a Diófa Műhely megnevezése, szerkesztői státusz, az AI-közreműködés és a képforrások tényszerű leírása, előrendelési korlátok és kapcsolat. Az oldal ne váljon fiktív cégbemutatóvá vagy bizonyítatlan jogi megfelelőségi nyilatkozattá.
+Alexandra első személyű alkotói története, a Diófa Műhely megnevezése, a kiadványok készítésének valós folyamata, a fotók és szemléltető borítóképek pontos megkülönböztetése, előrendelési korlátok, kapcsolat és Impresszum. Az oldal ne váljon fiktív cégbemutatóvá vagy bizonyítatlan jogi megfelelőségi nyilatkozattá.
 
 ---
 
@@ -277,12 +277,32 @@ A díszítő SVG-k az EN/HU/DE/FR nézetekben egyformán szerepelnek, belső ani
 
 A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandra megerősített valódi portréját integrálta. A következő fejlesztés ezt **nem duplikálja**: négy kiegészítő, újrarajzolt motívumot vezet be a színező, a közös alkotás, a „Hogyan készült?” szerkesztői szakasz és a kezdőlapi gondolatkártyák címsora számára. A 12 SVG forrás egyetlen `assets/svg-motion/` könyvtárban van, a 48 lokalizált oldalt közös `catalog.css` vezérli. Az ábrák dekoratívak, nem termékfotók és nem közvetlen nyomdai forrásmásolatok. Részletek és bizonyítékok: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md). Az animációk megszűnnek csökkentett mozgás beállításnál.
 
+### 2026-11-21 — az eredeti termékkártya szerkezetének visszaállítása (9 kiadvány × 4 nyelv)
+
+**Történeti forrás:** a 880rzz/newvibe korai termékkártyája és bemutatója: ff44da034440, a későbbi e-mailes előrendelésre bővített változat: 6c67587d409a. Az eredeti három kérdés — Kinek szól? Mi van benne? Hogyan használd? — megmarad mind a 36 lokalizált termékoldalon.
+
+**Kötelező termékoldali szerkezet:**
+1. Egyedi termékcím, eredeti magyar kiadványnyelv, tényleges fotó vagy pontosan megjelölt szemléltető borítókép, előrendelési státusz.
+2. A korábbi három kérdésre adott konkrét válaszok.
+3. Két külön, árnyékolt papírkártya: „Ismerős helyzet?” (felhasználói fájdalompont) és „A kiadvány válasza” (kipróbálható segítség). A másik három nyelven természetes helyi megfelelőket kell használni.
+4. Három tartalmas, az adott kiadványhoz igazított szerkesztői bekezdés, tényleges felhasználási példákkal és pontos határokkal.
+5. Finoman elforgatott jellemzőkártya: három dokumentált tulajdonság és egy kiemelt emberi gondolat. Tartós vizuális elemek: Fraunces, DM Sans, mélyzöld CTA, korall/halványzöld kártyák, diszkrét SVG és korrekt árnyék.
+6. Működő, termékhez címzett e-mailes előrendelési hivatkozás; nem automatikusan elfogadott rendelés, nincs fiktív ár, készlet, fizetés vagy webshop.
+
+**Paritás:** 9 különböző termék × HU/EN/DE/FR = 36 egyedi, részletes termékbemutató és 36 bővebb katalóguskártya. A kiadványok nyomtatott eredeti nyelve magyar; a weboldal négy nyelvű. A gyermekvédelmi tartalom nem ígér terápiás vagy diagnosztikai hatást, a mesekönyvek értékesítési joga külön ellenőrizendő.
+
+**Gyökérok és képaláírás:** a 2026-11-21-i iPhone-képen a katalógusgyűjtő illusztrációjának felirata részben eltűnt, mert az abszolút pozicionált szöveg az overflow:hidden lekerekített képkonténerbe került. Helyes szerkezet: figure.fep-catalog-hero-figure > div.fep-hero-art (csak a kép) + figcaption.fep-collection-note (a maszkon kívül). A szöveg 320–1440 px-en minden nyelven teljesen olvasható legyen.
+
+**Képi igazmondás:** egy jelenleg digitális borítólátványként használt illusztráció nem állítható valódi, késztermékfotónak; a Helyed van köztünk kártyáihoz valódi termékfotó van. A termékek közönségnek szánt oldaláról eltűnik a minden oldalon ismételt, témához nem kötődő technológiai magyarázó blokk, helyette közérthető termékszöveg és semleges, igaz, látható borítólátvány-felirat marad. A képek tényleges eredetét a gépi és belső proveniencianyilvántartás továbbra is rögzíti; nem állítunk emberi fotót egy digitális illusztrációról.
+
+**QA/kiadás:** mind a 48 oldal catalog.css?v=10 stíluslapot használ. A scripts/product-story-smoke.cjs ellenőrzi a 36 részletes szöveget, 36 katalóguskártyát, az eredeti három kérdést, a képaláírásokat és a megszűnt általános marketingblokk hiányát. A meglévő adatvédelmi, szerkesztői jogállási, SVG-, mailto- és strukturáltadat-kapuk nem gyengíthetők. Chromium/WebKit mobil/desktop renderelt QA és production SHA ellenőrzés szükséges.
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
 - **Helyed van köztünk:** valódi termékfotó; a kártyakép négyzetes megjelenítése külön `1:1` kivétel.
 - **Borítólátvány:** `object-fit: contain`, de arányhelyes konténerrel, mesterséges kétoldali „üres plakátsáv” nélkül; a borító felirata nem vágható le.
-- **Eredet:** AI-/digitális koncepciót nem szabad valódi termékfotónak nevezni.
+- **Eredet:** a digitális borítólátvány nem nevezhető késztermékfotónak; a valódi kártyafotó külön kezelendő.
 - A termékfotó-archívum (`newvibe-termekfotok.zip`) létező, a repóban található fájl; ez **nem** engedély forrás-PDF-ek vagy nyomdai kéziratok ZIP-be csomagolására.
 
 ### Linkek és nyilak
@@ -305,7 +325,7 @@ A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandr
 | `index.html`, `hu/index.html`, `de/index.html`, `fr/index.html` | Négy szerkesztői főoldal, egyező hero–quiz–katalógusátvezetés–alkotó sorrend |
 | `catalog/index.html` és három nyelvi párja | Kilenc terméket listázó katalógusok |
 | `products/{slug}.html` és három nyelvi párjuk | 36 lokalizált termékoldal |
-| `about/index.html` és három nyelvi párja | Szerzői/provenance/AI Trust tájékoztatás |
+| `about/index.html` és három nyelvi párja | Alexandra személyes bemutatkozása, készítési folyamata, kapcsolat és Impresszum |
 | `catalog.json` | Termékazonosítók, képek, forrásnyelv, jóváhagyás, jogállás, gyártás és előrendelési státusz **kanonikus gépi nyilvántartása** |
 | `checkin-bank.js` | 30×4 kérdés és négyválaszos struktúra; kriptográfiai 6-kérdéses sorsolás |
 | `app.js` | Az egyes kezdőlapokon megjelenő `Hogy vagy?` interaktív kérdéssor és eredménylogika |
