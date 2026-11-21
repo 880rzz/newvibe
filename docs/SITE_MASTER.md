@@ -316,13 +316,13 @@ A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandr
 
 **Szövegkövetelmény:** a kiadványok bemutató alcímei ne keltsék azt a látszatot, hogy már aktivált kereskedelmi ajánlat vagy fizetős checkout létezik; a cél a belső tartalom megmutatása. Az angol „Inside the publication” semleges szerkesztői címke.
 
-**QA/kiadás:** mind a 48 oldal catalog.css?v=10 stíluslapot használ. A scripts/product-story-smoke.cjs ellenőrzi a 36 részletes szöveget, 36 katalóguskártyát, az eredeti három kérdést, a képaláírásokat és a megszűnt általános marketingblokk hiányát. A meglévő adatvédelmi, szerkesztői jogállási, SVG-, mailto- és strukturáltadat-kapuk nem gyengíthetők. Chromium/WebKit mobil/desktop renderelt QA és production SHA ellenőrzés szükséges.
+**QA/kiadás:** mind a 48 oldal catalog.css?v=11 stíluslapot használ. A scripts/product-story-smoke.cjs ellenőrzi a 36 részletes szöveget, 36 katalóguskártyát, az eredeti három kérdést, a képaláírásokat és a megszűnt általános marketingblokk hiányát. A meglévő adatvédelmi, szerkesztői jogállási, SVG-, mailto- és strukturáltadat-kapuk nem gyengíthetők. Chromium/WebKit mobil/desktop renderelt QA és production SHA ellenőrzés szükséges.
 
 ## 2026-11-21 — az eredeti kártyaoldal fotógalériájának és következő lépéseinek visszaállítása
 
 A #24-es kiadás a kilenc termékből mind a négy nyelven részletes, forrásalapú (probléma → használható válasz → magyarázat → kiemelt adatok) termékoldalt hozott létre, a katalógus képaláírásának levágását pedig megoldotta. A jelen kiegészítés visszaemeli az **eredeti, 2026-11-21 előtti `Helyed van köztünk` oldal két további valódi termékfotóját** az összes HU/EN/DE/FR kártyaoldalra, lokalizált alt szövegekkel és képaláírásokkal. A források: `assets/helyed-van-koztunk-01.jpg`, `assets/helyed-van-koztunk-02.jpg`; a már meglévő hero `03.jpg` változatlan marad. Mivel az eredeti `.product-gallery` reszponzív stílus létezik a `styles.css` fájlban, nem kell új stylesheet-specifikusságot vagy cache-verziót hozzáadni.
 
-Mind a 36 termékoldal tartalmi ismertetése után egy közös, lokalizált, valódi CTA-gomb vezet a meglévő e-mailes előrendelési blokk `#preorder` horgonyára; mellette a katalógusra vezető szöveges visszalépés. A CTA nem jelenti azt, hogy online fizetés, végleges ár vagy automatikus rendelésigazolás működik. Az új linksor célja, hogy a hosszú történet után a vásárló egyértelműen visszataláljon a következő lépéshez. A korábbi `fep-product-story`, `fep-story-path`, SVG motívumok, Alexandra portréja, 48 URL, négy nyelv és `catalog.css?v=10` változatlan.
+Mind a 36 termékoldal tartalmi ismertetése után egy közös, lokalizált, valódi CTA-gomb vezet a meglévő e-mailes előrendelési blokk `#preorder` horgonyára; mellette a katalógusra vezető szöveges visszalépés. A CTA nem jelenti azt, hogy online fizetés, végleges ár vagy automatikus rendelésigazolás működik. Az új linksor célja, hogy a hosszú történet után a vásárló egyértelműen visszataláljon a következő lépéshez. A korábbi `fep-product-story`, `fep-story-path`, SVG motívumok, Alexandra portréja, 48 URL, négy nyelv és `catalog.css?v=11` változatlan.
 
 A CI a 36 horgonyt és a négy valósfotó-galériát a `scripts/card-gallery-smoke.cjs` ellenőrzéssel védi. A GitHub Pages élesítése csak sikeres CI/Chromium/WebKit QA után zárható.
 ### Képek
@@ -619,3 +619,13 @@ A kiadványok szakmai jóváhagyása ettől különálló. A korábban jelzett f
 - [GitHub Actions minőségellenőrzés](../.github/workflows/quality.yml)
 
 **Végső alapelv:** az oldal ne legyen bonyolultabb annál, amit a látogatónak meg kell értenie: **valódi alkotó, valódi hétköznapi helyzetek, átlátható kiadványok, őszinte státuszok és egyértelmű következő lépés**.
+
+
+### 2026-11-21 – menü éles utóellenőrzése és böngészőcache-verziók
+
+A `#32` kiadás 48 oldalának teljes HTML/asset egyezősége production alatt ellenőrzött volt, de a HTML-ek változatlanul korábbi cache-kulcsokra hivatkoztak. Ezt az új javítás feloldja: **48/48 HTML-en `catalog.css?v=11` és `site-menu.js?v=2`**. Az előző verziószámra vonatkozó történeti dokumentációt az új kiadási állapot felülírja.
+
+- A `scripts/menu-moment-smoke.cjs` forráskapu 48 lokalizált URL-en megköveteli mindkét friss verziókulcsot.
+- A Chromium és WebKit `scripts/browser-visual-qa.cjs` 320/390/1024/1440 px-nél ellenőrzi, hogy a gondolatkártya nem metszi a menüpontokat; az egész nyitott menüről is készülnek mobilos/desktopos képek.
+- Az éppen görgetett mobilmenü **bezárógombja 44 × 44 px**, a képernyőn maradó `position:fixed` vezérlő. A billentyűzetes Escape és a fókuszvisszaállítás megmarad.
+- Az aktuális holdfázis 29,530588853 napos szinodikus közelítés; **nem efemerida**. Fázis, megvilágítottság és az elkövetkező hét napja azonos kliensoldali számításból ered. Az üzenetek jelképes szerkesztői gondolatindítók.
