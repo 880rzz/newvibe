@@ -316,5 +316,29 @@ jobs:
           assert 'preorderCopy' in Path('product.js').read_text(encoding='utf-8')
           assert 'pre-order requests' in Path('llms.txt').read_text(encoding='utf-8').lower()
 
+
+          # Editorial UX: the optional adult check-in is reachable from every public entry.
+          root=Path('index.html').read_text(encoding='utf-8')
+          script=Path('app.js').read_text(encoding='utf-8')
+          assert 'id="quiz"' in root and 'id="quizResult"' in root
+          assert 'id="quizProductLink"' in root and 'quizBoundary' in root
+          assert 'newvibe.lastReflection' not in script and 'QUIZ_SAVE_KEY' not in script
+          assert 'checkinMixed' in script and 'quizResultNote' in script
+          assert 'fep.checkin' not in script.lower() or 'localstorage.setitem("fep.checkin"' not in script.lower()
+          assert 'role="progressbar"' in root and 'aria-valuemax="6"' in root
+          statuses={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}
+          for language in langs:
+              base=Path('.') if language=='en' else Path(language)
+              cat=(base/'catalog/index.html').read_text(encoding='utf-8')
+              assert '?lang='+language+'#quiz' in cat,(language,'catalogue cannot reach check-in')
+              if language!='en':
+                  home=(base/'index.html').read_text(encoding='utf-8')
+                  assert '?lang='+language+'#quiz' in home,(language,'localized homepage cannot reach check-in')
+              for product in manifest['products']:
+                  detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
+                  assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
+          assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
+          assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8')
+          assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
           print('Site validation OK')
           PY
