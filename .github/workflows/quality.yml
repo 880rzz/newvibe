@@ -188,7 +188,7 @@ jobs:
           assert prayer and prayer['days']==30 and prayer['pages']==84 and prayer['format']=='A5'
           assert prayer['original_language']=='hu'
           assert prayer['shop_url'] is None and prayer['price'] is None
-          assert all(p.get('editorial_status','').startswith('Professionally approved final publication: publisher confirmation 2026-11-21') for p in manifest['products']), 'content approval must be consistent across all editions'
+          assert all(p.get('editorial_status')=='professionally_approved_per_publisher_update_2026-11-21' for p in manifest['products']), 'publisher-approved editorial status must be consistent across all editions'
           assert 'veled-a-mindennapokban.html' in homepage
           for lang in langs:
               root=Path('.') if lang=='en' else Path(lang)
@@ -230,7 +230,7 @@ jobs:
                   if lang!='en':
                       home=(root/'index.html').read_text(encoding='utf-8')
                       assert f'products/{slug}.html' in home
-          assert next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']=='publisher_confirms_final_publication_approved_email_preorder'
+          assert next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']=='final_editorial_content_print_source_available'
           for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
               assert link in homepage,('missing homepage Diófa feature',link)
 
@@ -272,7 +272,10 @@ jobs:
               assert product['preorder_request']['status']=='accepted_by_email'
               assert product['preorder_request']['confirmation_required'] is True
               assert product['shop_url'] is None and product['price'] is None
-              assert 'fulfilment_condition' not in product['preorder_request']
+              if product['slug'] in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                  assert 'lawful publication rights' in product['preorder_request'].get('fulfilment_condition',''),('commercial rights are separate from editorial approval',product['slug'])
+              else:
+                  assert 'fulfilment_condition' not in product['preorder_request']
           for language in langs:
               base=Path('.') if language=='en' else Path(language)
               catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
@@ -298,7 +301,10 @@ jobs:
                   assert 'For Every Path' in params['subject'][0]
                   assert len(params['body'][0])>130
                   assert '<script type="application/ld+json">' in content
-                  assert 'fep-preorder-rights' not in content,(language,slug,'obsolete rights review notice')
+                  if slug in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                      assert 'fep-preorder-rights' in content,(language,slug,'required neutral commercial-rights clarification')
+                  else:
+                      assert 'fep-preorder-rights' not in content,(language,slug,'unexpected rights notice')
               if language!='en':
                   home=(base/'index.html').read_text(encoding='utf-8')
                   assert home.count('class="fep-preorder-badge"')==9,(language,'home status')
@@ -338,13 +344,16 @@ jobs:
                   assert ('review pending' not in detail.lower() and 'lektorálás előtt' not in detail.lower() and 'vor begutachtung' not in detail.lower() and 'relecture à venir' not in detail.lower()),(language,product['slug'],'obsolete editorial review status')
           assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
-          assert all(p['production_status'] in ('physical_product_photographed','publisher_confirms_final_publication_approved_email_preorder') for p in manifest['products'])
+          assert all(p['production_status'] in ('physical_product_photographed','publisher_confirms_final_publication_approved_email_preorder','final_editorial_content_print_source_available') for p in manifest['products'])
           for locale in langs:
               root=Path('.') if locale=='en' else Path(locale)
               for product in manifest['products']:
                   page=(root/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
                   assert 'fep-preorder-badge' in page, (locale,product['slug'])
-                  assert 'fep-preorder-rights' not in page, (locale,product['slug'])
+                  if product['slug'] in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                      assert 'fep-preorder-rights' in page,(locale,product['slug'],'neutral legal distinction missing')
+                  else:
+                      assert 'fep-preorder-rights' not in page,(locale,product['slug'],'unexpected legal banner')
           assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
           assert 'professionally_approved_per_publisher_update_2026-11-21' in Path('catalog.json').read_text(encoding='utf-8')
           assert 'independent professional review and reader testing still outstanding' not in Path('llms.txt').read_text(encoding='utf-8')
