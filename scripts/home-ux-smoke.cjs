@@ -36,7 +36,10 @@ for(const lang of langs){
  assert.ok(html.indexOf('id="quiz"')<html.indexOf("fep-home-collection-bridge"),lang+" quiz before catalogue");
  assert.ok(html.includes(strings[lang][0])&&html.includes(strings[lang][1]),lang+" text");
  assert.equal((html.match(/class="fep-card"/g)||[]).length,0,lang+" catalogue not duplicated");
- assert.ok(html.indexOf('src="'+prefix+'checkin-bank.js?v=1"')<html.indexOf('src="'+prefix+'app.js?v=15"'),lang+" bank loaded first");
+ const scriptsBase=lang==="en"?"":"../";
+ assert.ok(html.includes('src="'+scriptsBase+'checkin-bank.js?v=1"'),lang+" bank script exists");
+ assert.ok(html.includes('src="'+scriptsBase+'app.js?v=15"'),lang+" app script exists");
+ assert.ok(html.indexOf('src="'+scriptsBase+'checkin-bank.js?v=1"')<html.indexOf('src="'+scriptsBase+'app.js?v=15"'),lang+" bank loaded first");
  const ids=["quizCard","quizResult","startQuiz","quizAgain","quizBack","quizCount","quizProgress","quizQuestion","quizOptions","resultTitle","resultText","resultQuestion","quizProductLink","quizProductLabel"];
  for(const id of ids) assert.ok(html.includes('id="'+id+'"'),lang+" required control "+id);
  const dom=Object.fromEntries(ids.map(id=>[id,element(id)]));
