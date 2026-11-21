@@ -15,6 +15,9 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 - Collection: https://880rzz.github.io/newvibe/catalog/
 - About / Editorial & AI Trust: https://880rzz.github.io/newvibe/about/
 
+## How to request an email pre-order
+All nine displayed Hungarian-language publications now accept email **pre-order requests** at diofamuhelykozosseg@gmail.com. The visitor selects a product and quantity, and opens a prefilled email from the product page. Sending an email does not confirm an order, reserve inventory, create payment obligations or guarantee delivery. No website checkout, stock, price or verified webshop URLs exist yet. The two Mesék a világ körül editions remain subject to unresolved rights clearance before any commercial publication.
+
 ## Nine product editions
 - Helyed van köztünk: https://880rzz.github.io/newvibe/products/helyed-van-koztunk.html
   A 36-card illustrated discussion deck on bullying and exclusion with 16-part safety/help leaflet. Real product photos available.

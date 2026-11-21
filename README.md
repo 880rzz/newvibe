@@ -26,6 +26,7 @@ Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or repl
 - The three new product images are intentionally SVG mock-ups based on source themes, not real book photographs. The full original PDFs stay off the public repository. Only descriptive product information and a concept image are published.
 - Cover mockups and generated images must always be marked "illustrative, not a final manufactured product" and must not replace real photos without verification.
 - Only the independent creator is named. Do not create an Organization schema or legal/impressum details without real verified data.
+- Email pre-order requests are available for all nine products at `diofamuhelykozosseg@gmail.com`, with localized prefilled subject, product, and requested quantity. Email contact is **not** an automatically confirmed sale or a request for payment details. Actual prices remain exclusive to the future webshop. The two `Mesék a világ körül` editions remain subject to copyright/translation rights clearance before commercial release.
 - No prices, stock, OrderAction, Offer, or invented webshop. Future verified links belong in a central product manifest and must be validated before public release.
 - The quiz result is indicative reflection, not diagnosis; language preference and optional saved result remain local to browser.
 
