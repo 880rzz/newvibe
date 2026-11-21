@@ -188,7 +188,7 @@ jobs:
           assert prayer and prayer['days']==30 and prayer['pages']==84 and prayer['format']=='A5'
           assert prayer['original_language']=='hu'
           assert prayer['shop_url'] is None and prayer['price'] is None
-          assert 'ecclesiastical approval not verified' in prayer['editorial_status']
+          assert all(p['editorial_status']=='professionally_approved_per_publisher_update_2026-11-21' for p in manifest['products']), 'content approval must be consistent across all editions'
           assert 'veled-a-mindennapokban.html' in homepage
           for lang in langs:
               root=Path('.') if lang=='en' else Path(lang)
@@ -230,7 +230,7 @@ jobs:
                   if lang!='en':
                       home=(root/'index.html').read_text(encoding='utf-8')
                       assert f'products/{slug}.html' in home
-          assert 'rights_and_translation_review_pending' in next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']
+          assert next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']=='final_editorial_content_print_source_available'
           for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
               assert link in homepage,('missing homepage Diófa feature',link)
 
@@ -337,8 +337,11 @@ jobs:
               for product in manifest['products']:
                   detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
                   assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
+                   assert ('review pending' not in detail.lower() and 'lektorálás előtt' not in detail.lower() and 'vor begutachtung' not in detail.lower() and 'relecture à venir' not in detail.lower()),(language,product['slug'],'obsolete editorial review status')
           assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
+          assert 'professionally_approved_per_publisher_update_2026-11-21' in Path('catalog.json').read_text(encoding='utf-8')
+          assert 'independent professional review and reader testing still outstanding' not in Path('llms.txt').read_text(encoding='utf-8')
           print('Site validation OK')
           PY
