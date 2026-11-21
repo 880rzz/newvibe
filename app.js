@@ -60,7 +60,7 @@ let current=chooseInitialLang();
 function setLanguage(lang,remember=false){
  if(!fepLangs.includes(lang))lang="en";
  current=lang;document.documentElement.lang=lang;
- document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined){const arrow=el.querySelector(".arrow-icon");if(arrow){const first=el.firstChild;if(first&&first.nodeType===3)first.textContent=val+" ";else el.insertBefore(document.createTextNode(val+" "),arrow);}else el.textContent=val;}});document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const label=fepAccessibleLabels[lang]?.[el.dataset.i18nAria];if(label)el.setAttribute("aria-label",label);});
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined){const arrow=el.querySelector(".arrow-icon, .fep-vector-icon");if(arrow){const first=el.firstChild;if(first&&first.nodeType===3)first.textContent=val+" ";else el.insertBefore(document.createTextNode(val+" "),arrow);}else el.textContent=val;}});document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const label=fepAccessibleLabels[lang]?.[el.dataset.i18nAria];if(label)el.setAttribute("aria-label",label);});
  document.querySelectorAll(".lang").forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",String(active));});
  document.querySelectorAll("[data-lang-link]").forEach(el=>{const target=fepLinks[el.dataset.langLink];if(target)el.href=fepBase+(lang==="en"?"":lang+"/")+target;});
  const footer=document.querySelector(".footer [data-i18n=footer]");if(footer)footer.textContent=fepExtra[lang].footer;
