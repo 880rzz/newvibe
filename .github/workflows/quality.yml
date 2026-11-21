@@ -47,9 +47,11 @@ jobs:
           node --check app.js
           node --check product.js
           node --check locale-router.js
+          node --check site-menu.js
           node scripts/locale-smoke.cjs
           node scripts/checkin-smoke.cjs
           node scripts/home-ux-smoke.cjs
+          node scripts/menu-design-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
         run: |
           python3 - <<'PY'
@@ -255,13 +257,17 @@ jobs:
                   attrs,label=anchor.group(1),anchor.group(2)
                   if re.fullmatch(r'(EN|HU|DE|FR)',label.strip()):
                       assert 'fep-vector-icon' not in label and 'fep-arrow-link' not in attrs, (htmlfile,'language link should stay icon-free')
+                  elif 'button' in attrs:
+                      assert '<svg' not in label,(htmlfile,'button CTA must not contain redundant arrow')
                   elif '<div' not in label and '<img' not in label and '<span class="fep-vector-icon"' not in label:
-                      raise AssertionError((htmlfile,'product link lacks vector arrow',label[:80]))
+                      raise AssertionError((htmlfile,'text-only product link lacks a vector arrow',label[:80]))
           for lang in langs:
               langroot=Path('.') if lang=='en' else Path(lang)
               product_catalog=(langroot/'catalog/index.html').read_text(encoding='utf-8')
-              assert product_catalog.count('fep-vector-icon')>=len(manifest['products']), (lang,'catalogue missing product arrows')
-          assert 'fep-vector-icon' in homepage and '.fep-vector-icon' in Path('catalog.css').read_text(encoding='utf-8')
+              assert product_catalog.count('class="button button-ink fep-card-action"')==len(manifest['products']), (lang,'catalogue product buttons')
+              assert product_catalog.count('class="button button-coral fep-preorder-compact"')==len(manifest['products']), (lang,'catalogue preorder buttons')
+          assert 'fep-up-icon' in homepage and '.fep-vector-icon' in Path('catalog.css').read_text(encoding='utf-8')
+          assert 'fep-vector-icon' in Path('catalog/index.html').read_text(encoding='utf-8'), 'text-only footer links must retain vector arrows'
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
 
@@ -273,6 +279,14 @@ jobs:
           assert manifest['email_preorders']['payment_on_website'] is False
           assert manifest['email_preorders']['email']=='diofamuhelykozosseg@gmail.com'
           assert len(manifest['products'])==9
+          required_categories={'naplok-tervezok':4,'segito-onreflexio':2,'mesek-foglalkoztatok':3}
+          assert {x['id'] for x in manifest['product_categories']}==set(required_categories), 'category registry parity'
+          assert len({slug for c in manifest['product_categories'] for slug in c['slugs']})==9,'each product has one canonical category'
+          for category in manifest['product_categories']:
+              assert len(category['slugs'])==required_categories[category['id']],category['id']
+              assert set(category['labels'])==set(langs), category['id']
+          for product in manifest['products']:
+              assert sum(product['slug'] in c['slugs'] and product['category_id']==c['id'] for c in manifest['product_categories'])==1, product['slug']
           for product in manifest['products']:
               assert product['preorder_request']['status']=='accepted_by_email'
               assert product['preorder_request']['confirmation_required'] is True
@@ -285,7 +299,7 @@ jobs:
               base=Path('.') if language=='en' else Path(language)
               catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
               assert catalogue.count('class="fep-preorder-badge"')==9,(language,'preorder status count')
-              assert catalogue.count('class="fep-preorder-compact"')==9,(language,'catalogue preorder links')
+              assert catalogue.count('class="button button-coral fep-preorder-compact"')==9,(language,'catalogue preorder links')
               # The public availability message must be an email preorder, not an editorial review status.
               expected_badge={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}[language]
               expected_state={'en':'Prices to follow · Webshop coming soon','hu':'Árak hamarosan · Webshop készül','de':'Preise folgen · Webshop in Vorbereitung','fr':'Prix à venir · Boutique en préparation'}[language]
@@ -296,7 +310,7 @@ jobs:
                   slug=product['slug']
                   content=(base/'products'/f'{slug}.html').read_text(encoding='utf-8')
                   assert content.count('class="fep-availability fep-preorder"')==1,(language,slug)
-                  assert 'fep-preorder-action' in content and 'fep-preorder-icon' in content
+                  assert 'class="button button-coral fep-preorder-action"' in content and 'fep-preorder-icon' not in content
                   assert 'href="mailto:diofamuhelykozosseg@gmail.com?subject=' in content
                   matches=re.findall(r'href="(mailto:diofamuhelykozosseg@gmail.com\?subject=[^"]+)"',content)
                   assert matches,(language,slug,'missing contact href')

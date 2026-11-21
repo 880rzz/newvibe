@@ -107,6 +107,18 @@ Alkotói személyazonosítás, a Diófa Műhely megnevezése, szerkesztői stát
 
 ---
 
+### 2026-11-21: eredeti dizájn visszaállítása és három termékkategória
+
+Az oldalt a korábbi **végtelen jel alakú emblémás fejléc** és teljes képernyős, hamburgeres navigáció jellemzi ismét. A menüben a **Termékek** pont lenyílik. A három kategória a `catalog.json`-ban is kanonikus adatként szerepel:
+
+1. **Naplók és tervezők** (`naplok-tervezok`): ADHD-tervező, két tanári határidőnapló-borító és katolikus imanapló (4 kiadványváltozat).
+2. **Beszélgetés és önreflexió** (`segito-onreflexio`): Helyed van köztünk; Egy kis tér (2 kiadvány).
+3. **Mesék és foglalkoztatók** (`mesek-foglalkoztatok`): Mesék a világ körül; 42 színező; Na, most mit csináljak? (3 kiadvány).
+
+A **Hogy vagy?** önreflexiós webes élmény, **nem tizedik termék**, ezért önálló menüpont a kezdőlapon, és nem a termékkatalógus egyik kategóriája. A régi animált füzet, vonalrajz és forgatható gondolatkártyák helyreálltak, mobilon a kártyák nem fedhetik egymást. A valódi kattintási célú gombok **nyíl nélkül** jelennek meg; a puszta szöveges linkek megtarthatják az SVG nyilat.
+
+Alexandra profiljának szerkesztői referenciája az **Egy kis tér** című kiadvány 2. oldali személyes bevezetője: szeret gyerekekkel foglalkozni, segíteni, szervezni, és maga is foglalkozik a saját határok kijelölésével. A 2026-11-21-i tájékoztatás szerint a vállalkozás alapítása folyamatban van. A közönségnek szánt oldalon nem szerepelhet igazolatlan cégadat, sem az alkotót lekicsinylő, „nem létező cég” típusú megfogalmazás.
+
 ## 4. A kiadványok – teljes jelenlegi katalógus
 
 **A termékek mindegyike magyar nyelvű eredeti kiadvány.** Az angol, német és francia webes ismertetők **nem** jelentenek idegen nyelvű nyomtatott kiadást.

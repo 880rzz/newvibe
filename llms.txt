@@ -1,6 +1,6 @@
 # For Every Path
 
-> Independent publishing and stationery project by Sajbán-Frőhner Alexandra. Thoughtful conversation cards, planning tools and reflective workbooks. No separate company or active webshop is claimed.
+> For Every Path / Diófa Műhely: conversation cards, reflection workbooks, journals, planners, stories and creative activity books developed under Sajbán-Frőhner Alexandra's editorial direction. Company formation was reported as underway on 2026-11-21; verified legal identifiers will be published when available. No active online checkout is claimed.
 
 Canonical website for now: https://880rzz.github.io/newvibe/
 Planned future domain: https://foreverypath.com/ (not connected; do not treat as canonical yet)
@@ -16,6 +16,11 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 - About / Editorial & AI Trust: https://880rzz.github.io/newvibe/about/
 
 The creator reported on 2026-11-21 that the content of all nine editions is final and professionally approved. This is an editorial statement, not proof of physical stock, institutional endorsements or commercial licensing.
+
+## Three publication categories
+- Journals & planners: Lépésről lépésre 2027; two Határidőnapló tanároknak 2027 cover variants; Veled a mindennapokban.
+- Reflection & conversation: Helyed van köztünk; Egy kis tér.
+- Stories & activities: Mesék a világ körül; its 42 colouring pages; Na, most mit csináljak?
 
 ## Nine product editions
 - Helyed van köztünk: https://880rzz.github.io/newvibe/products/helyed-van-koztunk.html

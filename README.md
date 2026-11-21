@@ -31,6 +31,15 @@ Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or repl
 - `catalog.json`: nine product editions and production truth. New products can be added to this catalog with dedicated localized pages and sitemap entries.
 - `catalog.css`: shared design for the four editorial homepages, portrait-ratio product covers (4:5) with square genuine card-set photos, restrained Fraunces / DM Sans typography, arrow-ended links without underline, and clear keyboard focus.
 
+## Restored original design, 3-category navigation and Alexandra's editorial voice (2026-11-21)
+
+- The original **infinity-logo header** and original full-screen **hamburger menu** are restored on all **48 localized routes** (EN/HU/DE/FR). The menu's **Publications** item is an accessible disclosure with three category anchors: journals/planners (4), reflection/conversation (2), stories/activities (3).
+- The original animated **notebook, rotating doodle and drawn curve** return to all four homepages, along with three original-style **flip note cards** **after** the six-question reflection. Mobile cards are ordinary, non-overlapping grid items; motion respects `prefers-reduced-motion`.
+- The catalogue hero has **no redundant CTA**. Relevant navigation and conversion CTAs are styled as real **buttons without decorative arrows**; plain editorial links can retain SVG arrows. Catalogue covers preserve the source visual aspect ratio.
+- The `about` pages now foreground Alexandra's first-person account in the 2026-11-19 **Egy kis tér** manuscript: helping children, organising, the difficulties of saying no, everyday self-reflection. No defensive statements about a supposedly non-existent company appear. The user reported business formation underway; legal identifiers must be verified before being published.
+- The **canonical category registry is `catalog.json.product_categories` and each product's `category_id`**. Keep it aligned with the HTML category IDs and translated hamburger labels.
+- `scripts/menu-design-smoke.cjs` and the quality workflow enforce this design and content contract. Visual mobile/desktop QA still requires rendered evidence.
+
 ## Five-second editorial UX and language parity
 
 - **The homepage does not repeat the product grid**: nine products appear in each dedicated `/catalog/` route only.
