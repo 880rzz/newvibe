@@ -4,6 +4,17 @@
 
 Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor to NewVibe.
 
+## 2026-11-21 — eredeti termékkártya-oldal rendszerének visszaállítása
+
+Az első részletes `Helyed van köztünk` termékoldal (Git-történeti forrás: `ff44da0344406b5bf4131becb94870b04f73381a`, `helyed-van-koztunk.html`) információs szerkezetét használtuk **kötelező, mind a kilenc kiadványra vonatkozó mintaként**. A felépítés: eredeti címet és képet kiemelő hero → tényalapú termékinformáció → **két saját, konkrét fájdalompont és kapcsolódó használható válasz** → részletes, három bekezdésből álló szerkesztői történet → 3 tényszerű jellemző és kiemelt mondat → ahol valódi eredeti képek állnak rendelkezésre, kiegészítő galéria → e-mailes előrendeléshez és katalógushoz vezető navigáció. Nem kezelési, terápiás, egészségügyi vagy gyógyulási ígéret.
+
+**Katalógus:** a kilenc termékkártya mindegyike 4 nyelven kibővült tartalmi ajánlóval és két kiemelt ténnyel. A 3 lenyitható kategória, a tényleges termékfotók, a mélyzöld CTA-k és az e-mailes előrendelési folyamat megmaradnak. A katalógus ovális képkeretének `overflow:hidden` hibája miatt az eredeti képaláírás szövege levágódott: a `figcaption` most az ovális `.fep-hero-art` **alatt, a levágási tartományon kívül** található, `figure` szülővel és külön CSS-sel. A címke nem lóghat ki vagy tűnhet el 320–1440 px között.
+
+**Négy nyelv és forrásfegyelem:** HU/EN/DE/FR = 36 részletes termékoldal, 36 kibővített katalóguskártya és 72 saját probléma–válasz panel. Tényleges, felhasználó által átadott PDF-ek alapján állítások: `Egy kis tér` 24 helyzet/3 példa/6 munkalap; `Helyed van köztünk` 36 kártya, külön 16-paneles segítő harmonika; `Lépésről lépésre` 200 oldal; katolikus napló 30 nap/84 oldal; mesekönyv 42 ország/131 oldal; színező 42 lap; `Na, most mit csináljak?` 32 történet/139 oldal/8–11 év. A tanári tervező két borítóváltozata azonos belső tartalmat jelent.
+
+**Képek és szerkesztői igazság:** az eredeti kártyacsomag fotóit kiegészítő galériában is megmutatjuk, a többi, fizikai termékként még le nem fényképezett borítót *digitális borítólátványként*, nem kész nyomtatvány fotójaként nevezzük meg. A korábbi, minden terméknél ismétlődő technológiai/átláthatósági reklámblokk eltűnt. A publikus oldalakon a hangsúly Alexandra személyén, a kiadványok tartalmán és hasznán van. Az eredeti kéziratban szereplő szerkesztési proveniencia tényét **belső forrásnyilvántartásban** meg kell őrizni; a képeket sem lehet késztermékfotóként hamisan bemutatni. A felhasználói termékbemutatóban nincs technológiai reklám.
+
+**Kötelező vizuális követelmény:** `catalog.css?v=10`, 48/48 HTML-paritás, 9/9 termék részletes, 3/3 kategória, 4/4 nyelvi horgonyok, sötétzöld gombok szimmetrikus paddinggal, nincs vízszintes overflow, nincs levágott képaláírás, SVG-k és a valódi Alexandra-portré megmaradnak. A `#preorder` horgony a valós előrendelési blokkra visz. CI + Chromium/WebKit screenshot + Pages SHA + production reverse audit szükséges.
 ## Aktuális vizuális helyreállítás — 2026-11-21
 
 A #16 kiadás után iPhone-képernyőképekkel jelzett **sötét CTA-k, nem rögzített fejléc, nagy felső tér és lelapult/álló gondolatkártyák** valós UI-regressziók. A javító specifikáció és kötelező vizuális ellenőrzés: [VISUAL_REMEDIATION_2026-11-21.md](docs/VISUAL_REMEDIATION_2026-11-21.md). A fő dokumentáció 8. fejezete a tartós dizájnszabályokat rögzíti. A zöld CI és GitHub Pages-build nem helyettesíti a valódi mobilos renderelt ellenőrzést.

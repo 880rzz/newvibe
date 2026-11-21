@@ -38,7 +38,7 @@ Alexandra's portrait is a genuine existing photograph, **not AI generated**. It 
 - SVG documents have `prefers-reduced-motion: reduce` fallback. All strokes are visible when motion is disabled.
 - Every decorative SVG is embedded with empty `alt`, `aria-hidden=true`, `loading=lazy`; decorative imagery cannot steal pointer/touch focus.
 - Do not use these illustrations as a substitute for original product imagery or for detailed child protection/safety instructions.
-- All 48 pages must use the same shared stylesheet cache version (`catalog.css?v=8`).
+- All 48 pages must use the same shared stylesheet cache version (`catalog.css?v=10`).
 - The twelve source assets, 48 localized routes, 64 or more motif placements and bit-identical real portrait are checked in `scripts/svg-motion-smoke.cjs`.
 - Verify responsive layout, no horizontal scroll, SVG resource loading, sticky header, quiz function, flip cards and CSS reduced motion in Chromium and WebKit; screenshots are part of the release gate.
 

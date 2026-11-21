@@ -2,14 +2,14 @@
 
 > **Master documentation · magyar · 2026-11-21**  
 > **Repository:** [`880rzz/newvibe`](https://github.com/880rzz/newvibe)  
-> **Utolsó vizuális hibajelzés előtti production commit:** `3927d02e319f7a8f08cbd00a1fc4d2cc55ded669`  
+> **A jelen javítás ellenőrzött production kiindulópontja:** `0fca811b80e21a700495ac4615718e75e04f6ae8`  
 > **Jelenlegi kanonikus host:** https://880rzz.github.io/newvibe/  
 > **Tervezett, még be nem kötött domain:** `foreverypath.com`  
 > **Nyelvek:** angol (EN), magyar (HU), német (DE), francia (FR)  
 > **Alkotó / kiadói kapcsolattartó:** Sajbán-Frőhner Alexandra  
 > **E-mailes előrendelési kapcsolat:** `diofamuhelykozosseg@gmail.com`  
 > **Termékszám:** 9 kiadványváltozat · **Indexelhető lokalizált oldalak:** 48 (4 × 12)  
-> **Állapotbesorolás:** a #17 kiadás a sötét CTA-kat, fejlécet és kártyadizájnt forrásszinten javította; az újabb 2026-11-21-i képernyőképek alapján további CTA-szimmetria, lábléc és első személyű alkotói szöveg javítás készült. Valódi mobil/desktop vizuális QA és az Impresszum jogi teljességének ellenőrzése továbbra is külön kapu.
+> **Állapotbesorolás:** a 2026-11-21-i új termékoldal-struktúra és a levágott katalógus-képaláírás forrásjavítása elkészült 48 lokalizált oldalon; PR/CI, Chromium/WebKit renderelt és éles Pages-visszaellenőrzés a kiadás lezárásának feltétele. Az Impresszum jogi teljességéhez továbbra is ellenőrzött vállalkozási adatok kellenek.
 
 Ez a fájl a weboldal **egyetlen átfogó, emberi és fejlesztői eligazító dokumentuma**. A pontos gépi termékadatok kanonikus forrása továbbra is a `catalog.json`, a 30 kérdés tényleges szövegének és válaszainak kanonikus forrása a `checkin-bank.js`, a megjelenített nyelvi szövegeké pedig a megfelelő HTML és JS. A dokumentum ezek használatát, egymás közötti szerződését és működését rögzíti, **nem írja felül őket**.
 
@@ -277,6 +277,17 @@ A díszítő SVG-k az EN/HU/DE/FR nézetekben egyformán szerepelnek, belső ani
 
 A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandra megerősített valódi portréját integrálta. A következő fejlesztés ezt **nem duplikálja**: négy kiegészítő, újrarajzolt motívumot vezet be a színező, a közös alkotás, a „Hogyan készült?” szerkesztői szakasz és a kezdőlapi gondolatkártyák címsora számára. A 12 SVG forrás egyetlen `assets/svg-motion/` könyvtárban van, a 48 lokalizált oldalt közös `catalog.css` vezérli. Az ábrák dekoratívak, nem termékfotók és nem közvetlen nyomdai forrásmásolatok. Részletek és bizonyítékok: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md). Az animációk megszűnnek csökkentett mozgás beállításnál.
 
+## 2026-11-21 — eredeti termékkártya-oldal rendszerének visszaállítása
+
+Az első részletes `Helyed van köztünk` termékoldal (Git-történeti forrás: `ff44da0344406b5bf4131becb94870b04f73381a`, `helyed-van-koztunk.html`) információs szerkezetét használtuk **kötelező, mind a kilenc kiadványra vonatkozó mintaként**. A felépítés: eredeti címet és képet kiemelő hero → tényalapú termékinformáció → **két saját, konkrét fájdalompont és kapcsolódó használható válasz** → részletes, három bekezdésből álló szerkesztői történet → 3 tényszerű jellemző és kiemelt mondat → ahol valódi eredeti képek állnak rendelkezésre, kiegészítő galéria → e-mailes előrendeléshez és katalógushoz vezető navigáció. Nem kezelési, terápiás, egészségügyi vagy gyógyulási ígéret.
+
+**Katalógus:** a kilenc termékkártya mindegyike 4 nyelven kibővült tartalmi ajánlóval és két kiemelt ténnyel. A 3 lenyitható kategória, a tényleges termékfotók, a mélyzöld CTA-k és az e-mailes előrendelési folyamat megmaradnak. A katalógus ovális képkeretének `overflow:hidden` hibája miatt az eredeti képaláírás szövege levágódott: a `figcaption` most az ovális `.fep-hero-art` **alatt, a levágási tartományon kívül** található, `figure` szülővel és külön CSS-sel. A címke nem lóghat ki vagy tűnhet el 320–1440 px között.
+
+**Négy nyelv és forrásfegyelem:** HU/EN/DE/FR = 36 részletes termékoldal, 36 kibővített katalóguskártya és 72 saját probléma–válasz panel. Tényleges, felhasználó által átadott PDF-ek alapján állítások: `Egy kis tér` 24 helyzet/3 példa/6 munkalap; `Helyed van köztünk` 36 kártya, külön 16-paneles segítő harmonika; `Lépésről lépésre` 200 oldal; katolikus napló 30 nap/84 oldal; mesekönyv 42 ország/131 oldal; színező 42 lap; `Na, most mit csináljak?` 32 történet/139 oldal/8–11 év. A tanári tervező két borítóváltozata azonos belső tartalmat jelent.
+
+**Képek és szerkesztői igazság:** az eredeti kártyacsomag fotóit kiegészítő galériában is megmutatjuk, a többi, fizikai termékként még le nem fényképezett borítót *digitális borítólátványként*, nem kész nyomtatvány fotójaként nevezzük meg. A korábbi, minden terméknél ismétlődő technológiai/átláthatósági reklámblokk eltűnt. A publikus oldalakon a hangsúly Alexandra személyén, a kiadványok tartalmán és hasznán van. Az eredeti kéziratban szereplő szerkesztési proveniencia tényét **belső forrásnyilvántartásban** meg kell őrizni; a képeket sem lehet késztermékfotóként hamisan bemutatni. A felhasználói termékbemutatóban nincs technológiai reklám.
+
+**Kötelező vizuális követelmény:** `catalog.css?v=10`, 48/48 HTML-paritás, 9/9 termék részletes, 3/3 kategória, 4/4 nyelvi horgonyok, sötétzöld gombok szimmetrikus paddinggal, nincs vízszintes overflow, nincs levágott képaláírás, SVG-k és a valódi Alexandra-portré megmaradnak. A `#preorder` horgony a valós előrendelési blokkra visz. CI + Chromium/WebKit screenshot + Pages SHA + production reverse audit szükséges.
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
