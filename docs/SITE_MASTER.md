@@ -2,14 +2,15 @@
 
 > **Master documentation · magyar · 2026-11-21**  
 > **Repository:** [`880rzz/newvibe`](https://github.com/880rzz/newvibe)  
-> **2026-11-21-i #24-es javítás kiinduló production commitja:** `0fca811b80e21a700495ac4615718e75e04f6ae8`  
+> **#24 javítás kiinduló commitja:** `0fca811b80e21a700495ac4615718e75e04f6ae8`  
+> **#27 funkcionális kiadás (GitHub Pages + statikus CI):** `9065c114bcbf7693d0afd724e4e5da07127195b6`  
 > **Jelenlegi kanonikus host:** https://880rzz.github.io/newvibe/  
 > **Tervezett, még be nem kötött domain:** `foreverypath.com`  
 > **Nyelvek:** angol (EN), magyar (HU), német (DE), francia (FR)  
 > **Alkotó / kiadói kapcsolattartó:** Sajbán-Frőhner Alexandra  
 > **E-mailes előrendelési kapcsolat:** `diofamuhelykozosseg@gmail.com`  
 > **Termékszám:** 9 kiadványváltozat · **Indexelhető lokalizált oldalak:** 48 (4 × 12)  
-> **Állapotbesorolás:** a #17 kiadás a sötét CTA-kat, fejlécet és kártyadizájnt forrásszinten javította; az újabb 2026-11-21-i képernyőképek alapján további CTA-szimmetria, lábléc és első személyű alkotói szöveg javítás készült. Valódi mobil/desktop vizuális QA és az Impresszum jogi teljességének ellenőrzése továbbra is külön kapu.
+> **Állapotbesorolás (2026-11-21):** a #16–#27 kiadások helyreállították a négy nyelvű menüt, CTA-kat, mobilos kártyaszerkezetet és SVG-mozgást; a kilenc termék 36 részletes bemutatását, az eredeti kártyafotókat és az előrendelési navigációt. A #27 kódváltozata PR-es Chromium/WebKit és statikus QA-n átment, majd a `9065c114` commit GitHub Pages-telepítése és főági statikus CI-je sikerült. Ez **nem** jelent fizikai iPhone Safari-elfogadást vagy ebből a környezetből végzett közvetlen éles HTTP-ellenőrzést. Az Impresszum jogi adatainak véglegesítése külön, igazolt üzemeltetői adatokhoz kötött.
 
 Ez a fájl a weboldal **egyetlen átfogó, emberi és fejlesztői eligazító dokumentuma**. A pontos gépi termékadatok kanonikus forrása továbbra is a `catalog.json`, a 30 kérdés tényleges szövegének és válaszainak kanonikus forrása a `checkin-bank.js`, a megjelenített nyelvi szövegeké pedig a megfelelő HTML és JS. A dokumentum ezek használatát, egymás közötti szerződését és működését rögzíti, **nem írja felül őket**.
 
@@ -524,14 +525,14 @@ kiadás dokumentált lezárása
 
 ---
 
-## 16. Nyitott feladatok — aktuális vizuális regressziók és későbbi fejlesztések
+## 16. Nyitott igazolási kapuk és későbbi fejlesztések
 
-A kiadványok szakmai jóváhagyása ettől különálló. A fejléc, CTA-paletta, mobilos felső tér és animált kártyák megjelenítése **aktuálisan javítandó hibák**, nem opcionális későbbi fejlesztések.
+A kiadványok szakmai jóváhagyása ettől különálló. A korábban jelzett fejléc-, CTA-, mobilos felső tér- és animációs hibák **forrásoldali javítása és automatizált PR-böngészős ellenőrzése megtörtént** a #16–#27 kiadásokban. Nem szabad ezeket változatlanul nyitott fejlesztési hibaként továbbadni; a fizikai készülékes elfogadás, az éles HTTP-visszaolvasás és az üzemeltetői/jogi adatok hitelesítése még külön bizonyítékot igényel.
 
 | Téma | Mi a következő igazolási/fejlesztési feltétel? |
 | --- | --- |
-| **Aktuális vizuális regresszió** | Mélyzöld CTA, sticky header, felső térköz, árnyékolt/animált SVG-kártyák javítása és ellenőrzése |
-| Valós mobil és desktop vizuális QA | Renderelt képernyőképek és interaktív teszt 320–2560 px tartományban |
+| **Fizikai iPhone Safari-elfogadás** | Valódi készüléken az animációk, árnyékok, CTA-k, fejléc, fotók és képaláírások ellenőrzése. A Chromium/WebKit emuláció nem azonos fizikai eszközteszttel. |
+| Közvetlen production-visszaolvasás és széles breakpoint QA | Az aktuális SHA-n publikált élő oldalak külső HTTP-, képi és interakciós ellenőrzése; szükség szerint 320–2560 px további breakpointokkal. A GitHub Pages deploy-siker önmagában nem bizonyít teljes exact-live paritást. |
 | Emberi 5 másodperces érthetőségi próba | Új látogatókkal végzett rövid, dokumentált teszt |
 | Webshop/árak | Valós árazás, szerződéses és fogyasztóvédelmi feltételek, készlet/szállítás, tesztelt fizetés |
 | Jogi üzemeltető és adatvédelmi információ | Valós jogi/adatkezelési adatok, e-mailes megkeresések és külső betűkészletek elemzése |
