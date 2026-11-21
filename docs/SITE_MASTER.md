@@ -177,6 +177,12 @@ A termékoldal és a katalógus szövegei a fenti pontos jelentést hordozzák E
 
 **Ha később webshop indul:** csak akkor állítható be valós `shop_url`, `price`, strukturált `Offer`, fizetési vagy szállítási ígéret, ha az üzleti és jogi feltételek igazoltak, a rendelési folyamat valóban tesztelt, és mind a négy nyelvi felület egyezik.
 
+### 2026-11-21 – négynyelvű előrendelési hivatkozások tesztelése
+
+A `scripts/preorder-handoff-smoke.cjs` **36/36** termékoldalon ellenőrzi a `mailto:` címzettet, lokalizált tárgyat, helyes termékmegjelölést (a tanári napló eltérő borítóváltozatát is), mennyiségi mezőt, ár/fizetés/szállítás előzetes egyeztetését és azt, hogy a megkeresés **nem** visszaigazolt vásárlás. Az új `scripts/preorder-click-qa.cjs` Chromium és WebKit böngészőben 36×2 oldal megnyitásával a tényleges kattintási eseményt, a `mailto:` célpontot és a történet végéről a `#preorder` szakaszba visszavezető navigációt ellenőrzi. A böngészőteszt külső protokollhívását szándékosan elfogja; nem küld valódi e-mailt.
+
+**Bizonyítási határ:** ezek a tesztek a weboldal HTML-jét, az előre kitöltött levél adatait és a böngészős kattintást igazolják, de **nem bizonyítják** a látogató saját iPhone Mail/Gmail alkalmazásának megnyílását, a levél elküldését, kézbesítését vagy a kiadó válaszát. A fizikai eszközös, valós e-mail klienssel végzett ellenőrzés külön elfogadási kapu marad.
+
 ---
 
 ## 6. „Hogy vagy?” – a teljes funkcionális szerződés
