@@ -305,9 +305,55 @@ const entries=[
         "Que lui dirais-tu en premier ?"
       ]
     }
+  },
+  {
+    "id": "harmonica-01",
+    "book": "helyed-van-koztunk-segito-harmonika",
+    "page": 1,
+    "text": {
+      "hu": [
+        "Nem kell egyedül megoldanod.",
+        "Akkor is kérhetsz segítséget, ha nehéz elmondanod, mi történt."
+      ],
+      "en": [
+        "You don't have to work it out alone.",
+        "You can ask for help even when it's hard to say what happened."
+      ],
+      "de": [
+        "Du musst das nicht allein lösen.",
+        "Du darfst auch dann um Hilfe bitten, wenn dir schwerfällt zu erzählen, was passiert ist."
+      ],
+      "fr": [
+        "Tu n’as pas à régler ça tout seul.",
+        "Tu peux demander de l’aide même si c’est difficile de raconter ce qui s’est passé."
+      ]
+    }
+  },
+  {
+    "id": "harmonica-02",
+    "book": "helyed-van-koztunk-segito-harmonika",
+    "page": 1,
+    "text": {
+      "hu": [
+        "Leülhetsz, ihatsz vizet, kérhetsz csendet vagy szünetet.",
+        "Ha nehéz aludnod, figyelned vagy megnyugodnod, mondd el."
+      ],
+      "en": [
+        "You can sit down, have some water, or ask for quiet or a break.",
+        "If sleeping, concentrating or calming down feels hard, tell someone."
+      ],
+      "de": [
+        "Du kannst dich hinsetzen, Wasser trinken oder um Ruhe oder eine Pause bitten.",
+        "Wenn dir Schlafen, Konzentrieren oder Beruhigen schwerfällt, sag es jemandem."
+      ],
+      "fr": [
+        "Tu peux t’asseoir, boire de l’eau ou demander du calme ou une pause.",
+        "Si tu as du mal à dormir, à te concentrer ou à te calmer, dis-le à quelqu’un."
+      ]
+    }
   }
 ];
-const bookNames=Object.freeze({"egy-kis-ter":"Egy kis tér","veled-a-mindennapokban":"Veled a mindennapokban","na-most-mit-csinaljak":"Na, most mit csináljak?","helyed-van-koztunk":"Helyed van köztünk"});
+const bookNames=Object.freeze({"egy-kis-ter":"Egy kis tér","veled-a-mindennapokban":"Veled a mindennapokban","na-most-mit-csinaljak":"Na, most mit csináljak?","helyed-van-koztunk":"Helyed van köztünk","helyed-van-koztunk-segito-harmonika":"Helyed van köztünk · Segítő harmonika"});
 const pageUnits={hu:"o.",en:"p.",de:"S.",fr:"p."};
 const statusCopy={hu:"Újabb három mondat.",en:"Three new sentences.",de:"Drei neue Sätze.",fr:"Trois nouvelles phrases."};
 function secureInt(max,randomness){
