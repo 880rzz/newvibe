@@ -1,6 +1,5 @@
-/* Helyed van köztünk — authentic 63 × 88 mm PDF card art, no recreations.
- * Each visible face is an untouched print composition (trim-only WebP).
- * Component rules are scoped to these four product pages. */
+/* Helyed van köztünk — print-authentic front + editorial reverse.
+ * All component styles scoped to the product route; no print imagery replaced. */
 .fep-page .fep-card-demo{margin-block:clamp(44px,6.5vw,92px);color:#29473d}
 .fep-page .fep-demo-head{max-width:710px;margin:0 auto clamp(24px,3.5vw,44px);text-align:center}
 .fep-page .fep-demo-kicker{margin:0 0 12px;font:700 12px/1.45 "DM Sans",sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#a96857}
@@ -11,26 +10,37 @@
 .fep-page .fep-demo-card{position:relative;width:min(100%,385px);aspect-ratio:63/88;isolation:isolate}
 .fep-page .fep-demo-card-inner{position:absolute;inset:0}
 .fep-page .fep-demo-card[data-face="front"] .fep-demo-face--front,
-.fep-page .fep-demo-card[data-face="back"] .fep-demo-face--back{visibility:visible;opacity:1;transform:scale(1);pointer-events:auto;transition:opacity .32s ease,transform .32s ease,visibility 0s}
-.fep-page .fep-demo-face{position:absolute;inset:0;visibility:hidden;opacity:0;transform:scale(.985);pointer-events:none;transition:opacity .32s ease,transform .32s ease,visibility 0s linear .32s;border:1px solid rgba(54,80,66,.19);border-radius:12px;overflow:hidden;box-shadow:10px 14px 0 rgba(49,85,72,.08),0 22px 45px rgba(47,65,54,.11);background:#faf7f1}
-.fep-page .fep-demo-face img{width:100%;height:100%;display:block;object-fit:contain}
+.fep-page .fep-demo-card[data-face="back"] .fep-demo-face--back{visibility:visible;opacity:1;transform:scale(1);pointer-events:auto;transition:opacity .28s ease,transform .28s ease,visibility 0s}
+.fep-page .fep-demo-face{position:absolute;inset:0;visibility:hidden;opacity:0;transform:scale(.985);pointer-events:none;transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;border:1px solid rgba(54,80,66,.18);border-radius:12px;overflow:hidden;box-shadow:8px 12px 0 rgba(49,85,72,.055),0 20px 38px rgba(47,65,54,.10);background:#faf7f1}
+.fep-page .fep-demo-face--front img{width:100%;height:100%;display:block;object-fit:contain}
+.fep-page .fep-demo-face--back{background:#fffdf8;color:#2e473d}
+.fep-page .fep-demo-back-layout{box-sizing:border-box;display:flex;flex-direction:column;min-height:100%;height:100%;padding:clamp(18px,2.4vw,28px) clamp(18px,2.3vw,27px) clamp(17px,2.2vw,25px)}
+.fep-page .fep-demo-back-heading{margin:0 0 clamp(11px,1.4vw,18px)}
+.fep-page .fep-demo-back-meta{margin:0 0 9px;color:#916e64;font:700 10.5px/1.4 "DM Sans",sans-serif;letter-spacing:.105em;text-transform:uppercase}
+.fep-page .fep-demo-back-title{margin:0;font:600 clamp(21px,2.2vw,26px)/1.18 Fraunces,Georgia,serif;letter-spacing:-.025em;color:#2e473d;overflow-wrap:normal;word-break:normal}
+.fep-page .fep-demo-back-story{margin:0;color:#465c51;font:400 clamp(12px,1.3vw,15px)/1.62 "DM Sans",sans-serif;overflow-wrap:normal;word-break:normal}
+.fep-page .fep-demo-back-questions{margin:clamp(11px,1.5vw,20px) 0 0;padding:clamp(10px,1.25vw,17px) 0 0;border-top:1px solid rgba(46,71,61,.15)}
+.fep-page .fep-demo-back-questions-label{margin:0 0 10px;color:#916e64;font:700 10px/1.4 "DM Sans",sans-serif;text-transform:uppercase;letter-spacing:.075em}
+.fep-page .fep-demo-back-list{counter-reset:fepq;display:grid;gap:10px;margin:0;padding:0;list-style:none}
+.fep-page .fep-demo-back-list li{counter-increment:fepq;display:grid;grid-template-columns:21px minmax(0,1fr);gap:6px;color:#315548;font:600 clamp(11.8px,1.24vw,14px)/1.45 "DM Sans",sans-serif;overflow-wrap:normal;word-break:normal}
+.fep-page .fep-demo-back-list li::before{content:counter(fepq,decimal-leading-zero);font:700 10px/1.9 "DM Sans",sans-serif;letter-spacing:-.02em;color:#bc806d}
+.fep-page .fep-demo-back-footer{margin:auto 0 0;padding-top:clamp(12px,1.5vw,20px);color:#798578;font:400 clamp(10px,1.1vw,12px)/1.48 "DM Sans",sans-serif}
 .fep-page .fep-demo-flip{min-width:min(100%,270px);min-height:46px;margin-top:24px;text-align:center}
+.fep-page .fep-demo-original-trigger{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:8px 16px;margin-top:10px;border:0;background:transparent;color:#315548;text-decoration:underline;text-decoration-color:rgba(49,85,72,.34);text-underline-offset:4px;font:600 13px/1.5 "DM Sans",sans-serif;cursor:pointer}
+.fep-page .fep-demo-original-trigger[hidden]{display:none!important}
 .fep-page .fep-demo-micro{max-width:400px;margin:14px 0 0;text-align:center;font:400 12px/1.6 "DM Sans",sans-serif;color:#738076}
 .fep-page .fep-demo-explanation{min-width:0;padding:clamp(20px,3vw,38px);border-radius:20px;border:1px solid rgba(49,85,72,.17);background:#fff9ef}
 .fep-page .fep-demo-explanation h3{font:600 clamp(23px,2.3vw,31px)/1.2 Fraunces,Georgia,serif;margin:7px 0 16px;letter-spacing:-.02em;color:#29473d}
 .fep-page .fep-demo-explanation>p:not(.fep-demo-kicker){margin:0 0 16px;font:400 clamp(15px,1.5vw,17px)/1.72 "DM Sans",sans-serif;color:#586a5d}
 .fep-page .fep-demo-explanation .fep-demo-source{font-size:12px!important;line-height:1.65!important;color:#748077!important;border-top:1px solid rgba(49,85,72,.14);padding-top:16px;margin:22px 0 0!important}
-.fep-page .fep-demo-transcript{border-top:1px solid rgba(49,85,72,.16);margin-top:24px;padding-top:16px;color:#385449}
-.fep-page .fep-demo-transcript summary{cursor:pointer;min-height:44px;display:list-item;list-style:disclosure-closed inside;font:650 14px/1.6 "DM Sans",sans-serif;align-content:center}
-.fep-page .fep-demo-transcript[open] summary{list-style:disclosure-open inside}
-.fep-page .fep-demo-transcript summary:focus-visible,.fep-page .fep-demo-flip:focus-visible{outline:3px solid #c47763;outline-offset:5px}
-.fep-page .fep-demo-transcript-body{padding:12px 0 0}
-.fep-page .fep-demo-transcript-category{margin:0 0 6px!important;text-transform:uppercase;letter-spacing:.09em;font:600 11px/1.5 "DM Sans",sans-serif;color:#977065}
-.fep-page .fep-demo-transcript-title{margin:0 0 12px;font:600 21px/1.2 Fraunces,Georgia,serif;color:#52394b}
-.fep-page .fep-demo-transcript-body>p:not(.fep-demo-transcript-category){font:400 15px/1.7 "DM Sans",sans-serif;margin:0 0 16px;color:#4a5e54}
-.fep-page .fep-demo-questions{display:grid;gap:11px;margin:0;padding:0;list-style:none}
-.fep-page .fep-demo-questions li{font:600 15px/1.52 "DM Sans",sans-serif;color:#315548}
-.fep-page .fep-demo-questions li::before{content:"•";display:inline;margin-inline-end:7px;color:#be7966}
+.fep-page .fep-demo-original-dialog{box-sizing:border-box;position:fixed;inset:0;margin:auto;width:min(92vw,490px);max-width:490px;max-height:92dvh;overflow-y:auto;border:1px solid rgba(49,85,72,.2);border-radius:16px;padding:16px 20px 18px;background:#fffdf8;color:#2e473d;box-shadow:0 24px 80px rgba(20,38,28,.3)}
+.fep-page .fep-demo-original-dialog::backdrop{background:rgba(20,37,29,.72)}
+.fep-page .fep-demo-original-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 14px}
+.fep-page .fep-demo-original-dialog-heading h3{font:600 clamp(18px,2vw,23px)/1.25 Fraunces,Georgia,serif;margin:0}
+.fep-page .fep-demo-original-close{appearance:none;display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border:1px solid rgba(49,85,72,.18);background:#f3efe6;color:#315548;border-radius:50%;font:400 26px/1 "DM Sans",sans-serif;cursor:pointer}
+.fep-page .fep-demo-original-dialog img{display:block;max-width:100%;width:auto;height:auto;max-height:min(69dvh,710px);margin:auto;object-fit:contain;border-radius:4px}
+.fep-page .fep-demo-original-dialog>p{margin:12px 0 0;color:#68796e;font:400 12px/1.55 "DM Sans",sans-serif;text-align:center}
+.fep-page .fep-demo-original-trigger:focus-visible,.fep-page .fep-demo-original-close:focus-visible,.fep-page .fep-demo-flip:focus-visible{outline:3px solid #c47763;outline-offset:4px}
 @media(max-width:800px){.fep-page .fep-demo-layout{grid-template-columns:1fr;gap:34px}.fep-page .fep-demo-card{width:min(100%,385px)}.fep-page .fep-demo-explanation{max-width:580px;width:100%;margin:auto}}
-@media(max-width:390px){.fep-page .fep-demo-card{width:min(100%,303px)}.fep-page .fep-demo-explanation{padding:20px}}
+@media(max-width:390px){.fep-page .fep-demo-card{width:min(100%,303px)}.fep-page .fep-demo-back-layout{padding:15px 15px 14px}.fep-page .fep-demo-back-heading{margin-bottom:9px}.fep-page .fep-demo-back-meta{font-size:9.5px;margin-bottom:5px}.fep-page .fep-demo-back-title{font-size:21px;line-height:1.12}.fep-page .fep-demo-back-story{font-size:12px;line-height:1.42}.fep-page .fep-demo-back-questions{margin-top:9px;padding-top:9px}.fep-page .fep-demo-back-questions-label{margin-bottom:6px;font-size:9px}.fep-page .fep-demo-back-list{gap:6px}.fep-page .fep-demo-back-list li{font-size:11.7px;line-height:1.35;grid-template-columns:18px minmax(0,1fr);gap:4px}.fep-page .fep-demo-back-list li::before{font-size:9px}.fep-page .fep-demo-back-footer{padding-top:9px;font-size:10px;line-height:1.32}.fep-page .fep-demo-explanation{padding:20px}}
 @media(prefers-reduced-motion:reduce){.fep-page .fep-demo-face{transition:none!important;transform:none!important}}
