@@ -299,6 +299,13 @@ A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandr
 
 **QA/kiadás:** mind a 48 oldal catalog.css?v=10 stíluslapot használ. A scripts/product-story-smoke.cjs ellenőrzi a 36 részletes szöveget, 36 katalóguskártyát, az eredeti három kérdést, a képaláírásokat és a megszűnt általános marketingblokk hiányát. A meglévő adatvédelmi, szerkesztői jogállási, SVG-, mailto- és strukturáltadat-kapuk nem gyengíthetők. Chromium/WebKit mobil/desktop renderelt QA és production SHA ellenőrzés szükséges.
 
+## 2026-11-21 — az eredeti kártyaoldal fotógalériájának és következő lépéseinek visszaállítása
+
+A #24-es kiadás a kilenc termékből mind a négy nyelven részletes, forrásalapú (probléma → használható válasz → magyarázat → kiemelt adatok) termékoldalt hozott létre, a katalógus képaláírásának levágását pedig megoldotta. A jelen kiegészítés visszaemeli az **eredeti, 2026-11-21 előtti `Helyed van köztünk` oldal két további valódi termékfotóját** az összes HU/EN/DE/FR kártyaoldalra, lokalizált alt szövegekkel és képaláírásokkal. A források: `assets/helyed-van-koztunk-01.jpg`, `assets/helyed-van-koztunk-02.jpg`; a már meglévő hero `03.jpg` változatlan marad. Mivel az eredeti `.product-gallery` reszponzív stílus létezik a `styles.css` fájlban, nem kell új stylesheet-specifikusságot vagy cache-verziót hozzáadni.
+
+Mind a 36 termékoldal tartalmi ismertetése után egy közös, lokalizált, valódi CTA-gomb vezet a meglévő e-mailes előrendelési blokk `#preorder` horgonyára; mellette a katalógusra vezető szöveges visszalépés. A CTA nem jelenti azt, hogy online fizetés, végleges ár vagy automatikus rendelésigazolás működik. Az új linksor célja, hogy a hosszú történet után a vásárló egyértelműen visszataláljon a következő lépéshez. A korábbi `fep-product-story`, `fep-story-path`, SVG motívumok, Alexandra portréja, 48 URL, négy nyelv és `catalog.css?v=10` változatlan.
+
+A CI a 36 horgonyt és a négy valósfotó-galériát a `scripts/card-gallery-smoke.cjs` ellenőrzéssel védi. A GitHub Pages élesítése csak sikeres CI/Chromium/WebKit QA után zárható.
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
