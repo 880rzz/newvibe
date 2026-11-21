@@ -6,6 +6,9 @@ Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor 
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**
 
+## Hogy vagy? — 30 kérdés / 6 véletlenszerű
+A felnőtteknek szóló önreflexiós modul négy nyelven 30 kérdésből sorsol 6 különbözőt minden indításnál. A véletlenszám-generátor a `880rzz/helloitsme` torzításmentes `crypto.getRandomValues` / Fisher–Yates módszerén alapul; a kártyás/spirituális tartalmat és a tárolt előzményeket nem vettük át. A teljes működési leírás és az új kérdések szerkesztési szabályai: [HOGY_VAGY_30_QUESTION_SYSTEM.md](docs/HOGY_VAGY_30_QUESTION_SYSTEM.md). A válaszokat és a kapott eredményt a webhely nem menti.
+
 ## Tartalmi és UX-audit / Check-in journey
 
 A 2026. november 21-i, tíz helyben ellenőrzött nyomdai forrás alapján készült ellenőrzés: [SITE_EDITORIAL_UX_AUDIT_2026-11-21.md](docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md).
