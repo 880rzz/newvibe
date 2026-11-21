@@ -511,3 +511,28 @@ html,body.fep-page{overflow-x:clip}
 @media(max-width:850px){.fep-page .fep-story-layout{grid-template-columns:1fr}.fep-page .fep-story-facts{max-width:620px}}
 @media(max-width:570px){.fep-page .fep-story-heading{grid-template-columns:1fr;gap:15px}.fep-page .fep-story-illustration{width:102px;height:96px;padding:9px}.fep-page .fep-story-heading h2{font-size:clamp(28px,8vw,38px)}.fep-page .fep-product-story{padding-top:32px}.fep-page .fep-story-layout{gap:19px;margin-top:26px}.fep-page .fep-story-facts{transform:none}.fep-page .fep-story-copy p{font-size:16px;line-height:1.72}.fep-page .fep-card-editorial{margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.fep-page .fep-story-illustration,.fep-page .fep-story-illustration svg path,.fep-page .fep-story-illustration svg circle{animation:none!important;transform:none!important}}
+
+/* Real Alexandra portrait, from the original 800x800 WebP photographic asset.
+   Image data is embedded unmodified in a self-hosted SVG, without third-party hotlinks. */
+.fep-page .fep-portrait{position:relative;margin:0;min-width:0}
+.fep-page .fep-portrait img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:contain;border-radius:clamp(16px,2vw,25px);border:1px solid rgba(36,77,62,.12);box-shadow:11px 14px 0 rgba(36,77,62,.11),0 20px 31px rgba(36,77,62,.12);background:#e9e6df}
+.fep-page .fep-portrait figcaption{font-size:12px;line-height:1.5;color:#52645d;letter-spacing:.01em;margin:16px 0 0}
+.fep-page .fep-about-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(210px,260px);gap:clamp(25px,5vw,65px);align-items:center}
+.fep-page .fep-about-intro-copy{min-width:0}
+.fep-page .fep-about-portrait{width:100%;justify-self:end;transform:rotate(1.2deg)}
+.fep-page .fep-home-author{align-items:center;flex-wrap:wrap}
+.fep-page .fep-home-author>div{min-width:0;flex:1 1 360px}
+.fep-page .fep-home-portrait{flex:0 0 clamp(126px,13vw,162px);order:1;transform:rotate(-1.5deg)}
+.fep-page .fep-home-author>a{order:2;max-width:100%}
+@media(max-width:850px){
+ .fep-page .fep-home-author{flex-direction:column;align-items:flex-start}
+ .fep-page .fep-home-author>div{flex:0 1 auto;width:100%}
+ .fep-page .fep-home-portrait{flex:none;width:clamp(116px,30vw,150px);max-width:45%}
+ .fep-page .fep-home-author>a{order:2}
+}
+@media(max-width:650px){
+ .fep-page .fep-about-intro{grid-template-columns:minmax(0,1fr);gap:21px;align-items:start}
+ .fep-page .fep-about-portrait{max-width:245px;justify-self:start;transform:none}
+ .fep-page .fep-about-portrait img{border-radius:18px}
+ .fep-page .fep-home-portrait{max-width:160px}
+}
