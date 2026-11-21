@@ -475,3 +475,41 @@ html,body.fep-page{overflow-x:clip}
 .fep-page .fep-impressum dd a{color:#1f4a3d;text-decoration:underline;text-underline-offset:3px}
 .fep-page .fep-impressum-note{font-size:12px!important;color:#64706a!important}
 @media(max-width:700px){.fep-page .fep-footer{flex-direction:column;align-items:flex-start;gap:16px}.fep-page .fep-footer-identity{flex:none}.fep-page .fep-footer-nav{gap:10px 19px}.fep-page .fep-footer .fep-top-link{margin:0}.fep-page .fep-about-cols{margin-top:25px}}
+
+/* SVG editorial scenes, 2026-11-21. Drawn from manuscript visual cues; not extracted scans. */
+@keyframes fep-scene-float{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}50%{transform:translate3d(0,-7px,0) rotate(2deg)}}
+.fep-restored-art{position:relative}
+.fep-page .fep-motion-hero-bookmark{position:absolute;right:0;top:3%;width:clamp(55px,6.5vw,88px);height:auto;z-index:2;pointer-events:none;animation:fep-scene-float 9.7s ease-in-out infinite}
+.fep-page .fep-motion-quiz{float:right;width:clamp(84px,10vw,126px);height:auto;margin:2px 0 13px 22px;pointer-events:none}
+.fep-page .fep-home-collection-bridge>div{position:relative;min-width:0}
+.fep-page .fep-motion-collection{display:block;float:right;width:clamp(96px,12vw,154px);height:auto;margin:0 0 10px 24px;pointer-events:none}
+.fep-page .fep-home-portrait{float:right;width:clamp(84px,9vw,124px);margin:0 0 10px 22px;flex:0 0 auto;animation:fep-scene-float 11s ease-in-out infinite}
+.fep-page .fep-home-portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 25%;border-radius:11px 11px 28px 12px;box-shadow:8px 10px 0 rgba(31,74,61,.10);display:block}
+.fep-page .fep-about-intro-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,280px);align-items:center;gap:clamp(25px,5vw,75px);margin-bottom:30px}
+.fep-page .fep-about-intro-copy{min-width:0}
+.fep-page .fep-about-intro-copy .fep-lede{max-width:670px}
+.fep-page .fep-alexandra-portrait{position:relative;width:100%;max-width:280px;margin:10px 15px 22px 0}
+.fep-page .fep-alexandra-portrait>img:first-child{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 25%;display:block;border-radius:13px 15px 32px 12px;box-shadow:12px 14px 0 rgba(31,74,61,.11);background:#eee0cd}
+.fep-page .fep-alexandra-portrait .fep-portrait-accent{position:absolute;left:-29px;bottom:-30px;width:clamp(90px,12vw,129px);height:auto;pointer-events:none}
+@media(max-width:700px){
+ .fep-page .fep-about-intro-layout{grid-template-columns:minmax(0,1fr) minmax(105px,32%);align-items:start;gap:14px}
+ .fep-page .fep-alexandra-portrait{max-width:170px;margin:5px 7px 22px 0}
+ .fep-page .fep-alexandra-portrait .fep-portrait-accent{width:78px;left:-14px;bottom:-19px}
+ .fep-page .fep-home-portrait{width:96px}
+ .fep-page .fep-motion-collection{width:100px;margin-left:14px}
+ .fep-page .fep-motion-quiz{width:79px;margin-left:12px}
+}
+@media(max-width:430px){
+ .fep-page .fep-about-intro-layout{grid-template-columns:minmax(0,1fr);gap:15px}
+ .fep-page .fep-alexandra-portrait{max-width:192px;justify-self:center;margin:0 10px 32px}
+ .fep-page .fep-motion-hero-bookmark{right:3%;top:1.5%;width:64px}
+ .fep-page .fep-motion-collection{width:86px}
+}
+@media(prefers-reduced-motion:reduce){.fep-page .fep-motion-hero-bookmark,.fep-page .fep-home-portrait{animation:none!important;transform:none!important}}
+
+/* Category motifs and individual publication symbols (decorative, not product images). */
+.fep-page .fep-catalog-category{display:flow-root}
+.fep-page .fep-category-scene{float:right;width:clamp(92px,11vw,145px);height:auto;margin:-13px 0 12px 23px;pointer-events:none}
+.fep-page .fep-product-title-motif{float:right;width:clamp(88px,9vw,122px);max-width:33%;height:auto;margin:-13px 0 12px 18px;pointer-events:none}
+.fep-page .fep-product .fep-detail-list{clear:both}
+@media(max-width:570px){.fep-page .fep-category-scene{width:88px;margin:0 0 9px 12px}.fep-page .fep-product-title-motif{width:84px;margin:0 0 8px 10px}}

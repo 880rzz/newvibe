@@ -56,3 +56,10 @@ Branch → PR → CI → merge → Pages → exact-live readback → képernyők
 - Az Alexandra-bemutatkozás és a Hogyan készült? négy nyelven következetesen E/1. A 2026-11-19-i Egy kis tér 2–3. oldalai az elsődleges személyes és AI-átláthatósági források.
 - Független klinikai, terápiás, hivatalos egyházi vagy intézményi igazolást nem szabad a személyes tapasztalatból levezetni. A PDF-kéziratokat nem szabad feltölteni a publikus GitHub-repóba.
 - CI-zöld + Pages deployment + képernyőképes Safari/desktop ellenőrzés kell a végleges QA-lezáráshoz.
+
+## 2026-11-21 — SVG art-direction és hiteles portré kiegészítés
+
+- Alexandra arcképe a RAW Materials Trade csapatfotó-fájljából **bitazonosan átvett eredeti fotó**, nem új AI-képmás.
+- Nyolc új, szerkesztői SVG motívum született a nyomdai PDF-ek vizuális részleteiből, de nem pontos vektoros másolatként; a nyomdai források nem nyilvánosak.
+- Négy nyelven azonos képi szerkezet, 48/48 közös `catalog.css?v=8`; mobil és desktop QA, reduced-motion támogatás, nincs overflow.
+- Képi forrásjegyzék, SVG-pozíciók és a portré eredeti Git-azonosítója: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md).
