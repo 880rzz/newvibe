@@ -249,6 +249,11 @@ jobs:
               catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
               assert catalogue.count('class="fep-preorder-badge"')==9,(language,'preorder status count')
               assert catalogue.count('class="fep-preorder-compact"')==9,(language,'catalogue preorder links')
+              # The public availability message must be an email preorder, not an editorial review status.
+              expected_badge={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}[language]
+              expected_state={'en':'Prices to follow · Webshop coming soon','hu':'Árak hamarosan · Webshop készül','de':'Preise folgen · Webshop in Vorbereitung','fr':'Prix à venir · Boutique en préparation'}[language]
+              assert catalogue.count(f'<p class="fep-preorder-badge">{expected_badge}</p>')==len(manifest['products']),(language,'badge copy mismatch')
+              assert catalogue.count(f'<p class="fep-state">{expected_state}</p>')==len(manifest['products']),(language,'public availability mismatch')
               assert 'fep-catalog-preorder-info' in catalogue
               for product in manifest['products']:
                   slug=product['slug']
@@ -270,6 +275,8 @@ jobs:
                   home=(base/'index.html').read_text(encoding='utf-8')
                   assert home.count('class="fep-preorder-badge"')==9,(language,'home status')
                   assert home.count('class="fep-preorder-compact"')==9,(language,'home links')
+                  assert home.count(f'<p class="fep-preorder-badge">{expected_badge}</p>')==len(manifest['products']),(language,'home badge mismatch')
+                  assert home.count(f'<p class="fep-state">{expected_state}</p>')==len(manifest['products']),(language,'home availability mismatch')
               about=(base/'about/index.html').read_text(encoding='utf-8')
               assert 'fep-about-preorder' in about,(language,'missing terms in trust page')
           root_home=Path('index.html').read_text(encoding='utf-8')
