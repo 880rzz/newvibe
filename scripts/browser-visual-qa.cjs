@@ -41,6 +41,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
  await page.setViewportSize({width,height:900});
  await page.goto(origin+route(lang,kind),{waitUntil:"domcontentloaded",timeout:30000});
  await Promise.race([page.evaluate(()=>document.fonts.ready.then(()=>true)),new Promise(resolve=>setTimeout(resolve,3500))]);
+ if(kind==="about")await page.locator(".fep-alexandra-portrait > img:first-child").evaluate(img=>img.complete?true:new Promise(resolve=>{img.addEventListener("load",resolve,{once:true});img.addEventListener("error",resolve,{once:true});}));
  const snapshot=await page.evaluate(kind=>{
   const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height}};
   const header=document.querySelector(".site-header");
