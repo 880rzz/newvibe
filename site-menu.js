@@ -36,4 +36,16 @@
     if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}
     else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}
   });
+  // The original flip-card interaction, now implemented with native buttons.
+  // These cards are in normal document flow, not overlapping absolute layers.
+  document.querySelectorAll(".fep-restored-notecard").forEach(card=>{
+    const front=card.querySelector(".card-front .fep-note-text")?.textContent?.trim()||"";
+    const back=card.querySelector(".card-back .fep-note-text")?.textContent?.trim()||"";
+    card.setAttribute("aria-label",front);
+    card.addEventListener("click",()=>{
+      const flipped=card.classList.toggle("is-flipped");
+      card.setAttribute("aria-pressed",String(flipped));
+      card.setAttribute("aria-label",flipped?back:front);
+    });
+  });
 })();
