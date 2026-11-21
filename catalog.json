@@ -75,6 +75,24 @@
       "variants": "teacher_planner_cover",
       "image_path": "assets/fep-teacher-classic-concept.webp",
       "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured"
+    },
+    {
+      "id": "veled-a-mindennapokban",
+      "slug": "veled-a-mindennapokban",
+      "original_language": "hu",
+      "production_status": "print_files_only",
+      "editorial_status": "AI-assisted Hungarian prayer-journal manuscript dated 2026-11-18; independent theological review and ecclesiastical approval not verified",
+      "source_document": "Veled a mindennapokban katolikus imanaplo A5 PDF (84 pages; print source not published)",
+      "category": "Catholic prayer and reflection journal",
+      "days": 30,
+      "pages": 84,
+      "format": "A5",
+      "shop_url": null,
+      "price": null,
+      "image_type": "cover_concept_not_manufactured",
+      "variants": null,
+      "image_path": "assets/fep-veled-a-mindennapokban-concept.webp",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_Hungarian_A5_cover_not_manufactured"
     }
   ],
   "collection_image": "assets/fep-collection-concept.webp",
