@@ -53,6 +53,7 @@ jobs:
           node scripts/home-ux-smoke.cjs
           node scripts/menu-design-smoke.cjs
           node scripts/visual-design-smoke.cjs
+          node scripts/product-story-smoke.cjs
           node scripts/svg-motion-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
         run: |
@@ -187,7 +188,9 @@ jobs:
               for slug,filename in images.items():
                   html=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
                   assert filename in html,(lang,slug,'missing image')
-                  assert any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','générée par IA','Visualisation IA')), (lang,slug,'missing provenance disclosure')
+                  assert 'class="fep-concept-image"' in html,(lang,slug,'cover preview not identified')
+                  assert 'class="fep-photo-note"' in html,(lang,slug,'concept illustration must have a visible description')
+                  assert not any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','Visualisation IA','générée par IA')),(lang,slug,'outdated repetitive marketing label')
               html=(root/'products/helyed-van-koztunk.html').read_text(encoding='utf-8')
               assert 'helyed-van-koztunk-03.jpg' in html
           assert all((Path(p['image_path'])).exists() for p in manifest['products'])
@@ -284,7 +287,7 @@ jobs:
                   assert '#impressum' in foot and '#how-made' in foot,(htmlfile,'missing imprint or editorial link')
                   assert 'mailto:diofamuhelykozosseg@gmail.com' in foot,(htmlfile,'missing real contact')
                   assert not re.search(r'class="[^"]*\bbutton\b',foot),(htmlfile,'footer must contain no CTA buttons')
-                  assert 'catalog.css?v=9' in rendered,(htmlfile,'stale design CSS')
+                  assert 'catalog.css?v=10' in rendered,(htmlfile,'stale design CSS')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
 
