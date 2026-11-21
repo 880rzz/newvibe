@@ -296,7 +296,8 @@ jobs:
                   assert '#impressum' in foot and '#how-made' in foot,(htmlfile,'missing imprint or editorial link')
                   assert 'mailto:diofamuhelykozosseg@gmail.com' in foot,(htmlfile,'missing real contact')
                   assert not re.search(r'class="[^"]*\bbutton\b',foot),(htmlfile,'footer must contain no CTA buttons')
-                  assert 'catalog.css?v=11' in rendered,(htmlfile,'stale design CSS')
+                  css_version=12 if htmlfile.parent.name=='products' else 11
+                  assert f'catalog.css?v={css_version}' in rendered,(htmlfile,'stale design CSS')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
 
@@ -338,7 +339,10 @@ jobs:
               for product in manifest['products']:
                   slug=product['slug']
                   content=(base/'products'/f'{slug}.html').read_text(encoding='utf-8')
-                  assert content.count('class="fep-availability fep-preorder"')==1,(language,slug)
+                  assert content.count('class="fep-availability fep-preorder fep-preorder-final section-shell"')==1,(language,slug)
+                  assert content.count('class="button fep-preorder-more"')==1,(language,slug,'one styled catalog return')
+                  assert 'href="#preorder"' not in content,(language,slug,'no duplicate preorder jump')
+                  assert content.index('class="fep-product-story section-shell"')<content.index('id="preorder"')<content.index('<footer class="fep-footer'),(language,slug,'preorder at page end')
                   assert 'class="button button-coral fep-preorder-action"' in content and 'fep-preorder-icon' not in content
                   assert 'href="mailto:diofamuhelykozosseg@gmail.com?subject=' in content
                   matches=re.findall(r'href="(mailto:diofamuhelykozosseg@gmail.com\?subject=[^"]+)"',content)

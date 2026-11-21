@@ -49,7 +49,7 @@ for(const lang of langs){
  assert.ok(html.includes('data-demo-original-dialog'),lang+" print-original dialog preserved");
  assert.equal((html.match(/data-demo-story/g)||[]).length,1,lang+" no duplicate digital card text");
  assert.ok(!html.includes('class="fep-demo-transcript"'),lang+" duplicate transcript removed");
- assert.ok(html.includes('class="fep-availability fep-preorder"'),lang+" preorder preserved");
+ assert.ok(html.includes('class="fep-availability fep-preorder fep-preorder-final section-shell"'),lang+" final preorder preserved");
  htmlCount++;
 }
 class Element{

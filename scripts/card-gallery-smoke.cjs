@@ -8,14 +8,17 @@ for(const lang of ["en","hu","de","fr"]){
   const name=base+"products/"+slug+".html",html=fs.readFileSync(name,"utf8");checked++;
   assert.ok(html.includes('class="fep-product-story section-shell"'),name+" detailed story retained");
   assert.equal((html.match(/id="preorder"/g)||[]).length,1,name+" preorder section anchor");
-  assert.equal((html.match(/href="#preorder"/g)||[]).length,1,name+" bottom preorder return link");
-  assert.ok(html.includes('class="fep-home-actions section-shell"'),name+" usable bottom navigation");
-  assert.ok(html.includes('href="../catalog/"'),name+" localized catalog return");
+  assert.equal((html.match(/href="#preorder"/g)||[]).length,0,name+" no duplicate preorder jump");
+  assert.ok(html.includes('class="fep-availability fep-preorder fep-preorder-final section-shell"'),name+" final preorder panel");
+  assert.ok(!html.includes('class="fep-home-actions section-shell"'),name+" no obsolete bottom navigation");
+  assert.ok(html.includes('class="button fep-preorder-more" href="../catalog/"'),name+" styled catalog button");
+  assert.ok(html.lastIndexOf('id="preorder"')>html.lastIndexOf('class="fep-product-story section-shell"'),name+" preorder after story");
   if(slug==="helyed-van-koztunk"){
    galleries++;
    assert.ok(html.includes('class="product-gallery section-shell"'),name+" genuine product photo gallery");
    assert.ok(html.includes("helyed-van-koztunk-01.jpg")&&html.includes("helyed-van-koztunk-02.jpg"),name+" both historic original product photographs");
    assert.ok((html.match(/<figcaption>/g)||[]).length>=2,name+" two readable photo captions");
+   assert.ok(html.lastIndexOf('id="preorder"')>html.lastIndexOf('class="product-gallery section-shell"'),name+" preorder after gallery");
   }else{
    assert.ok(!html.includes('class="product-gallery section-shell"'),name+" no fake physical product gallery");
   }
