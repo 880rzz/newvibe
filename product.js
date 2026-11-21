@@ -2,7 +2,7 @@
 const SHOP_URL = "";
 const content = {
   hu: {
-    brandTag:"gondolatoknak, kérdéseknek, neked",menuEyebrow:"egy kis navigáció",navHome:"Kezdőlap",navAbout:"A kártyacsomagról",navContents:"Témák és használat",navShop:"Elérhetőség",crumbHome:"Egy kis hely",
+    navCollection:"Termékek",brandTag:"Minden úton van helyed.",menuEyebrow:"egy kis navigáció",navHome:"Kezdőlap",navAbout:"A kártyacsomagról",navContents:"Témák és használat",navShop:"Elérhetőség",crumbHome:"Egy kis hely",
     type:"beszélgetésindító kártyacsomag",subtitle:"Bántalmazás és kiközösítés",
     lede:"Vannak helyzetek, amelyekről nehéz elkezdeni beszélni. Ez a kártyacsomag kérdésekkel és kapaszkodókkal segít szavakat találni, segítséget kérni és meghallgatni egymást.",
     explore:"Ismerd meg a kártyákat",shopJump:"Vásárlási információ",creator:"Tervezte és összeállította: Sajbán-Frőhner Alexandra",
@@ -20,7 +20,7 @@ const content = {
     purchaseEyebrow:"a következő lépés",purchaseTitle:"Helyed van köztünk",purchaseText:"A termék webshopos elérhetősége még nincs megadva ezen az oldalon. Addig a készítőnél lehet érdeklődni.",purchaseCta:"Érdeklődés a készítőnél",purchaseShop:"Megnézem a webshopban",purchaseNote:"Árat, készletet és szállítási feltételeket a hiteles webshopadatok rendelkezésre állásáig nem tüntetünk fel.",backHome:"vissza az Egy kis hely oldalra"
   },
   en: {
-    brandTag:"for thoughts, questions, and you",menuEyebrow:"a little navigation",navHome:"Home",navAbout:"About the cards",navContents:"Topics and use",navShop:"Availability",crumbHome:"A little room",
+    navCollection:"Collection",brandTag:"Room for every journey.",menuEyebrow:"a little navigation",navHome:"Home",navAbout:"About the cards",navContents:"Topics and use",navShop:"Availability",crumbHome:"A little room",
     type:"conversation and support cards",subtitle:"Bullying, abuse and exclusion",
     lede:"Some experiences are difficult to put into words. These cards offer questions and gentle prompts to help start a conversation, ask for support and listen to one another.",
     explore:"Explore the cards",shopJump:"Purchase information",creator:"Created and compiled by Sajbán-Frőhner Alexandra",
@@ -38,7 +38,7 @@ const content = {
     purchaseEyebrow:"the next step",purchaseTitle:"Helyed van köztünk",purchaseText:"A verified online store link is not yet available on this page. You can contact the creator directly.",purchaseCta:"Contact the creator",purchaseShop:"Visit the online store",purchaseNote:"No price, stock or shipping claims are made without verified store details.",backHome:"back to A little room"
   },
   de: {
-    brandTag:"für Gedanken, Fragen und dich",menuEyebrow:"eine kleine Navigation",navHome:"Startseite",navAbout:"Über die Karten",navContents:"Themen und Anwendung",navShop:"Verfügbarkeit",crumbHome:"Ein wenig Raum",
+    navCollection:"Kollektion",brandTag:"Raum für deinen Weg.",menuEyebrow:"eine kleine Navigation",navHome:"Startseite",navAbout:"Über die Karten",navContents:"Themen und Anwendung",navShop:"Verfügbarkeit",crumbHome:"Ein wenig Raum",
     type:"Gesprächs- und Hilfekarten",subtitle:"Mobbing, Gewalt und Ausgrenzung",
     lede:"Über manche Erlebnisse zu sprechen, fällt schwer. Diese Karten bieten Fragen und Anregungen, um Worte zu finden, Hilfe zu suchen und einander zuzuhören.",
     explore:"Die Karten kennenlernen",shopJump:"Informationen zum Kauf",creator:"Konzipiert und zusammengestellt von Sajbán-Frőhner Alexandra",
@@ -56,7 +56,7 @@ const content = {
     purchaseEyebrow:"nächster Schritt",purchaseTitle:"Helyed van köztünk",purchaseText:"Ein verifizierter Webshop-Link liegt für diese Seite noch nicht vor. Bis dahin kann man die Autorin direkt kontaktieren.",purchaseCta:"Autorin kontaktieren",purchaseShop:"Zum Webshop",purchaseNote:"Ohne geprüfte Shopdaten machen wir keine Angaben zu Preis, Bestand oder Versand.",backHome:"zurück zu Ein wenig Raum"
   },
   fr: {
-    brandTag:"pour tes pensées, tes questions et toi",menuEyebrow:"une petite navigation",navHome:"Accueil",navAbout:"À propos des cartes",navContents:"Thèmes et utilisation",navShop:"Disponibilité",crumbHome:"Un peu d’espace",
+    navCollection:"Collection",brandTag:"À chacun son chemin.",menuEyebrow:"une petite navigation",navHome:"Accueil",navAbout:"À propos des cartes",navContents:"Thèmes et utilisation",navShop:"Disponibilité",crumbHome:"Un peu d’espace",
     type:"cartes de discussion et de soutien",subtitle:"Harcèlement, maltraitance et exclusion",
     lede:"Certaines expériences sont difficiles à raconter. Ces cartes proposent des questions et des pistes pour trouver les mots, demander de l’aide et s’écouter.",
     explore:"Découvrir les cartes",shopJump:"Informations d’achat",creator:"Conçu et rassemblé par Sajbán-Frőhner Alexandra",
@@ -95,7 +95,7 @@ function setProductLanguage(lang) {
   if (SHOP_URL && /^https:\/\//i.test(SHOP_URL)) {
     shopButton.href=SHOP_URL;shopButton.target="_blank";shopButton.rel="noopener noreferrer";shopButton.textContent=t.purchaseShop;
   }
-  document.title="Helyed van köztünk | New Vibe";
+  document.title="Helyed van köztünk | For Every Path";
 }
 document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setProductLanguage(btn.dataset.lang)));
 const menuToggle=document.getElementById("menuToggle"),siteMenu=document.getElementById("siteMenu"),menuClose=document.getElementById("menuClose");
