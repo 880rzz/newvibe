@@ -18,7 +18,7 @@ const pickIndex=n=>{
 };
 const card=copy.cards[pickIndex(copy.cards.length)];
 const assetBase=root.dataset.assetRoot||"";
-const set=(sel,value)=>{const e=$(sel);if(e)e.textContent=value;};
+const set=(sel,value)=>root.querySelectorAll(sel).forEach(e=>{e.textContent=value;});
 set("[data-demo-category]",card.category);
 set("[data-demo-title]",card.title);
 set("[data-demo-number]","#"+Number(card.id));
