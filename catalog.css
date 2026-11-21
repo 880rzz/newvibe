@@ -87,3 +87,17 @@
 @keyframes fep-bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-5px) rotate(-1deg)}}
 .fep-featured-grid .fep-mini-product:nth-child(2) .fep-css-cover{animation:fep-bob 8s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.fep-featured-grid .fep-mini-product .fep-css-cover{animation:none!important}}
+
+
+/* Verified AI concept photography: descriptive disclosure stays visible in every locale. */
+.fep-product-media>.fep-concept-image{display:block;max-width:540px;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:18px;box-shadow:11px 15px 0 rgba(38,50,56,.07)}
+.fep-card .fep-concept-image{width:100%;height:280px;object-fit:cover;object-position:center;display:block}
+.fep-mini-product>.fep-concept-image{display:block;width:100%;height:260px;aspect-ratio:4/3;object-fit:contain;background:#eae4d8;padding:4px}
+.fep-hero-art>.fep-collection-image{display:block;max-width:95%;height:auto;max-height:380px;object-fit:contain;border-radius:16px}
+.fep-concept-caption{position:absolute;bottom:13px;right:20px;left:20px;text-align:center;margin:0;font-size:11px;line-height:1.4;color:#435354;background:rgba(255,250,242,.9);padding:8px 12px;border-radius:8px}
+.fep-collection-banner{max-width:840px;margin:16px auto 36px;padding:0}
+.fep-collection-banner img{display:block;width:100%;height:auto;border-radius:20px;box-shadow:0 10px 28px rgba(39,50,56,.08)}
+.fep-collection-banner figcaption{font-size:12px;color:#5a676a;line-height:1.5;margin:12px 0}
+.fep-page .fep-featured-grid .fep-mini-product{overflow:hidden}
+@media(max-width:850px){.fep-hero-art>.fep-collection-image{max-height:340px}}
+@media(max-width:570px){.fep-card .fep-concept-image{height:250px}.fep-mini-product>.fep-concept-image{height:240px}.fep-concept-caption{font-size:10px;bottom:9px}}
