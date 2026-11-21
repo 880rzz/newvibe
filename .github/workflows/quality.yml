@@ -210,7 +210,8 @@ jobs:
               text=(root/'products/veled-a-mindennapokban.html').read_text(encoding='utf-8')
               assert '<h1>Veled a mindennapokban</h1>' in text
               assert '84 ' in text and 'A5' in text
-              assert 'offers' not in text.lower()
+              # Inspect structured Product data, not ordinary English wording such as "What this edition offers".
+          assert not re.search(r'["\\u0027]offers["\\u0027]\\s*:', text, flags=re.I), 'Do not publish unverified Product offers'
               assert 'diofamuhelykozosseg@gmail.com' in text
               assert 'fep-veled-a-mindennapokban-concept.webp' in (root/'catalog/index.html').read_text(encoding='utf-8')
 
