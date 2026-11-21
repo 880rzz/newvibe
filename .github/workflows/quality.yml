@@ -216,7 +216,7 @@ jobs:
               assert 'class="fep-top-link"' in rendered and 'href="#top"' in rendered, (htmlfile,'missing back-to-top link')
               assert '<body id="top"' in rendered, (htmlfile,'no target for back-to-top')
               assert '↗' not in rendered and '↑' not in rendered, (htmlfile,'Unicode arrow not replaced')
-              for anchor in re.finditer(r'<a\\b([^>]*href="[^"]*products/[^"]+\\.html"[^>]*)>([\\s\\S]*?)</a>',rendered):
+              for anchor in re.finditer(r'<a\b([^>]*href="[^"]*products/[^"]+\.html"[^>]*)>([\s\S]*?)</a>',rendered):
                   attrs,label=anchor.group(1),anchor.group(2)
                   if re.fullmatch(r'(EN|HU|DE|FR)',label.strip()):
                       assert 'fep-vector-icon' not in label and 'fep-arrow-link' not in attrs, (htmlfile,'language link should stay icon-free')
