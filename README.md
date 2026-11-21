@@ -8,6 +8,8 @@ Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor 
 
 A #16 kiadás után iPhone-képernyőképekkel jelzett **sötét CTA-k, nem rögzített fejléc, nagy felső tér és lelapult/álló gondolatkártyák** valós UI-regressziók. A javító specifikáció és kötelező vizuális ellenőrzés: [VISUAL_REMEDIATION_2026-11-21.md](docs/VISUAL_REMEDIATION_2026-11-21.md). A fő dokumentáció 8. fejezete a tartós dizájnszabályokat rögzíti. A zöld CI és GitHub Pages-build nem helyettesíti a valódi mobilos renderelt ellenőrzést.
 
+A 2026-11-21-i második iPhone-visszajelzés nyomán az oldal külön javítást kapott: a főoldali gombok szimmetrikus belső térközt, minden footer szöveges Impresszum / hogyan készült / kapcsolati linkeket kap; Alexandra szerzői oldala kézirat-alapú, első személyű EN/HU/DE/FR verzió. További részletek a [SITE_MASTER.md](docs/SITE_MASTER.md) 8. fejezetében. Az Impresszum kötelező jogi adatait a vállalkozás valós igazolásával lehet teljessé tenni.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

@@ -268,7 +268,22 @@ jobs:
               assert product_catalog.count('class="button button-ink fep-card-action"')==len(manifest['products']), (lang,'catalogue product buttons')
               assert product_catalog.count('class="button button-coral fep-preorder-compact"')==len(manifest['products']), (lang,'catalogue preorder buttons')
           assert 'fep-up-icon' in homepage and '.fep-vector-icon' in Path('catalog.css').read_text(encoding='utf-8')
-          assert 'fep-vector-icon' in Path('catalog/index.html').read_text(encoding='utf-8'), 'text-only footer links must retain vector arrows'
+          # Editorial footers intentionally use plain-text links (not CTA pills or decorative arrows).
+          # Keep the SVG product-link checks above; validate footers independently on all 48 routes.
+          for lang in langs:
+              root=Path('.') if lang=='en' else Path(lang)
+              routed=[root/'index.html',root/'catalog/index.html',root/'about/index.html',*(root/'products').glob('*.html')]
+              assert len(routed)==12,(lang,'expected twelve localized routes')
+              for htmlfile in routed:
+                  rendered=htmlfile.read_text(encoding='utf-8')
+                  footer=re.search(r'<footer class="fep-footer section-shell">([\s\S]*?)</footer>',rendered)
+                  assert footer,(htmlfile,'missing editorial footer')
+                  foot=footer.group(1)
+                  assert 'class="fep-footer-nav"' in foot,(htmlfile,'missing footer navigation')
+                  assert '#impressum' in foot and '#how-made' in foot,(htmlfile,'missing imprint or editorial link')
+                  assert 'mailto:diofamuhelykozosseg@gmail.com' in foot,(htmlfile,'missing real contact')
+                  assert not re.search(r'class="[^"]*\bbutton\b',foot),(htmlfile,'footer must contain no CTA buttons')
+                  assert 'catalog.css?v=6' in rendered,(htmlfile,'stale design CSS')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
 
