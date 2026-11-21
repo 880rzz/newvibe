@@ -513,3 +513,40 @@ html,body.fep-page{overflow-x:clip}
 .fep-page .fep-product-title-motif{float:right;width:clamp(88px,9vw,122px);max-width:33%;height:auto;margin:-13px 0 12px 18px;pointer-events:none}
 .fep-page .fep-product .fep-detail-list{clear:both}
 @media(max-width:570px){.fep-page .fep-category-scene{width:88px;margin:0 0 9px 12px}.fep-page .fep-product-title-motif{width:84px;margin:0 0 8px 10px}}
+
+
+/* Nine edition stories: illustrated editorial reading rather than repeated trust banners. */
+.fep-page .fep-product-story{position:relative;margin-top:0;margin-bottom:clamp(48px,7vw,105px);padding-top:clamp(30px,4vw,64px);padding-bottom:clamp(36px,4vw,65px);border-top:1px solid rgba(31,74,61,.15);background:linear-gradient(145deg,rgba(254,249,237,.48),rgba(247,240,226,.13));isolation:isolate}
+.fep-page .fep-story-heading{display:grid;grid-template-columns:142px minmax(0,1fr);gap:clamp(20px,3.6vw,50px);align-items:center;max-width:1080px}
+.fep-page .fep-story-heading>div:last-child{min-width:0}
+.fep-page .fep-story-heading h2{font:600 clamp(28px,3.4vw,45px)/1.12 Fraunces,serif;letter-spacing:-.035em;color:#273b35;max-width:20ch;margin:13px 0 18px;text-wrap:balance}
+.fep-page .fep-story-lead{font-size:clamp(16px,1.45vw,19px);line-height:1.65;color:#52615d;max-width:800px;margin:0}
+.fep-page .fep-story-illustration{width:136px;height:132px;display:flex;align-items:center;justify-content:center;padding:13px;background:#f5c9b5;border:1px solid rgba(44,67,52,.12);border-radius:17px 23px 19px 22px;box-shadow:8px 10px 0 rgba(31,74,61,.08),0 16px 24px rgba(31,74,61,.08);transform:rotate(-5deg);animation:fep-story-float 8s ease-in-out infinite}
+.fep-page .fep-story-illustration svg{display:block;width:100%;height:auto;overflow:visible;fill:none;stroke:#275443;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.fep-page .fep-story-illustration svg path{stroke-dasharray:450;stroke-dashoffset:0;animation:fep-story-draw 9s ease-in-out infinite}
+.fep-page .fep-story-illustration svg circle{fill:#f8e79c;animation:fep-story-pulse 5s ease-in-out infinite}
+.fep-page [data-product="egy-kis-ter"] .fep-story-illustration,.fep-page [data-product="tanari-hataridonaplo-2027-szines"] .fep-story-illustration{background:#f7df8b}
+.fep-page [data-product="helyed-van-koztunk"] .fep-story-illustration,.fep-page [data-product="mesek-a-vilag-korul"] .fep-story-illustration{background:#c2d9dc}
+.fep-page [data-product="lepesrol-lepesre-2027"] .fep-story-illustration,.fep-page [data-product="tanari-hataridonaplo-2027-letisztult"] .fep-story-illustration{background:#cbd8be}
+.fep-page [data-product="veled-a-mindennapokban"] .fep-story-illustration{background:#e7c7c7}
+.fep-page .fep-story-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,.85fr);gap:clamp(25px,5vw,75px);align-items:start;margin-top:clamp(32px,5vw,64px)}
+.fep-page .fep-story-copy{max-width:760px}
+.fep-page .fep-story-copy p{font-size:clamp(16px,1.35vw,18px);line-height:1.8;color:#414e4c;margin:0 0 21px;text-wrap:pretty;hyphens:none;overflow-wrap:normal}
+.fep-page .fep-story-facts{padding:clamp(24px,3vw,37px);background:#fff9ed;border:1px solid rgba(31,74,61,.13);border-radius:19px 25px 20px 14px;box-shadow:10px 12px 0 rgba(31,74,61,.07),0 17px 28px rgba(31,74,61,.06);transform:rotate(1deg)}
+.fep-page .fep-story-smallcap{display:block;color:#ae6958;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.fep-page .fep-story-facts ul{list-style:none;padding:0;margin:20px 0 15px}
+.fep-page .fep-story-facts li{display:flex;flex-direction:column;gap:4px;padding:13px 0;border-bottom:1px solid rgba(31,74,61,.13)}
+.fep-page .fep-story-facts li strong{color:#245345;font:600 clamp(23px,2.2vw,30px)/1.12 Fraunces,serif}
+.fep-page .fep-story-facts li span{color:#54615c;font-size:13px;line-height:1.5}
+.fep-page .fep-story-facts blockquote{margin:22px 0 0;padding:0;color:#315849;font:italic 500 clamp(18px,1.7vw,23px)/1.45 Fraunces,serif}
+@keyframes fep-story-float{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-5px) rotate(-3deg)}}
+@keyframes fep-story-draw{0%,8%,100%{stroke-dashoffset:0}43%{stroke-dashoffset:24}68%{stroke-dashoffset:0}}
+@keyframes fep-story-pulse{0%,100%{opacity:.75}50%{opacity:1}}
+/* Catalogue card previews retain the original product photography and pre-order actions. */
+.fep-page .fep-card-editorial{padding:14px 0 10px;margin:8px 0 17px;border-top:1px solid rgba(31,74,61,.13);flex:1 0 auto}
+.fep-page .fep-card-editorial p{font-size:14px;line-height:1.69;color:#465550;margin:0 0 14px}
+.fep-page .fep-card-editorial ul{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:0;padding:0}
+.fep-page .fep-card-editorial li{font-size:11px;line-height:1.4;border-radius:100px;background:#e8eee5;color:#345647;padding:6px 10px;max-width:100%}
+@media(max-width:850px){.fep-page .fep-story-layout{grid-template-columns:1fr}.fep-page .fep-story-facts{max-width:620px}}
+@media(max-width:570px){.fep-page .fep-story-heading{grid-template-columns:1fr;gap:15px}.fep-page .fep-story-illustration{width:102px;height:96px;padding:9px}.fep-page .fep-story-heading h2{font-size:clamp(28px,8vw,38px)}.fep-page .fep-product-story{padding-top:32px}.fep-page .fep-story-layout{gap:19px;margin-top:26px}.fep-page .fep-story-facts{transform:none}.fep-page .fep-story-copy p{font-size:16px;line-height:1.72}.fep-page .fep-card-editorial{margin-bottom:12px}}
+@media(prefers-reduced-motion:reduce){.fep-page .fep-story-illustration,.fep-page .fep-story-illustration svg path,.fep-page .fep-story-illustration svg circle{animation:none!important;transform:none!important}}
