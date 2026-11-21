@@ -29,13 +29,14 @@ const server=http.createServer((req,res)=>{
 const start=()=>new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
 const stop=()=>new Promise(resolve=>server.close(resolve));
 const langs=["en","hu","de","fr"];
+const productSlugs=["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"];
 const widths=[320,375,390,430,768,1024,1440];
 const failures=[];
 const checks=[];
 const near=(a,b,tolerance=1.2)=>Math.abs(a-b)<=tolerance;
 function check(value,description){checks.push(description);if(!value)failures.push(description);}
 function prefix(lang){return lang==="en"?"/":"/"+lang+"/";}
-function route(lang,kind){return prefix(lang)+(kind==="home"?"":kind+"/");}
+function route(lang,kind){return prefix(lang)+(kind==="home"?"":kind.startsWith("products/")?kind:kind+"/");}
 function outside(rect,width){return rect.left<-1||rect.right>width+1;}
 async function pageAudit(page,engine,lang,kind,width,origin){
  await page.setViewportSize({width,height:900});
@@ -87,6 +88,29 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check(snapshot.imprint,label+" visible legal-section anchor");
   check(snapshot.howMade,label+" editorial-process anchor");
  }
+ if(kind==="home"||kind==="about"){
+  const photo=await page.locator(".fep-portrait img").evaluate(el=>{
+    const r=el.getBoundingClientRect();
+    return {src:el.getAttribute("src"),width:el.naturalWidth,height:el.naturalHeight,left:r.left,right:r.right,loaded:el.complete};
+  });
+  check(photo.src.endsWith("alexandra-sajban-frohner-portrait.svg"),label+" original Alexandra source portrait");
+  check(photo.loaded&&photo.width===800&&photo.height===800,label+" embedded portrait decodes at 800x800");
+  check(photo.left>=-1&&photo.right<=width+1,label+" portrait fits viewport");
+ }
+ if(kind.startsWith("products/")){
+  const story=await page.locator(".fep-product-story").evaluate(el=>{
+   const photo=el.querySelector(".fep-story-illustration svg");
+   const a=el.querySelector(".fep-story-illustration");
+   return {paragraphs:el.querySelectorAll(".fep-story-copy p").length,facts:el.querySelectorAll(".fep-story-facts li").length,quote:!!el.querySelector("blockquote"),svg:!!photo,lang:el.dataset.editorialLocale,shadow:a?getComputedStyle(a).boxShadow:"none",animation:a?getComputedStyle(a).animationName:"none"};
+  });
+  check(story.paragraphs===3,label+" three distinct editorial paragraphs");
+  check(story.facts===3,label+" three grounded product facts");
+  check(story.quote,label+" featured editorial quote");
+  check(story.svg&&story.lang===lang,label+" unique inline SVG / localized story");
+  check(story.shadow!=="none",label+" illustrated paper card has an editorial shadow");
+  check(story.animation.includes("fep-story-float"),label+" gentle decorative SVG motion");
+  check(await page.locator(".fep-preorder-action").count()===1,label+" existing email preorder CTA retained");
+ }
  if(width===390||width===1440){
   const shot=engine+"-"+lang+"-"+kind+"-"+width;
   await page.screenshot({path:path.join(destination,shot+"-top.png"),fullPage:false,animations:"disabled"});
@@ -94,6 +118,12 @@ async function pageAudit(page,engine,lang,kind,width,origin){
    await page.locator(".fep-restored-recognition").screenshot({path:path.join(destination,shot+"-cards.png"),animations:"disabled"});
   }
   if(width===390){
+   if(kind.startsWith("products/"))await page.locator(".fep-product-story").screenshot({
+    path:path.join(destination,shot+"-editorial.png"),animations:"disabled"
+   });
+   if(kind==="about"||kind==="home")await page.locator(".fep-portrait").screenshot({
+    path:path.join(destination,shot+"-portrait.png"),animations:"disabled"
+   });
    await page.locator(".fep-footer").screenshot({path:path.join(destination,shot+"-footer.png"),animations:"disabled"});
    if(kind==="about")await page.locator("#impressum").screenshot({path:path.join(destination,shot+"-imprint.png"),animations:"disabled"});
   }
@@ -155,6 +185,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     for(const lang of langs){
      for(const width of widths)await pageAudit(page,engine,lang,"home",width,origin);
      for(const kind of ["about","catalog"])for(const width of [390,1440])await pageAudit(page,engine,lang,kind,width,origin);
+     for(const slug of productSlugs)for(const width of [390,1440])await pageAudit(page,engine,lang,"products/"+slug+".html",width,origin);
     }
    }finally{
     check(runtimeErrors.length===0,engine+" no JavaScript runtime exceptions: "+runtimeErrors.join("; "));
