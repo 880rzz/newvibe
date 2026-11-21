@@ -17,7 +17,7 @@ _2026. november 21. · Belső szerkesztői nyilvántartás, a publikus repóban 
 
 ## Kép és szerzői portré
 
-Alexandra **eredeti, 800 × 800 px-es fotója** a `strangerfake01/RawMaterialsTrade` GitHub-repó `assets/images/team/alexandra-sajban-frohner.webp` állományából származik, forrás blob SHA: `e155107f4f12a9bbf35c4f0c57b0f4df8e96f855`. A forráskép bitfolyama változtatás nélkül, helyben tárolt `assets/alexandra-sajban-frohner-portrait.svg` fájlba van beágyazva, nem távoli hotlink. Ez kizárólag fotóforrás-referencia, **nem** Raw Materials Trade vállalati kapcsolat vagy szolgáltatói együttműködés kommunikációja.
+Alexandra **eredeti, 800 × 800 px-es fotója** a `strangerfake01/RawMaterialsTrade` GitHub-repó `assets/images/team/alexandra-sajban-frohner.webp` állományából származik, forrás blob SHA: `e155107f4f12a9bbf35c4f0c57b0f4df8e96f855`. Az eredeti, módosítatlan WebP fénykép az `assets/portraits/alexandra-sajban-frohner.webp` fájlból kerül kiszolgálásra a saját tárhelyen, külső hotlink nélkül. A #20-as SVG-fejlesztés keretében a portré már szerepel a kezdőlapokon és a bemutatkozó oldalakon. Ez kizárólag fotóforrás-referencia, **nem** Raw Materials Trade vállalati kapcsolat vagy szolgáltatói együttműködés kommunikációja.
 
 ## Publikálási szabályok
 
@@ -26,4 +26,4 @@ Alexandra **eredeti, 800 × 800 px-es fotója** a `strangerfake01/RawMaterialsTr
 - A generikus „AI és szerkesztői átláthatóság” reklámblokk eltávolítva mind a 36 termékoldalról. Alexandra konkrét, első személyű tartalmi munkafolyamatának tényszerű ismertetése a bemutatkozó oldalon marad.
 - Az előrendelési e-mail csak érdeklődés; nem jelent elfogadott rendelést vagy online fizetést.
 - Privát nyomdai PDF-ek **nem tölthetők fel** a nyilvános GitHub-repóba. Nem szabad fiktív céges, licenc- vagy intézményi adatot létrehozni.
-- Közös CSS `catalog.css?v=8`, kilenc egyedi animált SVG-motívum azonos grafikával mind a négy lokalizációban; `prefers-reduced-motion` alatt mozgás nélkül teljesen látható.
+- Közös CSS `catalog.css?v=9`, kilenc egyedi animált SVG-motívum azonos grafikával mind a négy lokalizációban; `prefers-reduced-motion` alatt mozgás nélkül teljesen látható.

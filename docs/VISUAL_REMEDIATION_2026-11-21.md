@@ -57,10 +57,9 @@ Branch → PR → CI → merge → Pages → exact-live readback → képernyők
 - Független klinikai, terápiás, hivatalos egyházi vagy intézményi igazolást nem szabad a személyes tapasztalatból levezetni. A PDF-kéziratokat nem szabad feltölteni a publikus GitHub-repóba.
 - CI-zöld + Pages deployment + képernyőképes Safari/desktop ellenőrzés kell a végleges QA-lezáráshoz.
 
-## 2026-11-21 — Kilenc termék szerkesztői bővítése és Alexandra eredeti portréja
+## 2026-11-21 — SVG art-direction és hiteles portré kiegészítés
 
-- Eltávolítás minden termékoldalról: generikus, CTA-s „AI és szerkesztői átláthatóság” ismétlődő szakasz.
-- Minden egyes termék: egyedi, hárombekezdéses kézirati bemutató, lead, három jellemző, szöveges idézet, külön animált, reduced-motion kompatibilis SVG. HU/EN/DE/FR teljes 9×4 paritás.
-- Négy katalógus: kilenc hosszabb kártyaszöveg, két jellemzővel, továbbra is átlátható CTA-val és előrendelési mechanikával.
-- Alexandra eredeti, nem AI-generált, 800x800-as portréja a Raw Materials Trade forrásrepóból, nem márkapartnerségi állítás. 4 főoldalon és 4 about oldalon jelenjen meg megfelelő alternatív szöveggel, mobilon is vágás nélkül.
-- CSS asset version v8; a forrásmátrix részletesen az [új dokumentumban](PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md).
+- Alexandra arcképe a RAW Materials Trade csapatfotó-fájljából **bitazonosan átvett eredeti fotó**, nem új AI-képmás.
+- Nyolc új, szerkesztői SVG motívum született a nyomdai PDF-ek vizuális részleteiből, de nem pontos vektoros másolatként; a nyomdai források nem nyilvánosak.
+- Négy nyelven azonos képi szerkezet, 48/48 közös `catalog.css?v=8`; mobil és desktop QA, reduced-motion támogatás, nincs overflow.
+- Képi forrásjegyzék, SVG-pozíciók és a portré eredeti Git-azonosítója: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md).

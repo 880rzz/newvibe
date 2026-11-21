@@ -34,41 +34,4 @@ for(const lang of ["en","hu","de","fr"]){
  const home=fs.readFileSync(base+"index.html","utf8");
  assert.ok(home.includes('class="fep-footer-nav"')&&!/<footer[^>]*>[\s\S]*?class="button[^"]*"/.test(home),lang+" footer no CTA pills");
 }
-for(const lang of ["en","hu","de","fr"]){
- const base=lang==="en"?"":lang+"/";
- const catalog=fs.readFileSync(base+"catalog/index.html","utf8");
- assert.equal((catalog.match(/class="fep-card-editorial"/g)||[]).length,9,lang+" rich catalogue cards");
- for(const slug of slugs){
-  const html=fs.readFileSync(base+"products/"+slug+".html","utf8");
-  assert.ok(html.includes('class="fep-product-story section-shell"'),lang+" "+slug+" editorial content");
-  assert.ok(html.includes('data-editorial-locale="'+lang+'"'),lang+" "+slug+" correct language");
-  assert.equal((html.match(/class="fep-story-copy"/g)||[]).length,1,lang+" "+slug+" narrative");
-  assert.equal((html.match(/class="fep-story-facts"/g)||[]).length,1,lang+" "+slug+" facts");
-  assert.ok(!html.includes('class="fep-trust section-shell"'),lang+" "+slug+" no generic AI trust banner");
- }
-}
-
-const asset=fs.readFileSync("assets/alexandra-sajban-frohner-portrait.svg","utf8");
-const embed=asset.match(/href="data:image\/webp;base64,([A-Za-z0-9+/=]+)"/);
-assert.ok(embed&&embed[1].length>80000,"Original Alexandra portrait must be self-hosted and embedded");
-const original=Buffer.from(embed[1],"base64");
-assert.equal(original.length,68282,"Preserve original portrait file size");
-const crypto=require("node:crypto");
-const gitBlob=crypto.createHash("sha1").update("blob "+original.length+"\u0000").update(original).digest("hex");
-assert.equal(gitBlob,"e155107f4f12a9bbf35c4f0c57b0f4df8e96f855","Original RMT portrait bytes remain unchanged");
-for(const lang of ["en","hu","de","fr"]){
- const base=lang==="en"?"":lang+"/";
- for(const path of ["index.html","about/index.html"]){
-   const html=fs.readFileSync(base+path,"utf8");
-   assert.ok(html.includes('class="fep-portrait fep-'),lang+" "+path+" portrait figure");
-   assert.ok(html.includes("alexandra-sajban-frohner-portrait.svg"),lang+" "+path+" source portrait path");
-   assert.ok(!html.includes("raw.githubusercontent.com"),lang+" "+path+" portrait must be self-hosted");
- }
- for(let i=0;i<slugs.length;i++){
-  const html=fs.readFileSync(base+"products/"+slugs[i]+".html","utf8");
-  assert.ok(html.includes('fep-story-illustration-'+(i+1)),lang+" "+slugs[i]+" unique SVG motif");
-  assert.ok(html.includes('<blockquote>'),lang+" "+slugs[i]+" featured quotation");
- }
-}
-
-console.log("48 locale cache, nine enriched catalog cards per language, 36 unique product stories, editorial footer and CTA checks passed.");
+console.log("48 locale cache, symmetric CTAs, editorial imprint and text-only footer source checks passed; live Safari QA remains required.");

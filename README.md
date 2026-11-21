@@ -10,9 +10,9 @@ A #16 kiadás után iPhone-képernyőképekkel jelzett **sötét CTA-k, nem rög
 
 A 2026-11-21-i második iPhone-visszajelzés nyomán az oldal külön javítást kapott: a főoldali gombok szimmetrikus belső térközt, minden footer szöveges Impresszum / hogyan készült / kapcsolati linkeket kap; Alexandra szerzői oldala kézirat-alapú, első személyű EN/HU/DE/FR verzió. További részletek a [SITE_MASTER.md](docs/SITE_MASTER.md) 8. fejezetében. Az Impresszum kötelező jogi adatait a vállalkozás valós igazolásával lehet teljessé tenni.
 
-## Termékbemutatók és Alexandra fotója — 2026-11-21
+## SVG Motion Gallery és Alexandra valódi portréja — 2026-11-21
 
-A kilenc kiadvány HU/EN/DE/FR termékoldalán bőséges, tényszerű, személyes történettel dolgozó szerkesztői fejezet készült, a négy katalógus mind a 9 kártyája hosszabb bevezetőt kapott. A generikus AI-átláthatósági kiemelőblokk nem szerepel többé a termékoldalakon. Alexandra eredeti fotója az érintett kezdőlapokon és bemutatkozó oldalakon látható, helyi SVG-konténerbe csomagolt, eredeti WebP pixeltartalommal. Forrásrészletek és tartalmi korlátok: [forrásmátrix](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md). A PDF-kéziratok továbbra is privátak.
+Nyolc új, önálló animált SVG került a főoldal, katalógus, bemutatkozás és a kilenc kiadvány oldalának négynyelvű vizuális rendszerébe. Alexandra valódi portréja bitazonosan a RAW Materials Trade repóból lett átemelve; nem generált portré. A motívumok a nyomdai kéziratokból indulnak ki, de új szerkesztői vektoros illusztrációk, nem pontos PDF-kivonatok. [Eszközjegyzék, proveniencia és mozgásszabályok](docs/SVG_MOTION_MANIFEST.md).
 
 ## Új termék felvitele / Product onboarding
 
