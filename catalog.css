@@ -68,3 +68,22 @@
 @media(max-width:850px){.fep-head{padding:20px;gap:15px}.fep-main-nav{order:3;width:100%}.fep-hero,.fep-product-grid{grid-template-columns:1fr;gap:30px}.fep-hero{padding-top:40px;padding-bottom:65px}.fep-hero-art{max-width:610px}.fep-catalog-grid,.fep-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fep-about-cols{grid-template-columns:1fr;gap:35px}}
 @media(max-width:570px){.fep-featured-grid,.fep-catalog-grid,.fep-faq-grid{grid-template-columns:1fr}.fep-featured-collection{padding-top:55px;padding-bottom:75px}.fep-hero h1,.fep-product h1{font-size:38px}.fep-hero-art{aspect-ratio:1.15}.fep-catalog{padding-top:50px;padding-bottom:70px}.fep-card .fep-visual{min-height:235px}.fep-card img{height:235px}.fep-card .fep-css-cover{min-height:235px}.fep-product .fep-css-cover{min-height:380px}.fep-about{padding-top:55px}.fep-footer{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.fep-route path,.fep-route circle{animation:none!important}.fep-page *{transition:none!important}}
+
+
+/* Distinct original-cover treatments; these are illustrative graphics, not product photographs. */
+.fep-css-cover-warm{background:#f5eddf;color:#234d53;position:relative;overflow:hidden}
+.fep-css-cover-warm:before{content:"";position:absolute;inset:0 0 auto;height:9px;background:linear-gradient(90deg,#de7055 0 35%,#e7b845 35% 65%,#397e81 65%);opacity:.93}
+.fep-css-cover-warm:after{content:"✿";color:#df745b;position:absolute;right:18px;top:40px;font-size:37px}
+.fep-css-cover-navy{background:#233647;color:#f5f4ec;position:relative}
+.fep-css-cover-navy:before{content:"";position:absolute;inset:20px 30px auto;border-top:2px solid #cbb077;opacity:.85}
+.fep-css-cover-warm strong,.fep-css-cover-navy strong{font-size:clamp(24px,2.8vw,39px)!important;line-height:1.15}
+.fep-css-cover-warm span,.fep-css-cover-navy span{font-size:13px}
+.fep-page .fep-css-cover{overflow:hidden}
+.fep-mini-product .fep-css-cover{height:100%}
+.fep-product-media .fep-css-cover{box-shadow:10px 14px 0 rgba(39,50,56,.09)}
+.fep-photo-note{max-width:520px}
+.fep-main-nav a:hover,.fep-card a:hover{text-decoration:underline;text-underline-offset:4px}
+.fep-page .fep-head .brand small{margin-left:0;flex-basis:100%}
+@keyframes fep-bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-5px) rotate(-1deg)}}
+.fep-featured-grid .fep-mini-product:nth-child(2) .fep-css-cover{animation:fep-bob 8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.fep-featured-grid .fep-mini-product .fep-css-cover{animation:none!important}}
