@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" fill="none" role="presentation"><style><![CDATA[
+.fep-soft-move{transform-box:fill-box;transform-origin:50% 50%;animation:fep-bob 9.8s ease-in-out infinite}
+@keyframes fep-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1.4deg)}}
+@media(prefers-reduced-motion:reduce){.fep-soft-move{animation:none!important;transform:none!important}}
+]]></style><g class="fep-soft-move"><path d="M116 31c-6-15-26-17-35-6-17-15-40 4-31 23-26 7-21 38 2 40 9 26 49 15 64 6 14 14 51 23 62 4 28 4 39-32 14-43 7-19-14-40-31-28-12-17-32-12-45 4Z" fill="#a4c4cb" opacity=".45" stroke="#275245" stroke-width="3.1"/><path d="M116 82v74m-27 0h54" stroke="#275245" stroke-width="7" stroke-linecap="round"/><path d="M116 118 93 99m23 17 24-22" stroke="#275245" stroke-width="4" stroke-linecap="round"/><path d="M43 154h46m45 0h51" stroke="#d9846b" stroke-width="4" stroke-linecap="round"/><path d="m56 131 14-12 14 12" stroke="#dbb95b" stroke-width="3.2"/><circle cx="161" cy="45" r="7" fill="#d9846b"/></g></svg>
