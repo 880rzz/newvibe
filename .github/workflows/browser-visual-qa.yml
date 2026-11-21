@@ -20,7 +20,9 @@ jobs:
           npm install --no-save --ignore-scripts playwright@1.56.1
           npx playwright install --with-deps chromium webkit
       - name: Render all four languages in Chromium and WebKit
-        run: node scripts/browser-visual-qa.cjs
+        run: |
+          node scripts/browser-visual-qa.cjs
+          node scripts/gallery-render-qa.cjs
       - name: Upload rendered evidence (mobile/desktop, all locales)
         if: always()
         uses: actions/upload-artifact@v4
