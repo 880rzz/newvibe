@@ -18,6 +18,14 @@ Nyolc új, önálló animált SVG került a főoldal, katalógus, bemutatkozás 
 
 A #20 kiadás nyolc eredeti SVG-jelenete és Alexandra valódi, forrásazonos portréja megmarad. Négy kiegészítő SVG külön karaktert ad a színezőnek és a `Na, most mit csináljak?` kiadványnak, valamint visszafogott vonalrajzot a kezdőlapi kártya- és alkotói szakaszokhoz. Nincs dupla illusztráció vagy új animációs JavaScript. A részletes motívumlista, szerkesztői származás és QA: [SVG_MOTION_MANIFEST.md](docs/SVG_MOTION_MANIFEST.md).
 
+## 2026-11-21 — részletes terméktörténetek és hibátlan képaláírás
+
+Az első termékbemutató (ff44da034440) és a későbbi előrendelési verzió (6c67587d409a) három jól érthető kérdését megőrizve mind a kilenc kiadvány négy nyelven részletes bemutatót kap: felismerhető helyzet, konkrét kiadványválasz, 3 érdemi bekezdés, három ellenőrzött tény és egy emberi gondolat. A katalóguskártyák mind a négy nyelven rövid, tartalmas előnézetet és jellemzőket mutatnak.
+
+A 14:07-es iPhone-képen látható levágott képaláírás gyökéroka az overflow:hidden lekerekített képmaskon belüli pozicionálás volt. A figcaption most a képmaskon kívül áll, minden nyelven teljesen megjelenítendő. A közönségnek szánt oldalon nem ismétlődik általános technológiai szöveg; a szemléltető borítólátványok nem állíthatók késztermékfotónak, a valódi kártyafotót külön jelöljük. A tényleges eredet ellenőrzése a gépi provenienciában megmarad.
+
+Regressziós kapu: scripts/product-story-smoke.cjs, 48/48 CSS-paritás catalog.css?v=10, Chromium és WebKit renderelt QA. Részletes specifikáció: docs/SITE_MASTER.md, 8. fejezet.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

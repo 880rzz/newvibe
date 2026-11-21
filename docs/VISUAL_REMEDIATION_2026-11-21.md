@@ -63,3 +63,7 @@ Branch → PR → CI → merge → Pages → exact-live readback → képernyők
 - Nyolc új, szerkesztői SVG motívum született a nyomdai PDF-ek vizuális részleteiből, de nem pontos vektoros másolatként; a nyomdai források nem nyilvánosak.
 - Négy nyelven azonos képi szerkezet, 48/48 közös `catalog.css?v=8`; mobil és desktop QA, reduced-motion támogatás, nincs overflow.
 - Képi forrásjegyzék, SVG-pozíciók és a portré eredeti Git-azonosítója: [SVG_MOTION_MANIFEST.md](SVG_MOTION_MANIFEST.md).
+
+## 2026-11-21 — első termékkártyás szerkezet és a felirat hibájának javítása
+
+A ff44da034440 és 6c67587d409a történeti változatok három kérdéses termékbemutatójához hűen 9 termék × 4 nyelv: ismerős probléma, konkrét válasz, 3 szerkesztői bekezdés, 3 valós tény és e-mailes előrendelés. A katalógusgyűjtő lekerekített képén belüli szöveges overlay levágódott; a figcaption-t a képmaskon kívülre kell tenni. A látványterv nem állítható késztermékfotónak. Az általános ismételt technológiai blokk helyett valós, konkrét termékszöveg kell, a források belső proveniencia-adatainak elvesztése nélkül. A catalog.css?v=10 paritást, 36 termékoldalt, 36 bő katalóguskártyát és a teljes 48 oldalas QA-t ellenőrizni kell.
