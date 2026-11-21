@@ -2,7 +2,7 @@
 2026-11-21 · For Every Path / Diófa Műhely · 4-language homepage.
 
 ## Interaction
-The original “Van olyan nap, amikor ez a három mondat is elég” flip-card section is reused, not duplicated. Three **distinct** manuscript excerpt pairs are drawn in the visitor's browser when the homepage loads. The local “another three” action draws three different records (excluding the previously visible three), resets all cards to their front faces and updates their accessible labels. Every card's back contains a **second passage from the same PDF page**. No analytics, API, storage, tracking or personal data is involved. If JavaScript is unavailable, the HTML retains three genuine manuscript pairs.
+The original “Van olyan nap, amikor ez a három mondat is elég” flip-card section is reused, not duplicated. Three **distinct** manuscript excerpt pairs are drawn from **three different PDF sources** in the visitor's browser when the homepage loads. The local “another three” action draws three different records (excluding the previously visible three), resets all cards to their front faces and updates their accessible labels. Every card's back contains a **second passage from the same PDF page**. No analytics, API, storage, tracking or personal data is involved. If JavaScript is unavailable, the HTML retains three genuine manuscript pairs.
 
 ## Verified Hungarian source pages
 PDF page numbers below refer to the source files supplied for this release, not the internal book pagination.
