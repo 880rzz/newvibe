@@ -13,7 +13,8 @@ const pages=["index.html","catalog/index.html","about/index.html",...slugs.map(s
 assert.equal(pages.length,12);
 for(const path of pages){
  const page=fs.readFileSync(base+path,"utf8");
- assert.ok(page.includes("catalog.css?v=11"),lang+" "+path+" cache mismatch");
+ const expectedCss=path.startsWith("products/")?"catalog.css?v=12":"catalog.css?v=11";
+ assert.ok(page.includes(expectedCss),lang+" "+path+" cache mismatch: expected "+expectedCss);
  const footer=page.match(/<footer class="fep-footer section-shell">([\s\S]*?)<\/footer>/);
  assert.ok(footer,lang+" "+path+" footer exists");
  assert.ok(footer[1].includes('class="fep-footer-nav"'),lang+" "+path+" footer text nav");
