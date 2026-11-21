@@ -114,9 +114,9 @@ jobs:
 
           from hashlib import sha1
           expected_sha={
-              'fep-adhd-concept.webp':'df4493b3996d7592fa365d08bebc1b335494dc0c',
+              'fep-adhd-concept.webp':'238863dc9e17728f6cc25f0c8a1140bad8b72146',
               'fep-teacher-warm-concept.webp':'852e4b4a15173bc4328ca98b723d38c9b56246e2',
-              'fep-teacher-classic-concept.webp':'238863dc9e17728f6cc25f0c8a1140bad8b72146',
+              'fep-teacher-classic-concept.webp':'df4493b3996d7592fa365d08bebc1b335494dc0c',
               'fep-workbook-concept.webp':'6fa28a88245ec4a66b10b26b4a0ab677217ab897',
               'fep-collection-concept.webp':'7607405dfe1e6ef361ec0fa72f66824507c0586c',
           }
