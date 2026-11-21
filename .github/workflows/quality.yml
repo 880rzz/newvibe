@@ -49,6 +49,7 @@ jobs:
           node --check locale-router.js
           node scripts/locale-smoke.cjs
           node scripts/checkin-smoke.cjs
+          node scripts/home-ux-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
         run: |
           python3 - <<'PY'
