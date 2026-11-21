@@ -671,7 +671,7 @@ CI-kontraktus: a `scripts/card-demo-smoke.cjs` 20 determinisztikus kiválasztás
 
 ## 2026-11-21 — Menü felső térközének javítása, négy nyelven
 
-**Gyökérok:** a `.site-menu-inner` teljes viewportmagasságban `justify-content:center` mellett a navigáció függőleges középre csúszott. A 1440 × 900-as desktop referenciaképen az első felirat körülbelül 288 px alatt kezdődött. A fix `justify-content:flex-start`, a felső belső tér 36 px; mobilon (max-width:560px) 24 px. A zárógomb fixen látható marad, az első menüpont nem fed át vezérlőt.
+**Gyökérok:** a `.site-menu-inner` teljes viewportmagasságban `justify-content:center` mellett a navigáció függőleges középre csúszott. A 1440 × 900-as desktop referenciaképen az első felirat körülbelül 288 px alatt kezdődött. A fix `justify-content:flex-start`, a felső belső tér 20 px; mobilon (max-width:560px) 12 px. A zárógomb fixen látható marad, az első menüpont nem fed át vezérlőt.
 
 **Kártya:** 1120 px és legalább 620 px magas kijelzőn a `.fep-menu-moment` a menü tartalmának elejéhez igazodik (`top:clamp(50px,7vh,66px)`) a korábbi `top:50%;transform:translateY(-50%)` helyett. A keskeny nézetekben a navigáció után, normál dokumentumfolyamban marad. Sem a négy nyelvű szövegek, sem a holdfázis-kalkuláció vagy a menü működése nem változik.
 
