@@ -216,7 +216,19 @@ A `scripts/preorder-handoff-smoke.cjs` **36/36** termékoldalon ellenőrzi a `ma
 
 **Adatkezelési szerződés:** a kérdésválaszok és az eredmény **csak az aktuális kliensoldali interakcióban élnek**, nem kerülnek fel szerverre, és nem maradnak tartós tárolásban. A nyelvválasztás technikai preferenciája `fep.language` néven tárolható a böngészőben; ez **nem** tartalmazza a kérdőívre adott válaszokat.
 
-A `helloitsme` repóból kizárólag a biztonságos véletlenszám-kezelési elv került adaptálásra. A kártyalapok, ezoterikus jelentések, korábbi húzások és azok alapján történő értelmezés **nem** részei a For Every Path rendszernek.
+A `helloitsme` repóból korábban a biztonságos véletlenszám-kezelési elv került adaptálásra. A 2026-11-21-i menübővítésben a csillagászati **közelítő holdfázis-számítást** is adaptáltuk, saját For Every Path szövegekkel. A Hello It's Me lapjait, ezoterikus jelentéseit, vetéseit, inga-/SRT-funkcióit és korábbi húzások értelmezését **nem** vettük át.
+
+### 2026-11-21 – A menüben „Egy gondolat neked” + hét napos holdnaptár
+
+- **Kanonikus kód:** `site-menu.js` injektál egy `.fep-menu-moment` kártyát a meglévő, mind a **48** lokalizált HTML-oldalon közös menü belső elemébe; a dizájn forrása `catalog.css`. A HTML oldalakat nem duplikáljuk.
+- **Négy nyelv:** HU/EN/DE/FR szerkesztett, nyelvi kontextushoz igazított gondolatbank, gombfelirat, 8 fázisnév, 8 holdfázis-tematikájú gondolat és hét napos megjelenítés.
+- **Minden menünyitásnál új gondolat** jelenik meg; a „Másik gondolat” gomb újra sorsol. Az előző gondolat **nem ismétlődhet közvetlenül**. A választás kliensoldalon véletlen, nem felhasználói profil vagy viselkedés alapján történik.
+- **Holdadat:** referencia-újhold 2000. január 6. 18:14 UTC; átlagos szinodikus hónap 29,530588853 nap. 8 közelítő fázis, becsült megvilágítottság és a látogató eszközének helyi dátuma szerinti 7 egymást követő nap. Nem pontos csillagászati efemerida, nincsenek hamis pontosságú holdkelte/holdnyugta időpontok.
+- **Etikai keret:** a fázishoz kapcsolódó mondat csak jelképes gondolatindító, nem jóslat, diagnózis vagy pszichológiai tanács; ezt a kártya négy nyelven közli.
+- **Adatvédelem:** nincs hálózati hívás, harmadik fél, földrajzi helymeghatározás, cookie, analitika vagy tartós üzenet-/húzásnapló.
+- **Elhelyezés:** széles desktopon a hamburger menü üres jobb mezője; keskenyebb képernyőn a navigáció után, normál görgethető folyamban, elérhető natív gombbal és nyitható hét napos naptárral. Billentyűzetes fókuszcsapda és Escape továbbra is az eredeti menürendszer része.
+- **QA:** `scripts/menu-moment-smoke.cjs` teszteli a négy nyelvi állapotot, a nem azonnali ismétlést, a hét napos naptárt, a menü megnyitását/bezárását, és elutasítja a tartós tárolást és hálózati függést. Kötés: `.github/workflows/quality.yml`.
+
 
 **Accessibility:** az új kérdés fókuszálható, a gombok billentyűzettel kezelhetők, a haladás jelölve van. A fókusz, felolvasó és vizuális mozgás valódi böngészős ellenőrzése külön QA-feladat.
 
