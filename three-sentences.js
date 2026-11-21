@@ -366,14 +366,23 @@ function secureInt(max,randomness){
 function drawThree(lang,randomness,exclude=[]){
  if(!pageUnits[lang])throw new Error("Unsupported locale");
  if(!randomness||typeof randomness.getRandomValues!=="function")throw new Error("Secure random unavailable");
- let pool=entries.filter(item=>!exclude.includes(item.id));
- if(pool.length<3)pool=entries.slice();
- pool=pool.slice();
+ // Vary the publications, not only the sentences: all three cards come from different source PDFs.
+ const grouped=new Map();
+ const fill=(list)=>{grouped.clear();for(const item of list){
+  if(!grouped.has(item.book))grouped.set(item.book,[]);
+  grouped.get(item.book).push(item);
+ }};
+ fill(entries.filter(item=>!exclude.includes(item.id)));
+ if(grouped.size<3)fill(entries);
+ const books=[...grouped.keys()];
  for(let i=0;i<3;i++){
-  const j=i+secureInt(pool.length-i,randomness);
-  [pool[i],pool[j]]=[pool[j],pool[i]];
+  const j=i+secureInt(books.length-i,randomness);
+  [books[i],books[j]]=[books[j],books[i]];
  }
- return pool.slice(0,3);
+ return books.slice(0,3).map(book=>{
+  const pool=grouped.get(book);
+  return pool[secureInt(pool.length,randomness)];
+ });
 }
 function install(doc,randomness){
  if(!doc||!doc.documentElement)return false;
