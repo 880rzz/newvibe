@@ -1,7 +1,7 @@
 "use strict";
 const fs=require("node:fs"),assert=require("node:assert/strict");
 const slugs=["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"];
-const deprecated=["AI és szerkesztői átláthatóság","AI & Editorial Trust","AI-generated","AI-látványterv","AI-val készült","AI-közreműködés","KI-generierte","KI-Unterstützung","Visualisation IA","générée par IA","l’IA"];
+const deprecated=["AI transparency","KI-Transparenz","AI és szerkesztői átláthatóság","AI & Editorial Trust","AI-generated","AI-látványterv","AI-val készült","AI-közreműködés","KI-generierte","KI-Unterstützung","Visualisation IA","générée par IA","l’IA"];
 let routes=0,stories=0,previews=0,heroCaptions=0;
 for(const lang of ["en","hu","de","fr"]){
  const root=lang==="en"?"":lang+"/";
