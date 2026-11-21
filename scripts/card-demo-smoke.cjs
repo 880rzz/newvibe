@@ -38,26 +38,33 @@ for(const lang of langs){
  const root=lang==="en"?"../":"../../";
  assert.equal((html.match(/data-card-demo=/g)||[]).length,1,lang+" exactly one demo");
  assert.ok(html.includes('data-card-demo="'+lang+'"'),lang+" language");
- assert.ok(html.includes('href="'+root+'card-demo.css?v=2"'),lang+" revision CSS");
- assert.ok(html.includes('src="'+root+'card-demo.js?v=2"'),lang+" revision JS");
+ assert.ok(html.includes('href="'+root+'card-demo.css?v=3"'),lang+" revision CSS");
+ assert.ok(html.includes('src="'+root+'card-demo.js?v=3"'),lang+" revision JS");
  assert.ok(html.includes('data-asset-root="'+root+'assets/card-demo/"'),lang+" original print image directory");
  assert.equal((html.match(/data-demo-original-front/g)||[]).length,1,lang+" original front displayed once");
  assert.equal((html.match(/data-demo-original-back/g)||[]).length,1,lang+" original back displayed once");
  assert.ok(!html.includes('data-demo-svg'),lang+" no generated scene");
- assert.ok(html.includes('class="fep-demo-transcript"'),lang+" accessible original transcription/translation");
+ assert.ok(html.includes('class="fep-demo-back-layout"'),lang+" editorial reverse is native HTML");
+ assert.ok(html.includes('class="fep-demo-back-list"'),lang+" original questions as accessible list");
+ assert.ok(html.includes('data-demo-original-dialog'),lang+" print-original dialog preserved");
+ assert.equal((html.match(/data-demo-story/g)||[]).length,1,lang+" no duplicate digital card text");
+ assert.ok(!html.includes('class="fep-demo-transcript"'),lang+" duplicate transcript removed");
  assert.ok(html.includes('class="fep-availability fep-preorder"'),lang+" preorder preserved");
  htmlCount++;
 }
 class Element{
- constructor(){this.textContent="";this.dataset={};this.attr={};this.events={};this.alt="";this.src="";}
+ constructor(){this.textContent="";this.dataset={};this.attr={};this.events={};this.alt="";this.src="";this.hidden=false;this.open=false;}
+ showModal(){this.open=true;}
+ close(){this.open=false;}
  setAttribute(k,v){this.attr[k]=v;}
  addEventListener(k,fn){this.events[k]=fn;}
 }
 function make(locale){
- const selectors=["[data-demo-category]","[data-demo-title]","[data-demo-number]","[data-demo-story]","[data-demo-question-one]","[data-demo-question-two]","[data-demo-explanation]","[data-demo-original-front]","[data-demo-original-back]","[data-demo-flip]","[data-demo-card]","[data-demo-front]","[data-demo-back]"];
+ const selectors=["[data-demo-category]","[data-demo-title]","[data-demo-number]","[data-demo-story]","[data-demo-question-one]","[data-demo-question-two]","[data-demo-explanation]","[data-demo-original-front]","[data-demo-original-back]","[data-demo-flip]","[data-demo-card]","[data-demo-front]","[data-demo-back]","[data-demo-original-trigger]","[data-demo-original-dialog]","[data-demo-original-close]"];
  const map={};selectors.forEach(s=>map[s]=[new Element()]);map["[data-demo-explain-title]"]=[new Element(),new Element()];
  const root={dataset:{cardDemo:locale,assetRoot:"../../assets/card-demo/"},querySelector(s){return map[s]?.[0]||null;},querySelectorAll(s){return map[s]||[];}};
  map["[data-demo-card]"][0].dataset.face="front";
+ map["[data-demo-original-trigger]"][0].hidden=true;
  return {root,map};
 }
 let draws=0;
@@ -79,14 +86,22 @@ for(const locale of langs){
    assert.ok(image.alt.includes(map["[data-demo-title]"][0].textContent),locale+" accessible "+side+" text");
   }
   const flip=map["[data-demo-flip]"][0],card=map["[data-demo-card]"][0];
+  assert.ok(map["[data-demo-original-trigger]"][0].hidden,locale+" print dialog initially hidden");
   flip.events.click();
   assert.equal(card.dataset.face,"back");
+  assert.equal(map["[data-demo-original-trigger]"][0].hidden,false,locale+" show original print action after flip");
+  const originalButton=map["[data-demo-original-trigger]"][0],dialog=map["[data-demo-original-dialog]"][0];
+  originalButton.events.click();
+  assert.equal(dialog.open,true,locale+" original back image opens in dialog");
+  map["[data-demo-original-close]"][0].events.click();
+  assert.equal(dialog.open,false,locale+" original back dialog closes");
   assert.equal(flip.attr["aria-pressed"],"true");
   assert.equal(map["[data-demo-back]"][0].attr["aria-hidden"],"false");
   flip.events.click();
   assert.equal(card.dataset.face,"front");
   assert.equal(flip.attr["aria-pressed"],"false");
+  assert.equal(map["[data-demo-original-trigger]"][0].hidden,true,locale+" original print button hides on front");
   draws++;
  }
 }
-console.log("CARD_DEMO_QA",JSON.stringify({languages:4,cardPairs:5,originalPrintedImages:10,deterministicDraws:draws,verifiedSHA256:10,productPages:htmlCount,failed:0}));
+console.log("CARD_DEMO_QA",JSON.stringify({languages:4,cardPairs:5,originalPrintedImages:10,deterministicDraws:draws,verifiedSHA256:10,productPages:htmlCount,printDialogsTested:draws,editorialHTML:true,failed:0}));
