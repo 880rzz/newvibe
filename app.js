@@ -26,11 +26,26 @@ function chooseInitialLang(){
  for(const code of navigator.languages||[navigator.language]){const first=String(code).toLowerCase().split("-")[0];if(fepLangs.includes(first))return first;}
  return "en";
 }
+
+const fepQuizUi={
+ en:{quizEyebrow:"a moment to check in",quizTitle:"How are you, really, today?",quizIntro:"There is no right or wrong answer. Choose the option that feels closest to your day.",quizStart:"Begin",quizProgress:"one step at a time",quizBack:"← back",resultEyebrow:"what you might be carrying",quizAgain:"Start again"},
+ hu:{quizEyebrow:"egy kis önfigyelem",quizTitle:"Mi van most igazán veled?",quizIntro:"Nincs jó vagy rossz válasz. Csak válaszd azt, amelyik ma egy kicsit közelebb van hozzád.",quizStart:"Kezdjük el",quizProgress:"egy pillanat csak",quizBack:"← vissza",resultEyebrow:"amit most talán hordozol",quizAgain:"Megnézem még egyszer"},
+ de:{quizEyebrow:"ein kurzer Moment für dich",quizTitle:"Wie geht es dir heute wirklich?",quizIntro:"Es gibt keine richtige oder falsche Antwort. Wähle, was heute am besten zu dir passt.",quizStart:"Anfangen",quizProgress:"Schritt für Schritt",quizBack:"← zurück",resultEyebrow:"was du vielleicht gerade trägst",quizAgain:"Noch einmal"},
+ fr:{quizEyebrow:"un moment pour soi",quizTitle:"Comment vas-tu, vraiment, aujourd'hui ?",quizIntro:"Il n'y a pas de bonne ou de mauvaise réponse. Choisis ce qui te correspond aujourd'hui.",quizStart:"Commencer",quizProgress:"pas à pas",quizBack:"← retour",resultEyebrow:"ce que tu portes peut-être",quizAgain:"Recommencer"}
+};
+const fepAccessibleLabels={
+ en:{openMenu:"Open menu",closeMenu:"Close menu",scroll:"Scroll to the next section"},
+ hu:{openMenu:"Menü megnyitása",closeMenu:"Menü bezárása",scroll:"Görgess a következő szakaszhoz"},
+ de:{openMenu:"Menü öffnen",closeMenu:"Menü schließen",scroll:"Zum nächsten Abschnitt scrollen"},
+ fr:{openMenu:"Ouvrir le menu",closeMenu:"Fermer le menu",scroll:"Défiler jusqu’à la section suivante"}
+};
+for(const locale of fepLangs)Object.assign(copy[locale],fepQuizUi[locale]);
+
 let current=chooseInitialLang();
 function setLanguage(lang,remember=false){
  if(!fepLangs.includes(lang))lang="en";
  current=lang;document.documentElement.lang=lang;
- document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined)el.textContent=val});
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined){const arrow=el.querySelector(".arrow-icon");if(arrow){const first=el.firstChild;if(first&&first.nodeType===3)first.textContent=val+" ";else el.insertBefore(document.createTextNode(val+" "),arrow);}else el.textContent=val;}});document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const label=fepAccessibleLabels[lang]?.[el.dataset.i18nAria];if(label)el.setAttribute("aria-label",label);});
  document.querySelectorAll(".lang").forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",String(active));});
  document.querySelectorAll("[data-lang-link]").forEach(el=>{const target=fepLinks[el.dataset.langLink];if(target)el.href=fepBase+(lang==="en"?"":lang+"/")+target;});
  const footer=document.querySelector(".footer [data-i18n=footer]");if(footer)footer.textContent=fepExtra[lang].footer;
@@ -41,7 +56,7 @@ function setLanguage(lang,remember=false){
 document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang,true)));
 setLanguage(current);
 
-document.querySelectorAll(".note-card").forEach(card=>card.addEventListener("click",()=>card.classList.toggle("is-flipped")));
+document.querySelectorAll(".note-card").forEach(card=>{const flip=()=>{card.classList.toggle("is-flipped");card.setAttribute("aria-pressed",String(card.classList.contains("is-flipped")));};card.addEventListener("click",flip);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip();}});});
 const quizData={
 hu:{questions:[
 ["Mi történik benned, amikor végre csend lesz körülötted?",["Megkönnyebbülök, aztán rögtön jön egy újabb teendő.","Nem tudom, mit kezdjek vele.","Végre hallom, amit napközben elnyomok.","Kicsit félek tőle, mert túl sok minden előjön."]],
