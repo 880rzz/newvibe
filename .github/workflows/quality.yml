@@ -68,7 +68,7 @@ jobs:
           # For Every Path: validate all four localized routes and the expanding product registry.
           from urllib.parse import urlsplit
           langs=('en','hu','de','fr')
-          slugs=('helyed-van-koztunk','egy-kis-ter','lepesrol-lepesre-2027','tanari-hataridonaplo-2027-szines','tanari-hataridonaplo-2027-letisztult','veled-a-mindennapokban')
+          slugs=('helyed-van-koztunk','egy-kis-ter','lepesrol-lepesre-2027','tanari-hataridonaplo-2027-szines','tanari-hataridonaplo-2027-letisztult','veled-a-mindennapokban','mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo','na-most-mit-csinaljak')
           origin='https://880rzz.github.io/newvibe/'
           expected_pages=[]
           for lang in langs:
@@ -102,8 +102,8 @@ jobs:
           root=ET.parse('sitemap.xml').getroot()
           namespace={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
           locs=[i.text for i in root.findall('s:url/s:loc',namespace)]
-          assert len(locs)==len(expected_pages)==36,(len(locs),len(expected_pages))
-          assert len(set(locs))==36
+          assert len(locs)==len(expected_pages)==48,(len(locs),len(expected_pages))
+          assert len(set(locs))==48
           for f in expected_pages:
               rel=f.as_posix()
               expected=origin+('' if rel=='index.html' else rel.removesuffix('index.html'))
@@ -115,7 +115,7 @@ jobs:
           assert 'menuEyebrow">a little navigation' in homepage
           assert '@import url("https://fonts.googleapis.com' in Path('catalog.css').read_text(encoding='utf-8')
           manifest=json.loads(Path('catalog.json').read_text(encoding='utf-8'))
-          assert len(manifest['products'])==6
+          assert len(manifest['products'])==9
           assert all(p['shop_url'] is None and p['price'] is None for p in manifest['products'])
           assert manifest['planned_domain']=='foreverypath.com'
           assert 'AI' in Path('ai.txt').read_text() and 'For Every Path' in Path('llms.txt').read_text()
@@ -168,6 +168,41 @@ jobs:
               assert 'offers' not in text.lower()
               assert 'diofamuhelykozosseg@gmail.com' in text
               assert 'fep-veled-a-mindennapokban-concept.webp' in (root/'catalog/index.html').read_text(encoding='utf-8')
+
+
+          new_diofa={
+              'mesek-a-vilag-korul':(131,'fep-mesek-vilag-korul-concept.svg'),
+              'mesek-a-vilag-korul-szinezo':(42,'fep-mesek-vilag-korul-szinezo-concept.svg'),
+              'na-most-mit-csinaljak':(139,'fep-na-most-mit-csinaljak-concept.svg'),
+          }
+          for slug,(page_count,image_file) in new_diofa.items():
+              item=next((p for p in manifest['products'] if p['slug']==slug),None)
+              assert item is not None,(slug,'missing product')
+              assert item['original_language']=='hu' and item['format']=='A4'
+              assert item['number_of_pages']==page_count
+              assert item['shop_url'] is None and item['price'] is None
+              assert item['image_path']==f'assets/{image_file}'
+              svg=Path('assets',image_file).read_text(encoding='utf-8')
+              element=ET.fromstring(svg)
+              assert element.tag=='{http://www.w3.org/2000/svg}svg'
+              assert element.attrib['viewBox']=='0 0 840 1050'
+              assert '<script' not in svg and '<foreignObject' not in svg
+              assert 'not a photograph' in item['image_provenance']
+              for lang in langs:
+                  root=Path('.') if lang=='en' else Path(lang)
+                  html=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
+                  assert image_file in html and f'<h1>{item["slug"]}' not in html
+                  assert item['shop_url'] is None
+                  assert 'offers' not in html.lower()
+                  assert '84 pages' not in html, (slug,lang,'wrong imported journal facts')
+                  catalog=(root/'catalog/index.html').read_text(encoding='utf-8')
+                  assert f'products/{slug}.html' in catalog and image_file in catalog
+                  if lang!='en':
+                      home=(root/'index.html').read_text(encoding='utf-8')
+                      assert f'products/{slug}.html' in home
+          assert 'rights_and_translation_review_pending' in next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']
+          for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
+              assert link in homepage,('missing homepage Diófa feature',link)
 
           print('Site validation OK')
           PY
