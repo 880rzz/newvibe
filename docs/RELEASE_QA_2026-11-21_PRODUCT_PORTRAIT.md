@@ -11,6 +11,13 @@
 - [ ] The 42-country reader’s outstanding translation and commercial-rights questions remain represented truthfully; no invented medical, ecclesiastical or institutional endorsements.
 - [ ] No print-source PDFs or sensitive personal records committed.
 
+## Új iPhone vizuális regressziós elfogadás
+
+- [ ] Katalógusok: 4 × `figure > .fep-hero-art + figcaption`, a képaláírás az ovális képtől független, teljes szélességben látható 320/390/430 px-en.
+- [ ] Mind a 36 részletes termékoldalon 2 valódi, lokalizált, önálló `fep-story-need` panel (a helyzet és a kiadvány válasza).
+- [ ] Nincs ismétlődő generikus technológiai bizalmi szakasz a termékoldalak alján. A még digitális borítókat nem nevezünk késztermékfotónak.
+- [ ] A régebbi SVG-bővítés 12 motívuma nem veszik el a PR összevonásakor.
+
 ## Browser visual QA
 
 - [ ] GitHub Actions browser job **checks out the current PR head containing `productSlugs`** in `scripts/browser-visual-qa.cjs`. A green run of the old 2170-check test is insufficient.

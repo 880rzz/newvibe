@@ -283,6 +283,17 @@ Az előrendelési katalógus szerkesztése kilenc termékre, négy nyelvre kiter
 
 **CI/QA:** mind a 48 lokalizált HTML-oldal CSS-v9 paritás, 4×9 részletes termékleírás, 4×9 bőséges katalógus, 9 SVG-motívum, #20 8 SVG-jelenet és fotó-képellenőrzés. WebKit és Chromium renderelt kép + mobil/desktop böngészőellenőrzés külön release-kapu.
 
+### 2026-11-21 — visszaállított termékbemutató-rendszer: probléma → megoldás → tartalom
+
+**Eredeti szerkezet ellenőrizve:** a repó `728c184940` és `37ef14f560` verziójában a katalóguskártya képet, rövid rendeltetést, állapotot, termékmegnyitást és később e-mailes előrendelést tartalmazott. Az új verzió ezt kiterjeszti, nem lecseréli: eredeti borító- vagy termékfotó; rövid, konkrét katalógus-előnézet; két gyors tény; valódi CTA; majd a termékoldalon `Kinek szól? / Mi van benne? / Hogyan használd?`, továbbá külön színezett **Ismerős helyzet / Mit ad a kiadvány?** blokkok, három bekezdésnyi részletes ismertető, három kiemelt adat, gondolatindító és e-mailes előrendelés.
+
+**Rendszerszintű szabály:** mind a **9 kiadvány × 4 nyelv = 36 részletes termékoldal**, továbbá a **4 × 9** bő katalóguskártya tartalmilag önálló, nem sablonos generikus reklámszöveg. Gyerekkel kapcsolatos témában nem helyettesít gyermekvédelmi segítséget; az önreflexiós vagy ADHD-tervező nem diagnózis/terápia; egyházi jóváhagyás nem állítható igazolás nélkül. A 42 ország meséinek jogai továbbra is külön jóváhagyandók. A fizikai kiadványok magyar nyelvűek; négy nyelvű a webes ismertető, nem a nyomtatás.
+
+**Katalógus nyitóképe:** az eddigi `.fep-concept-caption` a `.fep-hero-art` ovális, `overflow:hidden` elemében volt, ezért iPhone-on a szöveg részben eltűnt. Most `<figure class="fep-catalog-hero-figure">` alatt önálló `<figcaption class="fep-catalog-figure-caption">` kerül az ovális képen **kívülre**; normál szövegfolyam, tördelés, mobilon teljes olvashatóság. Nem jelenhet meg a fotó fölött.
+
+**Képi és alkotói igazmondás:** a generikus, minden termék után ismételt „AI és szerkesztői átláthatóság” szakasz törlendő; a látogatói szöveg ne technológiát reklámozzon. A valós termékfotó és a **digitális látványterv** megkülönböztetése továbbra is kötelező. Késztermékfotót vagy független szakmai/kiadói tanúsítást csak tényleges bizonyíték alapján lehet állítani. Az alkotói bemutatkozás egyes szám első személyben marad. A belső képi forrás- és provenance-dokumentációt nem szabad az arculati egyszerűsítés miatt meghamisítani.
+
+**Vizuális és technikai ellenőrzés:** mobil 320/390/430, tablet 768, desktop 1024/1440, WebKit/Chromium; nincs caption-crop, eltakart CTA vagy vízszintes túlfolyás; minden `fep-story-need-grid` két teljes tartalmi blokkal; a 12 SVG motívum és a Raw Materials Trade-ből átvett eredeti portré sértetlen. Minden oldal egységes cache-verzióval, megőrzött canonical/hreflang/schema és e-mailes előrendelés mellett. GitHub PR → teljes CI → képernyőképes QA → merge → GitHub Pages SHA-egyezés.
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.

@@ -18,6 +18,10 @@ Nyolc új, önálló animált SVG került a főoldal, katalógus, bemutatkozás 
 
 A **kilenc eredeti magyar kiadvány** mind a négy nyelven részletes, egyedi termékismertetővel rendelkezik (36 termékoldal): kézirati motívumból épített történeti bevezető, három alapos magyarázó bekezdés, három ellenőrzött jellemző, kiemelt szerkesztői mondat és a kiadványhoz rendelt SVG-motívum. A négy katalógus összesen 36 kibővített termékkártyát tartalmaz. A feleslegesen ismételt „AI és szerkesztői átláthatóság” promóciós blokk eltávolítva a termékoldalakról; Alexandra valódi, E/1-es alkotói folyamatismertetése a bemutatkozó oldalon maradt. Megőrzött grafikai alap: a #20 kiadás nyolc eredeti SVG-jelenete, a kategória- és termékdíszek, valamint a Raw Materials Trade repóból átvett, módosítatlan Alexandra-portré, `assets/portraits/alexandra-sajban-frohner.webp`. Fájl- és állításforrások: [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md). Közös stílus: `catalog.css?v=9`.
 
+## Termékbemutató architektúra és mobil caption javítás — 2026-11-21
+
+Mind a 9 kiadvány HU/EN/DE/FR termékoldalán a kézirat alapján külön problémamegfogalmazás és konkrét kiadványválasz szerepel. A 36 hosszú bemutató és 36 részletes katalóguskártya egységes papír-alapú dizájnt kap. A katalógus kollekcióképének felirata a vágott ovális képből önálló `<figcaption>` sorba kerül. A generikus technológiai marketingblokkok megszűnnek; a digitális látványterv és a valódi fénykép származása megkülönböztethető marad. Részletek: [SITE_MASTER.md](docs/SITE_MASTER.md), [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md).
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

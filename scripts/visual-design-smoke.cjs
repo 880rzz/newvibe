@@ -38,6 +38,10 @@ for(const lang of ["en","hu","de","fr"]){
  const base=lang==="en"?"":lang+"/";
  const cat=fs.readFileSync(base+"catalog/index.html","utf8");
  assert.equal((cat.match(/class="fep-card-editorial"/g)||[]).length,9,lang+" rich catalog previews");
+ const figure=cat.match(/<figure class="fep-catalog-hero-figure">([\s\S]*?)<\/figure>/);
+ assert.ok(figure,lang+" catalog figure markup");
+ assert.ok(figure[1].includes('</div><figcaption class="fep-catalog-figure-caption">'),lang+" caption outside image clipping oval");
+ assert.ok(!figure[1].includes('class="fep-concept-caption"'),lang+" no absolute clipped caption");
  for(let i=0;i<slugs.length;i++){
   const html=fs.readFileSync(base+"products/"+slugs[i]+".html","utf8");
   assert.ok(html.includes('class="fep-product-story section-shell"'),lang+" "+slugs[i]+" detailed manuscript story");
@@ -46,6 +50,8 @@ for(const lang of ["en","hu","de","fr"]){
   assert.equal((html.match(/class="fep-story-copy"/g)||[]).length,1,lang+" "+slugs[i]+" narrative present");
   assert.equal((html.match(/class="fep-story-facts"/g)||[]).length,1,lang+" "+slugs[i]+" facts present");
   assert.ok(!html.includes('class="fep-trust section-shell"'),lang+" "+slugs[i]+" generic AI banner removed");
+  assert.equal((html.match(/class="fep-story-need fep-story-need-/g)||[]).length,2,lang+" "+slugs[i]+" problem and answer cards");
+  assert.ok(html.includes('class="fep-story-need-grid"'),lang+" "+slugs[i]+" editorial needs grid");
  }
 }
 
