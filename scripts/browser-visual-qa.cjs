@@ -47,7 +47,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   const header=document.querySelector(".site-header");
   const footer=document.querySelector(".fep-footer");
   const ctas=[...document.querySelectorAll(".fep-home-actions .button")].map(e=>{const s=getComputedStyle(e);return {text:e.textContent.trim(),rect:rect(e),scroll:e.scrollWidth,client:e.clientWidth,padLeft:parseFloat(s.paddingLeft),padRight:parseFloat(s.paddingRight),bg:s.backgroundColor}});
-  const notes=[...document.querySelectorAll(".fep-restored-notecard")].map(e=>({rect:rect(e),shadow:getComputedStyle(e).boxShadow,animation:getComputedStyle(e).animationName,svg:!!e.querySelector("svg.fep-note-doodle")}));
+  const notes=[...document.querySelectorAll(".fep-restored-notecard")].map(e=>({rect:rect(e),shadow:getComputedStyle(e).boxShadow,animation:getComputedStyle(e).animationName,svg:!!e.querySelector("svg.fep-note-doodle"),sentenceId:e.dataset.sentenceId||"",source:e.querySelector(".fep-sentence-source")?.textContent?.trim()||"",front:e.querySelector(".card-front .fep-note-text")?.textContent?.trim()||"",aria:e.getAttribute("aria-label")||"",scrollH:e.scrollHeight,clientH:e.clientHeight}));
   return {kind,lang:document.documentElement.lang,width:innerWidth,overflow:document.documentElement.scrollWidth-innerWidth,
     header:header?{rect:rect(header),position:getComputedStyle(header).position}:null,
     footer:footer?{rect:rect(footer),buttonCount:footer.querySelectorAll(".button").length,linkCount:footer.querySelectorAll(".fep-footer-nav a").length,imprint:!!footer.querySelector('a[href*="#impressum"]')}:null,
@@ -74,6 +74,9 @@ async function pageAudit(page,engine,lang,kind,width,origin){
    check(cta.bg!=="rgb(38, 50, 56)",label+" CTA "+i+" not old black");
   }
   check(snapshot.notes.length===3,label+" three original note cards");
+   check(new Set(snapshot.notes.map(card=>card.sentenceId)).size===3&&snapshot.notes.every(card=>card.sentenceId),label+" three unique source-backed sentence IDs");
+   check(snapshot.notes.every(card=>card.source.includes(" · ")&&card.front.length>9&&card.aria===card.front),label+" visible manuscript provenance and accurate accessible names");
+   check(snapshot.notes.every(card=>card.scrollH<=card.clientH+2),label+" full front sentence and source fit without clipping");
   for(const [i,card] of snapshot.notes.entries()){
    check(card.svg,label+" note "+i+" SVG decoration");
    check(card.shadow!=="none",label+" note "+i+" visible shadow");
@@ -151,6 +154,24 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check((await cards.first().getAttribute("aria-pressed"))==="false",label+" flip-card second tap");
   const restored=await faces();
   check(restored.front==="visible"&&restored.back==="hidden",label+" original face restored");
+   const beforeDraw=await cards.evaluateAll(nodes=>nodes.map(node=>node.dataset.sentenceId));
+   await page.locator("#threeSentencesAgain").click();
+   const afterDraw=await cards.evaluateAll(nodes=>nodes.map(node=>({
+     id:node.dataset.sentenceId,
+     front:node.querySelector(".card-front .fep-note-text").textContent.trim(),
+     source:node.querySelector(".fep-sentence-source").textContent.trim(),
+     label:node.getAttribute("aria-label"),
+     pressed:node.getAttribute("aria-pressed")
+   })));
+   check(afterDraw.length===3&&afterDraw.every(item=>!beforeDraw.includes(item.id)),label+" redraw uses three different manuscript sentences");
+   check(afterDraw.every(item=>item.source.includes(" · ")&&item.label===item.front&&item.pressed==="false"),label+" redraw source and ARIA labels updated");
+   await cards.first().click({force:true,position:{x:20,y:20}});
+   const newBack=await cards.first().evaluate(e=>e.querySelector(".card-back .fep-note-text").textContent.trim());
+   check((await cards.first().getAttribute("aria-label"))===newBack,label+" flipped card announces new reverse text, not stale first draw");
+   await cards.first().click({force:true,position:{x:20,y:20}});
+   await page.locator(".fep-restored-recognition").screenshot({
+     path:path.join(destination,engine+"-"+lang+"-home-390-manuscript-redraw.png"),animations:"disabled"
+   });
   const menu=page.locator("#menuToggle");
   await menu.click();
   check((await menu.getAttribute("aria-expanded"))==="true",label+" hamburger opens");

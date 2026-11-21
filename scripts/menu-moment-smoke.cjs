@@ -77,7 +77,8 @@ for(const lang of ["en","hu","de","fr"]){
     const cssRef="catalog.css?v="+expectedCssVersion;
     assert.equal(content.split(cssRef).length-1,1,lang+" "+page+" exact stylesheet version");
     assert.doesNotMatch(content,/catalog\.css\?v=(?:11|12|13)(?:[^0-9]|$)/,lang+" "+page+" no outdated shared CSS references");
-    assert.equal((content.match(/site-menu\.js\?v=2/g)||[]).length,1,lang+" "+page+" latest menu script");
+     const expectedMenuVersion=page==="index.html"?3:2;
+     assert.equal(content.split("site-menu.js?v="+expectedMenuVersion).length-1,1,lang+" "+page+" latest menu script");
     assert.doesNotMatch(content,/catalog\.css\?v=10|site-menu\.js\?v=1/,lang+" "+page+" no stale asset URL");
     checked++;
   }

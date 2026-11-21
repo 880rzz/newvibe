@@ -48,6 +48,8 @@ jobs:
           node --check product.js
           node --check locale-router.js
           node --check site-menu.js
+          node --check three-sentences.js
+          node scripts/three-sentences-smoke.cjs
           node --check scripts/live-pages-source-parity.cjs
           node scripts/locale-smoke.cjs
           node scripts/checkin-smoke.cjs
