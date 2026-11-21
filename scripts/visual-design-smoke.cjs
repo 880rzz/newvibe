@@ -13,7 +13,7 @@ const pages=["index.html","catalog/index.html","about/index.html",...slugs.map(s
 assert.equal(pages.length,12);
 for(const path of pages){
  const page=fs.readFileSync(base+path,"utf8");
- const expectedCss=path.startsWith("products/")?"catalog.css?v=12":"catalog.css?v=11";
+ const expectedCss=path==="about/index.html"?"catalog.css?v=13":path.startsWith("products/")?"catalog.css?v=12":"catalog.css?v=11";
  assert.ok(page.includes(expectedCss),lang+" "+path+" cache mismatch: expected "+expectedCss);
  const footer=page.match(/<footer class="fep-footer section-shell">([\s\S]*?)<\/footer>/);
  assert.ok(footer,lang+" "+path+" footer exists");
@@ -35,4 +35,6 @@ for(const lang of ["en","hu","de","fr"]){
  const home=fs.readFileSync(base+"index.html","utf8");
  assert.ok(home.includes('class="fep-footer-nav"')&&!/<footer[^>]*>[\s\S]*?class="button[^"]*"/.test(home),lang+" footer no CTA pills");
 }
+assert.match(css,/\.fep-page \.fep-alexandra-portrait\{[^}]*max-width:500px/,"author portrait max width");
+assert.match(css,/\.fep-page \.fep-alexandra-portrait>img:first-child\{[^}]*aspect-ratio:1\/1/,"uncropped square original photograph");
 console.log("48 locale cache, symmetric CTAs, text-only footer and first-person intro source checks passed.");

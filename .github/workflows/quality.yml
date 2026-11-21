@@ -296,7 +296,7 @@ jobs:
                   assert '#impressum' in foot and '#how-made' in foot,(htmlfile,'missing imprint or editorial link')
                   assert 'mailto:diofamuhelykozosseg@gmail.com' in foot,(htmlfile,'missing real contact')
                   assert not re.search(r'class="[^"]*\bbutton\b',foot),(htmlfile,'footer must contain no CTA buttons')
-                  css_version=12 if htmlfile.parent.name=='products' else 11
+                  css_version=13 if htmlfile.parent.name=='about' else (12 if htmlfile.parent.name=='products' else 11)
                   assert f'catalog.css?v={css_version}' in rendered,(htmlfile,'stale design CSS')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
