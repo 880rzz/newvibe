@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 110" fill="none" role="presentation"><style><![CDATA[
+.fep-soft-move{transform-box:fill-box;transform-origin:50% 50%;animation:fep-bob 9.8s ease-in-out infinite}
+@keyframes fep-bob{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-4px) rotate(1.4deg)}}
+@media(prefers-reduced-motion:reduce){.fep-soft-move{animation:none!important;transform:none!important}}
+]]></style><g class="fep-soft-move"><path d="M6 60C60 19 107 107 158 54S233 53 234 53" stroke="#275245" stroke-width="3" stroke-linecap="round"/><circle cx="115" cy="73" r="6" fill="#d9846b"/><circle cx="174" cy="38" r="5" fill="#dbb95b"/></g></svg>
