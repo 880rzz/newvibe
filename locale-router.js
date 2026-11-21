@@ -3,7 +3,7 @@
    Never use IP geolocation; preserve localized, independently indexable URLs. */
 (() => {
   const SUPPORTED = new Set(["en", "hu", "de", "fr"]);
-  const BASE = "/newvibe/";
+  const BASE = /\.github\.io$/i.test(location.hostname) ? "/newvibe/" : "/";
   const currentPath = location.pathname;
   if (!currentPath.startsWith(BASE)) return;
   const relative = currentPath.slice(BASE.length);
