@@ -55,6 +55,13 @@ const fepAccessibleLabels={
  fr:{openMenu:"Ouvrir le menu",closeMenu:"Fermer le menu",scroll:"Défiler jusqu’à la section suivante"}
 };
 for(const locale of fepLangs)Object.assign(fepQuizUi[locale],({"en":{"quizIntro":"Six short questions to notice how today feels. There are no right or wrong answers.","quizBoundary":"A voluntary reflection for adults, not a psychological test or diagnosis. Answers are not saved or sent.","quizResultNote":"This is one possible reflection, not a diagnosis or a judgement. You choose what, if anything, to explore next.","quizNextTitle":"If you would like to explore further:","quizCatalogCta":"Browse the entire collection","quizProductCta":"Explore the Egy kis tér workbook","quizBrowseCta":"Browse the collection at your own pace","menuQuiz":"How are you?"},"hu":{"quizIntro":"Hat rövid kérdés arról, hogy ma mi foglalkoztat. Nincs jó vagy rossz válasz.","quizBoundary":"Szabadon választható, felnőtteknek szóló önreflexió, nem pszichológiai teszt vagy diagnózis. A válaszokat nem mentjük és nem küldjük el.","quizResultNote":"Ez csak egy lehetséges gondolatindító, nem minősítés vagy diagnózis. Te döntöd el, innen merre mennél tovább.","quizNextTitle":"Ha szívesen lapoznál tovább:","quizCatalogCta":"A teljes kiadványgyűjtemény","quizProductCta":"Ismerd meg az Egy kis tér munkafüzetet","quizBrowseCta":"Nézz körül a kiadványok között","menuQuiz":"Hogy vagy?"},"de":{"quizIntro":"Sechs kurze Fragen, um wahrzunehmen, was dich heute beschäftigt. Es gibt keine richtigen oder falschen Antworten.","quizBoundary":"Eine freiwillige Reflexion für Erwachsene, kein psychologischer Test und keine Diagnose. Antworten werden weder gespeichert noch übermittelt.","quizResultNote":"Dies ist nur ein möglicher Denkanstoß, keine Bewertung und keine Diagnose. Du entscheidest, ob du weiterlesen möchtest.","quizNextTitle":"Wenn du weiterlesen möchtest:","quizCatalogCta":"Die gesamte Kollektion ansehen","quizProductCta":"Das Arbeitsheft Egy kis tér kennenlernen","quizBrowseCta":"In Ruhe durch die Kollektion stöbern","menuQuiz":"Wie geht es dir?"},"fr":{"quizIntro":"Six petites questions pour prendre conscience de ce qui compte aujourd'hui. Il n'y a pas de bonne ou de mauvaise réponse.","quizBoundary":"Une réflexion facultative pour adultes, ni test psychologique ni diagnostic. Les réponses ne sont ni enregistrées ni transmises.","quizResultNote":"Il s'agit simplement d'une piste de réflexion, pas d'un jugement ni d'un diagnostic. Libre à vous de poursuivre ou non.","quizNextTitle":"Si vous souhaitez poursuivre:","quizCatalogCta":"Découvrir toute la collection","quizProductCta":"Découvrir le carnet Egy kis tér","quizBrowseCta":"Parcourir librement la collection","menuQuiz":"Comment allez-vous ?"}})[locale]);
+const fepCheckinRandomCopy={
+ en:{quizIntro:"Each time, six different questions are randomly drawn from a bank of thirty. There is no right or wrong answer.",quizAgain:"Another six questions"},
+ hu:{quizIntro:"Minden alkalommal harminc kérdésből véletlenszerűen hat különbözőt kapsz. Nincs jó vagy rossz válasz.",quizAgain:"Másik hat kérdés"},
+ de:{quizIntro:"Bei jedem Durchgang werden sechs unterschiedliche Fragen zufällig aus dreißig gezogen. Es gibt keine richtigen oder falschen Antworten.",quizAgain:"Sechs neue Fragen"},
+ fr:{quizIntro:"À chaque fois, six questions différentes sont tirées au hasard parmi trente. Il n'y a pas de bonne ou de mauvaise réponse.",quizAgain:"Six autres questions"}
+};
+for(const locale of fepLangs)Object.assign(fepQuizUi[locale],fepCheckinRandomCopy[locale]);
 for(const locale of fepLangs)Object.assign(copy[locale],fepQuizUi[locale]);
 
 // Email-only pre-order requests; no payment, reservation, stock or Offer markup.
@@ -101,49 +108,25 @@ if(new URLSearchParams(location.search).has("lang")){
 
 document.querySelectorAll(".note-card").forEach(card=>{const flip=()=>{card.classList.toggle("is-flipped");card.setAttribute("aria-pressed",String(card.classList.contains("is-flipped")));};card.addEventListener("click",flip);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip();}});});
 const quizData={
-hu:{questions:[
-["Mi történik benned, amikor végre csend lesz körülötted?",["Megkönnyebbülök, aztán rögtön jön egy újabb teendő.","Nem tudom, mit kezdjek vele.","Végre hallom, amit napközben elnyomok.","Kicsit félek tőle, mert túl sok minden előjön."]],
-["Melyik mondat áll ma hozzád a legközelebb?",["Mindenki számít rám.","Jó lenne végre elindulni valamiben.","Nem tudom pontosan, mire van szükségem.","Csak egy kis levegőt szeretnék."]],
-["Mi az, amit a leggyakrabban későbbre hagysz?",["A saját dolgaimat.","A döntéseimet.","A pihenést.","A beszélgetést arról, ami fáj."]],
-["Ha lenne most egy teljesen üres órád, mire használnád?",["Rendet raknék magam körül.","Kitalálnám, mi legyen a következő lépés.","Csak lennék egy kicsit.","Leírnám, amit nem tudok kimondani."]],
-["Mi segítene most a legtöbbet?",["Ha valaki levenne rólam valamit.","Ha nem kellene mindent egyedül kitalálnom.","Ha nem kellene teljesítenem.","Ha végre megérteném, mi zajlik bennem."]],
-["Melyik mondatot lenne jó ma elhinni?",["Nem kell mindent nekem tartanom.","Lehet lassan is.","A bizonytalanság nem kudarc.","Amit érzek, annak lehet helye."]]],
+hu:{questions:globalThis.fepCheckinBank.questions.hu,
 results:[
 ["Ma sok minden rajtad van","Sok minden rajtad múlik, ezért könnyű elfelejteni, hogy neked is lehet szükséged megtartásra. Talán most nem újabb feladatra, hanem egy kis tehermentesítésre vágysz.","Mi az, amit ma nem kellene egyedül továbbvinned?"],
 ["Egy következő, kicsi lépés","Benned már mozog valami, csak még nem kapott nevet. Nem kell most azonnal döntened. Elég lehet észrevenni, merre húz a figyelmed.","Mi az a következő apró lépés, amely nem sürget, csak hív?"],
 ["Egy kis szabad tér","Nem biztos, hogy több struktúrára van szükséged. Lehet, hogy először olyan helyre, ahol nem kell hasznosnak, erősnek vagy késznek lenned.","Milyen lenne ma tíz perc, amelynek semmi más célja nincs?"],
 ["Egy mondat, amelynek hely kell","Van benned valami, ami figyelmet kér. Nem kell rögtön megoldani vagy szépen elmagyarázni. Talán az első lépés csak annyi, hogy elismered: ott van.","Mi az az egy mondat, amelyet magadnak már el tudnál mondani?"]]},
-en:{questions:[
-["What happens inside you when the world finally goes quiet?",["I feel relief, then another task appears.","I don't know what to do with the silence.","I can finally hear what I push down during the day.","I feel a little afraid of what might come up."]],
-["Which sentence feels closest today?",["Everyone is counting on me.","I would like to finally begin something.","I am not sure what I need.","I just want a little air."]],
-["What do you postpone most often?",["My own things.","My decisions.","Rest.","The conversation about what hurts."]],
-["If you had one completely empty hour, what would you do?",["Put things in order around me.","Figure out the next step.","Simply be for a while.","Write down what I cannot say."]],
-["What would help most right now?",["If someone took something off my plate.","If I didn't have to figure everything out alone.","If I didn't have to perform.","If I understood what is happening inside me."]],
-["Which sentence would be good to believe today?",["I don't have to carry everything.","It is okay to go slowly.","Uncertainty is not failure.","What I feel is allowed to have a place."]]],
+en:{questions:globalThis.fepCheckinBank.questions.en,
 results:[
 ["A day with many responsibilities","A lot depends on you, so it is easy to forget that you also deserve support. Maybe you are not looking for another task, but for some relief.","What is one thing you do not have to carry alone today?"],
 ["A possible next step","Something is already moving in you, it just has not found its name yet. You do not have to decide immediately.","What small next step could gently call you forward?"],
 ["A moment with some room","You may not need more structure first. You may need a place where you do not have to be useful, strong, or ready.","What would ten minutes with no purpose feel like today?"],
 ["A sentence waiting for space","Something in you is asking for attention. It does not need to be solved or explained beautifully yet.","What is one sentence you could say to yourself today?"]]},
-de:{questions:[
-["Was passiert in dir, wenn es endlich ruhig wird?",["Ich bin erleichtert, aber sofort fällt mir Neues ein.","Ich weiß nicht, was ich mit der Stille anfangen soll.","Ich bemerke endlich, was tagsüber untergeht.","Ein wenig Angst, weil so viel auftaucht."]],
-["Welcher Satz passt heute am ehesten?",["Alle verlassen sich auf mich.","Ich möchte endlich irgendwo anfangen.","Ich weiß gerade nicht, was ich brauche.","Ich bräuchte einfach eine Pause."]],
-["Was verschiebst du am häufigsten?",["Meine eigenen Dinge.","Entscheidungen.","Pausen.","Ein schwieriges Gespräch."]],
-["Was würdest du mit einer freien Stunde machen?",["Ein wenig Ordnung schaffen.","Den nächsten Schritt überlegen.","Einfach nur da sein.","Aufschreiben, was ich nicht sagen kann."]],
-["Was würde dir heute am meisten helfen?",["Wenn jemand mir etwas abnimmt.","Wenn ich nicht alles allein planen müsste.","Wenn ich nicht leisten müsste.","Wenn ich meine Gefühle besser verstünde."]],
-["Was wäre heute ein hilfreicher Gedanke?",["Ich muss nicht alles tragen.","Ich darf langsam vorgehen.","Unsicherheit ist kein Scheitern.","Meine Gefühle dürfen Platz haben."]]],
+de:{questions:globalThis.fepCheckinBank.questions.de,
 results:[
 ["Heute ist vieles auf deinen Schultern","Du kümmerst dich um vieles. Vielleicht brauchst du gerade Entlastung statt einer weiteren Aufgabe.","Was könntest du heute abgeben?"],
 ["Ein möglicher nächster Schritt","Ein neuer Schritt muss nicht groß sein. Du musst heute nicht alles entscheiden.","Was wäre ein machbarer nächster Schritt?"],
 ["Ein Moment nur für dich","Vielleicht brauchst du zuerst einen Moment ohne Erwartungen.","Wie fühlen sich zehn Minuten ohne Ziel an?"],
 ["Ein Satz, der noch Zeit braucht","Nicht alles muss sofort erklärt werden. Du darfst erst einmal bemerken, was da ist.","Welchen Satz kannst du dir selbst schon sagen?"]]},
-fr:{questions:[
-["Que ressens-tu quand tout devient enfin calme ?",["Du soulagement, puis une nouvelle tâche arrive.","Je ne sais pas quoi faire du silence.","J'entends enfin ce que j'ignorais.","Une petite peur de ce qui remonte."]],
-["Quelle phrase te ressemble aujourd'hui ?",["Tout le monde compte sur moi.","J'aimerais enfin commencer quelque chose.","Je ne sais pas vraiment ce qu'il me faut.","J'ai juste besoin de souffler."]],
-["Que remets-tu le plus souvent à plus tard ?",["Mes affaires personnelles.","Mes décisions.","Le repos.","Une conversation difficile."]],
-["Avec une heure libre, que ferais-tu ?",["Un peu d'ordre autour de moi.","Imaginer ma prochaine étape.","Simplement être là.","Écrire ce que je n'arrive pas à dire."]],
-["Qu'est-ce qui t'aiderait aujourd'hui ?",["Qu'on m'enlève une tâche.","Ne pas tout décider seul·e.","Ne rien devoir prouver.","Comprendre un peu mieux ce que je ressens."]],
-["Quelle pensée aimerais-tu garder ?",["Je n'ai pas à tout porter.","Je peux avancer doucement.","L'incertitude n'est pas un échec.","Mes émotions ont le droit d'exister."]]],
+fr:{questions:globalThis.fepCheckinBank.questions.fr,
 results:[
 ["Une journée bien chargée","Tu portes de nombreuses responsabilités. Peut-être qu'un peu de soutien t'aiderait plus qu'une tâche de plus.","Que pourrais-tu partager aujourd'hui ?"],
 ["Un prochain petit pas","Tu n'as pas besoin de tout décider tout de suite. Un petit pas peut suffire.","Quel serait ton prochain pas possible ?"],
@@ -156,19 +139,20 @@ const checkinMixed={
  fr:["Plusieurs choses comptent","Plusieurs sujets peuvent te toucher à la fois. Il n'est pas nécessaire de choisir une catégorie.","Quelle question t'a fait réfléchir un instant ?"]
 };
 function initQuiz(){
-let lang=current,step=0,scores=[0,0,0,0],answers=[];
+let lang=current,step=0,scores=[0,0,0,0],answers=[],selectedQuestions=[];
 // Reflection answers are transient and never saved or submitted.
 const card=document.getElementById("quizCard"),intro=document.querySelector(".quiz-intro"),result=document.getElementById("quizResult");
 const data=()=>quizData[lang]?.questions.length?quizData[lang]:quizData.en;
-function render(){const d=data(),q=d.questions[step];document.getElementById("quizCount").textContent=`${step+1} / ${d.questions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/d.questions.length)*100}%`;document.getElementById("quizProgress").setAttribute("aria-valuenow",String(step+1));document.getElementById("quizQuestion").textContent=q[0];const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q[1].forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
-function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const max=Math.max(...scores),winner=scores.indexOf(max),tied=scores.filter(value=>value===max).length>1,r=tied?checkinMixed[lang]:data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
+function render(){const q=selectedQuestions[step];document.getElementById("quizCount").textContent=`${step+1} / ${selectedQuestions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/selectedQuestions.length)*100}%`;document.getElementById("quizProgress").setAttribute("aria-valuenow",String(step+1));document.getElementById("quizQuestion").textContent=q.prompt;const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q.choices.forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
+function choose(i){scores[i]++;answers[step]=i;if(step<selectedQuestions.length-1){step++;render()}else{const max=Math.max(...scores),winner=scores.indexOf(max),tied=scores.filter(value=>value===max).length>1,r=tied?checkinMixed[lang]:data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
 const product=document.getElementById("quizProductLink"),label=document.getElementById("quizProductLabel");
  if(product&&label){const isPlanning=winner===1||tied;product.dataset.langLink=isPlanning?"catalog":"workbook";product.href=fepBase+(lang==="en"?"":lang+"/")+(isPlanning?fepLinks.catalog:fepLinks.workbook);label.textContent=isPlanning?fepQuizUi[lang].quizBrowseCta:fepQuizUi[lang].quizProductCta;}
 card.hidden=true;result.hidden=false;document.getElementById("resultTitle").focus()}}
-document.getElementById("startQuiz").onclick=()=>{intro.hidden=true;card.hidden=false;result.hidden=true;step=0;scores=[0,0,0,0];answers=[];render();card.scrollIntoView({behavior:"smooth",block:"center"})};
+function startNewDraw(){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);intro.hidden=true;card.hidden=false;result.hidden=true;render();card.scrollIntoView({behavior:"smooth",block:"center"})}
+ document.getElementById("startQuiz").onclick=startNewDraw;
 document.getElementById("quizBack").onclick=()=>{if(step){step--;const previous=answers[step];if(Number.isInteger(previous))scores[previous]--;answers.length=step;render()}};
-document.getElementById("quizAgain").onclick=()=>{result.hidden=true;intro.hidden=false;intro.scrollIntoView({behavior:"smooth",block:"center"})};
-window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];render();}if(!result.hidden){result.hidden=true;intro.hidden=false;step=0;scores=[0,0,0,0];answers=[];}};
+document.getElementById("quizAgain").onclick=startNewDraw;
+window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);render();}if(!result.hidden){result.hidden=true;intro.hidden=false;step=0;scores=[0,0,0,0];answers=[];}};
 
 }
 initQuiz();
