@@ -243,6 +243,65 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   check(!crossing,label+" problem and solution cards do not overlap");
   for(const [i,r] of proof.cards.entries())check(r.left>=-1&&r.right<=width+1,label+" card "+i+" contained");
  }
+
+ if(slug==="helyed-van-koztunk"){
+  const demo=page.locator("[data-card-demo]");
+  check(await demo.count()===1,label+" embedded five-card demo");
+  const selection=await demo.getAttribute("data-drawn-card");
+  check(["01","07","13","20","35"].includes(selection),label+" exactly one random sample selected");
+  check(await demo.locator("[data-demo-title]").textContent().then(x=>x.trim().length>3),label+" randomized card title");
+  check(await demo.locator("[data-demo-explanation]").textContent().then(x=>x.trim().length>80),label+" localized interpretation");
+  const art=demo.locator("[data-demo-svg]");
+  // Animated SVGs never become Playwright-stable; DOM scrolling is the correct input-neutral check.
+  await art.evaluate(img=>img.scrollIntoView({block:"center",behavior:"instant"}));
+  await art.evaluate(img=>img.decode());
+  const artProof=await art.evaluate(img=>({
+   complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
+   cardId:img.dataset.cardId,src:img.getAttribute("src")
+  }));
+  check(artProof.complete&&artProof.naturalWidth>0&&artProof.naturalHeight>0,label+" vector scene decoded");
+  check(artProof.src.endsWith("/"+selection+".svg")&&artProof.cardId===selection,label+" exact drawn artwork");
+  const frontState=await demo.locator("[data-demo-card]").evaluate(el=>{
+    const f=getComputedStyle(el.querySelector(".fep-demo-face--front"));
+    const r=getComputedStyle(el.querySelector(".fep-demo-face--back"));
+    return {front:f.visibility,reverse:r.visibility,frontOpacity:parseFloat(f.opacity),reverseOpacity:parseFloat(r.opacity)};
+  });
+  check(frontState.front==="visible"&&frontState.reverse==="hidden"&&frontState.frontOpacity>0.99&&frontState.reverseOpacity<.01,label+" one visible front face only");
+  const geom=await demo.locator("[data-demo-card]").evaluate(el=>{
+   const r=el.getBoundingClientRect(),e=document.documentElement;
+   return {left:r.left,right:r.right,width:r.width,aspect:r.width/r.height,
+    documentOverflow:e.scrollWidth-innerWidth};
+  });
+  check(geom.left>=-1&&geom.right<=width+1&&geom.documentOverflow<2,label+" demo contained without horizontal scroll");
+  check(Math.abs(geom.aspect-63/88)<.025,label+" card uses real 63x88 aspect");
+  if([320,390,1440].includes(width)){
+   await demo.locator("[data-demo-card]").screenshot({
+    path:path.join(destination,engine+"-"+lang+"-card-demo-"+width+"-front.png"),animations:"disabled"
+   });
+  }
+  const flip=demo.locator("[data-demo-flip]");
+  await flip.click();
+  await page.waitForTimeout(420);
+  const sides=await demo.locator("[data-demo-card]").evaluate(el=>({front:getComputedStyle(el.querySelector(".fep-demo-face--front")).visibility,reverse:getComputedStyle(el.querySelector(".fep-demo-face--back")).visibility}));
+  check(sides.front==="hidden"&&sides.reverse==="visible",label+" readable reverse shown, no mirrored front in Safari");
+  check(await flip.getAttribute("aria-pressed")==="true",label+" native button flips card");
+  check(await demo.locator("[data-demo-card]").getAttribute("data-face")==="back",label+" back face state");
+  check(await demo.locator("[data-demo-back]").getAttribute("aria-hidden")==="false",label+" back face accessible");
+  const reverse=await demo.locator("[data-demo-back]").evaluate(el=>({
+   height:el.clientHeight,scrollHeight:el.scrollHeight,
+   story:el.querySelector("[data-demo-story]").textContent.trim().length,
+   questionCount:el.querySelectorAll(".fep-demo-questions li").length
+  }));
+  check(reverse.story>60&&reverse.questionCount===2,label+" source scenario and questions visible");
+  check(reverse.scrollHeight<=reverse.height+3,label+" back text fits without vertical clipping");
+  if([320,390,1440].includes(width)){
+   await demo.locator("[data-demo-card]").screenshot({
+    path:path.join(destination,engine+"-"+lang+"-card-demo-"+width+"-back.png"),animations:"disabled"
+   });
+  }
+  await flip.click();
+  check(await flip.getAttribute("aria-pressed")==="false",label+" can return to front");
+ }
  if(width===390&&["helyed-van-koztunk","egy-kis-ter","mesek-a-vilag-korul"].includes(slug)){
   const imgName=engine+"-"+lang+"-"+slug+"-390-story.png";
   await page.locator(".fep-product-story").screenshot({path:path.join(destination,imgName),animations:"disabled"});
@@ -266,6 +325,7 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
      // Every product must have a readable problem-to-solution section on mobile.
      const productSlugs=["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"];
      for(const slug of productSlugs)await detailedProductAudit(page,engine,lang,slug,390,origin);
+     await detailedProductAudit(page,engine,lang,"helyed-van-koztunk",320,origin);
      for(const slug of ["helyed-van-koztunk","egy-kis-ter","mesek-a-vilag-korul"])await detailedProductAudit(page,engine,lang,slug,1440,origin);
 
      // Verify that the additional manuscript-inspired SVGs really render in both engines,

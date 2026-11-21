@@ -111,3 +111,7 @@ Run the GitHub Actions static quality workflow on each PR. Verify all 48 localiz
 ## 2026-11-21 — Menü cache-verzió és 4-nyelvű QA
 
 A menükártya minden egyes HU/EN/DE/FR oldalon a `site-menu.js?v=2` és a `catalog.css?v=11` verzióazonosítókon keresztül töltődik. A 48/48 HTML-paritás, a holdfázisok és az 320–1440 px széles képernyőkre kiterjedő teljesmenü-ellenőrzés a CI része. A menü bezárása görgetés közben is elérhető. Részletek: `docs/SITE_MASTER.md`.
+
+## Ötlapos Helyed van köztünk demó
+
+A kártyacsomag négy nyelvű termékoldalán egyetlen kártya sorsolódik az eredeti 36-ból kiválasztott öt helyzet közül; a látogató megfordíthatja, elolvashatja a két kérdést és a magyarázatot. Az új animált SVG-k helyzetábrázolások, **nem** az eredeti nyomdai grafikák digitális másolatai. A sorsolás helyben, mentés és követés nélkül működik. A részleteket és forrásoldalakat a `docs/SITE_MASTER.md` tartalmazza.
