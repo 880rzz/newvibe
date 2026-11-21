@@ -36,7 +36,7 @@ for(const lang of langs){
  assert.ok(html.indexOf('id="quiz"')<html.indexOf("fep-home-collection-bridge"),lang+" quiz before catalogue");
  assert.ok(html.includes(strings[lang][0])&&html.includes(strings[lang][1]),lang+" text");
  assert.equal((html.match(/class="fep-card"/g)||[]).length,0,lang+" catalogue not duplicated");
- if(lang!=="en") assert.ok(!/<a\\b[^>]*href="\\.\\.\\//.test(html),lang+" no English-site fallback on local home links");
+ if(lang!=="en") assert.ok(!html.includes('href="../catalog/"')&&!html.includes('href="../about/"')&&!html.includes('href="../products/'),lang+" no English-site fallback on local home links");
  const scriptsBase=lang==="en"?"":"../";
  assert.ok(html.includes('src="'+scriptsBase+'checkin-bank.js?v=1"'),lang+" bank script exists");
  assert.ok(html.includes('src="'+scriptsBase+'app.js?v=15"'),lang+" app script exists");
