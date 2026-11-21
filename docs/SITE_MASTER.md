@@ -626,6 +626,7 @@ A kiadványok szakmai jóváhagyása ettől különálló. A korábban jelzett f
 A `#32` kiadás 48 oldalának teljes HTML/asset egyezősége production alatt ellenőrzött volt, de a HTML-ek változatlanul korábbi cache-kulcsokra hivatkoztak. Ezt az új javítás feloldja: **48/48 HTML-en `catalog.css?v=11` és `site-menu.js?v=2`**. Az előző verziószámra vonatkozó történeti dokumentációt az új kiadási állapot felülírja.
 
 - A `scripts/menu-moment-smoke.cjs` forráskapu 48 lokalizált URL-en megköveteli mindkét friss verziókulcsot.
+- A nyitott hamburger menü háttere **teljesen fedett**, nem engedi át az alatta levő hero szöveget; mobilon a dekoratív ellipszis a görgethető menü határain belül marad. Az ezzel kapcsolatos Chrome/WebKit hiba a teljes menü overlay képernyőképeiből került elő.
 - A Chromium és WebKit `scripts/browser-visual-qa.cjs` 320/390/1024/1440 px-nél ellenőrzi, hogy a gondolatkártya nem metszi a menüpontokat; az egész nyitott menüről is készülnek mobilos/desktopos képek.
 - Az éppen görgetett mobilmenü **bezárógombja 44 × 44 px**, a képernyőn maradó `position:fixed` vezérlő. A billentyűzetes Escape és a fókuszvisszaállítás megmarad.
 - Az aktuális holdfázis 29,530588853 napos szinodikus közelítés; **nem efemerida**. Fázis, megvilágítottság és az elkövetkező hét napja azonos kliensoldali számításból ered. Az üzenetek jelképes szerkesztői gondolatindítók.
