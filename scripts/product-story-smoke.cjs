@@ -40,8 +40,9 @@ for(const lang of ["en","hu","de","fr"]){
   stories++;
  }
  assert.equal(all.length,12);
- for(const page of all){
-  assert.ok(page.includes("catalog.css?v=11"),lang+" stale CSS version");
+ for(const [pageIndex,page] of all.entries()){
+  const expectedVersion=pageIndex<3?"catalog.css?v=11":"catalog.css?v=12";
+  assert.ok(page.includes(expectedVersion),lang+" correct cache-busted layout CSS "+expectedVersion);
   const visiblePage=page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,"");
   for(const term of deprecated)assert.ok(!visiblePage.includes(term),lang+" old user-facing text: "+term);
  }
