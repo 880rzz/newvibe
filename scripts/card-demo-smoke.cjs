@@ -7,7 +7,8 @@ const ids=["01","07","13","20","35"],langs=["en","hu","de","fr"];
 assert.doesNotMatch(js,/localStorage|sessionStorage|document\.cookie|fetch\(|XMLHttpRequest|navigator\.sendBeacon/,"demo is fully local and tracking free");
 assert.ok(js.includes("getRandomValues")&&js.includes("Math.floor(range/n)*n"),"unbiased crypto random with fallback");
 assert.ok(css.includes("prefers-reduced-motion:reduce"),"card flip respects reduced motion");
-assert.ok(css.includes("rotateY(180deg)"),"card has real flip motion");
+assert.ok(css.includes("visibility:hidden")&&css.includes("opacity:0"),"inactive face cannot bleed through in WebKit");
+assert.ok(css.includes('[data-face="back"] .fep-demo-face--back'),"back side becomes visible");
 for(const id of ids){
  const svg=fs.readFileSync("assets/card-demo/"+id+".svg","utf8");
  assert.match(svg,/^<svg xmlns="http:\/\/www\.w3\.org\/2000\/svg"/);
