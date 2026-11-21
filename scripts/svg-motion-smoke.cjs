@@ -21,7 +21,7 @@ for(const lang of ["en","hu","de","fr"]){
  const pages=["index.html","about/index.html","catalog/index.html",...slugs.map(x=>"products/"+x+".html")];
  for(const file of pages){
   const s=fs.readFileSync(base+file,"utf8");routes++;
-  const expectedCss="catalog.css?v="+(file==="about/index.html"?13:file.startsWith("products/")?12:11);
+  const expectedCss="catalog.css?v=14";
   assert.ok(s.includes(expectedCss),lang+"/"+file+" stylesheet cache version");
   const svgImages=[...s.matchAll(/<img[^>]+class="[^"]*(?:fep-motion-|fep-category-scene|fep-product-title-motif|fep-portrait-accent)[^"]*"[^>]*>/g)].map(m=>m[0]);
   for(const img of svgImages){scenes++;assert.ok(img.includes('alt=""')&&img.includes('aria-hidden="true"'),lang+"/"+file+" decorative imagery accessibility");}

@@ -73,10 +73,10 @@ for(const lang of ["en","hu","de","fr"]){
   const base=lang==="en"?"":lang+"/";
   for(const page of ["index.html","catalog/index.html","about/index.html",...slugs.map(slug=>"products/"+slug+".html")]){
     const content=fs.readFileSync(base+page,"utf8");
-    const expectedCssVersion=page==="about/index.html"?13:page.startsWith("products/")?12:11;
+    const expectedCssVersion=14;
     const cssRef="catalog.css?v="+expectedCssVersion;
     assert.equal(content.split(cssRef).length-1,1,lang+" "+page+" exact stylesheet version");
-    if(expectedCssVersion===12)assert.ok(!content.includes("catalog.css?v=11"),lang+" "+page+" old product CSS not referenced");
+    assert.doesNotMatch(content,/catalog\.css\?v=(?:11|12|13)(?:[^0-9]|$)/,lang+" "+page+" no outdated shared CSS references");
     assert.equal((content.match(/site-menu\.js\?v=2/g)||[]).length,1,lang+" "+page+" latest menu script");
     assert.doesNotMatch(content,/catalog\.css\?v=10|site-menu\.js\?v=1/,lang+" "+page+" no stale asset URL");
     checked++;

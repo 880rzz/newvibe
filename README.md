@@ -117,3 +117,8 @@ A menükártya minden egyes HU/EN/DE/FR oldalon a `site-menu.js?v=2` és a `cata
 A négy nyelvű termékoldali demó öt **eredeti, 63 × 88 mm-es nyomdai kártya mindkét oldalát** mutatja a hozzájuk tartozó, PDF-ből kivágott WebP képeken: 01, 07, 13, 20, 35. A látogató oldalmegnyitásonként egyet kap, megfordíthatja, és elolvashatja a helyzetet és a két eredeti kérdést. Az idegen nyelvű digitális szöveg külön fordítás; az eredeti nyomtatott lapok magyarul készültek. A forráspárok és a 10 SHA-256 hash a `docs/SITE_MASTER.md` és `scripts/card-demo-smoke.cjs` fájlokban ellenőrizhetők. Nincs tárolás vagy követés.
 
 **Tipográfiai hátoldal:** a kártya előlapja továbbra is az eredeti nyomdai kép; megfordítva Fraunces/DM Sans HTML-es történet és két kérdés jelenik meg HU/EN/DE/FR nyelven. A valódi, magyar nyomdai hátoldal külön, akadálymentes modális ablakban tekinthető meg. A teljes működést és QA-kapukat a `docs/SITE_MASTER.md` részletezi.
+
+
+## 2026-11-21 — Lenyíló menü: a felső üres tér megszüntetése
+
+A teljes képernyős navigáció korábban desktopon a `site-menu-inner` `justify-content:center` szabálya miatt függőlegesen középre tolódott, így nagy üres tér jelent meg az oldal tetején. Az új közös szabály `justify-content:flex-start`; felső belső tér desktopon 82–96 px, 560 px alatt 62 px. Az „Egy gondolat neked” kártya nagy képernyőn a menü kezdéséhez igazodik, nem a viewport közepéhez. Az összes 48 EN/HU/DE/FR oldal egységes `catalog.css?v=14` cache-kulcsot kapott. A Chromium/WebKit menü-top-gap, CTA, zárógomb és vízszintes overflow ellenőrzés release gate.
