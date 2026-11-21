@@ -1,5 +1,5 @@
 /* Five-card product preview: faithful scenarios/questions from the Hungarian print source,
-   cropped unaltered original print card faces, on-device secure random draw.
+   original cropped print front and on-page editorial reverse, on-device secure random draw.
    No storage, tracking, interpretation engine or network requests. */
 (()=>{"use strict";
 const root=document.querySelector("[data-card-demo]");
@@ -43,6 +43,9 @@ const flip=$("[data-demo-flip]");
 const visual=$("[data-demo-card]");
 const front=$("[data-demo-front]");
 const back=$("[data-demo-back]");
+const originalTrigger=$("[data-demo-original-trigger]");
+const originalDialog=$("[data-demo-original-dialog]");
+const originalClose=$("[data-demo-original-close]");
 if(flip&&visual){
   flip.addEventListener("click",()=>{
     const next=visual.dataset.face==="front"?"back":"front";
@@ -51,6 +54,20 @@ if(flip&&visual){
     flip.textContent=next==="back"?copy.ui.unflip:copy.ui.flip;
     if(front)front.setAttribute("aria-hidden",String(next!=="front"));
     if(back)back.setAttribute("aria-hidden",String(next!=="back"));
+    if(originalTrigger)originalTrigger.hidden=next!=="back";
   });
+}
+if(originalTrigger&&originalDialog){
+  originalTrigger.addEventListener("click",()=>{
+    if(typeof originalDialog.showModal==="function"){
+      originalDialog.showModal();
+    }else{
+      const originalImage=$("[data-demo-original-back]");
+      if(originalImage&&originalImage.src)window.open(originalImage.src,"_blank","noopener,noreferrer");
+    }
+  });
+}
+if(originalClose&&originalDialog){
+  originalClose.addEventListener("click",()=>originalDialog.close());
 }
 })();

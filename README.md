@@ -115,3 +115,5 @@ A menükártya minden egyes HU/EN/DE/FR oldalon a `site-menu.js?v=2` és a `cata
 ## Helyed van köztünk – eredeti kártyaképek
 
 A négy nyelvű termékoldali demó öt **eredeti, 63 × 88 mm-es nyomdai kártya mindkét oldalát** mutatja a hozzájuk tartozó, PDF-ből kivágott WebP képeken: 01, 07, 13, 20, 35. A látogató oldalmegnyitásonként egyet kap, megfordíthatja, és elolvashatja a helyzetet és a két eredeti kérdést. Az idegen nyelvű digitális szöveg külön fordítás; az eredeti nyomtatott lapok magyarul készültek. A forráspárok és a 10 SHA-256 hash a `docs/SITE_MASTER.md` és `scripts/card-demo-smoke.cjs` fájlokban ellenőrizhetők. Nincs tárolás vagy követés.
+
+**Tipográfiai hátoldal:** a kártya előlapja továbbra is az eredeti nyomdai kép; megfordítva Fraunces/DM Sans HTML-es történet és két kérdés jelenik meg HU/EN/DE/FR nyelven. A valódi, magyar nyomdai hátoldal külön, akadálymentes modális ablakban tekinthető meg. A teljes működést és QA-kapukat a `docs/SITE_MASTER.md` részletezi.
