@@ -41,7 +41,7 @@ const body={classList:{values:new Set(),add(k){this.values.add(k)},remove(k){thi
 function fake(id){return {id,hidden:id==="siteMenu",attributes:{},events:{},focused:false,addEventListener(k,fn){this.events[k]=fn},setAttribute(k,v){this.attributes[k]=v},focus(){this.focused=true},getClientRects(){return [1]}};}
 const button=fake("menuToggle"),menu=fake("siteMenu"),close=fake("menuClose"),last=fake("last"),listeners={};
 menu.querySelectorAll=()=>[close,last];
-const context={document:{body,activeElement:button,getElementById(id){return {menuToggle:button,siteMenu:menu,menuClose:close}[id]},addEventListener(k,fn){listeners[k]=fn}},console};
+const context={document:{body,activeElement:button,querySelectorAll(){return []},getElementById(id){return {menuToggle:button,siteMenu:menu,menuClose:close}[id]},addEventListener(k,fn){listeners[k]=fn}},console};
 vm.runInNewContext(fs.readFileSync("site-menu.js","utf8"),context,{filename:"site-menu.js"});
 button.events.click();
 assert.equal(menu.hidden,false);assert.equal(button.attributes["aria-expanded"],"true");assert.ok(body.classList.values.has("fep-menu-open"));
