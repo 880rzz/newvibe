@@ -159,3 +159,18 @@
 .footer{flex-wrap:wrap}
 .fep-top-link:focus-visible,.fep-arrow-link:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:3px}
 @media(prefers-reduced-motion:reduce){.fep-vector-icon,.fep-up-icon{transition:none!important;transform:none!important}}
+
+/* Email preorder: informational request, never an unconfirmed checkout. */
+.fep-catalog-preorder-info{max-width:750px;color:#4a5a5c;line-height:1.65;font-size:15px;margin:10px 0 30px;padding-left:15px;border-left:3px solid #d4a67f}
+.fep-preorder-badge{display:inline-block;align-self:flex-start;font:700 11px/1.35 "DM Sans",sans-serif;letter-spacing:.02em;color:#5a463c;background:#f2e5d3;padding:6px 11px;border-radius:20px;margin:0 0 12px!important}
+.fep-preorder-compact{display:inline-flex;align-items:center;align-self:flex-start;gap:8px;margin-top:15px!important;text-decoration:none;color:#273238;font-size:13px;font-weight:700;line-height:1.35;border-bottom:1px solid #917e72;padding:6px 0;max-width:100%}
+.fep-preorder-compact:hover{text-decoration:underline;text-underline-offset:3px}
+.fep-preorder-icon{width:17px;height:17px;flex:none;display:inline-block;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s ease}
+.fep-preorder-compact:hover .fep-preorder-icon,.fep-preorder-action:hover .fep-preorder-icon{transform:translate(2px,-2px)}
+.fep-preorder-note,.fep-preorder-rights{font-size:12px!important;line-height:1.6!important;max-width:660px;color:#566267!important;margin:16px 0 0!important}
+.fep-preorder-rights{border-left:3px solid #c68a66;padding-left:13px}
+.fep-preorder-action{display:inline-flex;gap:12px;align-items:center;justify-content:center;text-align:center}
+.fep-preorder-action .fep-preorder-icon{width:18px;height:18px}
+.fep-preorder a:focus-visible,.fep-preorder-compact:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+@media(max-width:570px){.fep-preorder-action{width:100%;white-space:normal}.fep-preorder-compact{padding:11px 0;min-height:44px}}
+@media(prefers-reduced-motion:reduce){.fep-preorder-icon{transition:none!important}}

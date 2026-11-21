@@ -26,7 +26,8 @@ Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or repl
 - The three new product images are intentionally SVG mock-ups based on source themes, not real book photographs. The full original PDFs stay off the public repository. Only descriptive product information and a concept image are published.
 - Cover mockups and generated images must always be marked "illustrative, not a final manufactured product" and must not replace real photos without verification.
 - Only the independent creator is named. Do not create an Organization schema or legal/impressum details without real verified data.
-- No prices, stock, OrderAction, Offer, or invented webshop. Future verified links belong in a central product manifest and must be validated before public release.
+- No public prices, stock, schema `OrderAction`/`Offer` or invented webshop. **Email-only pre-order requests are accepted for all nine products** via `diofamuhelykozosseg@gmail.com`. Every email link prepopulates the product and asks for quantity; the request is not a confirmed purchase, reserves no stock and takes no payment. Conditions including price and delivery must be discussed before confirmation. Future verified shop links belong in the central manifest.
+- Rights clearance remains incomplete for the 42-country story collection and coloring companion. Email requests may be accepted, but fulfilment cannot be promised until clearance.
 - The quiz result is indicative reflection, not diagnosis; language preference and optional saved result remain local to browser.
 
 ## Search / AI discoverability
@@ -34,3 +35,9 @@ HTML canonical + `hreflang`, XML sitemap, Product/Person/Brand/WebSite structure
 
 ## Release checks
 Run the GitHub Actions static quality workflow on each PR. Verify all 48 localized pages, image links, navigation, CSS/JS syntax, structured data, and browser visual QA before release.
+
+## Pre-order workflow (November 2026)
+- 36 localized product pages show the email pre-order CTA and non-confirmation terms.
+- All four catalogues and localized homepages expose pre-order email links for the nine editions. The English-first interactive homepage localizes its email pre-order links in `app.js`.
+- The `catalog.json` manifest records pre-order **request intake** separately from physical production status. `shop_url` and `price` remain `null`.
+- Confirm the legal operating entity, written preorder/sales terms, consumer information and privacy notice before transforming email requests into binding orders. Do not email bank-card details.

@@ -229,5 +229,55 @@ jobs:
           assert '.arrow-icon, .fep-vector-icon' in Path('app.js').read_text(encoding='utf-8')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
+
+          # Email pre-orders are requests, not confirmed purchases or checkout.
+          from urllib.parse import urlsplit, parse_qs
+          from html import unescape
+          assert manifest['email_preorders']['status']=='preorder_requests_accepted'
+          assert manifest['email_preorders']['request_is_confirmed_order'] is False
+          assert manifest['email_preorders']['payment_on_website'] is False
+          assert manifest['email_preorders']['email']=='diofamuhelykozosseg@gmail.com'
+          assert len(manifest['products'])==9
+          for product in manifest['products']:
+              assert product['preorder_request']['status']=='accepted_by_email'
+              assert product['preorder_request']['confirmation_required'] is True
+              assert product['shop_url'] is None and product['price'] is None
+              if product['slug'] in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                  assert 'rights' in product['preorder_request']['fulfilment_condition'].lower()
+          for language in langs:
+              base=Path('.') if language=='en' else Path(language)
+              catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
+              assert catalogue.count('class="fep-preorder-badge"')==9,(language,'preorder status count')
+              assert catalogue.count('class="fep-preorder-compact"')==9,(language,'catalogue preorder links')
+              assert 'fep-catalog-preorder-info' in catalogue
+              for product in manifest['products']:
+                  slug=product['slug']
+                  content=(base/'products'/f'{slug}.html').read_text(encoding='utf-8')
+                  assert content.count('class="fep-availability fep-preorder"')==1,(language,slug)
+                  assert 'fep-preorder-action' in content and 'fep-preorder-icon' in content
+                  assert 'href="mailto:diofamuhelykozosseg@gmail.com?subject=' in content
+                  matches=re.findall(r'href="(mailto:diofamuhelykozosseg@gmail.com\?subject=[^"]+)"',content)
+                  assert matches,(language,slug,'missing contact href')
+                  url=urlsplit(unescape(matches[0]))
+                  params=parse_qs(url.query,keep_blank_values=True)
+                  assert params.get('subject') and params.get('body'),(language,slug,'missing mail content')
+                  assert 'For Every Path' in params['subject'][0]
+                  assert len(params['body'][0])>130
+                  assert '<script type="application/ld+json">' in content
+                  if slug in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                      assert 'fep-preorder-rights' in content,(language,slug,'rights disclaimer')
+              if language!='en':
+                  home=(base/'index.html').read_text(encoding='utf-8')
+                  assert home.count('class="fep-preorder-badge"')==9,(language,'home status')
+                  assert home.count('class="fep-preorder-compact"')==9,(language,'home links')
+              about=(base/'about/index.html').read_text(encoding='utf-8')
+              assert 'fep-about-preorder' in about,(language,'missing terms in trust page')
+          root_home=Path('index.html').read_text(encoding='utf-8')
+          assert root_home.count('data-preorder-slug=')==7
+          root_script=Path('app.js').read_text(encoding='utf-8')
+          assert 'fepPreorderMailto' in root_script and 'fepPreorderCopy' in root_script
+          assert 'preorderCopy' in Path('product.js').read_text(encoding='utf-8')
+          assert 'pre-order requests' in Path('llms.txt').read_text(encoding='utf-8').lower()
+
           print('Site validation OK')
           PY

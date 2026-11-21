@@ -26,7 +26,13 @@
       "image_type": "original_product_photo",
       "variants": null,
       "image_path": "assets/helyed-van-koztunk-03.jpg",
-      "image_provenance": "actual_photo_of_existing_physical_product"
+      "image_provenance": "actual_photo_of_existing_physical_product",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "egy-kis-ter",
@@ -38,7 +44,13 @@
       "image_type": "cover_concept_not_manufactured",
       "variants": null,
       "image_path": "assets/fep-workbook-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured"
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "lepesrol-lepesre-2027",
@@ -50,7 +62,13 @@
       "image_type": "cover_concept_not_manufactured",
       "variants": null,
       "image_path": "assets/fep-adhd-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured"
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "tanari-hataridonaplo-2027-szines",
@@ -62,7 +80,13 @@
       "image_type": "cover_concept_not_manufactured",
       "variants": "teacher_planner_cover",
       "image_path": "assets/fep-teacher-warm-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured"
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "tanari-hataridonaplo-2027-letisztult",
@@ -74,7 +98,13 @@
       "image_type": "cover_concept_not_manufactured",
       "variants": "teacher_planner_cover",
       "image_path": "assets/fep-teacher-classic-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured"
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "veled-a-mindennapokban",
@@ -92,7 +122,13 @@
       "image_type": "cover_concept_not_manufactured",
       "variants": null,
       "image_path": "assets/fep-veled-a-mindennapokban-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_Hungarian_A5_cover_not_manufactured"
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_Hungarian_A5_cover_not_manufactured",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     },
     {
       "id": "mesek-a-vilag-korul",
@@ -111,7 +147,14 @@
       "variants": null,
       "image_path": "assets/fep-mesek-vilag-korul-concept.svg",
       "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
-      "source_revision_date": "2026-11-19"
+      "source_revision_date": "2026-11-19",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true,
+        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
+      }
     },
     {
       "id": "mesek-a-vilag-korul-szinezo",
@@ -129,7 +172,14 @@
       "image_type": "editorial_cover_mockup_not_manufactured",
       "variants": null,
       "image_path": "assets/fep-mesek-vilag-korul-szinezo-concept.svg",
-      "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book"
+      "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true,
+        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
+      }
     },
     {
       "id": "na-most-mit-csinaljak",
@@ -148,9 +198,30 @@
       "variants": null,
       "image_path": "assets/fep-na-most-mit-csinaljak-concept.svg",
       "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
-      "source_age_range": "8-11"
+      "source_age_range": "8-11",
+      "preorder_request": {
+        "status": "accepted_by_email",
+        "email": "diofamuhelykozosseg@gmail.com",
+        "confirmation_required": true,
+        "request_not_binding_without_confirmation": true
+      }
     }
   ],
   "collection_image": "assets/fep-collection-concept.webp",
-  "collection_image_provenance": "AI-generated product-family concept visualisation; includes not-yet-manufactured editions"
+  "collection_image_provenance": "AI-generated product-family concept visualisation; includes not-yet-manufactured editions",
+  "email_preorders": {
+    "status": "preorder_requests_accepted",
+    "email": "diofamuhelykozosseg@gmail.com",
+    "supported_languages": [
+      "en",
+      "hu",
+      "de",
+      "fr"
+    ],
+    "request_is_confirmed_order": false,
+    "payment_on_website": false,
+    "price_on_website": false,
+    "process": "A request may be sent by email. Product-specific price, availability, payment and delivery terms are communicated before any order is confirmed.",
+    "publisher": "Sajbán-Frőhner Alexandra"
+  }
 }
