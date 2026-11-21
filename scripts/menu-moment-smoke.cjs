@@ -65,3 +65,19 @@ for(const locale of ["en","hu","de","fr"]){
   assert.notEqual(card.querySelector(".fep-moment-thought").textContent,current,locale+" rotates when reopened");
   console.log(locale+": menu, locale copy, new message, moon display, seven-day calendar passed");
 }
+
+
+const slugs=["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"];
+let checked=0;
+for(const lang of ["en","hu","de","fr"]){
+  const base=lang==="en"?"":lang+"/";
+  for(const page of ["index.html","catalog/index.html","about/index.html",...slugs.map(slug=>"products/"+slug+".html")]){
+    const content=fs.readFileSync(base+page,"utf8");
+    assert.equal((content.match(/catalog\.css\?v=11/g)||[]).length,1,lang+" "+page+" latest stylesheet");
+    assert.equal((content.match(/site-menu\.js\?v=2/g)||[]).length,1,lang+" "+page+" latest menu script");
+    assert.doesNotMatch(content,/catalog\.css\?v=10|site-menu\.js\?v=1/,lang+" "+page+" no stale asset URL");
+    checked++;
+  }
+}
+assert.equal(checked,48);
+console.log("48 localized HTML pages serve fresh menu JS and CSS URLs.");

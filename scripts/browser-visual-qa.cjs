@@ -149,9 +149,34 @@ async function pageAudit(page,engine,lang,kind,width,origin){
 
  // The new sidebar card must be an actual visible, usable menu feature
  // in both WebKit and Chromium, on compact mobile and full desktop.
- if(kind==="home"&&(width===390||width===1440)){
+ if(kind==="home"&&[320,390,1024,1440].includes(width)){
   const menuButton=page.locator("#menuToggle");
   await menuButton.click();
+  const layout=await page.evaluate(()=>{
+    const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom};};
+    const overlay=document.getElementById("siteMenu");
+    const card=overlay.querySelector(".fep-menu-moment");
+    return {
+      card:rect(card),
+      note:rect(overlay.querySelector(".menu-note")),
+      nav:[...overlay.querySelectorAll(".fep-menu-link,.fep-category-disclosure summary")].map(rect),
+      scrollX:overlay.scrollWidth-overlay.clientWidth,
+      background:getComputedStyle(overlay).backgroundColor,
+      backdrop:getComputedStyle(overlay).backdropFilter,
+      close:rect(overlay.querySelector(".menu-close"))
+    };
+  });
+  const collision=(a,b)=>a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;
+  check(layout.scrollX<2,label+" expanded menu has no horizontal scroll");
+  check(layout.background.startsWith("rgb(")&&layout.backdrop==="none",label+" opaque uncluttered menu background");
+  check(layout.nav.every(rect=>!collision(rect,layout.card)),label+" editorial card never overlaps navigation");
+  if(width===1440)check(layout.card.left>width/2,label+" right column has deliberate separation");
+  else check(layout.card.top>=layout.note.bottom-1,label+" compact menu card follows navigation");
+  if(width===320||width===390||width===1440){
+    await page.screenshot({
+      path:path.join(destination,engine+"-"+lang+"-menu-overlay-"+width+".png"),fullPage:false,animations:"disabled"
+    });
+  }
   const moment=page.locator(".fep-menu-moment");
   check(await moment.count()===1,label+" one live menu moment");
   const before=(await moment.locator(".fep-moment-thought").textContent()).trim();
@@ -165,6 +190,12 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   });
   check(geom.left>=-1&&geom.right<=geom.screen+1,label+" menu card not clipped");
   if(width===1440)check(geom.left>geom.screen/2,label+" desktop card occupies empty right field");
+  const exit=await page.locator("#menuClose").evaluate(el=>{
+    const r=el.getBoundingClientRect(),s=getComputedStyle(el);
+    return {top:r.top,left:r.left,right:r.right,height:r.height,width:r.width,position:s.position};
+  });
+  check(exit.position==="fixed"&&exit.top>=-1&&exit.right<=width+1&&exit.height>=44&&exit.width>=44,
+        label+" close control remains visible after calendar scroll");
   await moment.locator(".fep-moment-calendar summary").click();
   check(await moment.locator(".fep-moment-days li").count()===7,label+" seven visible lunar dates");
   await moment.screenshot({

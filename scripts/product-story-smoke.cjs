@@ -36,7 +36,7 @@ for(const lang of ["en","hu","de","fr"]){
  }
  assert.equal(all.length,12);
  for(const page of all){
-  assert.ok(page.includes("catalog.css?v=10"),lang+" stale CSS version");
+  assert.ok(page.includes("catalog.css?v=11"),lang+" stale CSS version");
   const visiblePage=page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,"");
   for(const term of deprecated)assert.ok(!visiblePage.includes(term),lang+" old user-facing text: "+term);
  }

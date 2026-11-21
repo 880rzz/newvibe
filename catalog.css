@@ -291,7 +291,7 @@
 .fep-page .fep-restored-header .lang.active,.fep-page .fep-restored-header .lang[aria-current=page]{background:var(--fep-cta-primary);color:#fffaf2}
 .fep-page .fep-restored-header .menu-toggle{width:46px;height:46px;flex:0 0 auto}
 .fep-page .fep-restored-header .menu-toggle:focus-visible,.fep-page .fep-restored-header a:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-.fep-page .site-menu{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain}
+.fep-page .site-menu{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain;background:var(--paper);backdrop-filter:none}
 .fep-page .site-menu[hidden]{display:none}
 body.fep-menu-open{overflow:hidden}
 .fep-page .site-menu-inner{position:relative;min-height:100%;max-width:1180px;margin:auto;padding:clamp(76px,11vh,110px) 32px 48px;align-items:flex-start;justify-content:center;gap:3px}
@@ -353,7 +353,7 @@ body.fep-menu-open{overflow:hidden}
  .fep-page .site-menu .fep-menu-link,.fep-page .site-menu .fep-category-disclosure summary{font-size:clamp(29px,7.4vw,37px)}
  .fep-page .site-menu .fep-category-list{padding-left:13px;margin-top:7px}
  .fep-page .site-menu .fep-category-list a{font-size:15px;padding:7px 0}
- .fep-page .site-menu-inner:after{right:-10%;bottom:8%;opacity:.38}
+ .fep-page .site-menu-inner:after{right:5%;bottom:8%;opacity:.38}
  .fep-page .fep-home-hero .fep-restored-art{min-height:300px;max-width:100%;overflow:hidden}
  .fep-page .fep-home-hero .fep-restored-art .notebook{width:min(320px,86%);height:240px;transform:scale(.76) rotate(-6deg);transform-origin:center}
  .fep-page .fep-home-hero .fep-restored-art .paper-back{width:175px;height:230px;left:23%;top:35px}
@@ -652,4 +652,15 @@ html,body.fep-page{overflow-x:clip}
 @media(prefers-reduced-motion:reduce){
   .fep-page .fep-moment-star{animation:none}
   .fep-page .fep-moment-again{transition:none}
+}
+
+
+/* Keep the menu close target usable when the reflective calendar is below the fold. */
+.fep-page .site-menu .menu-close{
+  position:fixed;top:clamp(15px,2.5vw,25px);right:clamp(15px,2.5vw,29px);
+  z-index:5;display:grid;place-items:center;
+  width:44px;height:44px;min-width:44px;min-height:44px;padding:0;
+  line-height:1;border-radius:50%;
+  background:#fff9ed;border:1px solid rgba(31,74,61,.19);
+  box-shadow:0 5px 16px rgba(31,74,61,.07)
 }
