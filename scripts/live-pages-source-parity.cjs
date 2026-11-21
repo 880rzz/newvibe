@@ -48,6 +48,8 @@ for (const path of [
   "catalog.json",
   "catalog.css",
   "site-menu.js",
+  "three-sentences.css",
+  "three-sentences.js",
   "assets/helyed-van-koztunk-01.jpg",
   "assets/helyed-van-koztunk-02.jpg",
   "assets/helyed-van-koztunk-03.jpg",
@@ -69,7 +71,7 @@ for (const path of [
 }
 
 assert.equal(targets.filter(x => x.type === "html").length, 48);
-assert.equal(targets.length, 68);
+assert.equal(targets.length, 70);
 const hash = data => crypto.createHash("sha256").update(data).digest("hex");
 
 async function check(target) {
@@ -133,13 +135,13 @@ async function audit() {
       sourceCommit: process.env.GITHUB_SHA || null,
       attempt,
       expectedRoutes: 48,
-      expectedAssets: 20,
+      expectedAssets: 22,
       success: targets.length - failures.length,
       failed: failures.length,
       sampleFailures: failures.slice(0, 5)
     }));
     if (failures.length === 0) {
-      console.log("PASS: 48 published HTML routes and 20 public assets match this commit byte for byte over HTTPS.");
+      console.log("PASS: 48 published HTML routes and 22 public assets match this commit byte for byte over HTTPS.");
       return;
     }
     if (attempt < attempts) await delay(20000);
