@@ -54,6 +54,7 @@ jobs:
           node scripts/home-ux-smoke.cjs
           node scripts/menu-design-smoke.cjs
           node scripts/menu-moment-smoke.cjs
+          node scripts/card-demo-smoke.cjs
           node scripts/visual-design-smoke.cjs
           node scripts/card-gallery-smoke.cjs
           node scripts/preorder-handoff-smoke.cjs
