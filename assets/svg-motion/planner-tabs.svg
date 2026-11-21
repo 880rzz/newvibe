@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 165" width="210" height="165" fill="none" stroke-linejoin="round" stroke-linecap="round"><style><![CDATA[
+.trace{stroke-dasharray:440;stroke-dashoffset:0;animation:ink 11s ease-in-out infinite}
+.float{transform-box:fill-box;transform-origin:50% 50%;animation:float 7s ease-in-out infinite}
+.sway{transform-box:fill-box;transform-origin:50% 50%;animation:sway 8.5s ease-in-out infinite}
+.spark{transform-box:fill-box;transform-origin:center;animation:pulse 5s ease-in-out infinite}
+@keyframes ink{0%,100%{stroke-dashoffset:0;opacity:1}50%{stroke-dashoffset:21;opacity:.8}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+@keyframes pulse{0%,100%{transform:scale(.92);opacity:.65}50%{transform:scale(1.08);opacity:1}}
+@media(prefers-reduced-motion:reduce){.trace,.float,.sway,.spark{animation:none!important}}
+]]></style><g class="float" stroke="#315548" stroke-width="2.8"><path d="M36 28h127v114H36V28Z" fill="#FEF8E9"/><path d="M36 53h127" opacity=".7"/><path d="M53 72h24v20H53ZM90 72h24v20H90ZM128 72h24v20h-24ZM53 102h24v20H53ZM90 102h24v20H90ZM128 102h24v20h-24Z" stroke="#8CA6A2" stroke-width="1.8"/><path d="M52 20v16M77 20v16M104 20v16M129 20v16M151 20v16" stroke-width="3.2"/></g><path class="trace" d="M56 84l7 5 11-12M92 114l7 5 12-12" stroke="#C67C57" stroke-width="3.3"/><g class="sway" stroke="#B66B52" stroke-width="2.4"><path d="M163 46l24-9v69l-24 10Z" fill="#EAB9A6"/><path d="M163 77l17-6" fill="none"/></g><path class="spark" d="M16 52l6 7 8-4M176 17l6 9 9-4" stroke="#DAA456" stroke-width="2.4"/></svg>
