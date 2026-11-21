@@ -110,10 +110,23 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check(parseFloat(still.stroke)===0,label+" SVG line remains visible without animation");
   await page.emulateMedia({reducedMotion:"no-preference"});
   const cards=page.locator(".fep-restored-notecard");
+  const faces=()=>cards.first().evaluate(e=>{
+   const front=e.querySelector(".card-front"),back=e.querySelector(".card-back");
+   return {front:getComputedStyle(front).visibility,back:getComputedStyle(back).visibility};
+  });
+  const initial=await faces();
+  check(initial.front==="visible"&&initial.back==="hidden",label+" only front face visible at rest");
   await cards.first().click({force:true,position:{x:20,y:20}});
   check((await cards.first().getAttribute("aria-pressed"))==="true",label+" flip-card first tap");
+  const flipped=await faces();
+  check(flipped.front==="hidden"&&flipped.back==="visible",label+" only reverse face visible when flipped");
+  await page.locator(".fep-restored-recognition").screenshot({
+   path:path.join(destination,engine+"-"+lang+"-home-390-flipped.png"),animations:"disabled"
+  });
   await cards.first().click({force:true,position:{x:20,y:20}});
   check((await cards.first().getAttribute("aria-pressed"))==="false",label+" flip-card second tap");
+  const restored=await faces();
+  check(restored.front==="visible"&&restored.back==="hidden",label+" original face restored");
   const menu=page.locator("#menuToggle");
   await menu.click();
   check((await menu.getAttribute("aria-expanded"))==="true",label+" hamburger opens");
