@@ -50,13 +50,21 @@ for (const path of [
   "site-menu.js",
   "assets/helyed-van-koztunk-01.jpg",
   "assets/helyed-van-koztunk-02.jpg",
-  "assets/helyed-van-koztunk-03.jpg"
+  "assets/helyed-van-koztunk-03.jpg",
+  // Source-grounded five-card demo: verify every new production dependency.
+  "card-demo.css",
+  "card-demo.js",
+  "assets/card-demo/01.svg",
+  "assets/card-demo/07.svg",
+  "assets/card-demo/13.svg",
+  "assets/card-demo/20.svg",
+  "assets/card-demo/35.svg"
 ]) {
   targets.push({ path, url: path, type: "asset" });
 }
 
 assert.equal(targets.filter(x => x.type === "html").length, 48);
-assert.equal(targets.length, 56);
+assert.equal(targets.length, 63);
 const hash = data => crypto.createHash("sha256").update(data).digest("hex");
 
 async function check(target) {
@@ -120,13 +128,13 @@ async function audit() {
       sourceCommit: process.env.GITHUB_SHA || null,
       attempt,
       expectedRoutes: 48,
-      expectedAssets: 8,
+      expectedAssets: 15,
       success: targets.length - failures.length,
       failed: failures.length,
       sampleFailures: failures.slice(0, 5)
     }));
     if (failures.length === 0) {
-      console.log("PASS: 48 published HTML routes and 8 public assets match this commit byte for byte over HTTPS.");
+      console.log("PASS: 48 published HTML routes and 15 public assets match this commit byte for byte over HTTPS.");
       return;
     }
     if (attempt < attempts) await delay(20000);
