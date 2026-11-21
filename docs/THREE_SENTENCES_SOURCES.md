@@ -18,6 +18,7 @@ PDF page numbers below refer to the source files supplied for this release, not 
 | cards-01 | **Helyed van köztünk** — card 20 reverse | 40 | `products/helyed-van-koztunk.html` |
 | cards-02 | **Helyed van köztünk** — card 33 reverse | 66 | `products/helyed-van-koztunk.html` |
 | cards-03 | **Helyed van köztünk** — card 36 reverse | 72 | `products/helyed-van-koztunk.html` |
+| harmonica-01, harmonica-02 | **Helyed van köztünk — Segítő harmonika** — „Ha bántanak” and „Amíg segítséget kapsz” | 1 | `products/helyed-van-koztunk.html` |
 
 The exact **HU** front/back strings are embedded in the public `three-sentences.js` data (with source ID and PDF page). The EN / DE / FR strings are editorial translations, not a claim that the original printed PDFs exist in those languages. These brief excerpts preserve their original context as short thought-starters; they are not clinical guidance or promises of effectiveness.
 
