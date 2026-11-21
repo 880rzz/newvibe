@@ -291,7 +291,7 @@
 .fep-page .fep-restored-header .lang.active,.fep-page .fep-restored-header .lang[aria-current=page]{background:var(--fep-cta-primary);color:#fffaf2}
 .fep-page .fep-restored-header .menu-toggle{width:46px;height:46px;flex:0 0 auto}
 .fep-page .fep-restored-header .menu-toggle:focus-visible,.fep-page .fep-restored-header a:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
-.fep-page .site-menu{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain}
+.fep-page .site-menu{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain;background:var(--paper);backdrop-filter:none}
 .fep-page .site-menu[hidden]{display:none}
 body.fep-menu-open{overflow:hidden}
 .fep-page .site-menu-inner{position:relative;min-height:100%;max-width:1180px;margin:auto;padding:clamp(76px,11vh,110px) 32px 48px;align-items:flex-start;justify-content:center;gap:3px}
