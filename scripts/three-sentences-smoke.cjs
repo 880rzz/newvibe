@@ -54,8 +54,10 @@ for(const lang of langs){
  const first=bank.drawThree(lang,random());
  assert.equal(first.length,3,lang+" always draw exactly three");
  assert.equal(new Set(first.map(x=>x.id)).size,3,lang+" without repetition");
+ assert.equal(new Set(first.map(x=>x.book)).size,3,lang+" three distinct PDF publications");
  const second=bank.drawThree(lang,random(),first.map(x=>x.id));
  assert.ok(second.every(x=>!first.map(v=>v.id).includes(x.id)),lang+" redraw omits previous three");
+ assert.equal(new Set(second.map(x=>x.book)).size,3,lang+" redraw includes three separate PDFs");
  const cards=[makeCard(),makeCard(),makeCard()];
  const listener={};
  const action={addEventListener(type,fn){listener[type]=fn}};
@@ -68,6 +70,7 @@ for(const lang of langs){
  assert.equal(bank.install(doc,random()),true,lang+" first paint");
  const initial=cards.map(c=>c.dataset.sentenceId);
  assert.equal(new Set(initial).size,3,lang+" distinct visible cards");
+ assert.equal(new Set(cards.map(card=>bank.entries.find(e=>e.id===card.dataset.sentenceId).book)).size,3,lang+" visible cards come from three PDFs");
  assert.ok(cards.every(c=>c.getAttribute("aria-pressed")==="false"&&c.getAttribute("aria-label")===c.front.textContent),lang+" correct accessible names");
  assert.ok(cards.every(c=>c.frontFace.children.length===1&&c.frontFace.children[0].textContent.includes(pageLabels[lang])),lang+" per-card visible source and page");
  assert.equal(typeof listener.click,"function",lang+" redraw button wired");
