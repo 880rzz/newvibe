@@ -2,7 +2,7 @@
 
 > **Master documentation · magyar · 2026-11-21**  
 > **Repository:** [`880rzz/newvibe`](https://github.com/880rzz/newvibe)  
-> **Utolsó vizuális hibajelzés előtti production commit:** `3927d02e319f7a8f08cbd00a1fc4d2cc55ded669`  
+> **2026-11-21-i #24-es javítás kiinduló production commitja:** `0fca811b80e21a700495ac4615718e75e04f6ae8`  
 > **Jelenlegi kanonikus host:** https://880rzz.github.io/newvibe/  
 > **Tervezett, még be nem kötött domain:** `foreverypath.com`  
 > **Nyelvek:** angol (EN), magyar (HU), német (DE), francia (FR)  
