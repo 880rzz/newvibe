@@ -378,9 +378,12 @@ body.fep-menu-open{overflow:hidden}
 .fep-page .fep-restored-recognition .card-grid{margin-top:35px;gap:30px;align-items:stretch}
 .fep-page .fep-restored-notecard{appearance:none;-webkit-appearance:none;border:0;display:block;text-align:left;cursor:pointer;overflow:hidden;isolation:isolate;min-height:215px;padding:28px 25px 29px;font-family:Fraunces,serif;transform-style:preserve-3d}
 .fep-page .fep-restored-notecard .card-face{display:block;backface-visibility:hidden;-webkit-backface-visibility:hidden;width:100%}
-.fep-page .fep-restored-notecard .card-front{display:flex;flex-direction:column;gap:18px}
+.fep-page .fep-restored-notecard .card-front{display:flex;flex-direction:column;gap:18px;opacity:1;visibility:visible}
 .fep-page .fep-restored-notecard .card-front .fep-note-text{display:block}
-.fep-page .fep-restored-notecard .card-back{display:flex;align-items:center;justify-content:center;inset:0;padding:25px}
+.fep-page .fep-restored-notecard .card-back{display:flex;align-items:center;justify-content:center;inset:0;padding:25px;opacity:0;visibility:hidden}
+/* WebKit can paint both 3D faces simultaneously under an animated parent. Visibility is the definitive single-face gate. */
+.fep-page .fep-restored-notecard.is-flipped .card-front{opacity:0;visibility:hidden}
+.fep-page .fep-restored-notecard.is-flipped .card-back{opacity:1;visibility:visible}
 .fep-page .fep-restored-notecard .fep-note-text{display:block;font:600 clamp(18px,2vw,23px)/1.24 Fraunces,serif;letter-spacing:-.02em;overflow-wrap:normal;hyphens:none}
 .fep-page .fep-restored-notecard:focus-visible{outline:3px solid var(--ink);outline-offset:5px}
 .fep-page .fep-restored-notecard:hover:not(.is-flipped){filter:brightness(1.015)}
@@ -429,7 +432,7 @@ body.fep-menu-open{overflow:hidden}
 .fep-page .fep-restored-notecard .fep-note-doodle{position:absolute;right:12px;top:11px;width:86px;height:60px;fill:none;overflow:visible;color:var(--fep-note-ink);opacity:.4;pointer-events:none;animation:fep-note-sway 6s ease-in-out infinite}
 .fep-page .fep-restored-notecard.blue .fep-note-doodle{animation-delay:-2s}
 .fep-page .fep-restored-notecard.yellow .fep-note-doodle{animation-delay:-3.7s}
-.fep-page .fep-restored-notecard .fep-note-doodle-line{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:180;stroke-dashoffset:180;animation:fep-note-line 6s ease-in-out infinite}
+.fep-page .fep-restored-notecard .fep-note-doodle-line{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:180;stroke-dashoffset:0;animation:fep-note-line 6s ease-in-out infinite}
 .fep-page .fep-restored-notecard .fep-note-doodle-dot{fill:currentColor;transform-origin:center;transform-box:fill-box;animation:fep-note-pulse 3.3s ease-in-out infinite}
 @keyframes fep-note-line{0%,8%,100%{stroke-dashoffset:180}38%,77%{stroke-dashoffset:0}}
 @keyframes fep-note-sway{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(5deg)}}
