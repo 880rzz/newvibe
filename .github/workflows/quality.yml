@@ -11,6 +11,36 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Prevent private print sources from entering the public repository
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, BadZipFile
+          forbidden={'.pdf','.doc','.docx','.indd','.psd','.epub'}
+          bad=[]
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              if path.suffix.lower() in forbidden:
+                  bad.append(str(path))
+              with path.open('rb') as source:
+                  if source.read(5).startswith(b'%PDF-'):
+                      bad.append(str(path)+' (PDF file signature)')
+              if path.suffix.lower() in {'.zip','.jar'}:
+                  try:
+                      with ZipFile(path) as archive:
+                          for entry in archive.infolist():
+                              if entry.filename.lower().endswith(tuple(forbidden)):
+                                  bad.append(str(path)+' :: '+entry.filename)
+                              elif not entry.is_dir():
+                                  with archive.open(entry) as source:
+                                      if source.read(5).startswith(b'%PDF-'):
+                                          bad.append(str(path)+' :: '+entry.filename+' (PDF signature)')
+                  except BadZipFile:
+                      bad.append(str(path)+' (invalid archive)')
+          assert not bad,'Private manuscript/print files must not be published: '+repr(bad)
+          print('Print-source privacy: no PDF or private manuscripts found.')
+          PY
       - name: JavaScript syntax
         run: |
           node --check app.js
