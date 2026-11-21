@@ -43,10 +43,12 @@ jobs:
           PY
       - name: JavaScript syntax
         run: |
+          node --check checkin-bank.js
           node --check app.js
           node --check product.js
           node --check locale-router.js
           node scripts/locale-smoke.cjs
+          node scripts/checkin-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
         run: |
           python3 - <<'PY'
@@ -328,6 +330,11 @@ jobs:
           assert 'id="quizProductLink"' in root and 'quizBoundary' in root
           assert 'newvibe.lastReflection' not in script and 'QUIZ_SAVE_KEY' not in script
           assert 'checkinMixed' in script and 'quizResultNote' in script
+          assert root.index('src="checkin-bank.js?v=1"') < root.index('src="app.js?v=14"'), 'question bank must load before app'
+          assert 'globalThis.fepCheckinBank.drawSix(lang)' in script, 'start / language switch must securely redraw'
+          assert 'selectedQuestions.length' in script, 'progress must remain six of six'
+          assert 'localStorage.setItem' not in Path('checkin-bank.js').read_text(encoding='utf-8'), 'no saved questionnaire history'
+          assert 'Another six questions' in root, 'repeat should draw a fresh set'
           assert 'fep.checkin' not in script.lower() or 'localstorage.setitem("fep.checkin"' not in script.lower()
           assert 'role="progressbar"' in root and 'aria-valuemax="6"' in root
           statuses={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}
