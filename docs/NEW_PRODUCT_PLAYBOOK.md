@@ -98,7 +98,11 @@ A `catalog.json` globális `email_preorders` blokkja és minden egyes termék `p
 - A publikus repóba ne tölts fel teljes kéziratot, nyomdai PDF-et, forrásjog-iratot, privát elérhetőségeket vagy engedély nélküli tartalmat. A forrásokból csak a szükséges, jogosan közzétehető adatot és elfogadott képet használd.
 - A jelenlegi `.github/workflows/quality.yml` ellenőrzésben vannak **kilenc termékhez rögzített számlálók**, valamint konkrét új kiadványokat ellenőrző tesztek. Új termék felvételekor ezeket a helyes új darabszámra és követelményekre frissíteni kell, **tesztgyengítés nélkül**. A jelenlegi `scripts/locale-smoke.cjs` és a JS-validálás is fusson.
 
-## 8. Átadás előtti kötelező QA
+## 8. A „Hogy vagy?” önreflexiós belépési pont
+
+A hatkérdéses, felnőtteknek szóló kérdéssor csak **önkéntes, nem diagnosztikus** tartalmi segítség; nem profilozási vagy értékesítési teszt. Nincs e-mail-fal, nincs pontozás alapú személyiségállítás és nincs a válaszok tartós tárolása. A kérdéssor a négy nyelvű kezdőlap/katalógus felől elérhető, a továbbmenet nem kötelező. Új termék nem kerülhet automatikusan az eredményajánlóba: előbb ellenőrizni kell az életkori és tartalmi relevanciát, különösen ADHD-, gyermekvédelmi és hitbeli kiadványoknál. Lásd: [2026-11-21-es szerkesztői UX-audit](SITE_EDITORIAL_UX_AUDIT_2026-11-21.md).
+
+## 9. Átadás előtti kötelező QA
 
 - [ ] A forrás, jogosultság, kiadási státusz, tényleges terméknyelv és kép eredete dokumentált.
 - [ ] A `catalog.json` rekord pontos, `price`/`shop_url` `null`; e-mailes szándékjelzés beállítva.
