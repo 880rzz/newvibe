@@ -18,7 +18,7 @@ for(const path of pages){
  assert.ok(footer,lang+" "+path+" footer exists");
  assert.ok(footer[1].includes('class="fep-footer-nav"'),lang+" "+path+" footer text nav");
  assert.ok(footer[1].includes("impressum")&&footer[1].includes("how-made"),lang+" "+path+" imprint links");
- assert.ok(!/class="[^"]*\\bbutton\\b/.test(footer[1]),lang+" "+path+" no footer CTA class");
+ assert.ok(!/class="[^"]*\bbutton\b/.test(footer[1]),lang+" "+path+" no footer CTA class");
 }
 const home=fs.readFileSync(base+"index.html","utf8");
 assert.equal((home.match(/class="fep-note-doodle"/g)||[]).length,3,lang+" SVG cards");
