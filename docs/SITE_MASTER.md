@@ -266,6 +266,10 @@ A következő iPhone-képernyőképek szerint a főoldali másodlagos CTA-n a sz
 **Impresszum:** négy `about/#impressum` horgony, mindegyiken csak megerősített alkotói név, műhelynév és e-mail. Nem lehet kitalált székhely, adószám, nyilvántartási vagy cégazonosító; a jogilag kötelező adatok teljessége igazolás és jogi ellenőrzés után zárható. Az oldal továbbra sem online pénztár.
 
 **QA:** `scripts/visual-design-smoke.cjs` őrizze a 48/48 CSS-paritást, Impresszum/hogyan-készült horgonyokat, a gombmentes footert és a szimmetrikus CTA-t. Valós mobil Safari és desktop vizuális ellenőrzés nélkül nincs teljes vizuális jóváhagyás.
+### Editorial SVG & Motion System (2026-11-21)
+
+A teljes HU/EN/DE/FR oldalrendszer 14 eredeti, kézirat-inspirálta SVG-t használ. A vektorok nem a forrás-PDF-ek mechanikus kivágásai, hanem ellenőrzött témáik kézzel szerkesztett, egyszerűsített szimbólumai; nem minősülnek valódi nyomtatott termékfotónak. Egyetlen közös `editorial-motion.css`, minden dekoráción üres alt és `aria-hidden`, kíméletes animáció, reduced-motion fallback és 48 oldalra kiterjedő tesztvédelem. Az eredeti PDF-ek és azok képeinek jogszerűsége csak külön forrásellenőrzéssel igazolható. Teljes registry és minőségkapuk: [EDITORIAL_SVG_MOTION_SYSTEM.md](EDITORIAL_SVG_MOTION_SYSTEM.md).
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
