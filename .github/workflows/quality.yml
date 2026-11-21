@@ -93,7 +93,7 @@ jobs:
               data=image.read_bytes()
               assert len(data)>10000 and data.startswith(bytes.fromhex('ffd8ff')) and data.endswith(bytes.fromhex('ffd9')), image
               assert image.name in product_html, image
-          assert 'helyed-van-koztunk-03.jpg' in home_html
+          assert 'fep-home-hero' in home_html and 'fep-home-quiz' in home_html and 'fep-home-collection-bridge' in home_html
           assert 'https://880rzz.github.io/newvibe/assets/helyed-van-koztunk-03.jpg' in product_html
           assert 'href="mailto:' in product_html or 'SHOP_URL' in Path('product.js').read_text(encoding='utf-8')
 
@@ -114,8 +114,10 @@ jobs:
               assert '<link rel="canonical"' in html and 'hreflang="x-default"' in html,filename
               assert 'foreverypath.com' not in html.split('<link rel="canonical"')[1].split('>')[0],filename
               assert 'For Every Path' in html,filename
-              if filename.as_posix() != 'index.html':
-                  assert 'locale-router.js?v=1' in html,('missing locale negotiation',filename)
+              if filename.as_posix() not in ('index.html','hu/index.html','de/index.html','fr/index.html'):
+                  assert 'locale-router.js?v=1' in html,('missing route guard',filename)
+              else:
+                  assert 'checkin-bank.js?v=1' in html and 'app.js?v=15' in html,('home lacks local interactive check-in',filename)
               for block in p.ld:
                   parsed=json.loads(block)
                   assert parsed.get('@context')=='https://schema.org',filename
@@ -142,9 +144,10 @@ jobs:
               if '/products/' in rel:expected=origin+rel
               assert expected in locs,('missing sitemap URL',expected)
           homepage=Path('index.html').read_text(encoding='utf-8')
-          assert 'data-i18n="quizTitle">How are you, really, today?' in homepage
-          assert 'role="button" tabindex="0" aria-pressed="false" class="note-card' in homepage
-          assert 'menuEyebrow">a little navigation' in homepage
+          assert 'When words are hard to find and the to-do list keeps growing.' in homepage
+          assert homepage.index('fep-home-hero') < homepage.index('id="quiz"') < homepage.index('fep-home-collection-bridge') < homepage.index('fep-home-author')
+          assert 'class="fep-card"' not in homepage and 'fep-mini-product' not in homepage
+          assert 'id="startQuiz"' in homepage and 'id="quizAgain"' in homepage
           assert '@import url("https://fonts.googleapis.com' in Path('catalog.css').read_text(encoding='utf-8')
           manifest=json.loads(Path('catalog.json').read_text(encoding='utf-8'))
           assert len(manifest['products'])==9
@@ -191,7 +194,7 @@ jobs:
           assert prayer['original_language']=='hu'
           assert prayer['shop_url'] is None and prayer['price'] is None
           assert all(p.get('editorial_status')=='professionally_approved_per_publisher_update_2026-11-21' for p in manifest['products']), 'publisher-approved editorial status must be consistent across all editions'
-          assert 'veled-a-mindennapokban.html' in homepage
+          assert 'veled-a-mindennapokban.html' in Path('catalog/index.html').read_text(encoding='utf-8')
           for lang in langs:
               root=Path('.') if lang=='en' else Path(lang)
               text=(root/'products/veled-a-mindennapokban.html').read_text(encoding='utf-8')
@@ -229,12 +232,11 @@ jobs:
                   assert '84 pages' not in html, (slug,lang,'wrong imported journal facts')
                   catalog=(root/'catalog/index.html').read_text(encoding='utf-8')
                   assert f'products/{slug}.html' in catalog and image_file in catalog
-                  if lang!='en':
-                      home=(root/'index.html').read_text(encoding='utf-8')
-                      assert f'products/{slug}.html' in home
+                  home=(root/'index.html').read_text(encoding='utf-8')
+                  assert f'products/{slug}.html' not in home,(lang,'homepage must not list products')
           assert next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']=='final_editorial_content_print_source_available'
           for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
-              assert link in homepage,('missing homepage Diófa feature',link)
+              assert link in Path('catalog/index.html').read_text(encoding='utf-8'),('missing product in catalogue',link)
 
 
           # Vector arrow quality gate: all nine products and new editions must use SVGs,
@@ -258,7 +260,7 @@ jobs:
               langroot=Path('.') if lang=='en' else Path(lang)
               product_catalog=(langroot/'catalog/index.html').read_text(encoding='utf-8')
               assert product_catalog.count('fep-vector-icon')>=len(manifest['products']), (lang,'catalogue missing product arrows')
-          assert '.arrow-icon, .fep-vector-icon' in Path('app.js').read_text(encoding='utf-8')
+          assert 'fep-vector-icon' in homepage and '.fep-vector-icon' in Path('catalog.css').read_text(encoding='utf-8')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
 
@@ -307,18 +309,15 @@ jobs:
                       assert 'fep-preorder-rights' in content,(language,slug,'required neutral commercial-rights clarification')
                   else:
                       assert 'fep-preorder-rights' not in content,(language,slug,'unexpected rights notice')
-              if language!='en':
-                  home=(base/'index.html').read_text(encoding='utf-8')
-                  assert home.count('class="fep-preorder-badge"')==9,(language,'home status')
-                  assert home.count('class="fep-preorder-compact"')==9,(language,'home links')
-                  assert home.count(f'<p class="fep-preorder-badge">{expected_badge}</p>')==len(manifest['products']),(language,'home badge mismatch')
-                  assert home.count(f'<p class="fep-state">{expected_state}</p>')==len(manifest['products']),(language,'home availability mismatch')
+              home=(base/'index.html').read_text(encoding='utf-8')
+              assert 'fep-preorder-badge' not in home and 'fep-preorder-compact' not in home,(language,'homepage is not a shop')
+              assert home.count('class="fep-card"')==0 and 'fep-mini-product' not in home,(language,'no duplicated catalogue')
               about=(base/'about/index.html').read_text(encoding='utf-8')
               assert 'fep-about-preorder' in about,(language,'missing terms in trust page')
           root_home=Path('index.html').read_text(encoding='utf-8')
-          assert root_home.count('data-preorder-slug=')==7
+          assert root_home.count('data-preorder-slug=')==0
           root_script=Path('app.js').read_text(encoding='utf-8')
-          assert 'fepPreorderMailto' in root_script and 'fepPreorderCopy' in root_script
+          assert 'globalThis.fepCheckinBank.drawSix(lang)' in root_script and 'fepPreorderMailto' not in root_script
           assert 'preorderCopy' in Path('product.js').read_text(encoding='utf-8')
           assert 'pre-order requests' in Path('llms.txt').read_text(encoding='utf-8').lower()
 
@@ -327,24 +326,23 @@ jobs:
           root=Path('index.html').read_text(encoding='utf-8')
           script=Path('app.js').read_text(encoding='utf-8')
           assert 'id="quiz"' in root and 'id="quizResult"' in root
-          assert 'id="quizProductLink"' in root and 'quizBoundary' in root
+          assert 'id="quizProductLink"' in root and 'fep-quiz-boundary' in root
           assert 'newvibe.lastReflection' not in script and 'QUIZ_SAVE_KEY' not in script
-          assert 'checkinMixed' in script and 'quizResultNote' in script
-          assert root.index('src="checkin-bank.js?v=1"') < root.index('src="app.js?v=14"'), 'question bank must load before app'
-          assert 'globalThis.fepCheckinBank.drawSix(lang)' in script, 'start / language switch must securely redraw'
-          assert 'selectedQuestions.length' in script, 'progress must remain six of six'
+          assert 'checkinMixed' in script and 'quizData' in script
+          assert root.index('src="checkin-bank.js?v=1"') < root.index('src="app.js?v=15"'), 'question bank must load before app'
+          assert 'globalThis.fepCheckinBank.drawSix(lang)' in script, 'start and restart must securely redraw'
+          assert 'selected.length' in script, 'progress must remain six of six'
           assert 'localStorage.setItem' not in Path('checkin-bank.js').read_text(encoding='utf-8'), 'no saved questionnaire history'
-          assert 'Another six questions' in root, 'repeat should draw a fresh set'
+          assert 'Try another six questions' in root, 'restart should draw a fresh set'
           assert 'fep.checkin' not in script.lower() or 'localstorage.setitem("fep.checkin"' not in script.lower()
           assert 'role="progressbar"' in root and 'aria-valuemax="6"' in root
           statuses={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}
           for language in langs:
               base=Path('.') if language=='en' else Path(language)
               cat=(base/'catalog/index.html').read_text(encoding='utf-8')
-              assert '?lang='+language+'#quiz' in cat,(language,'catalogue cannot reach check-in')
-              if language!='en':
-                  home=(base/'index.html').read_text(encoding='utf-8')
-                  assert '?lang='+language+'#quiz' in home,(language,'localized homepage cannot reach check-in')
+              assert 'href="../index.html#quiz"' in cat,(language,'catalogue cannot reach same-language check-in')
+              home=(base/'index.html').read_text(encoding='utf-8')
+              assert 'href="#quiz"' in home,(language,'interactive check-in missing from homepage')
               for product in manifest['products']:
                   detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
                   assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
@@ -361,6 +359,40 @@ jobs:
                       assert 'fep-preorder-rights' in page,(locale,product['slug'],'neutral legal distinction missing')
                   else:
                       assert 'fep-preorder-rights' not in page,(locale,product['slug'],'unexpected legal banner')
+          # Five-second clarity and canonical four-language UX parity.
+          home_labels={
+              'en':('When words are hard to find','Skip to content','Try another six questions'),
+              'hu':('Amikor a szavak nehezen jönnek','Ugrás a tartalomra','Másik hat kérdés'),
+              'de':('Wenn die Worte fehlen','Zum Inhalt springen','Sechs neue Fragen'),
+              'fr':('Quand les mots manquent','Aller au contenu','Six autres questions')
+          }
+          for language in langs:
+              base=Path('.') if language=='en' else Path(language)
+              home=(base/'index.html').read_text(encoding='utf-8')
+              catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
+              title,skip,restart=home_labels[language]
+              assert f'<html lang="{language}">' in home
+              assert title in home and skip in home and restart in home,(language,'untranslated home content')
+              assert home.index('fep-home-hero') < home.index('id="quiz"') < home.index('fep-home-collection-bridge') < home.index('fep-home-author'),(language,'homepage flow')
+              assert home.count('<h1')==1,(language,'only one H1')
+              assert 'fep-catalog-grid' not in home and 'fep-diofa-home-grid' not in home,(language,'duplicate catalogue')
+              assert 'checkin-bank.js?v=1' in home and 'app.js?v=15' in home,(language,'check-in must run locally')
+              assert catalogue.count('class="fep-card"')==9,(language,'nine product cards')
+              assert catalogue.count('fep-card-language')==9,(language,'original publication language shown')
+              assert 'fep-visual--square' in catalogue,(language,'genuine card photo is square')
+              if language!='en':
+                  for bad in ('Skip to content','AI & Editorial Trust'):
+                      assert bad not in home and bad not in catalogue,(language,'English UI leakage',bad)
+              for product in manifest['products']:
+                  detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
+                  assert 'fep-product-language' in detail,(language,product['slug'],'publication language absent')
+                  if language!='en':
+                      for bad in ('Skip to content','AI & Editorial Trust'):
+                          assert bad not in detail,(language,product['slug'],'English UI leakage',bad)
+          css=Path('catalog.css').read_text(encoding='utf-8')
+          assert '.fep-card .fep-visual--square{aspect-ratio:1/1}' in css
+          assert '.fep-card .fep-visual{min-height:0;display:block;aspect-ratio:4/5;' in css
+          assert '.fep-page a:not(.fep-skip):hover' in css and 'text-decoration:none' in css
           assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
           assert 'professionally_approved_per_publisher_update_2026-11-21' in Path('catalog.json').read_text(encoding='utf-8')
           assert 'independent professional review and reader testing still outstanding' not in Path('llms.txt').read_text(encoding='utf-8')
