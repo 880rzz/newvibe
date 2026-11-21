@@ -6,6 +6,8 @@
 
 > **Alapmondat:** a For Every Path jelenleg alkotói bemutatkozó és termékkatalógus, ahol **e-mailben már jelezhető az előrendelési szándék**. Nem működő webshop, nem online pénztár, és az elküldött e-mail önmagában nem visszaigazolt rendelés. A webshop és az árak később érkeznek.
 
+**Aktuális szerkesztői státusz (2026-11-21):** a készítő tájékoztatása szerint mind a kilenc termék végleges, szakmailag jóváhagyott tartalommal szerepel a kínálatban. Új kiadvány felvételekor a kiadói jóváhagyást állapotadatként külön rögzítsd; ezt ne keverd össze a nyomtatott készlettel, az intézményi ajánlással vagy a szerzői jogi dokumentumok meglétével.
+
 ## 1. Miért létezik az oldal?
 
 A cél nem az, hogy minél több termékkártyát helyezzünk egymás mellé. Az oldal Sajbán-Frőhner Alexandra önálló alkotói világát teszi érthetővé és megismerhetővé: kártyák, naplók, munkafüzetek, kreatív és gyermekeknek szóló kiadványok egy összefüggő kollekcióban. A **For Every Path** a gyűjtőidentitás; a **Diófa Műhely** egyes kiadványok forrásdokumentumban szereplő műhely-/kiadói megjelölése, **nem igazolt önálló jogi társaság**.
@@ -27,11 +29,11 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 - **Készítő és jogok:** szerző, szerkesztő, illusztrátor, tulajdonosi/fordítási felhasználási jogosultságok; nem bizonyított jóváhagyás vagy partnerkapcsolat nem állítható.
 - **Forrás és állapot:** kiadvány/nyomdai PDF, fotó vagy csak koncepció; a tényként megadott oldalszám, formátum, életkor és tartalom a forrásból ellenőrizendő.
 - **Tényleges terméknyelv:** ma a kiadványok magyar nyelvűek. Az EN/DE/FR bemutatóoldal **nem jelent** angol, német vagy francia nyomtatott kiadást.
-- **Gyártási státusz:** meglévő fizikai példány / nyomdai forrás / szerkesztés alatt / jogtisztázás alatt — külön belső ténymező, **nem azonos az előrendelési lehetőséggel**.
+- **Gyártási státusz:** meglévő fizikai példány / nyomdai forrás / készlet és teljesítés — külön belső ténymező, **nem azonos az előrendelési lehetőséggel**.
 - **Kép eredete:** eredeti tárgyfotó, forrásborító alapján készült grafika, AI-illusztráció vagy szerkesztői SVG-makett; rögzítsd pontosan.
 - **Előrendelés:** fogadható-e e-mailes szándékjelzés, külön feltételek (például jogtisztázás), kapcsolat, későbbi webshop URL csak igazolás után.
 
-**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A kézirat-/jog-/gyártási megjegyzések külön, tényszerű tájékoztatásként maradjanak meg a részletes termékoldalon, ne legyenek megtévesztően eltüntetve.
+**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A végleges szerkesztői jóváhagyást jelöld pontosan; a képek eredetét, a gyártást és a kereskedelmi felhasználási jogokat ettől külön kezeld. Korábbi lektorálási várólistát ne állíts be automatikusan.
 
 ## 3. Új termék felvitelének kötelező sorrendje
 

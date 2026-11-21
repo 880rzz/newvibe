@@ -33,13 +33,13 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "egy-kis-ter",
       "slug": "egy-kis-ter",
       "original_language": "hu",
-      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
+      "production_status": "final_editorial_content_print_source_available",
       "shop_url": null,
       "price": null,
       "image_type": "cover_concept_not_manufactured",
@@ -52,7 +52,7 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "lepesrol-lepesre-2027",
@@ -71,7 +71,7 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "tanari-hataridonaplo-2027-szines",
@@ -90,7 +90,7 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "tanari-hataridonaplo-2027-letisztult",
@@ -109,14 +109,14 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "veled-a-mindennapokban",
       "slug": "veled-a-mindennapokban",
       "original_language": "hu",
       "production_status": "publisher_confirms_final_publication_approved_email_preorder",
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original.",
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21",
       "source_document": "Veled a mindennapokban katolikus imanaplo A5 PDF (84 pages; print source not published)",
       "category": "Catholic prayer and reflection journal",
       "days": 30,
@@ -140,12 +140,12 @@
       "slug": "mesek-a-vilag-korul",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
+      "production_status": "final_editorial_content_print_source_available",
       "source_document_type": "A4 PDF",
       "number_of_pages": 131,
       "format": "A4",
       "content_description": "42 Hungarian folk tales, legends and literary stories connected to 42 countries; source mentions open translation and copyright questions",
-      "rights_status": "publisher_confirms_publication_ready_2026_11_21",
+      "rights_status": "commercial_rights_documents_not_published_in_repository",
       "shop_url": null,
       "price": null,
       "image_type": "editorial_cover_mockup_not_manufactured",
@@ -157,21 +157,22 @@
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
-        "request_not_binding_without_confirmation": true
+        "request_not_binding_without_confirmation": true,
+        "fulfilment_condition": "Any commercial fulfilment is subject to individually confirmed terms and lawful publication rights"
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "mesek-a-vilag-korul-szinezo",
       "slug": "mesek-a-vilag-korul-szinezo",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
+      "production_status": "final_editorial_content_print_source_available",
       "source_document_type": "A4 PDF",
       "number_of_pages": 42,
       "format": "A4",
       "content_description": "42 separately illustrated Hungarian coloring sheets; companion to Mesék a világ körül",
-      "rights_status": "publisher_confirms_publication_ready_2026_11_21",
+      "rights_status": "commercial_rights_documents_not_published_in_repository",
       "shop_url": null,
       "price": null,
       "image_type": "editorial_cover_mockup_not_manufactured",
@@ -182,9 +183,10 @@
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
-        "request_not_binding_without_confirmation": true
+        "request_not_binding_without_confirmation": true,
+        "fulfilment_condition": "Any commercial fulfilment is subject to individually confirmed terms and lawful publication rights"
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "na-most-mit-csinaljak",
@@ -210,7 +212,7 @@
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
       },
-      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     }
   ],
   "collection_image": "assets/fep-collection-concept.webp",

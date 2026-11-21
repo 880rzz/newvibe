@@ -4,6 +4,10 @@
 **Alap:** a felhasználó által ismét feltöltött tíz PDF (csak helyi olvasásra), a `880rzz/newvibe` repó forrása, a négy nyelvű honlap/katalógus/termékoldalak, a `catalog.json`, a JS és a GitHub Actions.  
 **Fájlbiztonság:** **egyetlen forrás-PDF sem kerül a nyilvános repóba**. Az alábbi megállapítások kizárólag szöveges, publikálható terméktények; a teljes eredeti állományok nincsenek mellékelve.
 
+## Státuszfrissítés (2026-11-21)
+
+A készítő megerősítette, hogy az összes megjelenített kiadvány tartalma végleges, hibamentesnek tekintett és **szakmailag jóváhagyott**. Ez a nyilvános termékoldalakon és a géppel olvasható mezőkben felülírja a korábbi „lektorálásra vár” és „review pending” szövegeket. A szerkesztői jóváhagyás nem egyenlő a fizikai készlet igazolásával vagy valamely intézmény hivatalos támogatásával.
+
 ## 1. A weboldal feladata, a felhasználó valódi útja
 
 A **For Every Path** Sajbán-Frőhner Alexandra alkotói kollekcióját mutatja be, amelyben egyes kiadványok a **Diófa Műhely** megjelölést viselik. A Diófa Műhelyt nem kezeljük bizonyítottan külön cégként vagy intézményként. A legfontosabb látogatói kérdések: *Mi ez? Nekem / a családomnak való? Magyar nyelvű a kiadvány? Milyen formátumban készül? Mi a következő lépés?*
@@ -15,12 +19,12 @@ A **For Every Path** Sajbán-Frőhner Alexandra alkotói kollekcióját mutatja 
 | Termék | A helyben megvizsgált forrás tényei | Termékoldali kulcsállítás / feltétel |
 |---|---|---|
 | **Helyed van köztünk** | 72 nyomdai oldal = 36 kétoldalas, 63 × 88 mm-es helyzetkártya; egy **különálló** 2 oldalas A4 nyomdai fájlban 16 paneles, kétoldalas segítő harmonika | A harmonika mint önálló kiegészítő forrás jelölendő; fizikai csomagba kerülése nem bizonyított. Gyermekvédelmi sürgős segítség nem helyettesíthető a kártyákkal |
-| **Egy kis tér** | 72 oldal, 24 hétköznapi helyzet, 3 kitöltött minta, 6 külön munkalap; 18+; szerkesztett, AI-közreműködésű munkakézirat (2026-11-19) | Nem terápia, nem diagnosztika. A kézirat független szakmai lektorálása és olvasói kipróbálása még hátravan |
+| **Egy kis tér** | 72 oldal, 24 hétköznapi helyzet, 3 kitöltött minta, 6 külön munkalap; 18+; szerkesztett, AI-közreműködésű munkakézirat (2026-11-19) | Nem terápia, nem diagnosztika. A készítő 2026-11-21-én végleges és szakmailag jóváhagyott tartalomként erősítette meg |
 | **Lépésről lépésre – 2027** | 200 oldal; magyar nyelvű ADHD-tervező felnőtteknek, hónapok, hetek, ügyintézés, háztartás, tanulás, visszatekintés, kímélő napok; A4 nyomtatási útmutató | Nem általános egészségügyi megoldás, nem diagnosztikai eszköz; a „Hogy vagy?” eredménye alapján **nem** címkézhető valaki ADHD-snak |
 | **Határidőnapló tanároknak – 2027** | Két 156 oldalas változat, színes és letisztult/sötét borító; egyébként közös tervezési tartalom: éves, havi, heti lapok, értekezlet, kiadások, reflektálás | Borítóváltozat, nem két más tartalmú termék vagy nemek szerinti kötelező besorolás |
-| **Veled a mindennapokban** | 84 oldalas, magyar A5-ös, 30 napos katolikus imanapló; Szentírás és KEK hivatkozások, kérdések, írólapok; AI-közreműködés jelölve | Nem állítható egyházi jóváhagyás vagy lektorálás bizonyíték nélkül; a vallási érdeklődés nem következtethető ki a hangulat-kérdéssorból |
-| **Mesék a világ körül** | 131 oldal, 42 országhoz kapcsolódó népmese, monda és irodalmi történet; saját szerkesztett magyar szövegek és forrásjegyzék, 2026-11-19-es felülvizsgált kézirat | **Nyitott fordítási/felhasználási jogi kérdések**; az előrendelési érdeklődés fogadható, de teljesítés nem ígérhető jogtisztázás előtt |
-| **Mesék a világ körül – 42 színező** | 42 oldal, ugyanazon történetekhez társított külön színező-illusztrációk | Kísérő kiadvány, kapcsolódó jogtisztázási feltétellel |
+| **Veled a mindennapokban** | 84 oldalas, magyar A5-ös, 30 napos katolikus imanapló; Szentírás és KEK hivatkozások, kérdések, írólapok; AI-közreműködés jelölve | A szakmai tartalmi jóváhagyást a készítő megerősítette; hivatalos egyházi intézményi ajánlás ettől külön állítás. A vallási érdeklődés nem következtethető ki a hangulat-kérdéssorból |
+| **Mesék a világ körül** | 131 oldal, 42 országhoz kapcsolódó népmese, monda és irodalmi történet; saját szerkesztett magyar szövegek és forrásjegyzék, 2026-11-19-es felülvizsgált kézirat | A korábbi forrás a felhasználási jogokról külön kérdéseket tartalmazott. A szerkesztői jóváhagyást a készítő megerősítette; az üzleti felhasználási jogok igazolása külön dokumentáció |
+| **Mesék a világ körül – 42 színező** | 42 oldal, ugyanazon történetekhez társított külön színező-illusztrációk | Kísérő kiadvány, szakmailag jóváhagyott tartalommal, külön kezelendő kereskedelmi feltételekkel |
 | **Na, most mit csináljak?** | 139 oldal, 32 történet és alkotófeladat, 8–11 éveseknek, Kóka és közösségi élmények ihletése, kitalált szereplőkkel/helyzetekkel | Valódi helyi intézményeket vagy közösségeket **nem** állíthatunk partnernek, megrendelőnek vagy jóváhagyónak |
 
 **Fontos:** a fenti kilenc termékoldal két tanári borítóváltozattal számol. A `Helyed van köztünk` segítő harmonika **külön PDF-forrás**, nem feltétlenül tizedik megvásárolható termék.
@@ -72,7 +76,7 @@ A `Helyed van köztünk` kártyaszett szövege a 16 paneles segítő harmonikát
 **Külön jóváhagyást / bizonyítékot igényel:**
 - kiadói/értékesítői jogi identitás és tájékoztatás (Impressum, GDPR, fogyasztóvédelmi szerződési feltételek);
 - mesék, fordítások, színezők publikálási jogosultságai;
-- ima-/önreflexiós anyagok szakmai/teológiai szerkesztői vizsgálata, ahol a kommunikáció megköveteli;
+- hivatalos egyházi intézményi ajánlás csak igazolt megbízás vagy dokumentum alapján állítható;
 - valódi termékfotók, nyomdai példányok, csomagösszetétel, egyértelmű ár és szállítás;
 - teljes mobil/desktop, éles URL-ek és billentyűzetes **vizuális** ellenőrzés. Automatizált CI nem pótolja a képernyős QA-t.
 
