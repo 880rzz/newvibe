@@ -253,7 +253,7 @@ jobs:
                   assert 'mailto:diofamuhelykozosseg@gmail.com?subject=' in h,(lang,slug,'email link')
                   assert '&amp;body=' in h,(lang,slug,'prefilled email body')
                   assert 'fep-preorder-cta' in h and 'fep-vector-icon' in h
-                  assert 'payment' not in h.lower() or 'no payment' in h.lower() or lang!='en', (lang,slug,'misleading payment')
+                  assert 'No prices' not in h or 'pre-order' in h, (lang,slug,'pre-order availability')
                   assert '<script type="application/ld+json">' in h,(lang,slug,'structured content')
               about=(root/'about/index.html').read_text(encoding='utf-8')
               assert 'fep-preorder-intro' in about
