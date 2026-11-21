@@ -251,16 +251,16 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   check(["01","07","13","20","35"].includes(selection),label+" exactly one random sample selected");
   check(await demo.locator("[data-demo-title]").textContent().then(x=>x.trim().length>3),label+" randomized card title");
   check(await demo.locator("[data-demo-explanation]").textContent().then(x=>x.trim().length>80),label+" localized interpretation");
-  const art=demo.locator("[data-demo-svg]");
-  // Animated SVGs never become Playwright-stable; DOM scrolling is the correct input-neutral check.
+  const art=demo.locator("[data-demo-original-front]");
+  // PDF-derived print art is static: scroll and decode the real WebP image.
   await art.evaluate(img=>img.scrollIntoView({block:"center",behavior:"instant"}));
   await art.evaluate(img=>img.decode());
   const artProof=await art.evaluate(img=>({
    complete:img.complete,naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,
    cardId:img.dataset.cardId,src:img.getAttribute("src")
   }));
-  check(artProof.complete&&artProof.naturalWidth>0&&artProof.naturalHeight>0,label+" vector scene decoded");
-  check(artProof.src.endsWith("/"+selection+".svg")&&artProof.cardId===selection,label+" exact drawn artwork");
+  check(artProof.complete&&artProof.naturalWidth>=800&&artProof.naturalHeight>=1100,label+" original front WebP decoded at readable resolution");
+  check(artProof.src.endsWith("/"+selection+"-front.webp")&&artProof.cardId===selection,label+" exact original front card number");
   const frontState=await demo.locator("[data-demo-card]").evaluate(el=>{
     const f=getComputedStyle(el.querySelector(".fep-demo-face--front"));
     const r=getComputedStyle(el.querySelector(".fep-demo-face--back"));
@@ -290,13 +290,30 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   check(await flip.getAttribute("aria-pressed")==="true",label+" native button flips card");
   check(await demo.locator("[data-demo-card]").getAttribute("data-face")==="back",label+" back face state");
   check(await demo.locator("[data-demo-back]").getAttribute("aria-hidden")==="false",label+" back face accessible");
-  const reverse=await demo.locator("[data-demo-back]").evaluate(el=>({
-   height:el.clientHeight,scrollHeight:el.scrollHeight,
-   story:el.querySelector("[data-demo-story]").textContent.trim().length,
-   questionCount:el.querySelectorAll(".fep-demo-questions li").length
-  }));
-  check(reverse.story>60&&reverse.questionCount===2,label+" source scenario and questions visible");
-  check(reverse.scrollHeight<=reverse.height+3,label+" back text fits without vertical clipping");
+  const backImg=demo.locator("[data-demo-original-back]");
+  await backImg.evaluate(img=>img.decode());
+  const reverse=await demo.evaluate(el=>{
+   const back=el.querySelector("[data-demo-back]");
+   const image=el.querySelector("[data-demo-original-back]");
+   const box=back.getBoundingClientRect(),imageBox=image.getBoundingClientRect();
+   const transcript=el.querySelector(".fep-demo-transcript");
+   return {
+    loaded:image.complete,naturalWidth:image.naturalWidth,naturalHeight:image.naturalHeight,
+    src:image.getAttribute("src"),cardId:image.dataset.cardId,
+    height:back.clientHeight,scrollHeight:back.scrollHeight,
+    imageHeight:imageBox.height,faceHeight:box.height,
+    imageWidth:imageBox.width,faceWidth:box.width,
+    story:transcript.querySelector("[data-demo-story]").textContent.trim().length,
+    questionCount:transcript.querySelectorAll(".fep-demo-questions li").length,
+    transcriptOpen:transcript.open
+   };
+  });
+  check(reverse.loaded&&reverse.naturalWidth>=800&&reverse.naturalHeight>=1100,label+" original printed reverse WebP decoded");
+  check(reverse.src.endsWith("/"+selection+"-back.webp")&&reverse.cardId===selection,label+" original back matches front number");
+  check(reverse.story>60&&reverse.questionCount===2,label+" accessible original or translated scenario plus two questions");
+  check(reverse.scrollHeight<=reverse.height+3,label+" original printed back fits without vertical clipping");
+  check(reverse.imageHeight>=reverse.faceHeight-3&&reverse.imageWidth>=reverse.faceWidth-3,label+" entire printed reverse displayed");
+  check(reverse.transcriptOpen===(lang!=="hu"),label+" translated transcript opens for non-Hungarian visitors");
   if([320,390,1440].includes(width)){
    await demo.locator("[data-demo-card]").screenshot({
     path:path.join(destination,engine+"-"+lang+"-card-demo-"+width+"-back.png"),animations:"disabled"
