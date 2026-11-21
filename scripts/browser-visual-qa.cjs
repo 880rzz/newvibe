@@ -187,6 +187,12 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   });
   check(geom.left>=-1&&geom.right<=geom.screen+1,label+" menu card not clipped");
   if(width===1440)check(geom.left>geom.screen/2,label+" desktop card occupies empty right field");
+  const exit=await page.locator("#menuClose").evaluate(el=>{
+    const r=el.getBoundingClientRect(),s=getComputedStyle(el);
+    return {top:r.top,left:r.left,right:r.right,height:r.height,width:r.width,position:s.position};
+  });
+  check(exit.position==="fixed"&&exit.top>=-1&&exit.right<=width+1&&exit.height>=44&&exit.width>=44,
+        label+" close control remains visible after calendar scroll");
   await moment.locator(".fep-moment-calendar summary").click();
   check(await moment.locator(".fep-moment-days li").count()===7,label+" seven visible lunar dates");
   await moment.screenshot({
