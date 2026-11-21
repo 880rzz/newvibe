@@ -225,7 +225,17 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
    paragraphs:story?.querySelectorAll(".fep-story-copy>p").length||0,
    facts:story?.querySelectorAll(".fep-story-facts li").length||0,
    imageNote:!!document.querySelector(".fep-product-media .fep-photo-note"),
-   mailto:!!document.querySelector(".fep-availability a[href^='mailto:']")};
+   mailto:!!document.querySelector(".fep-availability a[href^='mailto:']"),
+   preorder:(()=>{
+     const main=document.querySelector("main"),panel=document.querySelector("main > .fep-preorder-final");
+     const footer=document.querySelector(".fep-footer");
+     if(!main||!panel||!footer)return null;
+     const p=rect(panel),f=rect(footer),more=panel.querySelector("a.fep-preorder-more");
+     return {rect:p,isLast:main.lastElementChild===panel,gap:f.top-p.bottom,
+       actions:panel.querySelectorAll("a.fep-preorder-action").length,
+       other:panel.querySelectorAll("a.fep-preorder-more").length,
+       moreHref:more?.getAttribute("href"),moreColor:more?getComputedStyle(more).color:null};
+   })()};
  });
  const label=engine+" "+lang+"/products/"+slug+" @"+width;
  check(proof.lang===lang,label+" language");
@@ -237,6 +247,15 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
  check(proof.labels===3,label+" original three questions preserved");
  check(proof.imageNote,label+" visual provenance note");
  check(proof.mailto,label+" email preorder preserved");
+ check(proof.preorder?.isLast===true,label+" preorder is the last main section");
+ check(proof.preorder&&proof.preorder.rect.left>=-1&&proof.preorder.rect.right<=width+1,label+" full-width preorder panel stays within screen");
+ check(proof.preorder?.gap>=50,label+" footer border does not intersect preorder controls");
+ check(proof.preorder?.actions===1&&proof.preorder?.other===1&&proof.preorder?.moreHref==="../catalog/",label+" exactly one preorder CTA and harmonized catalog button");
+ check(proof.preorder?.moreColor!=="rgb(0, 0, 238)"&&proof.preorder?.moreColor!=="rgb(0, 0, 255)",label+" catalog link not browser-blue");
+ if(slug==="helyed-van-koztunk"&&[320,390].includes(width)){
+   await page.locator(".fep-preorder-final").evaluate(el=>el.scrollIntoView({block:"center",behavior:"instant"}));
+   await page.screenshot({path:path.join(destination,engine+"-"+lang+"-product-footer-cta-"+width+".png"),animations:"disabled"});
+ }
  if(proof.cards.length===2){
   const a=proof.cards[0],b=proof.cards[1];
   const crossing=a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;

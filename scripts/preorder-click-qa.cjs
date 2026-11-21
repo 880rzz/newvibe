@@ -65,11 +65,26 @@ function check(ok, label) { tested++; if (!ok) failures.push(label); }
           const click = await page.evaluate(() => window.__preorderClick);
           check(!!click && click.href.startsWith("mailto:"), label + " mailto click captured");
           check(click?.trusted === true, label + " real browser input event");
-          const bottom = page.locator('main nav a[href="#preorder"]');
-          check(await bottom.count() === 1, label + " end-of-story return exists");
-          await bottom.click();
-          check(await page.evaluate(() => location.hash) === "#preorder",
-            label + " story return navigates to preorder");
+          const layout = await page.evaluate(() => {
+            const main = document.querySelector("main");
+            const panel = document.querySelector("main > .fep-preorder-final");
+            const footer = document.querySelector(".fep-footer");
+            if (!main || !panel || !footer) return null;
+            const panelRect = panel.getBoundingClientRect(), footerRect = footer.getBoundingClientRect();
+            const more = panel.querySelector("a.fep-preorder-more");
+            return {
+              lastChild: main.lastElementChild === panel,
+              gap: footerRect.top-panelRect.bottom,
+              preorderButtons: panel.querySelectorAll("a.fep-preorder-action").length,
+              moreHref: more?.getAttribute("href"),
+              moreColor: more ? getComputedStyle(more).color : "",
+              overflow: document.documentElement.scrollWidth-innerWidth
+            };
+          });
+          check(layout?.lastChild === true, label + " preorder is last content block");
+          check(layout?.gap >= 50, label + " preorder clear of footer dividing line");
+          check(layout?.preorderButtons === 1 && layout.moreHref === "../catalog/", label + " one preorder and one catalog action");
+          check(layout?.moreColor !== "rgb(0, 0, 238)" && layout?.moreColor !== "rgb(0, 0, 255)" && layout?.overflow < 2, label + " secondary button is not browser-blue and no sideways scroll");
         }
         await page.close();
       } finally { await browser.close(); }
