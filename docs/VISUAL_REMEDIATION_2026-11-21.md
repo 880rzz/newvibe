@@ -48,3 +48,11 @@ Branch → PR → CI → merge → Pages → exact-live readback → képernyők
 - [ ] 48 lokalizált HTML közös cache-verzióval, zöld regressziós kapu, sikeres GitHub Pages és utóellenőrzés.
 
 **Részletes rendszerdokumentáció:** [SITE_MASTER.md](SITE_MASTER.md).
+
+## Kiegészítés: második iPhone-visszajelzés 2026-11-21
+
+- Az új mélyzöld CTA-n a szöveg két oldalán mindig egyforma belső padding legyen, bármely HU/EN/DE/FR felirattal; hosszabb címke esetén természetes wrap, kilógás nélkül.
+- Minden footerben csak szöveges Impresszum, Hogyan készült? és Kapcsolat hivatkozások legyenek; CTA-gombot és fiktív vállalkozási adatot tilos közölni.
+- Az Alexandra-bemutatkozás és a Hogyan készült? négy nyelven következetesen E/1. A 2026-11-19-i Egy kis tér 2–3. oldalai az elsődleges személyes és AI-átláthatósági források.
+- Független klinikai, terápiás, hivatalos egyházi vagy intézményi igazolást nem szabad a személyes tapasztalatból levezetni. A PDF-kéziratokat nem szabad feltölteni a publikus GitHub-repóba.
+- CI-zöld + Pages deployment + képernyőképes Safari/desktop ellenőrzés kell a végleges QA-lezáráshoz.

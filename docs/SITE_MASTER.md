@@ -9,7 +9,7 @@
 > **Alkotó / kiadói kapcsolattartó:** Sajbán-Frőhner Alexandra  
 > **E-mailes előrendelési kapcsolat:** `diofamuhelykozosseg@gmail.com`  
 > **Termékszám:** 9 kiadványváltozat · **Indexelhető lokalizált oldalak:** 48 (4 × 12)  
-> **Állapotbesorolás:** a sikeres 2026-11-21-i #16 kiadás után felhasználói iPhone-képernyőképekkel igazolt vizuális regressziók jelentkeztek; a gombszín, fejléc, mobilos felső tér és kártyamozgás javítása és élő visszaellenőrzése külön szükséges.
+> **Állapotbesorolás:** a #17 kiadás a sötét CTA-kat, fejlécet és kártyadizájnt forrásszinten javította; az újabb 2026-11-21-i képernyőképek alapján további CTA-szimmetria, lábléc és első személyű alkotói szöveg javítás készült. Valódi mobil/desktop vizuális QA és az Impresszum jogi teljességének ellenőrzése továbbra is külön kapu.
 
 Ez a fájl a weboldal **egyetlen átfogó, emberi és fejlesztői eligazító dokumentuma**. A pontos gépi termékadatok kanonikus forrása továbbra is a `catalog.json`, a 30 kérdés tényleges szövegének és válaszainak kanonikus forrása a `checkin-bank.js`, a megjelenített nyelvi szövegeké pedig a megfelelő HTML és JS. A dokumentum ezek használatát, egymás közötti szerződését és működését rögzíti, **nem írja felül őket**.
 
@@ -255,6 +255,17 @@ Meleg, papíralapú, könnyed és játékos, de nem gyermeteg. Kézzel készíte
 - **Release-gate:** forrásellenőrzés + GitHub CI + Pages SHA-egyezés mellett iPhone Safari és asztali megjelenítésről screenshot/videó szükséges. Enélkül a kiadás állapota `CI-VERIFIED / VISUAL-QA-PENDING`.
 
 **Végrehajtási leírás:** [`VISUAL_REMEDIATION_2026-11-21.md`](VISUAL_REMEDIATION_2026-11-21.md).
+### 2026-11-21 — CTA-szimmetria, szöveges lábléc, első személyű alkotói hang és Impresszum
+
+A következő iPhone-képernyőképek szerint a főoldali másodlagos CTA-n a szöveg túl közel került a gomb széléhez. **Központi kötelező szabály:** minden főoldali gomb egyenlő bal és jobb belső térközt kap (26 px, keskeny mobilon 24 px), `width:max-content; max-width:100%`, és hosszú fordításnál természetes sortörés. A mélyzöld gombszín megmarad.
+
+**A footer nem CTA-zóna.** Mind a 48 lokalizált oldalon csak szerkesztői szöveges hivatkozások szerepelnek: Impresszum/Imprint/Impressum/Mentions légales, Hogyan készült?, Kapcsolat és a diszkrét vissza-a-tetejére SVG link. A footerben `.button` osztályú gomb nem lehet, a linkek mobilon sem lóghatnak ki.
+
+**Az első személyű Alexandra-hang kéziratos forrása:** az `Egy kis tér` 2026-11-19-i kéziratának 2. oldali személyes bevezetője: gyermekekkel foglalkozás, segítés, szervezés, túl gyors igenek, saját határok, segítségkérés. Az alkotói és „Hogyan készültek?” szakaszban mind a négy nyelven Alexandra beszél, nem egy külső márkaírótól kapott harmadik személyű szöveg. A 3. oldal megkülönbözteti a szerző személyes élményeinek szerkesztett változatait a szemléltető kitalált példáktól, és jelöli az AI-közreműködést. A `Helyed van köztünk` segítő harmonika gyermekvédelmi beszélgetési anyag és a 30 napos `Veled a mindennapokban` imanapló további hiteles tartalmi kontextus. A korábbi kéziratban még nem igazolt független lektorálás vagy klinikai hatásosság nem azonos a készítő későbbi kiadói tájékoztatásával.
+
+**Impresszum:** négy `about/#impressum` horgony, mindegyiken csak megerősített alkotói név, műhelynév és e-mail. Nem lehet kitalált székhely, adószám, nyilvántartási vagy cégazonosító; a jogilag kötelező adatok teljessége igazolás és jogi ellenőrzés után zárható. Az oldal továbbra sem online pénztár.
+
+**QA:** `scripts/visual-design-smoke.cjs` őrizze a 48/48 CSS-paritást, Impresszum/hogyan-készült horgonyokat, a gombmentes footert és a szimmetrikus CTA-t. Valós mobil Safari és desktop vizuális ellenőrzés nélkül nincs teljes vizuális jóváhagyás.
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
