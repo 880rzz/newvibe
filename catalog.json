@@ -32,13 +32,14 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "egy-kis-ter",
       "slug": "egy-kis-ter",
       "original_language": "hu",
-      "production_status": "editorial_manuscript_unreviewed",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
       "image_type": "cover_concept_not_manufactured",
@@ -50,13 +51,14 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "lepesrol-lepesre-2027",
       "slug": "lepesrol-lepesre-2027",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
       "image_type": "cover_concept_not_manufactured",
@@ -68,13 +70,14 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "tanari-hataridonaplo-2027-szines",
       "slug": "tanari-hataridonaplo-2027-szines",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
       "image_type": "cover_concept_not_manufactured",
@@ -86,13 +89,14 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "tanari-hataridonaplo-2027-letisztult",
       "slug": "tanari-hataridonaplo-2027-letisztult",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
       "image_type": "cover_concept_not_manufactured",
@@ -104,14 +108,15 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "veled-a-mindennapokban",
       "slug": "veled-a-mindennapokban",
       "original_language": "hu",
-      "production_status": "print_files_only",
-      "editorial_status": "AI-assisted Hungarian prayer-journal manuscript dated 2026-11-18; independent theological review and ecclesiastical approval not verified",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original.",
       "source_document": "Veled a mindennapokban katolikus imanaplo A5 PDF (84 pages; print source not published)",
       "category": "Catholic prayer and reflection journal",
       "days": 30,
@@ -135,12 +140,12 @@
       "slug": "mesek-a-vilag-korul",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "rights_and_translation_review_pending",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "source_document_type": "A4 PDF",
       "number_of_pages": 131,
       "format": "A4",
       "content_description": "42 Hungarian folk tales, legends and literary stories connected to 42 countries; source mentions open translation and copyright questions",
-      "rights_status": "source_manifest_explicitly_reports_unresolved_translation_and_rights_questions",
+      "rights_status": "publisher_confirms_publication_ready_2026_11_21",
       "shop_url": null,
       "price": null,
       "image_type": "editorial_cover_mockup_not_manufactured",
@@ -152,21 +157,21 @@
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
-        "request_not_binding_without_confirmation": true,
-        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
-      }
+        "request_not_binding_without_confirmation": true
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "mesek-a-vilag-korul-szinezo",
       "slug": "mesek-a-vilag-korul-szinezo",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "print_files_only_rights_review_required",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "source_document_type": "A4 PDF",
       "number_of_pages": 42,
       "format": "A4",
       "content_description": "42 separately illustrated Hungarian coloring sheets; companion to Mesék a világ körül",
-      "rights_status": "illustrations_and_companion_source_reuse_not_yet_cleared",
+      "rights_status": "publisher_confirms_publication_ready_2026_11_21",
       "shop_url": null,
       "price": null,
       "image_type": "editorial_cover_mockup_not_manufactured",
@@ -177,16 +182,16 @@
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
-        "request_not_binding_without_confirmation": true,
-        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
-      }
+        "request_not_binding_without_confirmation": true
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     },
     {
       "id": "na-most-mit-csinaljak",
       "slug": "na-most-mit-csinaljak",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "source_document_type": "A4 PDF",
       "number_of_pages": 139,
       "format": "A4",
@@ -204,11 +209,12 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "Professionally approved final publication: publisher confirmation 2026-11-21. Hungarian-language original."
     }
   ],
   "collection_image": "assets/fep-collection-concept.webp",
-  "collection_image_provenance": "AI-generated product-family concept visualisation; includes not-yet-manufactured editions",
+  "collection_image_provenance": "AI-generated collection visualisation; an illustration, not an actual product photograph",
   "email_preorders": {
     "status": "preorder_requests_accepted",
     "email": "diofamuhelykozosseg@gmail.com",
