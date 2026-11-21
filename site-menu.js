@@ -12,7 +12,7 @@
   // Inspired by helloitsme's local random selection and approximate lunar cycle,
   // but deliberately excludes divination, tracking and personal interpretations.
   function setupMenuMoment(){
-    const host=menu.querySelector(".site-menu-inner");
+    const host=typeof menu.querySelector==="function"?menu.querySelector(".site-menu-inner"):null;
     if(!host)return ()=>{};
     const language=(document.documentElement.lang||"en").split("-")[0].toLowerCase();
     const strings={
