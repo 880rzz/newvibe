@@ -535,6 +535,9 @@ A kiadványok szakmai jóváhagyása ettől különálló. A fejléc, CTA-palett
 
 ---
 
+### 2026-11-21 — képi metaadatok terminológiájának egységesítése
+
+Az eredeti képi származási tényeket a Google/LLM rendszereknek szánt JSON-LD-ben sem szabad hamisítani. A termékfotóval nem igazolt négy munkafüzet/napló borítójának és az imanapló mockupjának `Image representation` / `Visual provenance` mezője minden nyelven egyformán, érthetően **digitális borítólátványtervként** jelöli a képet, és kimondja, hogy nem késztermékfotó. A látogatói oldalakon az általános technológiai reklámszakasz már hiányzik; az alkotói, tartalmi és termékoldali megjelenítés a képi formára, nem a készítés technológiájára koncentrál. **Valódi termékfotónak nevezés csak igazolt, lefotózott fizikai kiadvány esetén engedhető meg.** Az összes 48 oldal adatainak JSON-szintaktikáját és a képi származás megnevezéseit a `scripts/product-story-smoke.cjs` védi.
 ## 17. Tiltott vagy kockázatos változtatások
 
 **Soha ne:**

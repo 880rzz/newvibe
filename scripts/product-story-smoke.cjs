@@ -37,6 +37,10 @@ for(const lang of ["en","hu","de","fr"]){
  assert.equal(all.length,12);
  for(const page of all){
   assert.ok(page.includes("catalog.css?v=10"),lang+" stale CSS version");
+  assert.ok(!page.includes("AI-generated"),lang+" machine-readable cover metadata must use precise digital-preview terminology");
+  const linkedData=[...page.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  for(const [,value] of linkedData)assert.doesNotThrow(()=>JSON.parse(value),lang+" invalid JSON-LD after provenance cleanup");
+
   const visiblePage=page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,"");
   for(const term of deprecated)assert.ok(!visiblePage.includes(term),lang+" old user-facing text: "+term);
  }

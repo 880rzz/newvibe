@@ -26,6 +26,8 @@ A 14:07-es iPhone-képen látható levágott képaláírás gyökéroka az overf
 
 Regressziós kapu: scripts/product-story-smoke.cjs, 48/48 CSS-paritás catalog.css?v=10, Chromium és WebKit renderelt QA. Részletes specifikáció: docs/SITE_MASTER.md, 8. fejezet.
 
+A termékoldalak strukturált metaadataiban a digitális borítólátványtervek származását egyszerű, pontos szöveg jelöli, hamis késztermékfotó-állítás nélkül. A 48 útvonal JSON-LD szintaxisa és ez a követelmény a termékoldali CI-kapu része.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**
