@@ -653,3 +653,14 @@ html,body.fep-page{overflow-x:clip}
   .fep-page .fep-moment-star{animation:none}
   .fep-page .fep-moment-again{transition:none}
 }
+
+
+/* Keep the menu close target usable when the reflective calendar is below the fold. */
+.fep-page .site-menu .menu-close{
+  position:fixed;top:clamp(15px,2.5vw,25px);right:clamp(15px,2.5vw,29px);
+  z-index:5;display:grid;place-items:center;
+  width:44px;height:44px;min-width:44px;min-height:44px;padding:0;
+  line-height:1;border-radius:50%;
+  background:#fff9ed;border:1px solid rgba(31,74,61,.19);
+  box-shadow:0 5px 16px rgba(31,74,61,.07)
+}
