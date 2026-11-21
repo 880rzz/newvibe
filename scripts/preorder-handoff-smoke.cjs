@@ -58,7 +58,7 @@ for (const lang of langs) {
     assert.equal((html.match(/href="#preorder"/g) || []).length, 0, pathname + " no duplicate end-of-page preorder shortcut");
     assert.equal((html.match(/class="fep-availability fep-preorder fep-preorder-final section-shell"/g) || []).length, 1, pathname + " one bottom preorder panel");
     assert.equal((html.match(/class="button fep-preorder-more"/g) || []).length, 1, pathname + " one matched catalog button");
-    assert.ok(html.includes("catalog.css?v=14"), pathname + " refreshed layout CSS");
+    assert.ok(html.includes("catalog.css?v=15"), pathname + " refreshed layout CSS");
     const preorderPosition = html.indexOf('id="preorder"');
     const storyPosition = html.indexOf('class="fep-product-story section-shell"');
     const footerPosition = html.indexOf('<footer class="fep-footer');

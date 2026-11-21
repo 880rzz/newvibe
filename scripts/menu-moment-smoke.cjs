@@ -73,7 +73,7 @@ for(const lang of ["en","hu","de","fr"]){
   const base=lang==="en"?"":lang+"/";
   for(const page of ["index.html","catalog/index.html","about/index.html",...slugs.map(slug=>"products/"+slug+".html")]){
     const content=fs.readFileSync(base+page,"utf8");
-    const expectedCssVersion=14;
+    const expectedCssVersion=15;
     const cssRef="catalog.css?v="+expectedCssVersion;
     assert.equal(content.split(cssRef).length-1,1,lang+" "+page+" exact stylesheet version");
     assert.doesNotMatch(content,/catalog\.css\?v=(?:11|12|13)(?:[^0-9]|$)/,lang+" "+page+" no outdated shared CSS references");

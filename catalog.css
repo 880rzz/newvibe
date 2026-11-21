@@ -294,7 +294,7 @@
 .fep-page .site-menu{position:fixed;inset:0;z-index:1000;overflow:auto;overscroll-behavior:contain;background:var(--paper);backdrop-filter:none}
 .fep-page .site-menu[hidden]{display:none}
 body.fep-menu-open{overflow:hidden}
-.fep-page .site-menu-inner{position:relative;min-height:100%;max-width:1180px;margin:auto;padding:clamp(82px,9vh,96px) 32px 48px;align-items:flex-start;justify-content:flex-start;gap:3px}
+.fep-page .site-menu-inner{position:relative;min-height:100%;max-width:1180px;margin:auto;padding:20px 32px 48px;align-items:flex-start;justify-content:flex-start;gap:3px}
 .fep-page .site-menu-inner:after{pointer-events:none;z-index:-1;right:6%;bottom:12%}
 .fep-page .menu-close{right:32px;top:24px;width:44px;height:44px;display:grid;place-items:center;line-height:1;border-radius:50%;font-size:35px;cursor:pointer}
 .fep-page .site-menu .fep-menu-link{font:600 clamp(30px,5vw,53px)/1.06 Fraunces,serif;color:var(--ink);margin:5px 0;display:inline-block}
@@ -348,7 +348,7 @@ body.fep-menu-open{overflow:hidden}
  .fep-page .fep-restored-header .language-switcher{gap:2px}
  .fep-page .fep-restored-header .lang{min-height:34px;min-width:30px;padding:5px;font-size:10px}
  .fep-page .fep-restored-header .menu-toggle{height:38px;width:38px;gap:3px}
- .fep-page .site-menu-inner{min-height:100%;padding:62px 19px 35px;justify-content:flex-start}
+ .fep-page .site-menu-inner{min-height:100%;padding:12px 19px 35px;justify-content:flex-start}
  .fep-page .menu-close{right:19px;top:15px}
  .fep-page .site-menu .fep-menu-link,.fep-page .site-menu .fep-category-disclosure summary{font-size:clamp(29px,7.4vw,37px)}
  .fep-page .site-menu .fep-category-list{padding-left:13px;margin-top:7px}
@@ -636,7 +636,7 @@ html,body.fep-page{overflow-x:clip}
 @keyframes fep-moment-turn{to{transform:rotate(360deg)}}
 @media(min-width:1120px) and (min-height:620px){
   .fep-page .site-menu .fep-menu-moment{
-    position:absolute;right:32px;top:clamp(108px,13vh,130px);transform:none;
+    position:absolute;right:32px;top:clamp(50px,7vh,66px);transform:none;
     width:clamp(300px,30vw,346px);margin:0
   }
   .fep-page .site-menu .fep-category-disclosure{max-width:calc(100% - 385px)}

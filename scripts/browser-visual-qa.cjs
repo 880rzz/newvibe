@@ -179,8 +179,8 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     };
   });
   const collision=(a,b)=>a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;
-  const maxMenuTop=width<=390?74:104;
-  check(layout.heading.top>=52&&layout.heading.top<=maxMenuTop,label+" navigation begins near top without oversized blank area");
+  const maxMenuTop=width<=390?26:34;
+  check(layout.heading.top>=8&&layout.heading.top<=maxMenuTop,label+" For Every Path starts near top edge without blank header area");
   check(layout.scrollX<2,label+" expanded menu has no horizontal scroll");
   check(layout.background.startsWith("rgb(")&&layout.backdrop==="none",label+" opaque uncluttered menu background");
   check(layout.nav.every(rect=>!collision(rect,layout.card)),label+" editorial card never overlaps navigation");
