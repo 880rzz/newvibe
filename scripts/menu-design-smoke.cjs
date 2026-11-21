@@ -14,7 +14,9 @@ for(const lang of langs){
   assert.ok(text.includes('aria-expanded="false"'),filename+" disclosure state");
   assert.ok(text.includes('viewBox="0 0 72 34"'),filename+" original infinity mark");
   for(const id of order)assert.ok(text.includes("catalog/#"+id),filename+" dropdown "+id);
-  const js=text.match(/src="([^"]*site-menu\.js\?v=2)"/);
+   const js=text.match(/src="([^"]*site-menu\.js\?v=[0-9]+)"/);
+   const expectedMenuVersion=suffix==="index.html"?3:2;
+   assert.equal(js?.[1].split("?v=")[1],String(expectedMenuVersion),filename+" correct menu cache version");
   assert.ok(js,filename+" has shared menu script");
   assert.ok(fs.existsSync(path.join(path.dirname(filename),js[1].split("?")[0])),filename+" correct relative JS");
   const buttons=[...text.matchAll(/<(a|button)\b[^>]*class="[^"]*\bbutton\b[^"]*"[^>]*>([\s\S]*?)<\/\1>/g)];
