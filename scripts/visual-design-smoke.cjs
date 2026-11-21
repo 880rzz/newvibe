@@ -11,7 +11,15 @@ for(const lang of ["en","hu","de","fr"]){
 const base=lang==="en"?"":lang+"/";
 const pages=["index.html","catalog/index.html","about/index.html",...slugs.map(s=>"products/"+s+".html")];
 assert.equal(pages.length,12);
-for(const path of pages)assert.ok(fs.readFileSync(base+path,"utf8").includes("catalog.css?v=6"),lang+" "+path+" cache mismatch");
+for(const path of pages){
+ const page=fs.readFileSync(base+path,"utf8");
+ assert.ok(page.includes("catalog.css?v=6"),lang+" "+path+" cache mismatch");
+ const footer=page.match(/<footer class="fep-footer section-shell">([\s\S]*?)<\/footer>/);
+ assert.ok(footer,lang+" "+path+" footer exists");
+ assert.ok(footer[1].includes('class="fep-footer-nav"'),lang+" "+path+" footer text nav");
+ assert.ok(footer[1].includes("impressum")&&footer[1].includes("how-made"),lang+" "+path+" imprint links");
+ assert.ok(!/class="[^"]*\\bbutton\\b/.test(footer[1]),lang+" "+path+" no footer CTA class");
+}
 const home=fs.readFileSync(base+"index.html","utf8");
 assert.equal((home.match(/class="fep-note-doodle"/g)||[]).length,3,lang+" SVG cards");
 }
@@ -21,6 +29,8 @@ for(const lang of ["en","hu","de","fr"]){
  const base=lang==="en"?"":lang+"/";
  const about=fs.readFileSync(base+"about/index.html","utf8");
  assert.ok(about.includes('id="how-made"')&&about.includes('id="impressum"'),lang+" editorial and imprint anchors");
+ const voice={en:"I love working with children",hu:"Szeretek gyerekekkel",de:"Ich arbeite gern mit Kindern",fr:"J’aime travailler avec les enfants"};
+ assert.ok(about.includes(voice[lang]),lang+" first-person creator voice");
  const home=fs.readFileSync(base+"index.html","utf8");
  assert.ok(home.includes('class="fep-footer-nav"')&&!/<footer[^>]*>[\s\S]*?class="button[^"]*"/.test(home),lang+" footer no CTA pills");
 }
