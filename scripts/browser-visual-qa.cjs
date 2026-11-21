@@ -112,7 +112,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   const cards=page.locator(".fep-restored-notecard");
   await cards.first().click({force:true,position:{x:20,y:20}});
   check((await cards.first().getAttribute("aria-pressed"))==="true",label+" flip-card first tap");
-  await cards.first().click();
+  await cards.first().click({force:true,position:{x:20,y:20}});
   check((await cards.first().getAttribute("aria-pressed"))==="false",label+" flip-card second tap");
   const menu=page.locator("#menuToggle");
   await menu.click();
