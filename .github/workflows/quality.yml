@@ -123,7 +123,7 @@ jobs:
           for filename,digest in expected_sha.items():
               data=Path('assets',filename).read_bytes()
               assert data[:4]==b'RIFF' and data[8:12]==b'WEBP',(filename,'invalid WebP')
-              git_hash=sha1(b'blob '+str(len(data)).encode()+b'\\x00'+data).hexdigest()
+              git_hash=sha1(b'blob '+str(len(data)).encode()+bytes([0])+data).hexdigest()
               assert git_hash==digest,(filename,'unexpected binary content',git_hash)
           images={
               'egy-kis-ter':'fep-workbook-concept.webp',
