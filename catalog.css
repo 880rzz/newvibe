@@ -550,3 +550,23 @@ html,body.fep-page{overflow-x:clip}
 @media(max-width:850px){.fep-page .fep-story-layout{grid-template-columns:1fr}.fep-page .fep-story-facts{max-width:620px}}
 @media(max-width:570px){.fep-page .fep-story-heading{grid-template-columns:1fr;gap:15px}.fep-page .fep-story-illustration{width:102px;height:96px;padding:9px}.fep-page .fep-story-heading h2{font-size:clamp(28px,8vw,38px)}.fep-page .fep-product-story{padding-top:32px}.fep-page .fep-story-layout{gap:19px;margin-top:26px}.fep-page .fep-story-facts{transform:none}.fep-page .fep-story-copy p{font-size:16px;line-height:1.72}.fep-page .fep-card-editorial{margin-bottom:12px}}
 @media(prefers-reduced-motion:reduce){.fep-page .fep-story-illustration,.fep-page .fep-story-illustration svg path,.fep-page .fep-story-illustration svg circle{animation:none!important;transform:none!important}}
+
+
+/* Editorial product decision framework: user situation -> what the publication offers. */
+.fep-page .fep-story-need-grid{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,24px);
+ margin-top:clamp(26px,4vw,46px);
+}
+.fep-page .fep-story-need{padding:clamp(22px,2.6vw,34px);border-radius:15px 24px 18px 17px;border:1px solid rgba(31,74,61,.14);box-shadow:6px 8px 0 rgba(31,74,61,.06);min-width:0}
+.fep-page .fep-story-need-problem{background:#f6e6d9}
+.fep-page .fep-story-need-solution{background:#e7efe5}
+.fep-page .fep-story-need h3{font:600 clamp(20px,2.4vw,27px)/1.2 Fraunces,serif;letter-spacing:-.024em;color:#254d40;margin:0 0 14px}
+.fep-page .fep-story-need p{font-size:clamp(15px,1.25vw,17px);line-height:1.68;color:#42514d;margin:0;text-wrap:pretty;word-break:normal;hyphens:none}
+.fep-page .fep-story-need-grid+.fep-story-layout{margin-top:clamp(26px,3vw,38px)}
+/* Collection cover: the caption belongs OUTSIDE the clipped artwork, never on top of its oval. */
+.fep-page .fep-catalog-hero-figure{margin:0;min-width:0;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.fep-page .fep-catalog-hero-figure .fep-hero-art{width:100%;min-width:0;max-width:100%;overflow:hidden}
+.fep-page .fep-catalog-hero-figure .fep-collection-image{max-width:95%;height:auto;object-fit:contain}
+.fep-page .fep-catalog-figure-caption{position:static;display:block;max-width:48ch;margin:15px auto 0;padding:0 10px;color:#52615b;text-align:center;font-size:clamp(12px,1.15vw,14px);line-height:1.6;white-space:normal;text-wrap:balance;overflow-wrap:normal;word-break:normal}
+@media(max-width:650px){.fep-page .fep-story-need-grid{grid-template-columns:1fr;gap:16px}.fep-page .fep-story-need{padding:23px}.fep-page .fep-catalog-figure-caption{margin-top:15px;max-width:35ch}}
+@media(prefers-reduced-motion:reduce){.fep-page .fep-story-need{scroll-behavior:auto}}
