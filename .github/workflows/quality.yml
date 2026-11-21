@@ -229,5 +229,39 @@ jobs:
           assert '.arrow-icon, .fep-vector-icon' in Path('app.js').read_text(encoding='utf-8')
           assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
 
+
+          # Email pre-order QA: nine products, four languages; requests are not binding purchases.
+          localized_preorder={
+              'en':'Pre-order by email',
+              'hu':'Előrendelés e-mailben',
+              'de':'Per E-Mail vorbestellen',
+              'fr':'Précommander par e-mail',
+          }
+          assert len(manifest['products'])==9
+          assert manifest['online_shop']['preorder_channel']=='email'
+          assert manifest['online_shop']['preorder_mode']=='request_only_not_automatic_confirmation'
+          assert all(p['preorder']['status']=='email_requests_open' for p in manifest['products'])
+          for lang in langs:
+              root=Path('.') if lang=='en' else Path(lang)
+              cat=(root/'catalog/index.html').read_text(encoding='utf-8')
+              assert cat.count('class="fep-preorder-mini"')==9,(lang,'nine card badges')
+              assert 'fep-preorder-intro' in cat,(lang,'catalogue message')
+              for slug in slugs:
+                  h=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
+                  assert h.count('class="fep-availability fep-preorder"')==1,(lang,slug)
+                  assert localized_preorder[lang] in h,(lang,slug,'localized CTA')
+                  assert 'mailto:diofamuhelykozosseg@gmail.com?subject=' in h,(lang,slug,'email link')
+                  assert '&amp;body=' in h,(lang,slug,'prefilled email body')
+                  assert 'fep-preorder-cta' in h and 'fep-vector-icon' in h
+                  assert 'payment' not in h.lower() or 'no payment' in h.lower() or lang!='en', (lang,slug,'misleading payment')
+                  assert '<script type="application/ld+json">' in h,(lang,slug,'structured content')
+              about=(root/'about/index.html').read_text(encoding='utf-8')
+              assert 'fep-preorder-intro' in about
+          assert 'data-i18n="homePreorderIntro"' in homepage
+          assert 'const fepPreorderHomeCopy=' in Path('app.js').read_text(encoding='utf-8')
+          assert 'const cardPreorderCopy=' in Path('product.js').read_text(encoding='utf-8')
+          assert 'pre-order requests' in Path('llms.txt').read_text(encoding='utf-8')
+          assert 'Email pre-order requests' in Path('ai.txt').read_text(encoding='utf-8') or 'email pre-order requests' in Path('ai.txt').read_text(encoding='utf-8')
+
           print('Site validation OK')
           PY
