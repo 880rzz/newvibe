@@ -51,6 +51,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     header:header?{rect:rect(header),position:getComputedStyle(header).position}:null,
     footer:footer?{rect:rect(footer),buttonCount:footer.querySelectorAll(".button").length,linkCount:footer.querySelectorAll(".fep-footer-nav a").length,imprint:!!footer.querySelector('a[href*="#impressum"]')}:null,
     h1:document.querySelector("h1")?.textContent.trim()||"",
+    portrait:(()=>{const e=document.querySelector(".fep-alexandra-portrait > img:first-child");if(!e)return null;return {rect:rect(e),naturalWidth:e.naturalWidth,naturalHeight:e.naturalHeight,loading:e.loading,priority:e.getAttribute("fetchpriority")};})(),
     ctas,notes,imprint:!!document.getElementById("impressum"),howMade:!!document.getElementById("how-made")};
  },kind);
  const label=engine+" "+lang+"/"+kind+" @"+width;
@@ -97,6 +98,15 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   });
  }
  if(kind==="about"){
+  check(!!snapshot.portrait,label+" Alexandra portrait exists");
+  if(snapshot.portrait){
+   const minPortrait=width<=320?230:width<=430?285:width<=900?400:width<=1100?360:440;
+   check(snapshot.portrait.rect.width>=minPortrait,label+" portrait visually prominent");
+   check(!outside(snapshot.portrait.rect,width),label+" portrait inside viewport");
+   check(near(snapshot.portrait.rect.width,snapshot.portrait.rect.height,2),label+" square photo without cropping");
+   check(snapshot.portrait.naturalWidth===800&&snapshot.portrait.naturalHeight===800,label+" original 800px image loaded");
+   check(snapshot.portrait.loading==="eager"&&snapshot.portrait.priority==="high",label+" loading priority");
+  }
   check(snapshot.imprint,label+" visible legal-section anchor");
   check(snapshot.howMade,label+" editorial-process anchor");
  }
