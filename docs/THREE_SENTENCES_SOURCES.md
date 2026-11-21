@@ -2,7 +2,7 @@
 2026-11-21 · For Every Path / Diófa Műhely · 4-language homepage.
 
 ## Interaction
-The original “Van olyan nap, amikor ez a három mondat is elég” flip-card section is reused, not duplicated. Three **distinct** manuscript excerpt pairs are drawn in the visitor's browser when the homepage loads. The local “another three” action draws three different records (excluding the previously visible three), resets all cards to their front faces and updates their accessible labels. Every card's back contains a **second passage from the same PDF page**. No analytics, API, storage, tracking or personal data is involved. If JavaScript is unavailable, the HTML retains three genuine manuscript pairs.
+The original “Van olyan nap, amikor ez a három mondat is elég” flip-card section is reused, not duplicated. Three **distinct** manuscript excerpt pairs are drawn from **three different PDF sources** in the visitor's browser when the homepage loads. The local “another three” action draws three different records (excluding the previously visible three), resets all cards to their front faces and updates their accessible labels. Every card's back contains a **second passage from the same PDF page**. No analytics, API, storage, tracking or personal data is involved. If JavaScript is unavailable, the HTML retains three genuine manuscript pairs.
 
 ## Verified Hungarian source pages
 PDF page numbers below refer to the source files supplied for this release, not the internal book pagination.
@@ -18,6 +18,7 @@ PDF page numbers below refer to the source files supplied for this release, not 
 | cards-01 | **Helyed van köztünk** — card 20 reverse | 40 | `products/helyed-van-koztunk.html` |
 | cards-02 | **Helyed van köztünk** — card 33 reverse | 66 | `products/helyed-van-koztunk.html` |
 | cards-03 | **Helyed van köztünk** — card 36 reverse | 72 | `products/helyed-van-koztunk.html` |
+| harmonica-01, harmonica-02 | **Helyed van köztünk — Segítő harmonika** — „Ha bántanak” and „Amíg segítséget kapsz” | 1 | `products/helyed-van-koztunk.html` |
 
 The exact **HU** front/back strings are embedded in the public `three-sentences.js` data (with source ID and PDF page). The EN / DE / FR strings are editorial translations, not a claim that the original printed PDFs exist in those languages. These brief excerpts preserve their original context as short thought-starters; they are not clinical guidance or promises of effectiveness.
 

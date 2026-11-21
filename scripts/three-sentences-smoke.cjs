@@ -5,21 +5,21 @@ const assert=require("node:assert/strict");
 const fs=require("node:fs");
 const bank=require("../three-sentences.js");
 const langs=["en","hu","de","fr"];
-assert.equal(bank.entries.length,13,"curated manuscript sentence pairs");
-assert.equal(new Set(bank.entries.map(e=>e.id)).size,13,"stable unique IDs");
+assert.equal(bank.entries.length,15,"curated sentence pairs from five supplied PDFs");
+assert.equal(new Set(bank.entries.map(e=>e.id)).size,15,"stable unique IDs");
 assert.deepEqual([...new Set(bank.entries.map(e=>e.book))].sort(),
- ["egy-kis-ter","helyed-van-koztunk","na-most-mit-csinaljak","veled-a-mindennapokban"].sort(),"four manuscript sources");
+ ["egy-kis-ter","helyed-van-koztunk","na-most-mit-csinaljak","veled-a-mindennapokban","helyed-van-koztunk-segito-harmonika"].sort(),"all five uploaded PDF sources");
 const bookNames={"egy-kis-ter":"Egy kis tér","helyed-van-koztunk":"Helyed van köztünk",
- "na-most-mit-csinaljak":"Na, most mit csináljak?","veled-a-mindennapokban":"Veled a mindennapokban"};
+ "na-most-mit-csinaljak":"Na, most mit csináljak?","veled-a-mindennapokban":"Veled a mindennapokban","helyed-van-koztunk-segito-harmonika":"Helyed van köztünk · Segítő harmonika"};
 const pageLabels={en:"p.",hu:"o.",de:"S.",fr:"p."};
 const fixed={"space-01":"Egy helyzetet válassz.","prayer-01":"A többi várhat.",
- "stories-01":"Mesélj, fess, rajzolj vagy írj – ahogy jólesik!","cards-01":"Melléd ülhetek?"};
+ "stories-01":"Mesélj, fess, rajzolj vagy írj – ahogy jólesik!","cards-01":"Melléd ülhetek?","harmonica-01":"Nem kell egyedül megoldanod.","harmonica-02":"Leülhetsz, ihatsz vizet, kérhetsz csendet vagy szünetet."};
 for(const [id,sentence] of Object.entries(fixed)){
  assert.equal(bank.entries.find(e=>e.id===id)?.text.hu[0],sentence,"original Hungarian PDF excerpt "+id);
 }
 for(const entry of bank.entries){
  assert.ok(bookNames[entry.book],"named manuscript source "+entry.id);
- assert.ok(Number.isInteger(entry.page)&&entry.page>=2&&entry.page<=139,"source PDF page "+entry.id);
+ assert.ok(Number.isInteger(entry.page)&&entry.page>=1&&entry.page<=139,"source PDF page "+entry.id);
  assert.deepEqual(Object.keys(entry.text).sort(),langs.slice().sort(),"all translations "+entry.id);
  for(const lang of langs){
   const pair=entry.text[lang];
@@ -46,7 +46,7 @@ for(const lang of langs){
  assert.equal((html.match(/fep-restored-notecard /g)||[]).length,3,lang+" exactly three original paper cards");
  assert.equal((html.match(/class="fep-sentence-source"/g)||[]).length,3,lang+" three static provenance labels without JavaScript");
  assert.ok(html.includes('href="'+base+'three-sentences.css?v=1"'),lang+" dedicated, scoped style");
- assert.ok(html.includes('src="'+base+'three-sentences.js?v=1"'),lang+" shared local randomized module");
+ assert.ok(html.includes('src="'+base+'three-sentences.js?v=2"'),lang+" shared local randomized module");
  assert.ok(html.includes('src="'+base+'site-menu.js?v=3"'),lang+" accessible dynamic flip handler");
  assert.ok(html.indexOf('src="'+base+'three-sentences.js?v=1"')<html.indexOf('src="'+base+'site-menu.js?v=3"'),lang+" randomization before flip listener");
  assert.ok(html.includes('id="threeSentencesAgain"')&&html.includes('id="threeSentencesStatus"'),lang+" optional redraw and live feedback");
@@ -54,8 +54,10 @@ for(const lang of langs){
  const first=bank.drawThree(lang,random());
  assert.equal(first.length,3,lang+" always draw exactly three");
  assert.equal(new Set(first.map(x=>x.id)).size,3,lang+" without repetition");
+ assert.equal(new Set(first.map(x=>x.book)).size,3,lang+" three distinct PDF publications");
  const second=bank.drawThree(lang,random(),first.map(x=>x.id));
  assert.ok(second.every(x=>!first.map(v=>v.id).includes(x.id)),lang+" redraw omits previous three");
+ assert.equal(new Set(second.map(x=>x.book)).size,3,lang+" redraw includes three separate PDFs");
  const cards=[makeCard(),makeCard(),makeCard()];
  const listener={};
  const action={addEventListener(type,fn){listener[type]=fn}};
@@ -68,6 +70,7 @@ for(const lang of langs){
  assert.equal(bank.install(doc,random()),true,lang+" first paint");
  const initial=cards.map(c=>c.dataset.sentenceId);
  assert.equal(new Set(initial).size,3,lang+" distinct visible cards");
+ assert.equal(new Set(cards.map(card=>bank.entries.find(e=>e.id===card.dataset.sentenceId).book)).size,3,lang+" visible cards come from three PDFs");
  assert.ok(cards.every(c=>c.getAttribute("aria-pressed")==="false"&&c.getAttribute("aria-label")===c.front.textContent),lang+" correct accessible names");
  assert.ok(cards.every(c=>c.frontFace.children.length===1&&c.frontFace.children[0].textContent.includes(pageLabels[lang])),lang+" per-card visible source and page");
  assert.equal(typeof listener.click,"function",lang+" redraw button wired");
@@ -82,4 +85,4 @@ const css=fs.readFileSync("three-sentences.css","utf8");
 assert.ok(css.includes("fep-sentence-source")&&css.includes("prefers-reduced-motion"),"scoped source styling and reduced-motion preference");
 const menu=fs.readFileSync("site-menu.js","utf8");
 assert.ok(menu.includes("const labelFor=flipped=>card.querySelector"),"flip labels read dynamically after redraw");
-console.log("THREE_SENTENCES_QA: 13 pairs from four PDFs; HU/EN/DE/FR fallback, secure 3/13 draw, no duplicates, redraw, source pages and ARIA passed.");
+console.log("THREE_SENTENCES_QA: 15 pairs from five PDFs; HU/EN/DE/FR fallback, secure 3/13 draw, no duplicates, redraw, source pages and ARIA passed.");
