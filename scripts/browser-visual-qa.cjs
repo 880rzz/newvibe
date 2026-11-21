@@ -170,6 +170,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     return {
       card:rect(card),
       note:rect(overlay.querySelector(".menu-note")),
+      heading:rect(overlay.querySelector(".site-menu-inner > .eyebrow")),
       nav:[...overlay.querySelectorAll(".fep-menu-link,.fep-category-disclosure summary")].map(rect),
       scrollX:overlay.scrollWidth-overlay.clientWidth,
       background:getComputedStyle(overlay).backgroundColor,
@@ -178,10 +179,15 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     };
   });
   const collision=(a,b)=>a.left<b.right-2&&a.right>b.left+2&&a.top<b.bottom-2&&a.bottom>b.top+2;
+  const maxMenuTop=width<=390?74:104;
+  check(layout.heading.top>=52&&layout.heading.top<=maxMenuTop,label+" navigation begins near top without oversized blank area");
   check(layout.scrollX<2,label+" expanded menu has no horizontal scroll");
   check(layout.background.startsWith("rgb(")&&layout.backdrop==="none",label+" opaque uncluttered menu background");
   check(layout.nav.every(rect=>!collision(rect,layout.card)),label+" editorial card never overlaps navigation");
-  if(width===1440)check(layout.card.left>width/2,label+" right column has deliberate separation");
+  if(width===1440){
+    check(layout.card.top<=layout.heading.top+72,label+" sidebar card aligned with early navigation");
+    check(layout.card.left>width/2,label+" right column has deliberate separation");
+  }
   else check(layout.card.top>=layout.note.bottom-1,label+" compact menu card follows navigation");
   if(width===320||width===390||width===1440){
     await page.screenshot({
