@@ -76,7 +76,6 @@ async function pageAudit(page,engine,lang,kind,width,origin){
  check(snapshot.footer?.linkCount===3,label+" footer contains 3 editorial links");
  check(snapshot.footer?.imprint===true,label+" footer imprint link present");
  check(snapshot.h1.length>5,label+" page has a visible title");
- check(!!document, label+" browser reachable");
  if(kind==="home"){
   check(snapshot.editorial.hero===3,label+" 3 editorial hero SVG artworks");
   check(snapshot.ctas.length>=2,label+" homepage CTA controls");
