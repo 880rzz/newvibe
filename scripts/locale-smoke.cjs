@@ -5,12 +5,12 @@ const fs = require("node:fs");
 const vm = require("node:vm");
 const source = fs.readFileSync("locale-router.js", "utf8");
 
-function simulate(pathname, languages, stored = null, query = "") {
+function simulate(pathname, languages, stored = null, query = "", hostname = "880rzz.github.io") {
   let replaced = null;
   const saved = new Map(stored ? [["fep.language", stored]] : []);
   const listeners = {};
   const context = {
-    location: { pathname, search: query, hash: "", replace(value) { replaced = value; } },
+    location: { pathname, hostname, search: query, hash: "", replace(value) { replaced = value; } },
     navigator: { languages, language: languages[0] || "en" },
     URLSearchParams,
     localStorage: { getItem(k) { return saved.get(k) || null; }, setItem(k, v) { saved.set(k, v); } },
@@ -32,4 +32,5 @@ assert.equal(forced.saved.get("fep.language"), "fr");
 const manual = simulate("/newvibe/hu/catalog/", ["hu-HU"]);
 manual.listeners.click({target:{closest(){return {getAttribute(){return "en";}};}}});
 assert.equal(manual.saved.get("fep.language"),"en");
-console.log("For Every Path locale routing: 8 checks passed");
+assert.equal(simulate("/catalog/", ["hu-HU"], null, "", "foreverypath.com").replaced,"/hu/catalog/");
+console.log("For Every Path locale routing: 9 checks passed");
