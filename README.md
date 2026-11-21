@@ -2,6 +2,10 @@
 
 Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor to NewVibe.
 
+## Új termék felvitele / Product onboarding
+
+A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**
+
 ## Hosting
 Current published host: https://880rzz.github.io/newvibe/
 Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or replace canonical/sitemap until DNS, TLS, GitHub Pages custom-domain verification and production URL checks succeed.
