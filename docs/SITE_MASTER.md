@@ -630,3 +630,18 @@ A `#32` kiadás 48 oldalának teljes HTML/asset egyezősége production alatt el
 - A Chromium és WebKit `scripts/browser-visual-qa.cjs` 320/390/1024/1440 px-nél ellenőrzi, hogy a gondolatkártya nem metszi a menüpontokat; az egész nyitott menüről is készülnek mobilos/desktopos képek.
 - Az éppen görgetett mobilmenü **bezárógombja 44 × 44 px**, a képernyőn maradó `position:fixed` vezérlő. A billentyűzetes Escape és a fókuszvisszaállítás megmarad.
 - Az aktuális holdfázis 29,530588853 napos szinodikus közelítés; **nem efemerida**. Fázis, megvilágítottság és az elkövetkező hét napja azonos kliensoldali számításból ered. Az üzenetek jelképes szerkesztői gondolatindítók.
+
+
+## Helyed van köztünk – ötlapos, helyben futó SVG-kártyademó (2026-11-21)
+
+**Éles termékútvonalak:** `/products/helyed-van-koztunk.html`, `/hu/products/helyed-van-koztunk.html`, `/de/products/helyed-van-koztunk.html`, `/fr/products/helyed-van-koztunk.html`. A termékoldal saját `#card-demo` szekciója a részletes tartalmi bemutató és a galéria között jelenik meg; nem új külön oldal és nem vásárlási folyamat.
+
+**Eredeti nyomdai forrás:** `2Helyed_van_koztunk_NYOMDAI_72_oldal(3).pdf`, 36 × kétoldalas 63 × 88 mm-es kártya, 72 oldal. A demóhoz kiválasztott lapok: `01 Egy szabad hely` (1–2. oldal), `07 Nevet, mégis fáj` (13–14.), `13 Én is nevettem` (25–26.), `20 Melléd ülhetek?` (39–40.), `35 És holnap?` (69–70.). A magyar helyzetleírás és a két kérdés az eredeti nyomdai lapok szövegét követi; a további három nyelv digitális fordítás, **nem** a magyar nyomtatott kiadvány új nyelvi kiadása.
+
+**Grafika:** `assets/card-demo/{01,07,13,20,35}.svg`: öt önálló, kis fájlméretű, tiszta vektoros (nincs beágyazott raster) sematikus jelenet a nyomdai lapokon ábrázolt helyzetekhez. **Nem az eredeti nyomdai illusztrációk változatlan másolatai**; a helyzetekből készített új, digitális értelmezések. A címet, a számot, a magyar eredeti szöveget és a fordításokat szemantikus DOM-szöveg adja, nem ráégetett bitmap. A finom SVG- és CSS-animációk a `prefers-reduced-motion: reduce` kérésre leállnak.
+
+**Motor:** `card-demo.js`, `card-demo.css`, négy külön termékoldali HTML-szekció. Minden **oldalmegnyitáskor egy** véletlenszerű kártyát választ az öt közül a böngésző `crypto.getRandomValues` API-jával, megfelelő rejection sampling módszerrel, szabványos fallbackkel. Nincs újrahúzás gomb, előre meghatározott „napi jóslat”, regisztráció, cookie, localStorage, sessionStorage, hálózati lekérés vagy adatgyűjtés. A kiválasztás a különböző megnyitások között véletlenül **ismétlődhet**, szándékosan nincs személyhez kötött pakliállapot.
+
+**Interakció:** a megjelenő kártya digitális előoldala, egyetlen natív gombbal megfordítható hátoldala (helyzet, két eredeti kérdés, passzolási lehetőség), valamint a mellettük álló, egyértelműen külön szerkesztői magyarázat. A kártya funkciója beszélgetésindítás, **nem diagnózis vagy helyettesítő gyermekvédelmi tanács**. A segítő harmonika eredeti nyomdai anyaga nem kerül fel a nyilvános repóba. A teljes 36 lapos pakli sem kerül nyilvánosságra.
+
+**CI és böngésző QA:** `scripts/card-demo-smoke.cjs` (4 nyelv × 5 determinisztikusan tesztelt húzás, 5 SVG, biztonságos helyi motor), `scripts/browser-visual-qa.cjs` (Chromium/WebKit, 320/390/1440 px, olvashatóság, nincs vízszintes átfedés, szöveglevágás, helyes lapfordítás, 2 kérdés, képernyőképek). A meglévő, 48 oldalas minőségkapuk és az éles 48 HTML/8 kötelező asset egyezőségi kapu nem gyengíthető.
