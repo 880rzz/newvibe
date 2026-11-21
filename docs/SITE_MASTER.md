@@ -460,7 +460,7 @@ Részletes eljárás: [`NEW_PRODUCT_PLAYBOOK.md`](NEW_PRODUCT_PLAYBOOK.md).
 
 ### GitHub Actions – `Static site quality`
 
-Az egyetlen fő minőségellenőrző workflow: `.github/workflows/quality.yml`.
+A statikus PR-minőségellenőrzés: `.github/workflows/quality.yml`. A renderelt Chromium/WebKit vizsgálat: `.github/workflows/browser-visual-qa.yml`. A közvetlen publikus HTTPS-visszaolvasás külön workflow-ja: `.github/workflows/live-pages-parity.yml`.
 
 A jelenlegi ellenőrzési körök:
 
@@ -473,6 +473,12 @@ A jelenlegi ellenőrzési körök:
 7. **SVG/linkszabályok:** ne legyen puszta Unicode-nyíl vagy elveszett kattintható terméklink.
 8. **Négynyelvű öt másodperces kezdőlap-szerkezet:** egy H1, hero → quiz → katalógus → alkotó, terméklista nélkül.
 9. **Kérdőív:** 30 különböző kérdés/nyelv, 6 véletlen kérdés, visszalépés és újrakezdés, nem mentett válaszok.
+
+### Nyilvános GitHub Pages forrásparitás (2026-11-21)
+
+Az új `scripts/live-pages-source-parity.cjs` a GitHub-hosted Actions futtatón HTTPS-en **nem a lokális tesztszervert**, hanem a `https://880rzz.github.io/newvibe/` publikus oldalt olvassa vissza. Mind a **48 lokalizált HTML-oldal** és további **8 állomány** (sitemap, robots, katalógusadatok, CSS, menü JavaScript, három valódi kártyafotó) SHA-256 tartalmi egyezését követeli meg az adott `main` commit fájljaival; ellenőrzi a HTTP 200-at és a hosztot is. A GitHub Pages/CDN késleltetésére időkorlátos újrapróbálkozást alkalmaz.
+
+A workflow `main` push után automatikusan indul, kézzel is futtatható. A **sikeres** eredmény erős forrás–publikus fájltartalom bizonyíték az ellenőrzött 56 erőforrásra. A **sikertelen** eredmény nem tüntethető el a kiadás lezárásakor, hanem konkrét HTTP, CDN, DNS, tartalom vagy átirányítási problémaként vizsgálandó. Ez sem helyettesít fizikai iPhone tesztet, valós e-mail kliens ellenőrzést vagy jogi felülvizsgálatot.
 
 ### Release-sorrend
 
@@ -491,7 +497,9 @@ PR merge main ágba
    ↓
 GitHub Pages build + deployment: SUCCESS (ugyanazon SHA)
    ↓
-élő URL-ek + böngészős render + mobil/desktop visszaellenőrzés
+Published Pages HTTP parity: SUCCESS (48 HTML + 8 assets)
+   ↓
+böngészős render + fizikai mobil/desktop visszaellenőrzés
    ↓
 kiadás dokumentált lezárása
 ```
