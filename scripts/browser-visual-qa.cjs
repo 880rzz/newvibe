@@ -99,8 +99,18 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   }
  }
  if(kind==="home"&&width===390){
+  // A forever-floating card never becomes 'stable' to Playwright's standard
+  // auto-wait heuristic; a real pointer/touch can activate it while moving.
+  await page.emulateMedia({reducedMotion:"reduce"});
+  const still=await page.locator(".fep-restored-notecard").first().evaluate(e=>({
+   animation:getComputedStyle(e).animationName,
+   stroke:getComputedStyle(e.querySelector(".fep-note-doodle-line")).strokeDashoffset
+  }));
+  check(still.animation==="none",label+" reduced-motion pauses card drift");
+  check(parseFloat(still.stroke)===0,label+" SVG line remains visible without animation");
+  await page.emulateMedia({reducedMotion:"no-preference"});
   const cards=page.locator(".fep-restored-notecard");
-  await cards.first().click();
+  await cards.first().click({force:true,position:{x:20,y:20}});
   check((await cards.first().getAttribute("aria-pressed"))==="true",label+" flip-card first tap");
   await cards.first().click();
   check((await cards.first().getAttribute("aria-pressed"))==="false",label+" flip-card second tap");

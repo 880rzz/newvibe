@@ -429,7 +429,7 @@ body.fep-menu-open{overflow:hidden}
 .fep-page .fep-restored-notecard .fep-note-doodle{position:absolute;right:12px;top:11px;width:86px;height:60px;fill:none;overflow:visible;color:var(--fep-note-ink);opacity:.4;pointer-events:none;animation:fep-note-sway 6s ease-in-out infinite}
 .fep-page .fep-restored-notecard.blue .fep-note-doodle{animation-delay:-2s}
 .fep-page .fep-restored-notecard.yellow .fep-note-doodle{animation-delay:-3.7s}
-.fep-page .fep-restored-notecard .fep-note-doodle-line{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:180;stroke-dashoffset:180;animation:fep-note-line 6s ease-in-out infinite}
+.fep-page .fep-restored-notecard .fep-note-doodle-line{stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:180;stroke-dashoffset:0;animation:fep-note-line 6s ease-in-out infinite}
 .fep-page .fep-restored-notecard .fep-note-doodle-dot{fill:currentColor;transform-origin:center;transform-box:fill-box;animation:fep-note-pulse 3.3s ease-in-out infinite}
 @keyframes fep-note-line{0%,8%,100%{stroke-dashoffset:180}38%,77%{stroke-dashoffset:0}}
 @keyframes fep-note-sway{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(5deg)}}
