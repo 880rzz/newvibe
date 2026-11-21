@@ -61,6 +61,7 @@ jobs:
           from html.parser import HTMLParser
           from pathlib import Path
           import json
+          import re
           import xml.etree.ElementTree as ET
           class Audit(HTMLParser):
               def __init__(self):
