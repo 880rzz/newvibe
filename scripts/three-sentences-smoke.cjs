@@ -50,7 +50,7 @@ for(const lang of langs){
  assert.ok(html.includes('src="'+base+'site-menu.js?v=3"'),lang+" accessible dynamic flip handler");
  assert.ok(html.indexOf('src="'+base+'three-sentences.js?v=1"')<html.indexOf('src="'+base+'site-menu.js?v=3"'),lang+" randomization before flip listener");
  assert.ok(html.includes('id="threeSentencesAgain"')&&html.includes('id="threeSentencesStatus"'),lang+" optional redraw and live feedback");
- assert.equal((html.match(/class="fep-restored-recognition section-shell"/g)||[]).length,1,lang+" reuse original section");
+ assert.equal((html.match(/<section class="recognition fep-restored-recognition section-shell"/g)||[]).length,1,lang+" reuse original section");
  const first=bank.drawThree(lang,random());
  assert.equal(first.length,3,lang+" always draw exactly three");
  assert.equal(new Set(first.map(x=>x.id)).size,3,lang+" without repetition");
