@@ -190,7 +190,8 @@ jobs:
                   assert filename in html,(lang,slug,'missing image')
                   assert 'class="fep-concept-image"' in html,(lang,slug,'cover preview not identified')
                   assert 'class="fep-photo-note"' in html,(lang,slug,'concept illustration must have a visible description')
-                  assert not any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','Visualisation IA','générée par IA')),(lang,slug,'outdated repetitive marketing label')
+                  public_html=re.sub(r'<script type="application/ld\\+json">[\\s\\S]*?</script>','',html)
+                  assert not any(word in public_html for word in ('AI-generated','AI-látványterv','KI-generierte','Visualisation IA','générée par IA')),(lang,slug,'outdated repetitive visible marketing label')
               html=(root/'products/helyed-van-koztunk.html').read_text(encoding='utf-8')
               assert 'helyed-van-koztunk-03.jpg' in html
           assert all((Path(p['image_path'])).exists() for p in manifest['products'])
