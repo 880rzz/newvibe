@@ -1,5 +1,5 @@
 /* Five-card product preview: faithful scenarios/questions from the Hungarian print source,
-   original vector scene interpretations, on-device secure random draw.
+   cropped unaltered original print card faces, on-device secure random draw.
    No storage, tracking, interpretation engine or network requests. */
 (()=>{"use strict";
 const root=document.querySelector("[data-card-demo]");
@@ -27,8 +27,17 @@ set("[data-demo-question-one]",card.q1);
 set("[data-demo-question-two]",card.q2);
 set("[data-demo-explain-title]",card.title);
 set("[data-demo-explanation]",card.explain);
-const art=$("[data-demo-svg]");
-if(art){art.src=assetBase+card.id+".svg";art.alt="";art.dataset.cardId=card.id;}
+const imageFaces=[
+  {selector:"[data-demo-original-front]",suffix:"-front.webp",label:copy.ui.faceFront},
+  {selector:"[data-demo-original-back]",suffix:"-back.webp",label:copy.ui.faceBack}
+];
+for(const face of imageFaces){
+ const image=$(face.selector);
+ if(!image)continue;
+ image.src=assetBase+card.id+face.suffix;
+ image.alt=face.label+" — "+card.title+" (original Hungarian printed card)";
+ image.dataset.cardId=card.id;
+}
 root.dataset.drawnCard=card.id;
 const flip=$("[data-demo-flip]");
 const visual=$("[data-demo-card]");
