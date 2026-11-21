@@ -338,7 +338,7 @@ jobs:
                   detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
                   assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
           assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
-          assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8')
+          assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
           print('Site validation OK')
           PY
