@@ -295,6 +295,8 @@ A #20 kiadás nyolc önálló, kéziratokhoz kapcsolt SVG-jelenetet és Alexandr
 
 **Képi igazmondás:** egy jelenleg digitális borítólátványként használt illusztráció nem állítható valódi, késztermékfotónak; a Helyed van köztünk kártyáihoz valódi termékfotó van. A termékek közönségnek szánt oldaláról eltűnik a minden oldalon ismételt, témához nem kötődő technológiai magyarázó blokk, helyette közérthető termékszöveg és semleges, igaz, látható borítólátvány-felirat marad. A képek tényleges eredetét a gépi és belső proveniencianyilvántartás továbbra is rögzíti; nem állítunk emberi fotót egy digitális illusztrációról.
 
+**Szövegkövetelmény:** a kiadványok bemutató alcímei ne keltsék azt a látszatot, hogy már aktivált kereskedelmi ajánlat vagy fizetős checkout létezik; a cél a belső tartalom megmutatása. Az angol „Inside the publication” semleges szerkesztői címke.
+
 **QA/kiadás:** mind a 48 oldal catalog.css?v=10 stíluslapot használ. A scripts/product-story-smoke.cjs ellenőrzi a 36 részletes szöveget, 36 katalóguskártyát, az eredeti három kérdést, a képaláírásokat és a megszűnt általános marketingblokk hiányát. A meglévő adatvédelmi, szerkesztői jogállási, SVG-, mailto- és strukturáltadat-kapuk nem gyengíthetők. Chromium/WebKit mobil/desktop renderelt QA és production SHA ellenőrzés szükséges.
 
 ### Képek
