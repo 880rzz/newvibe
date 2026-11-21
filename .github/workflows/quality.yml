@@ -446,3 +446,5 @@ jobs:
           assert 'independent professional review and reader testing still outstanding' not in Path('llms.txt').read_text(encoding='utf-8')
           print('Site validation OK')
           PY
+      - name: One-off production parity audit (48 HTML + 20 assets)
+        run: node scripts/live-pages-source-parity.cjs
