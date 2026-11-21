@@ -120,3 +120,9 @@
 .fep-prayer-editorial p{line-height:1.75;font-size:17px;color:#516065;max-width:720px}
 @media(max-width:650px){.fep-prayer-editorial{grid-template-columns:1fr;gap:24px}.fep-prayer-editorial-mark{min-height:125px;max-width:330px}}
 @media(prefers-reduced-motion:reduce){.fep-prayer-editorial-mark path{animation:none}}
+
+/* Four editorial product features on desktop; two on tablet; one on mobile. */
+@media(min-width:851px){.fep-featured-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:850px) and (min-width:571px){.fep-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.fep-featured-grid{grid-template-columns:1fr}}
+.fep-concept-card-note{font-size:12px!important;color:#687077!important;line-height:1.5!important;margin:10px 0 0!important}
