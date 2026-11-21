@@ -204,5 +204,30 @@ jobs:
           for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
               assert link in homepage,('missing homepage Diófa feature',link)
 
+
+          # Vector arrow quality gate: all nine products and new editions must use SVGs,
+          # and language selectors remain simple text links.
+          import re
+          for htmlfile in Path('.').rglob('*.html'):
+              if '.git' in htmlfile.parts:
+                  continue
+              rendered=htmlfile.read_text(encoding='utf-8')
+              assert '<svg class="fep-up-icon"' in rendered, (htmlfile,'missing vector up arrow')
+              assert 'class="fep-top-link"' in rendered and 'href="#top"' in rendered, (htmlfile,'missing back-to-top link')
+              assert '<body id="top"' in rendered, (htmlfile,'no target for back-to-top')
+              assert '↗' not in rendered and '↑' not in rendered, (htmlfile,'Unicode arrow not replaced')
+              for anchor in re.finditer(r'<a\b([^>]*href="[^"]*products/[^"]+\.html"[^>]*)>([\s\S]*?)</a>',rendered):
+                  attrs,label=anchor.group(1),anchor.group(2)
+                  if re.fullmatch(r'(EN|HU|DE|FR)',label.strip()):
+                      assert 'fep-vector-icon' not in label and 'fep-arrow-link' not in attrs, (htmlfile,'language link should stay icon-free')
+                  elif '<div' not in label and '<img' not in label and '<span class="fep-vector-icon"' not in label:
+                      raise AssertionError((htmlfile,'product link lacks vector arrow',label[:80]))
+          for lang in langs:
+              langroot=Path('.') if lang=='en' else Path(lang)
+              product_catalog=(langroot/'catalog/index.html').read_text(encoding='utf-8')
+              assert product_catalog.count('fep-vector-icon')>=len(manifest['products']), (lang,'catalogue missing product arrows')
+          assert '.arrow-icon, .fep-vector-icon' in Path('app.js').read_text(encoding='utf-8')
+          assert '.fep-top-link' in Path('catalog.css').read_text(encoding='utf-8')
+
           print('Site validation OK')
           PY

@@ -145,3 +145,17 @@
 .fep-diofa-pair a{font-weight:600;text-underline-offset:4px;color:#354a43}
 @media(max-width:850px){.fep-diofa-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:570px){.fep-diofa-home-grid{grid-template-columns:1fr}.fep-diofa-home{padding-top:55px;padding-bottom:65px}.fep-diofa-home-grid .fep-mini-product>.fep-diofa-image{height:245px}.fep-diofa-facts{gap:7px}}
+
+
+/* Semantic, resolution-independent product and upward navigation arrows. */
+.fep-arrow-link{display:inline-flex;align-items:center;justify-content:flex-start;gap:.34em;vertical-align:middle}
+.fep-vector-icon{display:inline-flex;align-items:center;justify-content:center;width:1.12em;height:1.12em;flex:0 0 auto;transition:transform .2s ease}
+.fep-vector-icon svg,.fep-up-icon{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linejoin:round;stroke-linecap:round}
+.fep-arrow-link:hover .fep-vector-icon,.fep-arrow-link:focus-visible .fep-vector-icon{transform:translate(2px,-2px)}
+.fep-top-link{display:inline-flex;align-items:center;gap:8px;color:inherit;text-decoration:none;font-size:13px;font-weight:600;white-space:nowrap;text-underline-offset:4px}
+.fep-top-link .fep-up-icon{width:19px;height:19px;transition:transform .2s ease}
+.fep-top-link:hover,.fep-top-link:focus-visible{text-decoration:underline}
+.fep-top-link:hover .fep-up-icon,.fep-top-link:focus-visible .fep-up-icon{transform:translateY(-3px)}
+.footer{flex-wrap:wrap}
+.fep-top-link:focus-visible,.fep-arrow-link:focus-visible{outline:3px solid var(--yellow);outline-offset:4px;border-radius:3px}
+@media(prefers-reduced-motion:reduce){.fep-vector-icon,.fep-up-icon{transition:none!important;transform:none!important}}
