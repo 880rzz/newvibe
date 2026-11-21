@@ -281,7 +281,10 @@ async function detailedProductAudit(page,engine,lang,slug,width,origin){
   }
   const flip=demo.locator("[data-demo-flip]");
   await flip.click();
-  await page.waitForTimeout(420);
+  // WebKit may complete the transition later than a fixed sleep on busy CI workers.
+  // Wait for the required visible/hidden states; never relax the assertion.
+  await demo.locator(".fep-demo-face--front").waitFor({state:"hidden",timeout:5000});
+  await demo.locator(".fep-demo-face--back").waitFor({state:"visible",timeout:5000});
   const sides=await demo.locator("[data-demo-card]").evaluate(el=>({front:getComputedStyle(el.querySelector(".fep-demo-face--front")).visibility,reverse:getComputedStyle(el.querySelector(".fep-demo-face--back")).visibility}));
   check(sides.front==="hidden"&&sides.reverse==="visible",label+" readable reverse shown, no mirrored front in Safari");
   check(await flip.getAttribute("aria-pressed")==="true",label+" native button flips card");
