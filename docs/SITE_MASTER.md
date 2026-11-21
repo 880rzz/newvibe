@@ -294,6 +294,10 @@ Az előrendelési katalógus szerkesztése kilenc termékre, négy nyelvre kiter
 **Képi és alkotói igazmondás:** a generikus, minden termék után ismételt „AI és szerkesztői átláthatóság” szakasz törlendő; a látogatói szöveg ne technológiát reklámozzon. A valós termékfotó és a **digitális látványterv** megkülönböztetése továbbra is kötelező. Késztermékfotót vagy független szakmai/kiadói tanúsítást csak tényleges bizonyíték alapján lehet állítani. Az alkotói bemutatkozás egyes szám első személyben marad. A belső képi forrás- és provenance-dokumentációt nem szabad az arculati egyszerűsítés miatt meghamisítani.
 
 **Vizuális és technikai ellenőrzés:** mobil 320/390/430, tablet 768, desktop 1024/1440, WebKit/Chromium; nincs caption-crop, eltakart CTA vagy vízszintes túlfolyás; minden `fep-story-need-grid` két teljes tartalmi blokkal; a 12 SVG motívum és a Raw Materials Trade-ből átvett eredeti portré sértetlen. Minden oldal egységes cache-verzióval, megőrzött canonical/hreflang/schema és e-mailes előrendelés mellett. GitHub PR → teljes CI → képernyőképes QA → merge → GitHub Pages SHA-egyezés.
+### A #23-as SVG-kiadás megőrzése
+
+A termékbemutatók bővítése nem törölheti a négy időközben bevezetett, eredeti SVG-motívumot: `coloring-crayon.svg`, `craft-table.svg`, `workshop-tree.svg` és `editorial-handline.svg`. A színező és a műhely-történet saját jelképet használ, a főoldali gondolatkártyák és Alexandra szerkesztői bemutatása is megkapják a visszafogott kiegészítő illusztrációt. A teljes rendszer **12 SVG-forrása** a négy nyelven paritásban marad. **Új CSS-cache verzió:** `catalog.css?v=10`. A renderelt böngészős ellenőrzés 36 termékoldalt és a négy katalogus képfeliratát is vizsgálja.
+
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.

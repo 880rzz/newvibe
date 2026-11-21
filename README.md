@@ -22,6 +22,8 @@ A **kilenc eredeti magyar kiadvány** mind a négy nyelven részletes, egyedi te
 
 Mind a 9 kiadvány HU/EN/DE/FR termékoldalán a kézirat alapján külön problémamegfogalmazás és konkrét kiadványválasz szerepel. A 36 hosszú bemutató és 36 részletes katalóguskártya egységes papír-alapú dizájnt kap. A katalógus kollekcióképének felirata a vágott ovális képből önálló `<figcaption>` sorba kerül. A generikus technológiai marketingblokkok megszűnnek; a digitális látványterv és a valódi fénykép származása megkülönböztethető marad. Részletek: [SITE_MASTER.md](docs/SITE_MASTER.md), [PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md](docs/PRODUCT_STORY_SOURCE_MATRIX_2026-11-21.md).
 
+A közben kiadott négy további SVG-motívum nem veszett el a bővített termékbemutatókkal történő egyesítéskor. A közös stílusverzió `catalog.css?v=10`, a 36 termékoldal és a 4 olvasható katalógus-képfelirat külön minőségellenőrzési kapu.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**
