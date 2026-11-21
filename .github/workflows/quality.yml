@@ -193,7 +193,7 @@ jobs:
                       'en':('not a photograph','not product photographs'),
                       'hu':('nem valódi termékfotó','nem elkészült könyv fényképe'),
                       'de':('kein foto','keine produktfotos'),
-                      'fr':('pas une photo','non une photographie','pas des exemplaires imprimés'),
+                      'fr':('pas une photo','non une photographie','non photographie','pas des exemplaires imprimés'),
                   }
                   assert any(word in html.casefold() for word in not_a_photo[lang]),(lang,slug,'must distinguish digital preview from real finished-product photo')
               html=(root/'products/helyed-van-koztunk.html').read_text(encoding='utf-8')
