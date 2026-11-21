@@ -109,7 +109,7 @@
       </div>
       <div class="quiz-card" id="quizCard" hidden>
         <div class="quiz-meta"><span id="quizCount">1 / 6</span><span id="quizProgressLabel" data-i18n="quizProgress">one step at a time</span></div>
-        <div class="progress"><span id="quizProgress"></span></div>
+        <div class="progress"><span id="quizProgress" role="progressbar" aria-label="Reflection progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1"></span></div>
         <h3 id="quizQuestion"></h3>
         <div class="quiz-options" id="quizOptions"></div>
         <button class="quiz-back" id="quizBack" type="button" data-i18n="quizBack">← back</button>
@@ -121,7 +121,7 @@
         <p id="resultText"></p>
         <p class="result-question" id="resultQuestion"></p>
         <div class="fep-quiz-next">
-          <p class="fep-quiz-boundary" data-i18n="quizResultNote">This is one possible reading of your answers, not a label or a product recommendation.</p>
+          <p class="fep-quiz-boundary" data-i18n="quizResultNote">This is a possible starting point, not a label, an assessment or a diagnosis.</p>
           <p class="fep-quiz-next-title" data-i18n="quizNextTitle">If you would like to explore a little further:</p>
           <a id="quizProductLink" data-lang-link="workbook" href="products/egy-kis-ter.html" class="fep-arrow-link"><span id="quizProductLabel">Explore Egy kis tér</span> <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a>
           <a data-lang-link="catalog" href="catalog/" class="fep-arrow-link"><span data-i18n="quizCatalogCta">Browse the entire collection</span> <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a>
