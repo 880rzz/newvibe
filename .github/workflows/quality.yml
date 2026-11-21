@@ -68,7 +68,7 @@ jobs:
           # For Every Path: validate all four localized routes and the expanding product registry.
           from urllib.parse import urlsplit
           langs=('en','hu','de','fr')
-          slugs=('helyed-van-koztunk','egy-kis-ter','lepesrol-lepesre-2027','tanari-hataridonaplo-2027-szines','tanari-hataridonaplo-2027-letisztult')
+          slugs=('helyed-van-koztunk','egy-kis-ter','lepesrol-lepesre-2027','tanari-hataridonaplo-2027-szines','tanari-hataridonaplo-2027-letisztult','veled-a-mindennapokban')
           origin='https://880rzz.github.io/newvibe/'
           expected_pages=[]
           for lang in langs:
@@ -102,8 +102,8 @@ jobs:
           root=ET.parse('sitemap.xml').getroot()
           namespace={'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
           locs=[i.text for i in root.findall('s:url/s:loc',namespace)]
-          assert len(locs)==len(expected_pages)==32,(len(locs),len(expected_pages))
-          assert len(set(locs))==32
+          assert len(locs)==len(expected_pages)==36,(len(locs),len(expected_pages))
+          assert len(set(locs))==36
           for f in expected_pages:
               rel=f.as_posix()
               expected=origin+('' if rel=='index.html' else rel.removesuffix('index.html'))
@@ -115,7 +115,7 @@ jobs:
           assert 'menuEyebrow">a little navigation' in homepage
           assert '@import url("https://fonts.googleapis.com' in Path('catalog.css').read_text(encoding='utf-8')
           manifest=json.loads(Path('catalog.json').read_text(encoding='utf-8'))
-          assert len(manifest['products'])==5
+          assert len(manifest['products'])==6
           assert all(p['shop_url'] is None and p['price'] is None for p in manifest['products'])
           assert manifest['planned_domain']=='foreverypath.com'
           assert 'AI' in Path('ai.txt').read_text() and 'For Every Path' in Path('llms.txt').read_text()
@@ -128,6 +128,7 @@ jobs:
               'fep-teacher-classic-concept.webp':'df4493b3996d7592fa365d08bebc1b335494dc0c',
               'fep-workbook-concept.webp':'6fa28a88245ec4a66b10b26b4a0ab677217ab897',
               'fep-collection-concept.webp':'7607405dfe1e6ef361ec0fa72f66824507c0586c',
+              'fep-veled-a-mindennapokban-concept.webp':'b32a7f181da94b2d16dbb1671cadc8f07d5ddedb',
           }
           for filename,digest in expected_sha.items():
               data=Path('assets',filename).read_bytes()
@@ -138,18 +139,35 @@ jobs:
               'egy-kis-ter':'fep-workbook-concept.webp',
               'lepesrol-lepesre-2027':'fep-adhd-concept.webp',
               'tanari-hataridonaplo-2027-szines':'fep-teacher-warm-concept.webp',
-              'tanari-hataridonaplo-2027-letisztult':'fep-teacher-classic-concept.webp'
+              'tanari-hataridonaplo-2027-letisztult':'fep-teacher-classic-concept.webp',
+              'veled-a-mindennapokban':'fep-veled-a-mindennapokban-concept.webp'
           }
           for lang in langs:
               root=Path('.') if lang=='en' else Path(lang)
               for slug,filename in images.items():
                   html=(root/'products'/f'{slug}.html').read_text(encoding='utf-8')
                   assert filename in html,(lang,slug,'missing image')
-                  assert any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','générée par IA')), (lang,slug,'missing provenance disclosure')
+                  assert any(word in html for word in ('AI-generated','AI-látványterv','KI-generierte','générée par IA','Visualisation IA')), (lang,slug,'missing provenance disclosure')
               html=(root/'products/helyed-van-koztunk.html').read_text(encoding='utf-8')
               assert 'helyed-van-koztunk-03.jpg' in html
           assert all((Path(p['image_path'])).exists() for p in manifest['products'])
 
+
+
+          prayer=next((p for p in manifest['products'] if p['slug']=='veled-a-mindennapokban'),None)
+          assert prayer and prayer['days']==30 and prayer['pages']==84 and prayer['format']=='A5'
+          assert prayer['original_language']=='hu'
+          assert prayer['shop_url'] is None and prayer['price'] is None
+          assert 'ecclesiastical approval not verified' in prayer['editorial_status']
+          assert 'veled-a-mindennapokban.html' in homepage
+          for lang in langs:
+              root=Path('.') if lang=='en' else Path(lang)
+              text=(root/'products/veled-a-mindennapokban.html').read_text(encoding='utf-8')
+              assert '<h1>Veled a mindennapokban</h1>' in text
+              assert '84 ' in text and 'A5' in text
+              assert 'offers' not in text.lower()
+              assert 'diofamuhelykozosseg@gmail.com' in text
+              assert 'fep-veled-a-mindennapokban-concept.webp' in (root/'catalog/index.html').read_text(encoding='utf-8')
 
           print('Site validation OK')
           PY

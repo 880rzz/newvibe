@@ -15,7 +15,7 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 - Collection: https://880rzz.github.io/newvibe/catalog/
 - About / Editorial & AI Trust: https://880rzz.github.io/newvibe/about/
 
-## Five product editions
+## Six product editions
 - Helyed van köztünk: https://880rzz.github.io/newvibe/products/helyed-van-koztunk.html
   A 36-card illustrated discussion deck on bullying and exclusion with 16-part safety/help leaflet. Real product photos available.
 - Egy kis tér: https://880rzz.github.io/newvibe/products/egy-kis-ter.html
@@ -25,6 +25,9 @@ Localized brandlines: EN “Room for every journey.”; HU “Minden úton van h
 - Határidőnapló tanároknak 2027 illustrated: https://880rzz.github.io/newvibe/products/tanari-hataridonaplo-2027-szines.html
 - Határidőnapló tanároknak 2027 minimal: https://880rzz.github.io/newvibe/products/tanari-hataridonaplo-2027-letisztult.html
   Two cover designs of the same teacher planner content, 2027 annual/monthly/weekly planning, notes and personal reflection. Print files provided; finished print not verified.
+
+- Veled a mindennapokban: https://880rzz.github.io/newvibe/products/veled-a-mindennapokban.html
+  30-day Catholic prayer and reflection journal in Hungarian, 84 A5 pages, manuscript dated 2026-11-18; Scriptures cited from Káldi-Neovulgáta (KNB) and Catechism (KEK). The manuscript discloses AI assistance. No physical print, ecclesiastical approval or independent theological review has been confirmed; the product image is an AI concept, not a real printed book photograph.
 
 ## Truthfulness and safeguards
 No product prices or live webshop links. No unverified offers, company identifiers, awards, reviews, clinician endorsements, clinical efficacy, or availability claims.

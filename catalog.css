@@ -105,3 +105,24 @@
 
 /* Keyboard parity for the interactive stationery-style question cards. */
 .note-card:focus-visible{outline:3px solid var(--yellow);outline-offset:6px}
+
+/* Catholic prayer journal: calm burgundy editorial accent with reduced-motion support */
+.fep-prayer-page .fep-product h1,.fep-prayer-editorial h2{color:#68434b}
+.fep-prayer-page .fep-product .fep-lede{font-family:Fraunces,serif;color:#68434b;font-style:italic}
+.fep-prayer-description{font-size:17px;line-height:1.72;max-width:570px;color:#4b565a}
+.fep-prayer-facts{display:flex;flex-wrap:wrap;gap:11px;list-style:none;padding:0;margin:24px 0}
+.fep-prayer-facts li{border:1px solid #d9c7c5;background:#fff9f3;color:#68434b;border-radius:30px;padding:7px 14px;font-size:12px;font-weight:700}
+.fep-prayer-editorial{padding-top:55px;padding-bottom:78px;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(190px,.4fr) 1fr;gap:42px;align-items:center}
+.fep-prayer-editorial-mark{min-height:170px;border-radius:48%;background:#eee2e2;display:grid;place-items:center}
+.fep-prayer-editorial-mark svg{width:min(90%,290px)}
+.fep-prayer-editorial-mark path{animation:fep-route 18s linear infinite}
+.fep-prayer-editorial h2{font:600 clamp(28px,3.2vw,43px)/1.1 Fraunces,serif;margin:0 0 16px}
+.fep-prayer-editorial p{line-height:1.75;font-size:17px;color:#516065;max-width:720px}
+@media(max-width:650px){.fep-prayer-editorial{grid-template-columns:1fr;gap:24px}.fep-prayer-editorial-mark{min-height:125px;max-width:330px}}
+@media(prefers-reduced-motion:reduce){.fep-prayer-editorial-mark path{animation:none}}
+
+/* Four editorial product features on desktop; two on tablet; one on mobile. */
+@media(min-width:851px){.fep-featured-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:850px) and (min-width:571px){.fep-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.fep-featured-grid{grid-template-columns:1fr}}
+.fep-concept-card-note{font-size:12px!important;color:#687077!important;line-height:1.5!important;margin:10px 0 0!important}
