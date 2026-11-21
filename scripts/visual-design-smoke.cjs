@@ -13,7 +13,7 @@ const pages=["index.html","catalog/index.html","about/index.html",...slugs.map(s
 assert.equal(pages.length,12);
 for(const path of pages){
  const page=fs.readFileSync(base+path,"utf8");
- assert.ok(page.includes("catalog.css?v=7"),lang+" "+path+" cache mismatch");
+ assert.ok(page.includes("catalog.css?v=8"),lang+" "+path+" cache mismatch");
  const footer=page.match(/<footer class="fep-footer section-shell">([\s\S]*?)<\/footer>/);
  assert.ok(footer,lang+" "+path+" footer exists");
  assert.ok(footer[1].includes('class="fep-footer-nav"'),lang+" "+path+" footer text nav");
@@ -34,4 +34,17 @@ for(const lang of ["en","hu","de","fr"]){
  const home=fs.readFileSync(base+"index.html","utf8");
  assert.ok(home.includes('class="fep-footer-nav"')&&!/<footer[^>]*>[\s\S]*?class="button[^"]*"/.test(home),lang+" footer no CTA pills");
 }
-console.log("48 locale cache, symmetric CTAs, editorial imprint and text-only footer source checks passed; live Safari QA remains required.");
+for(const lang of ["en","hu","de","fr"]){
+ const base=lang==="en"?"":lang+"/";
+ const catalog=fs.readFileSync(base+"catalog/index.html","utf8");
+ assert.equal((catalog.match(/class="fep-card-editorial"/g)||[]).length,9,lang+" rich catalogue cards");
+ for(const slug of slugs){
+  const html=fs.readFileSync(base+"products/"+slug+".html","utf8");
+  assert.ok(html.includes('class="fep-product-story section-shell"'),lang+" "+slug+" editorial content");
+  assert.ok(html.includes('data-editorial-locale="'+lang+'"'),lang+" "+slug+" correct language");
+  assert.equal((html.match(/class="fep-story-copy"/g)||[]).length,1,lang+" "+slug+" narrative");
+  assert.equal((html.match(/class="fep-story-facts"/g)||[]).length,1,lang+" "+slug+" facts");
+  assert.ok(!html.includes('class="fep-trust section-shell"'),lang+" "+slug+" no generic AI trust banner");
+ }
+}
+console.log("48 locale cache, nine enriched catalog cards per language, 36 unique product stories, editorial footer and CTA checks passed.");
