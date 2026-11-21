@@ -55,6 +55,8 @@ jobs:
           node scripts/menu-design-smoke.cjs
           node scripts/visual-design-smoke.cjs
           node scripts/card-gallery-smoke.cjs
+          node scripts/preorder-handoff-smoke.cjs
+          node --check scripts/preorder-click-qa.cjs
           node scripts/product-story-smoke.cjs
           node scripts/svg-motion-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
