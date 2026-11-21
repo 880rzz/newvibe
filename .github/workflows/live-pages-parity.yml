@@ -17,5 +17,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Compare 48 public pages and 8 assets with checked-out SHA
+      - name: Compare 48 public pages and 15 assets with checked-out SHA
         run: node scripts/live-pages-source-parity.cjs
