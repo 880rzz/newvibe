@@ -6,9 +6,9 @@ const fs=require("node:fs");
 const bank=require("../three-sentences.js");
 const langs=["en","hu","de","fr"];
 assert.equal(bank.entries.length,15,"curated sentence pairs from five supplied PDFs");
-assert.equal(new Set(bank.entries.map(e=>e.id)).size,13,"stable unique IDs");
+assert.equal(new Set(bank.entries.map(e=>e.id)).size,15,"stable unique IDs");
 assert.deepEqual([...new Set(bank.entries.map(e=>e.book))].sort(),
- ["egy-kis-ter","helyed-van-koztunk","na-most-mit-csinaljak","veled-a-mindennapokban","helyed-van-koztunk-segito-harmonika"].sort(),"four manuscript sources");
+ ["egy-kis-ter","helyed-van-koztunk","na-most-mit-csinaljak","veled-a-mindennapokban","helyed-van-koztunk-segito-harmonika"].sort(),"all five uploaded PDF sources");
 const bookNames={"egy-kis-ter":"Egy kis tér","helyed-van-koztunk":"Helyed van köztünk",
  "na-most-mit-csinaljak":"Na, most mit csináljak?","veled-a-mindennapokban":"Veled a mindennapokban","helyed-van-koztunk-segito-harmonika":"Helyed van köztünk · Segítő harmonika"};
 const pageLabels={en:"p.",hu:"o.",de:"S.",fr:"p."};
