@@ -9,7 +9,38 @@ Object.assign(copy.hu,{heroCta:"Kártyacsomag megismerése",comingEyebrow:"a ká
 Object.assign(copy.en,{heroCta:"Discover the card set",comingEyebrow:"the conversation cards",comingTitle:"Helyed van köztünk.",comingLede:"A Hungarian-language card set for starting conversations about bullying, abuse and exclusion. A little help when difficult things need words.",comingLine:"One question. One conversation. Room for one another.",comingCta:"Discover the cards"});
 Object.assign(copy.de,{heroCta:"Das Kartenset entdecken",comingEyebrow:"das Kartenset",comingTitle:"Helyed van köztünk.",comingLede:"Ein ungarischsprachiges Kartenset, das Gespräche über Mobbing, Gewalt und Ausgrenzung erleichtern kann.",comingLine:"Eine Frage. Ein Gespräch. Platz füreinander.",comingCta:"Die Karten kennenlernen"});
 Object.assign(copy.fr,{heroCta:"Découvrir les cartes",comingEyebrow:"les cartes",comingTitle:"Helyed van köztünk.",comingLede:"Un jeu de cartes en hongrois pour ouvrir des conversations sur le harcèlement, la maltraitance et l’exclusion.",comingLine:"Une question. Une conversation. Une place pour chacun.",comingCta:"Découvrir les cartes"});
-let current="hu";function setLanguage(lang){current=lang;document.documentElement.lang=lang;document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;if(copy[lang][key]||extras[lang]?.[key])el.textContent=copy[lang][key]||extras[lang][key]});document.querySelectorAll(".lang").forEach(btn=>btn.classList.toggle("active",btn.dataset.lang===lang));document.title=copy[lang].heroTitle}document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang)));
+const fepBrandLines={en:"Room for every journey.",hu:"Minden úton van helyed.",de:"Raum für deinen Weg.",fr:"À chacun son chemin."};
+const fepExtra={
+ en:{menuCatalog:"The collection",collectionEyebrow:"An independent creative collection",collectionTitle:"Different paths. A little more room.",collectionIntro:"Conversation cards for children and trusted adults, a reflective workbook, a planner for adults with ADHD, and two covers for the 2027 teacher planner. Each begins with a real-life situation.",productExplore:"Explore the product",miniCardDesc:"Conversation cards about bullying and exclusion",miniAdhdDesc:"An adult planner with room to start again",miniWorkbookDesc:"A reflection workbook for adults, now in manuscript stage",collectionCta:"See all five editions",collectionDisclosure:"The planner and workbook covers are visual representations. Manufacturing is still being prepared.",footer:"Room for every journey."},
+ hu:{menuCatalog:"A termékek",collectionEyebrow:"Egy önálló alkotói termékcsalád",collectionTitle:"Más utak. Egy kis több hely.",collectionIntro:"Beszélgetőkártyák gyerekeknek és biztonságos felnőtteknek, önreflexiós füzet, ADHD-tervező, valamint a 2027-es tanári határidőnapló két borítóval. Mindegyik hétköznapi helyzetekből indul.",productExplore:"Megismerem",miniCardDesc:"Beszélgetőkártyák bántalmazásról és kiközösítésről",miniAdhdDesc:"Felnőtteknek készült tervező, ahol újra lehet kezdeni",miniWorkbookDesc:"Önreflexiós munkafüzet felnőtteknek, jelenleg kézirat",collectionCta:"Mind az öt változat",collectionDisclosure:"A tervező és a munkafüzet itt látható borítója csak illusztratív előnézet. A gyártási kivitel még alakul.",footer:"Minden úton van helyed."},
+ de:{menuCatalog:"Die Kollektion",collectionEyebrow:"Eine unabhängige kreative Kollektion",collectionTitle:"Verschiedene Wege. Etwas mehr Raum.",collectionIntro:"Gesprächskarten, ein Arbeitsheft zur Selbstreflexion, ein ADHS-Planer für Erwachsene und zwei Cover für den Lehrerplaner 2027. Der Ausgangspunkt sind echte Alltagssituationen.",productExplore:"Mehr erfahren",miniCardDesc:"Gesprächskarten über Mobbing und Ausgrenzung",miniAdhdDesc:"Ein Planer für Erwachsene, der einen Neustart erlaubt",miniWorkbookDesc:"Ein Arbeitsheft für Erwachsene, noch im Manuskriptstadium",collectionCta:"Alle fünf Ausgaben ansehen",collectionDisclosure:"Die abgebildeten Planer- und Arbeitsheftcover sind Illustrationen; die Herstellung wird vorbereitet.",footer:"Raum für deinen Weg."},
+ fr:{menuCatalog:"La collection",collectionEyebrow:"Une collection créative indépendante",collectionTitle:"Des chemins différents. Un peu plus d’espace.",collectionIntro:"Des cartes de dialogue, un cahier de réflexion, un agenda TDAH pour adultes et deux couvertures pour l’agenda enseignant 2027. Des outils qui partent du quotidien.",productExplore:"Découvrir",miniCardDesc:"Cartes de dialogue sur le harcèlement et l’exclusion",miniAdhdDesc:"Un agenda pour adultes où l’on peut recommencer",miniWorkbookDesc:"Un cahier de réflexion, encore sous forme de manuscrit",collectionCta:"Voir les cinq versions",collectionDisclosure:"Les couvertures du carnet et du cahier sont des représentations provisoires ; la fabrication reste à préparer.",footer:"À chacun son chemin."}
+};
+for(const lang of ["en","hu","de","fr"]){Object.assign(extras[lang],fepExtra[lang],{brandTag:fepBrandLines[lang]});Object.assign(copy[lang],fepExtra[lang]);}
+const fepLangs=["en","hu","de","fr"];
+const fepLinks={catalog:"catalog/",about:"about/",card:"products/helyed-van-koztunk.html",adhd:"products/lepesrol-lepesre-2027.html",workbook:"products/egy-kis-ter.html"};
+const fepBase=location.pathname.includes("/newvibe/")?"/newvibe/":"/";
+function chooseInitialLang(){
+ const requested=new URLSearchParams(location.search).get("lang");if(fepLangs.includes(requested))return requested;
+ try{const selected=localStorage.getItem("fep.language");if(fepLangs.includes(selected))return selected;}catch(e){}
+ for(const code of navigator.languages||[navigator.language]){const first=String(code).toLowerCase().split("-")[0];if(fepLangs.includes(first))return first;}
+ return "en";
+}
+let current=chooseInitialLang();
+function setLanguage(lang,remember=false){
+ if(!fepLangs.includes(lang))lang="en";
+ current=lang;document.documentElement.lang=lang;
+ document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined)el.textContent=val});
+ document.querySelectorAll(".lang").forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",String(active));});
+ document.querySelectorAll("[data-lang-link]").forEach(el=>{const target=fepLinks[el.dataset.langLink];if(target)el.href=fepBase+(lang==="en"?"":lang+"/")+target;});
+ const footer=document.querySelector(".footer [data-i18n=footer]");if(footer)footer.textContent=fepExtra[lang].footer;
+ document.title="For Every Path | "+fepBrandLines[lang];
+ if(remember){try{localStorage.setItem("fep.language",lang)}catch(e){}}
+ window.refreshQuizLanguage?.();
+}
+document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang,true)));
+setLanguage(current);
+
 document.querySelectorAll(".note-card").forEach(card=>card.addEventListener("click",()=>card.classList.toggle("is-flipped")));
 const quizData={
 hu:{questions:[
@@ -36,20 +67,43 @@ results:[
 ["The one at the edge of something new","Something is already moving in you, it just has not found its name yet. You do not have to decide immediately.","What small next step could gently call you forward?"],
 ["The one looking for room","You may not need more structure first. You may need a place where you do not have to be useful, strong, or ready.","What would ten minutes with no purpose feel like today?"],
 ["The one carrying an unspoken sentence","Something in you is asking for attention. It does not need to be solved or explained beautifully yet.","What is one sentence you could say to yourself today?"]]},
-de:{questions:[],results:[]},fr:{questions:[],results:[]}};
+de:{questions:[
+["Was passiert in dir, wenn es endlich ruhig wird?",["Ich bin erleichtert, aber sofort fällt mir Neues ein.","Ich weiß nicht, was ich mit der Stille anfangen soll.","Ich bemerke endlich, was tagsüber untergeht.","Ein wenig Angst, weil so viel auftaucht."]],
+["Welcher Satz passt heute am ehesten?",["Alle verlassen sich auf mich.","Ich möchte endlich irgendwo anfangen.","Ich weiß gerade nicht, was ich brauche.","Ich bräuchte einfach eine Pause."]],
+["Was verschiebst du am häufigsten?",["Meine eigenen Dinge.","Entscheidungen.","Pausen.","Ein schwieriges Gespräch."]],
+["Was würdest du mit einer freien Stunde machen?",["Ein wenig Ordnung schaffen.","Den nächsten Schritt überlegen.","Einfach nur da sein.","Aufschreiben, was ich nicht sagen kann."]],
+["Was würde dir heute am meisten helfen?",["Wenn jemand mir etwas abnimmt.","Wenn ich nicht alles allein planen müsste.","Wenn ich nicht leisten müsste.","Wenn ich meine Gefühle besser verstünde."]],
+["Was wäre heute ein hilfreicher Gedanke?",["Ich muss nicht alles tragen.","Ich darf langsam vorgehen.","Unsicherheit ist kein Scheitern.","Meine Gefühle dürfen Platz haben."]]],
+results:[
+["Wenn du viel trägst","Du kümmerst dich um vieles. Vielleicht brauchst du gerade Entlastung statt einer weiteren Aufgabe.","Was könntest du heute abgeben?"],
+["Wenn etwas Neues beginnt","Ein neuer Schritt muss nicht groß sein. Du musst heute nicht alles entscheiden.","Was wäre ein machbarer nächster Schritt?"],
+["Wenn du Platz brauchst","Vielleicht brauchst du zuerst einen Moment ohne Erwartungen.","Wie fühlen sich zehn Minuten ohne Ziel an?"],
+["Wenn Worte fehlen","Nicht alles muss sofort erklärt werden. Du darfst erst einmal bemerken, was da ist.","Welchen Satz kannst du dir selbst schon sagen?"]]},
+fr:{questions:[
+["Que ressens-tu quand tout devient enfin calme ?",["Du soulagement, puis une nouvelle tâche arrive.","Je ne sais pas quoi faire du silence.","J'entends enfin ce que j'ignorais.","Une petite peur de ce qui remonte."]],
+["Quelle phrase te ressemble aujourd'hui ?",["Tout le monde compte sur moi.","J'aimerais enfin commencer quelque chose.","Je ne sais pas vraiment ce qu'il me faut.","J'ai juste besoin de souffler."]],
+["Que remets-tu le plus souvent à plus tard ?",["Mes affaires personnelles.","Mes décisions.","Le repos.","Une conversation difficile."]],
+["Avec une heure libre, que ferais-tu ?",["Un peu d'ordre autour de moi.","Imaginer ma prochaine étape.","Simplement être là.","Écrire ce que je n'arrive pas à dire."]],
+["Qu'est-ce qui t'aiderait aujourd'hui ?",["Qu'on m'enlève une tâche.","Ne pas tout décider seul·e.","Ne rien devoir prouver.","Comprendre un peu mieux ce que je ressens."]],
+["Quelle pensée aimerais-tu garder ?",["Je n'ai pas à tout porter.","Je peux avancer doucement.","L'incertitude n'est pas un échec.","Mes émotions ont le droit d'exister."]]],
+results:[
+["Quand tu portes trop","Tu portes de nombreuses responsabilités. Peut-être qu'un peu de soutien t'aiderait plus qu'une tâche de plus.","Que pourrais-tu partager aujourd'hui ?"],
+["Au début de quelque chose","Tu n'as pas besoin de tout décider tout de suite. Un petit pas peut suffire.","Quel serait ton prochain pas possible ?"],
+["Quand tu cherches ta place","Peut-être as-tu d'abord besoin d'un moment sans objectif.","À quoi ressembleraient dix minutes sans rien produire ?"],
+["Quand les mots manquent","Tout ne doit pas être expliqué immédiatement. Tu peux commencer par reconnaître ce qui est là.","Quelle phrase peux-tu déjà te dire ?"]]}};
 function initQuiz(){
 let lang=current,step=0,scores=[0,0,0,0],answers=[];
 const QUIZ_SAVE_KEY="newvibe.lastReflection";
 const card=document.getElementById("quizCard"),intro=document.querySelector(".quiz-intro"),result=document.getElementById("quizResult");
-const data=()=>quizData[lang].questions.length?quizData[lang]:quizData.en;
+const data=()=>quizData[lang]?.questions.length?quizData[lang]:quizData.en;
 function render(){const d=data(),q=d.questions[step];document.getElementById("quizCount").textContent=`${step+1} / ${d.questions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/d.questions.length)*100}%`;document.getElementById("quizQuestion").textContent=q[0];const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q[1].forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
 function choose(i){scores[i]++;answers[step]=i;if(step<data().questions.length-1){step++;render()}else{const winner=scores.indexOf(Math.max(...scores)),r=data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
 const reflection={language:lang,title:r[0],text:r[1],question:r[2],savedAt:new Date().toISOString()};try{localStorage.setItem(QUIZ_SAVE_KEY,JSON.stringify(reflection))}catch(e){}
 card.hidden=true;result.hidden=false}}
 document.getElementById("startQuiz").onclick=()=>{intro.hidden=true;card.hidden=false;result.hidden=true;step=0;scores=[0,0,0,0];render();card.scrollIntoView({behavior:"smooth",block:"center"})};
-document.getElementById("quizBack").onclick=()=>{if(step){scores[answers[step]]--;step--;render()}};
+document.getElementById("quizBack").onclick=()=>{if(step){step--;const previous=answers[step];if(Number.isInteger(previous))scores[previous]--;answers.length=step;render()}};
 document.getElementById("quizAgain").onclick=()=>{result.hidden=true;intro.hidden=false;intro.scrollIntoView({behavior:"smooth",block:"center"})};
-window.refreshQuizLanguage=()=>{if(!card.hidden)render();};
+window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];render();}};
 window.getLastReflection=()=>{try{return JSON.parse(localStorage.getItem(QUIZ_SAVE_KEY))}catch(e){return null}};
 }
 initQuiz();
