@@ -55,7 +55,18 @@ for (const lang of langs) {
     assert.ok(body.includes(p.disclaimer), pathname + " request is not a confirmed purchase");
     assert.ok(body.includes(p.terms), pathname + " payment and delivery terms subject to confirmation");
     assert.equal((html.match(/id="preorder"/g) || []).length, 1, pathname + " single section anchor");
-    assert.equal((html.match(/href="#preorder"/g) || []).length, 1, pathname + " end-of-story shortcut");
+    assert.equal((html.match(/href="#preorder"/g) || []).length, 0, pathname + " no duplicate end-of-page preorder shortcut");
+    assert.equal((html.match(/class="fep-availability fep-preorder fep-preorder-final section-shell"/g) || []).length, 1, pathname + " one bottom preorder panel");
+    assert.equal((html.match(/class="button fep-preorder-more"/g) || []).length, 1, pathname + " one matched catalog button");
+    assert.ok(html.includes("catalog.css?v=12"), pathname + " refreshed layout CSS");
+    const preorderPosition = html.indexOf('id="preorder"');
+    const storyPosition = html.indexOf('class="fep-product-story section-shell"');
+    const footerPosition = html.indexOf('<footer class="fep-footer');
+    assert.ok(storyPosition >= 0 && storyPosition < preorderPosition && preorderPosition < footerPosition, pathname + " preorder after editorial content and before footer");
+    if(slug==="helyed-van-koztunk"){
+      assert.ok(html.indexOf('class="product-gallery section-shell"') < preorderPosition, pathname + " preorder after product gallery");
+      assert.ok(html.indexOf('id="card-demo"') < preorderPosition, pathname + " preorder after interactive demo");
+    }
     assert.equal(product.preorder_request.email, url.pathname);
     assert.equal(product.preorder_request.confirmation_required, true);
     assert.equal(product.preorder_request.request_not_binding_without_confirmation, true);

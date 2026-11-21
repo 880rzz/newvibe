@@ -25,7 +25,12 @@ for(const lang of ["en","hu","de","fr"]){
   assert.equal((h.match(/class="fep-story-copy"/g)||[]).length,1,lang+" "+slug+" deep prose");
   assert.equal((h.match(/class="fep-story-facts"/g)||[]).length,1,lang+" "+slug+" facts");
   assert.ok(h.includes('class="fep-detail-list"'),lang+" "+slug+" original three-question structure");
-  assert.ok(h.includes('class="fep-availability fep-preorder"'),lang+" "+slug+" preorder action");
+  assert.ok(h.includes('class="fep-availability fep-preorder fep-preorder-final section-shell"'),lang+" "+slug+" bottom preorder block");
+  assert.equal((h.match(/class="button button-coral fep-preorder-action"/g)||[]).length,1,lang+" "+slug+" unique email CTA");
+  assert.equal((h.match(/class="button fep-preorder-more"/g)||[]).length,1,lang+" "+slug+" catalog exit styled as button");
+  assert.ok(!h.includes('href="#preorder"'),lang+" "+slug+" no redundant preorder jump");
+  assert.ok(h.indexOf('class="fep-product-story section-shell"')<h.indexOf('id="preorder"'),lang+" "+slug+" story precedes preorder");
+  assert.ok(h.indexOf('id="preorder"')<h.indexOf('<footer class="fep-footer'),lang+" "+slug+" preorder above footer");
   assert.ok(!h.includes('class="fep-trust section-shell"'),lang+" "+slug+" no repeated generic block");
   const content=h.match(/<div class="fep-story-copy">([\s\S]*?)<\/div>/)?.[1]||"";
   assert.equal((content.match(/<p>/g)||[]).length,3,lang+" "+slug+" substantial thematic paragraphs");
@@ -35,8 +40,9 @@ for(const lang of ["en","hu","de","fr"]){
   stories++;
  }
  assert.equal(all.length,12);
- for(const page of all){
-  assert.ok(page.includes("catalog.css?v=11"),lang+" stale CSS version");
+ for(const [pageIndex,page] of all.entries()){
+  const expectedVersion=pageIndex<3?"catalog.css?v=11":"catalog.css?v=12";
+  assert.ok(page.includes(expectedVersion),lang+" correct cache-busted layout CSS "+expectedVersion);
   const visiblePage=page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,"");
   for(const term of deprecated)assert.ok(!visiblePage.includes(term),lang+" old user-facing text: "+term);
  }

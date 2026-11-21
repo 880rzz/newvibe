@@ -39,13 +39,17 @@ const check=(ok,msg)=>{tested++;if(!ok)failures.push(msg);};
      check(result.visibleCaptions,label+" original photo captions readable");
      check(result.overflow<=2,label+" no horizontal overflow");
      check(result.figures.every(f=>f.left>=-1&&f.right<=width+1&&f.width>75),label+" photos contained in responsive layout");
-     const button=page.locator('main nav a[href="#preorder"]');
-     check(await button.count()===1,label+" final return to genuine preorder section");
-     const preorder=page.locator("#preorder");
-     check(await preorder.count()===1,label+" destination exists");
-     await button.click();
-     const anchor=await page.evaluate(()=>location.hash);
-     check(anchor==="#preorder",label+" click actually navigates to preorder");
+     const preorder=page.locator("main > #preorder.fep-preorder-final");
+     check(await preorder.count()===1,label+" one preorder panel below gallery");
+     const panelProof=await preorder.evaluate(el=>{
+       const main=el.parentElement,footer=document.querySelector(".fep-footer");
+       return {last:main.lastElementChild===el,
+         gap:footer.getBoundingClientRect().top-el.getBoundingClientRect().bottom,
+         emailActions:el.querySelectorAll("a.fep-preorder-action").length,
+         catalogHref:el.querySelector("a.fep-preorder-more")?.getAttribute("href")};
+     });
+     check(panelProof.last&&panelProof.gap>=50,label+" footer separated from genuine preorder panel");
+     check(panelProof.emailActions===1&&panelProof.catalogHref==="../catalog/",label+" one preorder mail action and styled catalog link");
      if(browserName==="webkit"){
       await gallery.screenshot({path:path.join(dest,"original-card-gallery-"+lang+"-"+width+".png"),animations:"disabled"});
      }
