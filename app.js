@@ -68,9 +68,9 @@ function choose(choice){
  const winner=scores.indexOf(maximum);
  const message=tied?checkinMixed[lang]:quizData[lang].results[winner];
  get("resultTitle").textContent=message[0];get("resultText").textContent=message[1];get("resultQuestion").textContent=message[2];
- const base=lang==="en"?"":"../",product=get("quizProductLink"),productLabel=get("quizProductLabel");
+ const product=get("quizProductLink"),productLabel=get("quizProductLabel");
  const useCatalog=tied || winner===1;
- product.href=base+(useCatalog?"catalog/":"products/egy-kis-ter.html");
+ product.href=useCatalog?"catalog/":"products/egy-kis-ter.html";
  productLabel.textContent=useCatalog?labels[lang].catalog:labels[lang].workbook;
  card.hidden=true;result.hidden=false;get("resultTitle").focus({preventScroll:true});
 }
