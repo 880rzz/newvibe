@@ -48,6 +48,7 @@ jobs:
           node --check product.js
           node --check locale-router.js
           node --check site-menu.js
+          node --check scripts/live-pages-source-parity.cjs
           node scripts/locale-smoke.cjs
           node scripts/checkin-smoke.cjs
           node scripts/home-ux-smoke.cjs
