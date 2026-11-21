@@ -89,6 +89,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check(snapshot.howMade,label+" editorial-process anchor");
  }
  if(kind==="home"||kind==="about"){
+  await page.locator(".fep-portrait img").evaluate(img=>img.decode().catch(()=>{}));
   const photo=await page.locator(".fep-portrait img").evaluate(el=>{
     const r=el.getBoundingClientRect();
     return {src:el.getAttribute("src"),width:el.naturalWidth,height:el.naturalHeight,left:r.left,right:r.right,loaded:el.complete};
@@ -112,7 +113,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check(await page.locator(".fep-preorder-action").count()===1,label+" existing email preorder CTA retained");
  }
  if(width===390||width===1440){
-  const shot=engine+"-"+lang+"-"+kind+"-"+width;
+  const shot=engine+"-"+lang+"-"+kind.replace(/[^a-z0-9-]/gi,"-")+"-"+width;
   await page.screenshot({path:path.join(destination,shot+"-top.png"),fullPage:false,animations:"disabled"});
   if(kind==="home"&&width===390){
    await page.locator(".fep-restored-recognition").screenshot({path:path.join(destination,shot+"-cards.png"),animations:"disabled"});
