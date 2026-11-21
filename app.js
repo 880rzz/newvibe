@@ -93,6 +93,11 @@ function setLanguage(lang,remember=false){
 }
 document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang,true)));
 setLanguage(current);
+// An incoming ?lang parameter selects the opening language; explicit later changes remain sticky on reload.
+if(new URLSearchParams(location.search).has("lang")){
+ const clean=new URL(location.href);clean.searchParams.delete("lang");
+ history.replaceState(null,"",clean.pathname+clean.search+clean.hash);
+}
 
 document.querySelectorAll(".note-card").forEach(card=>{const flip=()=>{card.classList.toggle("is-flipped");card.setAttribute("aria-pressed",String(card.classList.contains("is-flipped")));};card.addEventListener("click",flip);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip();}});});
 const quizData={
