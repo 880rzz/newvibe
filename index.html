@@ -68,7 +68,7 @@
         <p class="eyebrow" data-i18n="eyebrow">one question worth keeping</p>
         <h1 data-i18n="heroTitle">When was the last time you made room for yourself?</h1>
         <p class="hero-lede" data-i18n="heroLede">Not another method. Not another list. Just a little space for what you keep postponing during the day.</p>
-        <a class="button button-coral" href="#coming" data-i18n="heroCta">Discover the card set <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></a>
+        <a class="button button-coral" href="catalog/" data-lang-link="catalog" data-i18n="heroCta">Explore all nine publications <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></a>
       </div>
       <div class="hero-art" aria-label="Nyitott füzet egy ceruzával" role="img">
         <div class="doodle doodle-sun">✳</div>
@@ -104,12 +104,12 @@
       <div class="quiz-intro">
         <p class="eyebrow" data-i18n="quizEyebrow">a moment to check in</p>
         <h2 data-i18n="quizTitle">How are you, really, today?</h2>
-        <p data-i18n="quizIntro">There is no right or wrong answer. Choose the option that feels closest to your day.</p>
+        <p data-i18n="quizIntro">Six short questions to pause and notice how today feels. There are no right or wrong answers.</p><p class="fep-quiz-boundary" data-i18n="quizBoundary">A personal reflection for adults, not a psychological test or diagnosis. Nothing you answer is sent or saved.</p>
         <button class="button button-coral" id="startQuiz" type="button" data-i18n="quizStart">Begin <span class="arrow-icon" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M4 16 16 4M7 4h9v9"></path></svg></span></button>
       </div>
       <div class="quiz-card" id="quizCard" hidden>
         <div class="quiz-meta"><span id="quizCount">1 / 6</span><span id="quizProgressLabel" data-i18n="quizProgress">one step at a time</span></div>
-        <div class="progress"><span id="quizProgress"></span></div>
+        <div class="progress"><span id="quizProgress" role="progressbar" aria-label="Reflection progress" aria-valuemin="0" aria-valuemax="6" aria-valuenow="1"></span></div>
         <h3 id="quizQuestion"></h3>
         <div class="quiz-options" id="quizOptions"></div>
         <button class="quiz-back" id="quizBack" type="button" data-i18n="quizBack">← back</button>
@@ -117,9 +117,15 @@
       <div class="quiz-result" id="quizResult" hidden aria-live="polite">
         <p class="eyebrow" data-i18n="resultEyebrow">what you might be carrying</p>
         <div class="result-mark">✦</div>
-        <h3 id="resultTitle"></h3>
+        <h3 id="resultTitle" tabindex="-1"></h3>
         <p id="resultText"></p>
         <p class="result-question" id="resultQuestion"></p>
+        <div class="fep-quiz-next">
+          <p class="fep-quiz-boundary" data-i18n="quizResultNote">This is a possible starting point, not a label, an assessment or a diagnosis.</p>
+          <p class="fep-quiz-next-title" data-i18n="quizNextTitle">If you would like to explore a little further:</p>
+          <a id="quizProductLink" data-lang-link="workbook" href="products/egy-kis-ter.html" class="fep-arrow-link"><span id="quizProductLabel">Explore Egy kis tér</span> <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a>
+          <a data-lang-link="catalog" href="catalog/" class="fep-arrow-link"><span data-i18n="quizCatalogCta">Browse the entire collection</span> <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a>
+        </div>
         <button class="button button-ink" id="quizAgain" type="button" data-i18n="quizAgain">Start again</button>
       </div>
     </section>
@@ -153,37 +159,37 @@
     <h2 data-i18n="collectionTitle">Different paths. A little more room.</h2>
     <p data-i18n="collectionIntro">Conversation cards, reflective workbooks, a 30-day Catholic prayer journal and planners for adults and teachers. Different needs, with room for honest questions.</p>
   </div>
-  <figure class="fep-collection-banner"><img src="assets/fep-collection-concept.webp" width="1448" height="1086" alt="Selected For Every Path products pictured in a conceptual AI-generated collection rendering; the new Catholic journal is shown separately below." loading="lazy" decoding="async"><figcaption data-i18n="collectionDisclosure">The planner and workbook covers are visual representations. Manufacturing is still being prepared.</figcaption></figure>
+  <figure class="fep-collection-banner"><img src="assets/fep-collection-concept.webp" width="1448" height="1086" alt="Selected For Every Path products pictured in a conceptual AI-generated collection rendering; the new Catholic journal is shown separately below." loading="lazy" decoding="async"><figcaption data-i18n="collectionDisclosure">The planner and workbook covers are digital visualisations, not product photographs.</figcaption></figure>
   <p class="fep-catalog-preorder-info" data-i18n="preorderNotice">Pre-order requests are open by email. Prices and the webshop are coming soon. An email is not a confirmed order; terms will be agreed in a reply.</p>
   <div class="fep-featured-grid">
     <article class="fep-mini-product">
       <img src="assets/helyed-van-koztunk-03.jpg" alt="Helyed van köztünk conversation cards" width="800" height="800" loading="lazy">
       <div><h3>Helyed van köztünk</h3><p data-i18n="miniCardDesc">Conversation cards about bullying and exclusion</p><a href="products/helyed-van-koztunk.html" data-lang-link="card" data-i18n="productExplore" class="fep-arrow-link">Explore the cards <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20helyed-van-koztunk" data-preorder-slug="helyed-van-koztunk"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
     <article class="fep-mini-product">
-      <img class="fep-concept-image" src="assets/fep-adhd-concept.webp" width="1122" height="1402" alt="Lépésről lépésre 2027 – AI-generated illustration of future printed editions; not photographs of manufactured products." loading="lazy" decoding="async">
+      <img class="fep-concept-image" src="assets/fep-adhd-concept.webp" width="1122" height="1402" alt="Lépésről lépésre 2027 – AI-generated cover illustration, not an actual product photograph." loading="lazy" decoding="async">
       <div><h3>Lépésről lépésre · 2027</h3><p data-i18n="miniAdhdDesc">An adult planner with room to start again</p><a href="products/lepesrol-lepesre-2027.html" data-lang-link="adhd" data-i18n="productExplore" class="fep-arrow-link">Explore the planner <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20lepesrol-lepesre-2027" data-preorder-slug="lepesrol-lepesre-2027"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
     <article class="fep-mini-product">
-      <img class="fep-concept-image" src="assets/fep-workbook-concept.webp" width="1122" height="1402" alt="Egy kis tér – AI-generated illustration of future printed editions; not photographs of manufactured products." loading="lazy" decoding="async">
-      <div><h3>Egy kis tér</h3><p data-i18n="miniWorkbookDesc">A reflection workbook for adults, now in manuscript stage</p><a href="products/egy-kis-ter.html" data-lang-link="workbook" data-i18n="productExplore" class="fep-arrow-link">Explore the workbook <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20egy-kis-ter" data-preorder-slug="egy-kis-ter"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
+      <img class="fep-concept-image" src="assets/fep-workbook-concept.webp" width="1122" height="1402" alt="Egy kis tér – AI-generated cover illustration, not an actual product photograph." loading="lazy" decoding="async">
+      <div><h3>Egy kis tér</h3><p data-i18n="miniWorkbookDesc">A professionally approved reflection workbook for adults</p><a href="products/egy-kis-ter.html" data-lang-link="workbook" data-i18n="productExplore" class="fep-arrow-link">Explore the workbook <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20egy-kis-ter" data-preorder-slug="egy-kis-ter"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
     <article class="fep-mini-product">
-      <img class="fep-concept-image" src="assets/fep-veled-a-mindennapokban-concept.webp" width="840" height="1050" alt="Veled a mindennapokban – AI-generated concept image, not a manufactured-product photograph" loading="lazy" decoding="async">
+      <img class="fep-concept-image" src="assets/fep-veled-a-mindennapokban-concept.webp" width="840" height="1050" alt="Veled a mindennapokban – AI-generated cover illustration, not a product photograph" loading="lazy" decoding="async">
       <div><h3>Veled a mindennapokban</h3><p data-i18n="miniPrayerDesc">A 30-day Catholic prayer journal in Hungarian, now in print preparation</p><a href="products/veled-a-mindennapokban.html" data-lang-link="prayer" data-i18n="productExplore" class="fep-arrow-link">Explore the journal <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20veled-a-mindennapokban" data-preorder-slug="veled-a-mindennapokban"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
   </div>
   <a class="button button-ink" href="catalog/" data-lang-link="catalog" data-i18n="collectionCta">See all nine products</a>
-  <p class="fep-featured-disclosure" data-i18n="collectionDisclosure">The planner and workbook images are illustrative cover representations; final physical production is still in preparation.</p>
+  <p class="fep-featured-disclosure" data-i18n="collectionDisclosure">The planner and workbook images are illustrative cover representations, not product photographs.</p>
 </section>
     <section class="fep-diofa-home section-shell" aria-labelledby="diofa-title">
       <div class="fep-diofa-home-intro">
         <p class="eyebrow" data-i18n="diofaEyebrow">Diófa Műhely · stories and activities</p>
         <h2 id="diofa-title" data-i18n="diofaTitle">A little more room to tell a story.</h2>
-        <p data-i18n="diofaIntro">Three Hungarian-language print manuscripts: stories from 42 countries, 42 matching coloring pages, and 32 everyday dilemmas for children aged 8–11.</p>
+        <p data-i18n="diofaIntro">Three professionally approved Hungarian-language publications: stories from 42 countries, 42 matching coloring pages and 32 everyday dilemmas for ages 8–11.</p>
       </div>
       <div class="fep-diofa-home-grid">
-        <article class="fep-mini-product"><img class="fep-diofa-image" src="assets/fep-mesek-vilag-korul-concept.svg" width="840" height="1050" alt="Mesék a világ körül – digital book-cover preview, not a manufactured product photo" loading="lazy" decoding="async"><div><h3>Mesék a világ körül</h3><p data-i18n="diofaRead">42 stories from 42 countries · A4 book</p><a href="products/mesek-a-vilag-korul.html" data-lang-link="worldStories" data-i18n="productExplore" class="fep-arrow-link">Explore the book <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20mesek-a-vilag-korul" data-preorder-slug="mesek-a-vilag-korul"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
+        <article class="fep-mini-product"><img class="fep-diofa-image" src="assets/fep-mesek-vilag-korul-concept.svg" width="840" height="1050" alt="Mesék a világ körül – digital book-cover illustration, not a product photograph" loading="lazy" decoding="async"><div><h3>Mesék a világ körül</h3><p data-i18n="diofaRead">42 stories from 42 countries · A4 book</p><a href="products/mesek-a-vilag-korul.html" data-lang-link="worldStories" data-i18n="productExplore" class="fep-arrow-link">Explore the book <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20mesek-a-vilag-korul" data-preorder-slug="mesek-a-vilag-korul"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
         <article class="fep-mini-product"><img class="fep-diofa-image" src="assets/fep-mesek-vilag-korul-szinezo-concept.svg" width="840" height="1050" alt="Mesék a világ körül – 42 coloring pages, illustrative cover preview" loading="lazy" decoding="async"><div><h3>Mesék a világ körül – 42 színező</h3><p data-i18n="diofaColor">42 illustrated A4 coloring pages</p><a href="products/mesek-a-vilag-korul-szinezo.html" data-lang-link="worldColoring" data-i18n="productExplore" class="fep-arrow-link">Explore the coloring pages <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20mesek-a-vilag-korul-szinezo" data-preorder-slug="mesek-a-vilag-korul-szinezo"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
         <article class="fep-mini-product"><img class="fep-diofa-image" src="assets/fep-na-most-mit-csinaljak-concept.svg" width="840" height="1050" alt="Na, most mit csináljak? – illustrated digital book preview" loading="lazy" decoding="async"><div><h3>Na, most mit csináljak?</h3><p data-i18n="diofaWorkshop">32 stories and creative activities for ages 8–11</p><a href="products/na-most-mit-csinaljak.html" data-lang-link="workshopBook" data-i18n="productExplore" class="fep-arrow-link">Explore the book <span class="fep-vector-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></span></a><a class="fep-preorder-compact" href="mailto:diofamuhelykozosseg@gmail.com?subject=For%20Every%20Path%20%7C%20Pre-order%20request%20%7C%20na-most-mit-csinaljak" data-preorder-slug="na-most-mit-csinaljak"><span data-i18n="preorderCta">Pre-order by email</span> <svg class="fep-preorder-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 16 16 4M7 4h9v9"/></svg></a></div></article>
       </div>
-      <p class="fep-featured-disclosure" data-i18n="diofaDisclaimer">The A4 PDF files are available as manuscripts. These images are digital previews, not photographs of manufactured books. Editorial and rights verification is pending where indicated.</p>
+      <p class="fep-featured-disclosure" data-i18n="diofaDisclaimer">All featured publications have professionally approved content. The source print files remain private, and these cover images are illustrative digital previews rather than photographs of printed products. Order terms are agreed by email.</p>
     </section>
     <section class="coming section-shell" id="coming">
       <div class="coming-object">
@@ -201,6 +207,6 @@
   <footer class="footer section-shell">
     <span>✦</span><span data-i18n="footer">room for every journey</span><a href="about/" data-lang-link="about">About & AI transparency</a><span>✦</span>
   <a class="fep-top-link" href="#top" aria-label="Back to top"><span>Back to top</span><svg class="fep-up-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 20V4M5 11l7-7 7 7"/></svg></a></footer>
-  <script src="app.js?v=12"></script>
+  <script src="app.js?v=13"></script>
 </body>
 </html>

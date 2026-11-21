@@ -6,6 +6,8 @@
 
 > **Alapmondat:** a For Every Path jelenleg alkotói bemutatkozó és termékkatalógus, ahol **e-mailben már jelezhető az előrendelési szándék**. Nem működő webshop, nem online pénztár, és az elküldött e-mail önmagában nem visszaigazolt rendelés. A webshop és az árak később érkeznek.
 
+**Aktuális szerkesztői státusz (2026-11-21):** a készítő tájékoztatása szerint mind a kilenc termék végleges, szakmailag jóváhagyott tartalommal szerepel a kínálatban. Új kiadvány felvételekor a kiadói jóváhagyást állapotadatként külön rögzítsd; ezt ne keverd össze a nyomtatott készlettel, az intézményi ajánlással vagy a szerzői jogi dokumentumok meglétével.
+
 ## 1. Miért létezik az oldal?
 
 A cél nem az, hogy minél több termékkártyát helyezzünk egymás mellé. Az oldal Sajbán-Frőhner Alexandra önálló alkotói világát teszi érthetővé és megismerhetővé: kártyák, naplók, munkafüzetek, kreatív és gyermekeknek szóló kiadványok egy összefüggő kollekcióban. A **For Every Path** a gyűjtőidentitás; a **Diófa Műhely** egyes kiadványok forrásdokumentumban szereplő műhely-/kiadói megjelölése, **nem igazolt önálló jogi társaság**.
@@ -14,7 +16,7 @@ A látogató 30 másodperc alatt értse:
 1. ki alkotja a termékeket;
 2. kiknek és milyen élethelyzetekre készültek;
 3. mit tartalmaz az adott kiadvány, és milyen nyelvű a tényleges termék;
-4. mi létezik fizikailag, mi terv vagy nyomdai előkészítés, mi illusztratív kép;
+4. melyik kép valódi termékfotó és melyik digitális illusztráció, illetve mi a készlet- és teljesítési tájékoztatás;
 5. hogyan tud **most e-mailes előrendelési igényt** küldeni.
 
 A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egyszerű tipográfiával, jól olvasható tartalommal, megfelelő légzéssel. Az oldalnak nem szabad sablonos, agresszív értékesítési felületnek tűnnie. **A világos következő lépés fontosabb, mint a marketingállítás.**
@@ -27,11 +29,11 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 - **Készítő és jogok:** szerző, szerkesztő, illusztrátor, tulajdonosi/fordítási felhasználási jogosultságok; nem bizonyított jóváhagyás vagy partnerkapcsolat nem állítható.
 - **Forrás és állapot:** kiadvány/nyomdai PDF, fotó vagy csak koncepció; a tényként megadott oldalszám, formátum, életkor és tartalom a forrásból ellenőrizendő.
 - **Tényleges terméknyelv:** ma a kiadványok magyar nyelvűek. Az EN/DE/FR bemutatóoldal **nem jelent** angol, német vagy francia nyomtatott kiadást.
-- **Gyártási státusz:** meglévő fizikai példány / nyomdai forrás / szerkesztés alatt / jogtisztázás alatt — külön belső ténymező, **nem azonos az előrendelési lehetőséggel**.
+- **Gyártási státusz:** meglévő fizikai példány / nyomdai forrás / készlet és teljesítés — külön belső ténymező, **nem azonos az előrendelési lehetőséggel**.
 - **Kép eredete:** eredeti tárgyfotó, forrásborító alapján készült grafika, AI-illusztráció vagy szerkesztői SVG-makett; rögzítsd pontosan.
-- **Előrendelés:** fogadható-e e-mailes szándékjelzés, külön feltételek (például jogtisztázás), kapcsolat, későbbi webshop URL csak igazolás után.
+- **Előrendelés:** fogadható-e e-mailes szándékjelzés, külön értékesítési feltételek, kapcsolat, későbbi webshop URL csak igazolás után.
 
-**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A kézirat-/jog-/gyártási megjegyzések külön, tényszerű tájékoztatásként maradjanak meg a részletes termékoldalon, ne legyenek megtévesztően eltüntetve.
+**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A végleges szerkesztői jóváhagyást jelöld pontosan; a képek eredetét, a gyártást és a kereskedelmi felhasználási jogokat ettől külön kezeld. A korábbi forrásváltozatok szerkesztési megjegyzései nem írhatják felül a kiadó aktuális jóváhagyását.
 
 ## 3. Új termék felvitelének kötelező sorrendje
 
@@ -67,7 +69,7 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 - A levél nem jelent automatikus megrendelés-visszaigazolást, készletfoglalást vagy fizetést.
 - Az árat, tényleges elérhetőséget, fizetési és szállítási feltételeket csak válaszban, jóváhagyás előtt egyeztetik.
 - A webshop egyelőre készül. Bankkártyaadatot **nem** kérünk e-mailben.
-- A jogtisztázás alatt álló kiadványnál a teljesítést **nem lehet ígérni** a jogok rendezése előtt.
+- A tényleges kiszállítást és a fizetést csak a vevőnek külön visszaigazolt szerződéses feltételek alapján szabad ígérni.
 
 **Technikai kapcsolat:** `mailto:diofamuhelykozosseg@gmail.com` URL-kódolt, termékspecifikus `subject` és `body` mezőkkel. Ne legyen hamis „Buy now”, „In stock”, pénztár vagy kitalált webshop-hivatkozás.
 
@@ -98,7 +100,11 @@ A `catalog.json` globális `email_preorders` blokkja és minden egyes termék `p
 - A publikus repóba ne tölts fel teljes kéziratot, nyomdai PDF-et, forrásjog-iratot, privát elérhetőségeket vagy engedély nélküli tartalmat. A forrásokból csak a szükséges, jogosan közzétehető adatot és elfogadott képet használd.
 - A jelenlegi `.github/workflows/quality.yml` ellenőrzésben vannak **kilenc termékhez rögzített számlálók**, valamint konkrét új kiadványokat ellenőrző tesztek. Új termék felvételekor ezeket a helyes új darabszámra és követelményekre frissíteni kell, **tesztgyengítés nélkül**. A jelenlegi `scripts/locale-smoke.cjs` és a JS-validálás is fusson.
 
-## 8. Átadás előtti kötelező QA
+## 8. A „Hogy vagy?” önreflexiós belépési pont
+
+A hatkérdéses, felnőtteknek szóló kérdéssor csak **önkéntes, nem diagnosztikus** tartalmi segítség; nem profilozási vagy értékesítési teszt. Nincs e-mail-fal, nincs pontozás alapú személyiségállítás és nincs a válaszok tartós tárolása. A kérdéssor a négy nyelvű kezdőlap/katalógus felől elérhető, a továbbmenet nem kötelező. Új termék nem kerülhet automatikusan az eredményajánlóba: előbb ellenőrizni kell az életkori és tartalmi relevanciát, különösen ADHD-, gyermekvédelmi és hitbeli kiadványoknál. Lásd: [2026-11-21-es szerkesztői UX-audit](SITE_EDITORIAL_UX_AUDIT_2026-11-21.md).
+
+## 9. Átadás előtti kötelező QA
 
 - [ ] A forrás, jogosultság, kiadási státusz, tényleges terméknyelv és kép eredete dokumentált.
 - [ ] A `catalog.json` rekord pontos, `price`/`shop_url` `null`; e-mailes szándékjelzés beállítva.

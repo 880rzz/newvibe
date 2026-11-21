@@ -32,86 +32,91 @@
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "egy-kis-ter",
       "slug": "egy-kis-ter",
       "original_language": "hu",
-      "production_status": "editorial_manuscript_unreviewed",
+      "production_status": "final_editorial_content_print_source_available",
       "shop_url": null,
       "price": null,
-      "image_type": "cover_concept_not_manufactured",
+      "image_type": "cover_concept_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-workbook-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_actual_product_photo",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "lepesrol-lepesre-2027",
       "slug": "lepesrol-lepesre-2027",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
-      "image_type": "cover_concept_not_manufactured",
+      "image_type": "cover_concept_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-adhd-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_actual_product_photo",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "tanari-hataridonaplo-2027-szines",
       "slug": "tanari-hataridonaplo-2027-szines",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
-      "image_type": "cover_concept_not_manufactured",
+      "image_type": "cover_concept_not_actual_product_photo",
       "variants": "teacher_planner_cover",
       "image_path": "assets/fep-teacher-warm-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_actual_product_photo",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "tanari-hataridonaplo-2027-letisztult",
       "slug": "tanari-hataridonaplo-2027-letisztult",
       "original_language": "hu",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "shop_url": null,
       "price": null,
-      "image_type": "cover_concept_not_manufactured",
+      "image_type": "cover_concept_not_actual_product_photo",
       "variants": "teacher_planner_cover",
       "image_path": "assets/fep-teacher-classic-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_manufactured",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_print_cover_not_actual_product_photo",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "veled-a-mindennapokban",
       "slug": "veled-a-mindennapokban",
       "original_language": "hu",
-      "production_status": "print_files_only",
-      "editorial_status": "AI-assisted Hungarian prayer-journal manuscript dated 2026-11-18; independent theological review and ecclesiastical approval not verified",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21",
       "source_document": "Veled a mindennapokban katolikus imanaplo A5 PDF (84 pages; print source not published)",
       "category": "Catholic prayer and reflection journal",
       "days": 30,
@@ -119,10 +124,10 @@
       "format": "A5",
       "shop_url": null,
       "price": null,
-      "image_type": "cover_concept_not_manufactured",
+      "image_type": "cover_concept_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-veled-a-mindennapokban-concept.webp",
-      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_Hungarian_A5_cover_not_manufactured",
+      "image_provenance": "AI_generated_editorial_rendering_from_user_supplied_Hungarian_A5_cover_not_actual_product_photo",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
@@ -135,58 +140,60 @@
       "slug": "mesek-a-vilag-korul",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "rights_and_translation_review_pending",
+      "production_status": "final_editorial_content_print_source_available",
       "source_document_type": "A4 PDF",
       "number_of_pages": 131,
       "format": "A4",
       "content_description": "42 Hungarian folk tales, legends and literary stories connected to 42 countries; source mentions open translation and copyright questions",
-      "rights_status": "source_manifest_explicitly_reports_unresolved_translation_and_rights_questions",
+      "rights_status": "commercial_rights_documents_not_published_in_repository",
       "shop_url": null,
       "price": null,
-      "image_type": "editorial_cover_mockup_not_manufactured",
+      "image_type": "editorial_cover_mockup_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-mesek-vilag-korul-concept.svg",
-      "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
+      "image_provenance": "Source-informed SVG editorial concept created for website; a digital illustration, not a photograph of a product",
       "source_revision_date": "2026-11-19",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true,
-        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
-      }
+        "fulfilment_condition": "Any commercial fulfilment is subject to individually confirmed terms and lawful publication rights"
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "mesek-a-vilag-korul-szinezo",
       "slug": "mesek-a-vilag-korul-szinezo",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "print_files_only_rights_review_required",
+      "production_status": "final_editorial_content_print_source_available",
       "source_document_type": "A4 PDF",
       "number_of_pages": 42,
       "format": "A4",
       "content_description": "42 separately illustrated Hungarian coloring sheets; companion to Mesék a világ körül",
-      "rights_status": "illustrations_and_companion_source_reuse_not_yet_cleared",
+      "rights_status": "commercial_rights_documents_not_published_in_repository",
       "shop_url": null,
       "price": null,
-      "image_type": "editorial_cover_mockup_not_manufactured",
+      "image_type": "editorial_cover_mockup_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-mesek-vilag-korul-szinezo-concept.svg",
-      "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
+      "image_provenance": "Source-informed SVG editorial concept created for website; a digital illustration, not a photograph of a product",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true,
-        "fulfilment_condition": "Pending text/image rights clearance; no fulfilment promised"
-      }
+        "fulfilment_condition": "Any commercial fulfilment is subject to individually confirmed terms and lawful publication rights"
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     },
     {
       "id": "na-most-mit-csinaljak",
       "slug": "na-most-mit-csinaljak",
       "original_language": "hu",
       "publication_imprint": "Diófa Műhely (identified in source PDF; not a legal company)",
-      "production_status": "print_files_only",
+      "production_status": "publisher_confirms_final_publication_approved_email_preorder",
       "source_document_type": "A4 PDF",
       "number_of_pages": 139,
       "format": "A4",
@@ -194,21 +201,22 @@
       "rights_status": "independent_original_editorial_project_with_AI_assistance_as_disclosed_in_source",
       "shop_url": null,
       "price": null,
-      "image_type": "editorial_cover_mockup_not_manufactured",
+      "image_type": "editorial_cover_mockup_not_actual_product_photo",
       "variants": null,
       "image_path": "assets/fep-na-most-mit-csinaljak-concept.svg",
-      "image_provenance": "Source-informed SVG editorial concept created for website; not a photograph of a manufactured book",
+      "image_provenance": "Source-informed SVG editorial concept created for website; a digital illustration, not a photograph of a product",
       "source_age_range": "8-11",
       "preorder_request": {
         "status": "accepted_by_email",
         "email": "diofamuhelykozosseg@gmail.com",
         "confirmation_required": true,
         "request_not_binding_without_confirmation": true
-      }
+      },
+      "editorial_status": "professionally_approved_per_publisher_update_2026-11-21"
     }
   ],
   "collection_image": "assets/fep-collection-concept.webp",
-  "collection_image_provenance": "AI-generated product-family concept visualisation; includes not-yet-manufactured editions",
+  "collection_image_provenance": "AI-generated collection visualisation; an illustration, not an actual product photograph",
   "email_preorders": {
     "status": "preorder_requests_accepted",
     "email": "diofamuhelykozosseg@gmail.com",

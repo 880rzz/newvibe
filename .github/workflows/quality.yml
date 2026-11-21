@@ -11,6 +11,36 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Prevent private print sources from entering the public repository
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, BadZipFile
+          forbidden={'.pdf','.doc','.docx','.indd','.psd','.epub'}
+          bad=[]
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              if path.suffix.lower() in forbidden:
+                  bad.append(str(path))
+              with path.open('rb') as source:
+                  if source.read(5).startswith(b'%PDF-'):
+                      bad.append(str(path)+' (PDF file signature)')
+              if path.suffix.lower() in {'.zip','.jar'}:
+                  try:
+                      with ZipFile(path) as archive:
+                          for entry in archive.infolist():
+                              if entry.filename.lower().endswith(tuple(forbidden)):
+                                  bad.append(str(path)+' :: '+entry.filename)
+                              elif not entry.is_dir():
+                                  with archive.open(entry) as source:
+                                      if source.read(5).startswith(b'%PDF-'):
+                                          bad.append(str(path)+' :: '+entry.filename+' (PDF signature)')
+                  except BadZipFile:
+                      bad.append(str(path)+' (invalid archive)')
+          assert not bad,'Private manuscript/print files must not be published: '+repr(bad)
+          print('Print-source privacy: no PDF or private manuscripts found.')
+          PY
       - name: JavaScript syntax
         run: |
           node --check app.js
@@ -158,7 +188,7 @@ jobs:
           assert prayer and prayer['days']==30 and prayer['pages']==84 and prayer['format']=='A5'
           assert prayer['original_language']=='hu'
           assert prayer['shop_url'] is None and prayer['price'] is None
-          assert 'ecclesiastical approval not verified' in prayer['editorial_status']
+          assert all(p.get('editorial_status')=='professionally_approved_per_publisher_update_2026-11-21' for p in manifest['products']), 'publisher-approved editorial status must be consistent across all editions'
           assert 'veled-a-mindennapokban.html' in homepage
           for lang in langs:
               root=Path('.') if lang=='en' else Path(lang)
@@ -200,7 +230,7 @@ jobs:
                   if lang!='en':
                       home=(root/'index.html').read_text(encoding='utf-8')
                       assert f'products/{slug}.html' in home
-          assert 'rights_and_translation_review_pending' in next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']
+          assert next(p for p in manifest['products'] if p['slug']=='mesek-a-vilag-korul')['production_status']=='final_editorial_content_print_source_available'
           for link in ('mesek-a-vilag-korul.html','mesek-a-vilag-korul-szinezo.html','na-most-mit-csinaljak.html'):
               assert link in homepage,('missing homepage Diófa feature',link)
 
@@ -243,7 +273,9 @@ jobs:
               assert product['preorder_request']['confirmation_required'] is True
               assert product['shop_url'] is None and product['price'] is None
               if product['slug'] in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
-                  assert 'rights' in product['preorder_request']['fulfilment_condition'].lower()
+                  assert 'lawful publication rights' in product['preorder_request'].get('fulfilment_condition',''),('commercial rights are separate from editorial approval',product['slug'])
+              else:
+                  assert 'fulfilment_condition' not in product['preorder_request']
           for language in langs:
               base=Path('.') if language=='en' else Path(language)
               catalogue=(base/'catalog/index.html').read_text(encoding='utf-8')
@@ -270,7 +302,9 @@ jobs:
                   assert len(params['body'][0])>130
                   assert '<script type="application/ld+json">' in content
                   if slug in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
-                      assert 'fep-preorder-rights' in content,(language,slug,'rights disclaimer')
+                      assert 'fep-preorder-rights' in content,(language,slug,'required neutral commercial-rights clarification')
+                  else:
+                      assert 'fep-preorder-rights' not in content,(language,slug,'unexpected rights notice')
               if language!='en':
                   home=(base/'index.html').read_text(encoding='utf-8')
                   assert home.count('class="fep-preorder-badge"')==9,(language,'home status')
@@ -286,5 +320,42 @@ jobs:
           assert 'preorderCopy' in Path('product.js').read_text(encoding='utf-8')
           assert 'pre-order requests' in Path('llms.txt').read_text(encoding='utf-8').lower()
 
+
+          # Editorial UX: the optional adult check-in is reachable from every public entry.
+          root=Path('index.html').read_text(encoding='utf-8')
+          script=Path('app.js').read_text(encoding='utf-8')
+          assert 'id="quiz"' in root and 'id="quizResult"' in root
+          assert 'id="quizProductLink"' in root and 'quizBoundary' in root
+          assert 'newvibe.lastReflection' not in script and 'QUIZ_SAVE_KEY' not in script
+          assert 'checkinMixed' in script and 'quizResultNote' in script
+          assert 'fep.checkin' not in script.lower() or 'localstorage.setitem("fep.checkin"' not in script.lower()
+          assert 'role="progressbar"' in root and 'aria-valuemax="6"' in root
+          statuses={'en':'Pre-order by email','hu':'Előrendelhető e-mailben','de':'Per E-Mail vorbestellbar','fr':'Précommande par e-mail'}
+          for language in langs:
+              base=Path('.') if language=='en' else Path(language)
+              cat=(base/'catalog/index.html').read_text(encoding='utf-8')
+              assert '?lang='+language+'#quiz' in cat,(language,'catalogue cannot reach check-in')
+              if language!='en':
+                  home=(base/'index.html').read_text(encoding='utf-8')
+                  assert '?lang='+language+'#quiz' in home,(language,'localized homepage cannot reach check-in')
+              for product in manifest['products']:
+                  detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
+                  assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
+                  assert ('review pending' not in detail.lower() and 'lektorálás előtt' not in detail.lower() and 'vor begutachtung' not in detail.lower() and 'relecture à venir' not in detail.lower()),(language,product['slug'],'obsolete editorial review status')
+          assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
+          assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
+          assert all(p['production_status'] in ('physical_product_photographed','publisher_confirms_final_publication_approved_email_preorder','final_editorial_content_print_source_available') for p in manifest['products'])
+          for locale in langs:
+              root=Path('.') if locale=='en' else Path(locale)
+              for product in manifest['products']:
+                  page=(root/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
+                  assert 'fep-preorder-badge' in page, (locale,product['slug'])
+                  if product['slug'] in ('mesek-a-vilag-korul','mesek-a-vilag-korul-szinezo'):
+                      assert 'fep-preorder-rights' in page,(locale,product['slug'],'neutral legal distinction missing')
+                  else:
+                      assert 'fep-preorder-rights' not in page,(locale,product['slug'],'unexpected legal banner')
+          assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
+          assert 'professionally_approved_per_publisher_update_2026-11-21' in Path('catalog.json').read_text(encoding='utf-8')
+          assert 'independent professional review and reader testing still outstanding' not in Path('llms.txt').read_text(encoding='utf-8')
           print('Site validation OK')
           PY
