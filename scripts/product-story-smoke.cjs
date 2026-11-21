@@ -41,7 +41,7 @@ for(const lang of ["en","hu","de","fr"]){
  }
  assert.equal(all.length,12);
  for(const [pageIndex,page] of all.entries()){
-  const expectedVersion="catalog.css?v=14";
+  const expectedVersion="catalog.css?v=15";
   assert.ok(page.includes(expectedVersion),lang+" correct cache-busted layout CSS "+expectedVersion);
   const visiblePage=page.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,"");
   for(const term of deprecated)assert.ok(!visiblePage.includes(term),lang+" old user-facing text: "+term);
