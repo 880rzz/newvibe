@@ -56,6 +56,25 @@ const fepAccessibleLabels={
 };
 for(const locale of fepLangs)Object.assign(copy[locale],fepQuizUi[locale]);
 
+// Email-only pre-order requests; no payment, reservation, stock or Offer markup.
+const fepPreorderCopy={"en":{"preorderCta":"Pre-order by email","preorderNotice":"Pre-order requests are open by email. Your message is not a confirmed order; price and conditions will be agreed in a reply.","subject":"Pre-order request","greet":"Hello Alexandra,","q":"Quantity requested: ","ask":"Please let me know the price, availability and terms before confirming. This email is not a confirmed purchase.","end":"Thank you!"},"hu":{"preorderCta":"Előrendelés e-mailben","preorderNotice":"Előrendelési igényt már e-mailben is küldhetsz. A levél még nem visszaigazolt rendelés; az árat és a feltételeket válaszban egyeztetjük.","subject":"Előrendelési igény","greet":"Szia Alexandra!","q":"Kért darabszám: ","ask":"Kérlek, válaszban tájékoztass a pontos árról, az elérhetőségről és a feltételekről. Ez a levél még nem visszaigazolt rendelés.","end":"Köszönöm!"},"de":{"preorderCta":"Per E-Mail vorbestellen","preorderNotice":"Vorbestellanfragen sind bereits per E-Mail möglich. Eine Anfrage ist noch keine bestätigte Bestellung; Preis und Bedingungen klären wir in der Antwort.","subject":"Vorbestellanfrage","greet":"Hallo Alexandra,","q":"Gewünschte Menge: ","ask":"Bitte teile mir Preis, Verfügbarkeit und Bedingungen vor der Bestätigung mit. Dies ist noch keine bestätigte Bestellung.","end":"Vielen Dank!"},"fr":{"preorderCta":"Précommander par e-mail","preorderNotice":"Les demandes de précommande sont déjà possibles par e-mail. Une demande ne confirme pas la commande ; prix et conditions seront précisés en réponse.","subject":"Demande de précommande","greet":"Bonjour Alexandra,","q":"Quantité souhaitée : ","ask":"Merci de me préciser le prix, la disponibilité et les conditions avant confirmation. Ce n'est pas une commande confirmée.","end":"Merci !"}};
+const fepPreorderTitles={
+"helyed-van-koztunk":"Helyed van köztünk",
+"egy-kis-ter":"Egy kis tér",
+"lepesrol-lepesre-2027":"Lépésről lépésre · 2027",
+"veled-a-mindennapokban":"Veled a mindennapokban",
+"mesek-a-vilag-korul":"Mesék a világ körül",
+"mesek-a-vilag-korul-szinezo":"Mesék a világ körül – 42 színező",
+"na-most-mit-csinaljak":"Na, most mit csináljak?"
+};
+for(const language of fepLangs)Object.assign(fepExtra[language],{preorderCta:fepPreorderCopy[language].preorderCta,preorderNotice:fepPreorderCopy[language].preorderNotice});
+function fepPreorderMailto(slug,lang){
+ const c=fepPreorderCopy[lang],name=fepPreorderTitles[slug];if(!c||!name)return "mailto:diofamuhelykozosseg@gmail.com";
+ const subject="For Every Path | "+c.subject+" | "+name;
+ const body=c.greet+"\n\n"+c.subject+": "+name+"\n"+c.q+"\n\n"+c.ask+"\n\n"+c.end;
+ return "mailto:diofamuhelykozosseg@gmail.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+}
+
 let current=chooseInitialLang();
 function setLanguage(lang,remember=false){
  if(!fepLangs.includes(lang))lang="en";
@@ -63,6 +82,7 @@ function setLanguage(lang,remember=false){
  document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined){const arrow=el.querySelector(".arrow-icon, .fep-vector-icon");if(arrow){const first=el.firstChild;if(first&&first.nodeType===3)first.textContent=val+" ";else el.insertBefore(document.createTextNode(val+" "),arrow);}else el.textContent=val;}});document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const label=fepAccessibleLabels[lang]?.[el.dataset.i18nAria];if(label)el.setAttribute("aria-label",label);});
  document.querySelectorAll(".lang").forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",String(active));});
  document.querySelectorAll("[data-lang-link]").forEach(el=>{const target=fepLinks[el.dataset.langLink];if(target)el.href=fepBase+(lang==="en"?"":lang+"/")+target;});
+ document.querySelectorAll("[data-preorder-slug]").forEach(link=>{link.href=fepPreorderMailto(link.dataset.preorderSlug,lang);});
  const footer=document.querySelector(".footer [data-i18n=footer]");if(footer)footer.textContent=fepExtra[lang].footer;
  document.title="For Every Path | "+fepBrandLines[lang];
  if(remember){try{localStorage.setItem("fep.language",lang)}catch(e){}}
