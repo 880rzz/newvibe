@@ -126,3 +126,22 @@
 @media(max-width:850px) and (min-width:571px){.fep-featured-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:570px){.fep-featured-grid{grid-template-columns:1fr}}
 .fep-concept-card-note{font-size:12px!important;color:#687077!important;line-height:1.5!important;margin:10px 0 0!important}
+
+/* Diófa Műhely editorial product section and book previews. */
+.fep-diofa-home{padding-top:78px;padding-bottom:95px;border-top:1px solid var(--line)}
+.fep-diofa-home-intro{max-width:750px;margin-bottom:30px}
+.fep-diofa-home-intro h2{font:600 clamp(30px,3.5vw,46px)/1.12 Fraunces,serif;letter-spacing:-.035em;margin:0 0 17px}
+.fep-diofa-home-intro p:not(.eyebrow){font-size:17px;line-height:1.7;color:#4b565a}
+.fep-diofa-home-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}
+.fep-diofa-home-grid .fep-mini-product>.fep-diofa-image{display:block;width:100%;height:270px;object-fit:contain;background:#e9e0d1;padding:8px}
+.fep-card .fep-diofa-image{display:block;width:100%;height:280px;object-fit:contain;background:#e9e0d1;padding:8px}
+.fep-product-media .fep-diofa-image{display:block;max-width:540px;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;border-radius:18px;box-shadow:10px 14px 0 rgba(38,50,56,.07)}
+.fep-diofa-description{max-width:650px;font-size:17px;line-height:1.7;color:#4b565a}
+.fep-diofa-facts{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 25px;padding:0;list-style:none}
+.fep-diofa-facts li{border:1px solid #cec7ba;background:#fff7eb;color:#514d4c;border-radius:40px;padding:7px 13px;font-size:12px;font-weight:700}
+.fep-diofa-pair{padding:24px 27px;margin:27px 0;background:#edf2ea;border:1px solid #d2ddcd;border-radius:16px}
+.fep-diofa-pair h2{margin:0 0 10px;font:600 25px/1.2 Fraunces,serif}
+.fep-diofa-pair p{margin:0 0 11px;font-size:15px;line-height:1.65}
+.fep-diofa-pair a{font-weight:600;text-underline-offset:4px;color:#354a43}
+@media(max-width:850px){.fep-diofa-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.fep-diofa-home-grid{grid-template-columns:1fr}.fep-diofa-home{padding-top:55px;padding-bottom:65px}.fep-diofa-home-grid .fep-mini-product>.fep-diofa-image{height:245px}.fep-diofa-facts{gap:7px}}
