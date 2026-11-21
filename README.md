@@ -1,5 +1,7 @@
 # For Every Path
 
+**Átfogó weboldal-dokumentáció:** [SITE_MASTER.md](docs/SITE_MASTER.md) — márka, felhasználói utak, mind a 9 termék, HU/EN/DE/FR, „Hogy vagy?” 30/6, UX, dizájn, SEO/GEO/AEO/Schema, AI Trust, GDPR, bizalmas PDF-források, kódfájlok, GitHub CI, release és változtatási szabályok.
+
 Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor to NewVibe.
 
 ## Új termék felvitele / Product onboarding
