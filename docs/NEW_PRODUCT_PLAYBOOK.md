@@ -16,7 +16,7 @@ A látogató 30 másodperc alatt értse:
 1. ki alkotja a termékeket;
 2. kiknek és milyen élethelyzetekre készültek;
 3. mit tartalmaz az adott kiadvány, és milyen nyelvű a tényleges termék;
-4. mi létezik fizikailag, mi terv vagy nyomdai előkészítés, mi illusztratív kép;
+4. melyik kép valódi termékfotó és melyik digitális illusztráció, illetve mi a készlet- és teljesítési tájékoztatás;
 5. hogyan tud **most e-mailes előrendelési igényt** küldeni.
 
 A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egyszerű tipográfiával, jól olvasható tartalommal, megfelelő légzéssel. Az oldalnak nem szabad sablonos, agresszív értékesítési felületnek tűnnie. **A világos következő lépés fontosabb, mint a marketingállítás.**
@@ -31,9 +31,9 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 - **Tényleges terméknyelv:** ma a kiadványok magyar nyelvűek. Az EN/DE/FR bemutatóoldal **nem jelent** angol, német vagy francia nyomtatott kiadást.
 - **Gyártási státusz:** meglévő fizikai példány / nyomdai forrás / készlet és teljesítés — külön belső ténymező, **nem azonos az előrendelési lehetőséggel**.
 - **Kép eredete:** eredeti tárgyfotó, forrásborító alapján készült grafika, AI-illusztráció vagy szerkesztői SVG-makett; rögzítsd pontosan.
-- **Előrendelés:** fogadható-e e-mailes szándékjelzés, külön feltételek (például jogtisztázás), kapcsolat, későbbi webshop URL csak igazolás után.
+- **Előrendelés:** fogadható-e e-mailes szándékjelzés, külön értékesítési feltételek, kapcsolat, későbbi webshop URL csak igazolás után.
 
-**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A végleges szerkesztői jóváhagyást jelöld pontosan; a képek eredetét, a gyártást és a kereskedelmi felhasználási jogokat ettől külön kezeld. Korábbi lektorálási várólistát ne állíts be automatikusan.
+**Kritikus különbség:** `production_status` és `rights_status` a valós készültséget/jogokat írja le; `preorder_request.status = accepted_by_email` a kapcsolatfelvételi lehetőséget. A kártyán **Előrendelés e-mailben** a fő státusz. A végleges szerkesztői jóváhagyást jelöld pontosan; a képek eredetét, a gyártást és a kereskedelmi felhasználási jogokat ettől külön kezeld. A korábbi forrásváltozatok szerkesztési megjegyzései nem írhatják felül a kiadó aktuális jóváhagyását.
 
 ## 3. Új termék felvitelének kötelező sorrendje
 
@@ -69,7 +69,7 @@ A vizuális világ maradjon meleg, papír- és szerkesztőségi karakterű, egys
 - A levél nem jelent automatikus megrendelés-visszaigazolást, készletfoglalást vagy fizetést.
 - Az árat, tényleges elérhetőséget, fizetési és szállítási feltételeket csak válaszban, jóváhagyás előtt egyeztetik.
 - A webshop egyelőre készül. Bankkártyaadatot **nem** kérünk e-mailben.
-- A jogtisztázás alatt álló kiadványnál a teljesítést **nem lehet ígérni** a jogok rendezése előtt.
+- A tényleges kiszállítást és a fizetést csak a vevőnek külön visszaigazolt szerződéses feltételek alapján szabad ígérni.
 
 **Technikai kapcsolat:** `mailto:diofamuhelykozosseg@gmail.com` URL-kódolt, termékspecifikus `subject` és `body` mezőkkel. Ne legyen hamis „Buy now”, „In stock”, pénztár vagy kitalált webshop-hivatkozás.
 
