@@ -35,12 +35,18 @@ const checks=[];
 const near=(a,b,tolerance=1.2)=>Math.abs(a-b)<=tolerance;
 function check(value,description){checks.push(description);if(!value)failures.push(description);}
 function prefix(lang){return lang==="en"?"/":"/"+lang+"/";}
-function route(lang,kind){return prefix(lang)+(kind==="home"?"":kind+"/");}
+function route(lang,kind){return prefix(lang)+(kind==="home"?"":kind.startsWith("products/")?kind:kind+"/");}
 function outside(rect,width){return rect.left<-1||rect.right>width+1;}
 async function pageAudit(page,engine,lang,kind,width,origin){
  await page.setViewportSize({width,height:900});
  await page.goto(origin+route(lang,kind),{waitUntil:"domcontentloaded",timeout:30000});
  await Promise.race([page.evaluate(()=>document.fonts.ready.then(()=>true)),new Promise(resolve=>setTimeout(resolve,3500))]);
+ if(kind.startsWith("products/")){
+  const artwork=page.locator(".fep-product-motif");
+  await artwork.scrollIntoViewIfNeeded();
+  await artwork.evaluate(img=>img.decode());
+  await page.evaluate(()=>window.scrollTo(0,0));
+ }
  const snapshot=await page.evaluate(kind=>{
   const rect=e=>{const r=e.getBoundingClientRect();return {left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height}};
   const header=document.querySelector(".site-header");
@@ -51,7 +57,15 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     header:header?{rect:rect(header),position:getComputedStyle(header).position}:null,
     footer:footer?{rect:rect(footer),buttonCount:footer.querySelectorAll(".button").length,linkCount:footer.querySelectorAll(".fep-footer-nav a").length,imprint:!!footer.querySelector('a[href*="#impressum"]')}:null,
     h1:document.querySelector("h1")?.textContent.trim()||"",
-    ctas,notes,imprint:!!document.getElementById("impressum"),howMade:!!document.getElementById("how-made")};
+    ctas,notes,
+    editorial:{
+     hero:document.querySelectorAll(".fep-editorial-hero-glyphs img").length,
+     about:document.querySelectorAll(".fep-about-motif-row img").length,
+     category:document.querySelectorAll(".fep-category-motif").length,
+     product:document.querySelectorAll(".fep-product-motif").length,
+     productLoaded:[...document.querySelectorAll(".fep-product-motif")].every(img=>img.complete&&img.naturalWidth>0)
+    },
+    imprint:!!document.getElementById("impressum"),howMade:!!document.getElementById("how-made")};
  },kind);
  const label=engine+" "+lang+"/"+kind+" @"+width;
  check(snapshot.lang===lang,label+" document language");
@@ -62,7 +76,9 @@ async function pageAudit(page,engine,lang,kind,width,origin){
  check(snapshot.footer?.linkCount===3,label+" footer contains 3 editorial links");
  check(snapshot.footer?.imprint===true,label+" footer imprint link present");
  check(snapshot.h1.length>5,label+" page has a visible title");
+ check(!!document, label+" browser reachable");
  if(kind==="home"){
+  check(snapshot.editorial.hero===3,label+" 3 editorial hero SVG artworks");
   check(snapshot.ctas.length>=2,label+" homepage CTA controls");
   for(const [i,cta] of snapshot.ctas.entries()){
    check(near(cta.padLeft,cta.padRight,0.7),label+" CTA "+i+" symmetric horizontal padding");
@@ -84,16 +100,25 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   }
  }
  if(kind==="about"){
+  check(snapshot.editorial.about===2,label+" two narrative manuscript-inspired SVG artworks");
   check(snapshot.imprint,label+" visible legal-section anchor");
   check(snapshot.howMade,label+" editorial-process anchor");
  }
- if(width===390||width===1440){
-  const shot=engine+"-"+lang+"-"+kind+"-"+width;
+ if(kind==="catalog")check(snapshot.editorial.category===3,label+" three category SVG motifs");
+ if(kind.startsWith("products/")){
+  check(snapshot.editorial.product===1,label+" exactly one publication SVG motif");
+  check(snapshot.editorial.productLoaded,label+" publication SVG loads and decodes");
+ }
+ if((width===390||width===1440)&&!kind.startsWith("products/")||kind.startsWith("products/")&&width===390&&/egy-kis-ter|mesek-a-vilag-korul\.html/.test(kind)){
+  const shot=engine+"-"+lang+"-"+kind.replaceAll("/","-").replace(".html","")+"-"+width;
   await page.screenshot({path:path.join(destination,shot+"-top.png"),fullPage:false,animations:"disabled"});
   if(kind==="home"&&width===390){
    await page.locator(".fep-restored-recognition").screenshot({path:path.join(destination,shot+"-cards.png"),animations:"disabled"});
   }
-  if(width===390){
+  if(kind.startsWith("products/")&&width===390){
+   await page.locator(".fep-product-media").screenshot({path:path.join(destination,shot+"-art.png"),animations:"disabled"});
+  }
+  if(width===390&&!kind.startsWith("products/")){
    await page.locator(".fep-footer").screenshot({path:path.join(destination,shot+"-footer.png"),animations:"disabled"});
    if(kind==="about")await page.locator("#impressum").screenshot({path:path.join(destination,shot+"-imprint.png"),animations:"disabled"});
   }
@@ -107,6 +132,8 @@ async function pageAudit(page,engine,lang,kind,width,origin){
    stroke:getComputedStyle(e.querySelector(".fep-note-doodle-line")).strokeDashoffset
   }));
   check(still.animation==="none",label+" reduced-motion pauses card drift");
+  const reducedGlyph=await page.locator(".fep-editorial-hero-glyphs img").first().evaluate(e=>getComputedStyle(e).animationName);
+  check(reducedGlyph==="none",label+" reduced-motion pauses editorial SVG");
   check(parseFloat(still.stroke)===0,label+" SVG line remains visible without animation");
   await page.emulateMedia({reducedMotion:"no-preference"});
   const cards=page.locator(".fep-restored-notecard");
@@ -155,6 +182,7 @@ async function pageAudit(page,engine,lang,kind,width,origin){
     for(const lang of langs){
      for(const width of widths)await pageAudit(page,engine,lang,"home",width,origin);
      for(const kind of ["about","catalog"])for(const width of [390,1440])await pageAudit(page,engine,lang,kind,width,origin);
+     for(const slug of ["helyed-van-koztunk","egy-kis-ter","lepesrol-lepesre-2027","tanari-hataridonaplo-2027-szines","tanari-hataridonaplo-2027-letisztult","veled-a-mindennapokban","mesek-a-vilag-korul","mesek-a-vilag-korul-szinezo","na-most-mit-csinaljak"])await pageAudit(page,engine,lang,"products/"+slug+".html",390,origin);
     }
    }finally{
     check(runtimeErrors.length===0,engine+" no JavaScript runtime exceptions: "+runtimeErrors.join("; "));
