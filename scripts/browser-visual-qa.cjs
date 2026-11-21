@@ -99,12 +99,30 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   check(photo.loaded&&photo.width===800&&photo.height===800,label+" original portrait decodes at 800x800");
   check(photo.left>=-1&&photo.right<=width+1,label+" portrait fits viewport");
  }
+ if(kind==="catalog"){
+  const figure=await page.locator(".fep-catalog-hero-figure").evaluate(el=>{
+   const oval=el.querySelector(".fep-hero-art")?.getBoundingClientRect();
+   const cap=el.querySelector(".fep-catalog-figure-caption");
+   const rect=cap?.getBoundingClientRect();
+   return {artBottom:oval?.bottom,captionTop:rect?.top,captionRight:rect?.right,captionWidth:rect?.width,label:cap?.textContent.trim(),position:cap?getComputedStyle(cap).position:null};
+  });
+  check(figure.label&&figure.label.length>30,label+" legible catalog caption");
+  check(figure.captionTop>=figure.artBottom-2,label+" caption below oval without clipping");
+  check(figure.position==="static"&&figure.captionRight<=width+1&&figure.captionWidth>100,label+" caption in responsive document flow");
+  if(width===390||width===1440)await page.locator(".fep-catalog-hero-figure").screenshot({path:path.join(destination,engine+"-"+lang+"-catalog-"+width+"-caption.png"),animations:"disabled"});
+ }
  if(kind.startsWith("products/")){
   const story=await page.locator(".fep-product-story").evaluate(el=>{
    const photo=el.querySelector(".fep-story-illustration svg");
    const a=el.querySelector(".fep-story-illustration");
    return {paragraphs:el.querySelectorAll(".fep-story-copy p").length,facts:el.querySelectorAll(".fep-story-facts li").length,quote:!!el.querySelector("blockquote"),svg:!!photo,lang:el.dataset.editorialLocale,shadow:a?getComputedStyle(a).boxShadow:"none",animation:a?getComputedStyle(a).animationName:"none"};
   });
+  const needCards=await page.locator(".fep-story-need-grid .fep-story-need").count();
+  check(needCards===2,label+" problem and solution modules both present");
+  if(needCards===2){
+   const quality=await page.locator(".fep-story-need-grid").evaluate(el=>[...el.querySelectorAll(".fep-story-need")].map(x=>({text:x.querySelector("p")?.textContent.trim().length||0,width:x.getBoundingClientRect().width,height:x.getBoundingClientRect().height})));
+   check(quality.every(x=>x.text>70&&x.width>100&&x.height>45),label+" substantial readable need and answer");
+  }
   check(story.paragraphs===3,label+" three distinct editorial paragraphs");
   check(story.facts===3,label+" three grounded product facts");
   check(story.quote,label+" featured editorial quote");
@@ -189,6 +207,34 @@ async function pageAudit(page,engine,lang,kind,width,origin){
      for(const width of widths)await pageAudit(page,engine,lang,"home",width,origin);
      for(const kind of ["about","catalog"])for(const width of [390,1440])await pageAudit(page,engine,lang,kind,width,origin);
      for(const slug of productSlugs)for(const width of [390,1440])await pageAudit(page,engine,lang,"products/"+slug+".html",width,origin);
+     // Verify that the additional manuscript-inspired SVGs really render in both engines,
+     // instead of accepting file existence or HTML assertions as proof.
+     for(const entry of [
+      ["home","index.html",".fep-recognition-inkline","editorial-handline.svg"],
+      ["about","about/index.html",".fep-how-made-mark","workshop-tree.svg"],
+      ["coloring","products/mesek-a-vilag-korul-szinezo.html",".fep-product-title-motif","coloring-crayon.svg"],
+      ["craft","products/na-most-mit-csinaljak.html",".fep-product-title-motif","craft-table.svg"]
+     ]){
+      const [kind,pathName,selector,assetName]=entry;
+      await page.setViewportSize({width:390,height:900});
+      await page.goto(origin+prefix(lang)+pathName,{waitUntil:"domcontentloaded"});
+      const node=page.locator(selector);
+      check(await node.count()===1,engine+" "+lang+" "+kind+" SVG present exactly once");
+      await node.scrollIntoViewIfNeeded();
+      await node.evaluate(img=>img.decode());
+      const proof=await node.evaluate(img=>({
+       complete:img.complete,naturalWidth:img.naturalWidth,
+       src:img.getAttribute("src"),width:img.getBoundingClientRect().width,
+       overflow:document.documentElement.scrollWidth-innerWidth
+      }));
+      check(proof.complete&&proof.naturalWidth>0,engine+" "+lang+" "+kind+" SVG decoded");
+      check(proof.src.endsWith(assetName),engine+" "+lang+" "+kind+" unique motif mapped");
+      check(proof.width>30&&proof.width<250,engine+" "+lang+" "+kind+" SVG not oversized");
+      check(proof.overflow<2,engine+" "+lang+" "+kind+" zero horizontal overflow");
+      await node.screenshot({
+       path:path.join(destination,engine+"-"+lang+"-"+kind+"-new-svg.png"),animations:"disabled"
+      });
+     }
     }
    }finally{
     check(runtimeErrors.length===0,engine+" no JavaScript runtime exceptions: "+runtimeErrors.join("; "));
