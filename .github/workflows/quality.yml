@@ -15,6 +15,8 @@ jobs:
         run: |
           node --check app.js
           node --check product.js
+          node --check locale-router.js
+          node scripts/locale-smoke.cjs
       - name: Internal links, assets, JSON-LD and sitemap
         run: |
           python3 - <<'PY'
@@ -80,6 +82,8 @@ jobs:
               assert '<link rel="canonical"' in html and 'hreflang="x-default"' in html,filename
               assert 'foreverypath.com' not in html.split('<link rel="canonical"')[1].split('>')[0],filename
               assert 'For Every Path' in html,filename
+              if filename.as_posix() != 'index.html':
+                  assert 'locale-router.js?v=1' in html,('missing locale negotiation',filename)
               for block in p.ld:
                   parsed=json.loads(block)
                   assert parsed.get('@context')=='https://schema.org',filename
@@ -105,6 +109,11 @@ jobs:
               expected=origin+('' if rel=='index.html' else rel.removesuffix('index.html'))
               if '/products/' in rel:expected=origin+rel
               assert expected in locs,('missing sitemap URL',expected)
+          homepage=Path('index.html').read_text(encoding='utf-8')
+          assert 'data-i18n="quizTitle">How are you, really, today?' in homepage
+          assert 'role="button" tabindex="0" aria-pressed="false" class="note-card' in homepage
+          assert 'menuEyebrow">a little navigation' in homepage
+          assert '@import url("https://fonts.googleapis.com' in Path('catalog.css').read_text(encoding='utf-8')
           manifest=json.loads(Path('catalog.json').read_text(encoding='utf-8'))
           assert len(manifest['products'])==5
           assert all(p['shop_url'] is None and p['price'] is None for p in manifest['products'])
