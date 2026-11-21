@@ -337,7 +337,7 @@ jobs:
               for product in manifest['products']:
                   detail=(base/'products'/(product['slug']+'.html')).read_text(encoding='utf-8')
                   assert f'<p class="fep-preorder-badge">{statuses[language]}</p>' in detail,(language,product['slug'],'missing title-level preorder status')
-                   assert ('review pending' not in detail.lower() and 'lektorálás előtt' not in detail.lower() and 'vor begutachtung' not in detail.lower() and 'relecture à venir' not in detail.lower()),(language,product['slug'],'obsolete editorial review status')
+                  assert ('review pending' not in detail.lower() and 'lektorálás előtt' not in detail.lower() and 'vor begutachtung' not in detail.lower() and 'relecture à venir' not in detail.lower()),(language,product['slug'],'obsolete editorial review status')
           assert 'separat' in Path('products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert 'külön nyomdai segédanyagként' in Path('hu/products/helyed-van-koztunk.html').read_text(encoding='utf-8').lower()
           assert Path('docs/SITE_EDITORIAL_UX_AUDIT_2026-11-21.md').exists()
