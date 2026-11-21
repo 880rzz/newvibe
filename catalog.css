@@ -577,3 +577,79 @@ html,body.fep-page{overflow-x:clip}
 .fep-page .fep-story-layout{margin-top:clamp(29px,4.5vw,51px)}
 @media(max-width:700px){.fep-page .fep-story-path{grid-template-columns:minmax(0,1fr);gap:20px}}
 @media(max-width:390px){.fep-page .fep-story-path article{padding:23px 20px}.fep-page .fep-story-path h3{font-size:24px}}
+
+
+/* Menu moment: a private, four-language reflection card in otherwise unused menu space. */
+.fep-page .site-menu .fep-menu-moment{
+  position:relative;z-index:1;flex:0 0 auto;width:min(100%,440px);
+  min-width:0;margin:26px 0 0;padding:clamp(21px,2.5vw,29px);
+  border:1px solid rgba(31,74,61,.17);border-radius:21px 25px 19px 23px;
+  background:#fff9ed;color:#273b35;
+  box-shadow:9px 12px 0 rgba(31,74,61,.075),0 16px 28px rgba(31,74,61,.055);
+  isolation:isolate;overflow-wrap:normal;word-break:normal
+}
+.fep-page .fep-moment-top{display:flex;align-items:center;gap:10px}
+.fep-page .fep-moment-star{font-size:22px;line-height:1;color:#ce8065;display:inline-block;animation:fep-moment-turn 18s linear infinite}
+.fep-page .fep-moment-kicker,.fep-page .fep-moment-moon-label{
+  font:700 11px/1.35 "DM Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#95604f
+}
+.fep-page .fep-moment-thought{
+  margin:17px 0 21px;max-width:28ch;
+  font:600 clamp(23px,2.25vw,29px)/1.26 Fraunces,serif;
+  letter-spacing:-.028em;text-wrap:pretty;color:#263f36
+}
+.fep-page .fep-moment-moon{
+  display:grid;grid-template-columns:46px minmax(0,1fr);gap:12px;align-items:start;
+  border-top:1px solid rgba(31,74,61,.14);padding-top:17px
+}
+.fep-page .fep-moment-glyph{font-size:34px;line-height:1.2;filter:grayscale(.2);text-align:center}
+.fep-page .fep-moment-phase{margin:4px 0 5px;font:600 16px/1.4 "DM Sans",sans-serif;color:#294c40}
+.fep-page .fep-moment-phase-thought{margin:0;font:400 13px/1.58 "DM Sans",sans-serif;color:#52615a}
+.fep-page .fep-moment-calendar{margin-top:17px;border-top:1px solid rgba(31,74,61,.12);padding-top:12px}
+.fep-page .fep-moment-calendar summary{
+  list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;
+  font:700 12px/1.6 "DM Sans",sans-serif;letter-spacing:.01em;color:#245744;padding:5px 0
+}
+.fep-page .fep-moment-calendar summary::-webkit-details-marker{display:none}
+.fep-page .fep-moment-calendar summary:after{content:"+";color:#ba715b;font-size:18px;line-height:1}
+.fep-page .fep-moment-calendar[open] summary:after{content:"−"}
+.fep-page .fep-moment-days{
+  list-style:none;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:2px;margin:10px 0 4px;padding:0
+}
+.fep-page .fep-moment-days li{min-width:0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:7px}
+.fep-page .fep-moment-day-label{
+  font:600 10px/1.35 "DM Sans",sans-serif;color:#52615a;
+  white-space:nowrap;letter-spacing:-.025em
+}
+.fep-page .fep-moment-day-symbol{font-size:20px;line-height:1.15}
+.fep-page .fep-moment-again{
+  min-height:44px;display:inline-flex;align-items:center;justify-content:center;
+  margin:17px 0 0;padding:10px 17px;
+  border:1px solid #295746;border-radius:100px;cursor:pointer;
+  color:#fff9ed;background:#295746;
+  font:700 13px/1.3 "DM Sans",sans-serif;
+  transition:background .18s,transform .18s
+}
+.fep-page .fep-moment-again:hover{background:#183d2e;transform:translateY(-1px)}
+.fep-page .fep-moment-fineprint{font:400 10px/1.55 "DM Sans",sans-serif;color:#69776e;margin:12px 0 0}
+@keyframes fep-moment-turn{to{transform:rotate(360deg)}}
+@media(min-width:1120px) and (min-height:620px){
+  .fep-page .site-menu .fep-menu-moment{
+    position:absolute;right:32px;top:50%;transform:translateY(-50%);
+    width:clamp(300px,30vw,346px);margin:0
+  }
+  .fep-page .site-menu .fep-category-disclosure{max-width:calc(100% - 385px)}
+}
+@media(max-width:570px){
+  .fep-page .site-menu .fep-menu-moment{
+    width:100%;max-width:430px;margin-top:21px;padding:21px 19px 18px;
+    border-radius:18px;box-shadow:6px 8px 0 rgba(31,74,61,.07)
+  }
+  .fep-page .fep-moment-thought{font-size:23px;margin:14px 0 17px}
+  .fep-page .fep-moment-day-label{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .fep-page .fep-moment-star{animation:none}
+  .fep-page .fep-moment-again{transition:none}
+}

@@ -146,6 +146,33 @@ async function pageAudit(page,engine,lang,kind,width,origin){
   await page.keyboard.press("Escape");
   check((await menu.getAttribute("aria-expanded"))==="false",label+" menu Escape closes");
  }
+
+ // The new sidebar card must be an actual visible, usable menu feature
+ // in both WebKit and Chromium, on compact mobile and full desktop.
+ if(kind==="home"&&(width===390||width===1440)){
+  const menuButton=page.locator("#menuToggle");
+  await menuButton.click();
+  const moment=page.locator(".fep-menu-moment");
+  check(await moment.count()===1,label+" one live menu moment");
+  const before=(await moment.locator(".fep-moment-thought").textContent()).trim();
+  check(before.length>25,label+" localized prompt present");
+  await moment.locator(".fep-moment-again").click();
+  const after=(await moment.locator(".fep-moment-thought").textContent()).trim();
+  check(after!==before,label+" button draws a different prompt");
+  const geom=await moment.evaluate(el=>{
+   const r=el.getBoundingClientRect();
+   return {left:r.left,right:r.right,width:r.width,screen:innerWidth};
+  });
+  check(geom.left>=-1&&geom.right<=geom.screen+1,label+" menu card not clipped");
+  if(width===1440)check(geom.left>geom.screen/2,label+" desktop card occupies empty right field");
+  await moment.locator(".fep-moment-calendar summary").click();
+  check(await moment.locator(".fep-moment-days li").count()===7,label+" seven visible lunar dates");
+  await moment.screenshot({
+   path:path.join(destination,engine+"-"+lang+"-menu-moment-"+width+".png"),animations:"disabled"
+  });
+  await page.keyboard.press("Escape");
+  check((await menuButton.getAttribute("aria-expanded"))==="false",label+" menu closes after interactive card");
+ }
  if(kind==="home"&&width===390||kind==="about"&&width===390){
   await page.evaluate(()=>window.scrollTo({top:Math.min(document.documentElement.scrollHeight-innerHeight,600),behavior:"instant"}));
   await page.waitForTimeout(110);
