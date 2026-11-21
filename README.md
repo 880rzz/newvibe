@@ -4,6 +4,10 @@
 
 Independent creative product catalogue by Sajbán-Frőhner Alexandra; successor to NewVibe.
 
+## Aktuális vizuális helyreállítás — 2026-11-21
+
+A #16 kiadás után iPhone-képernyőképekkel jelzett **sötét CTA-k, nem rögzített fejléc, nagy felső tér és lelapult/álló gondolatkártyák** valós UI-regressziók. A javító specifikáció és kötelező vizuális ellenőrzés: [VISUAL_REMEDIATION_2026-11-21.md](docs/VISUAL_REMEDIATION_2026-11-21.md). A fő dokumentáció 8. fejezete a tartós dizájnszabályokat rögzíti. A zöld CI és GitHub Pages-build nem helyettesíti a valódi mobilos renderelt ellenőrzést.
+
 ## Új termék felvitele / Product onboarding
 
 A termékkatalógus célját, a négy nyelvű e-mailes előrendelés követelményeit, a fotó- és jogállás-kezelést, a minden oldalt érintő módosításokat és a kötelező tesztelési/release-folyamatot a [NEW_PRODUCT_PLAYBOOK.md](docs/NEW_PRODUCT_PLAYBOOK.md) írja le. **Új termék előtt ezt olvasd el.**

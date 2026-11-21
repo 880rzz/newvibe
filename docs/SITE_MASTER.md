@@ -2,14 +2,14 @@
 
 > **Master documentation · magyar · 2026-11-21**  
 > **Repository:** [`880rzz/newvibe`](https://github.com/880rzz/newvibe)  
-> **Ellenőrzött kiinduló `main`:** `3365e0fcaea7efcf674b57707d36545f84cf5ead`  
+> **Utolsó vizuális hibajelzés előtti production commit:** `3927d02e319f7a8f08cbd00a1fc4d2cc55ded669`  
 > **Jelenlegi kanonikus host:** https://880rzz.github.io/newvibe/  
 > **Tervezett, még be nem kötött domain:** `foreverypath.com`  
 > **Nyelvek:** angol (EN), magyar (HU), német (DE), francia (FR)  
 > **Alkotó / kiadói kapcsolattartó:** Sajbán-Frőhner Alexandra  
 > **E-mailes előrendelési kapcsolat:** `diofamuhelykozosseg@gmail.com`  
 > **Termékszám:** 9 kiadványváltozat · **Indexelhető lokalizált oldalak:** 48 (4 × 12)  
-> **Állapotbesorolás:** forrás- és CI-szinten ellenőrzött; a később felsorolt élő böngészős/emberi tesztek külön igazolandók.
+> **Állapotbesorolás:** a sikeres 2026-11-21-i #16 kiadás után felhasználói iPhone-képernyőképekkel igazolt vizuális regressziók jelentkeztek; a gombszín, fejléc, mobilos felső tér és kártyamozgás javítása és élő visszaellenőrzése külön szükséges.
 
 Ez a fájl a weboldal **egyetlen átfogó, emberi és fejlesztői eligazító dokumentuma**. A pontos gépi termékadatok kanonikus forrása továbbra is a `catalog.json`, a 30 kérdés tényleges szövegének és válaszainak kanonikus forrása a `checkin-bank.js`, a megjelenített nyelvi szövegeké pedig a megfelelő HTML és JS. A dokumentum ezek használatát, egymás közötti szerződését és működését rögzíti, **nem írja felül őket**.
 
@@ -115,7 +115,7 @@ Az oldalt a korábbi **végtelen jel alakú emblémás fejléc** és teljes kép
 2. **Beszélgetés és önreflexió** (`segito-onreflexio`): Helyed van köztünk; Egy kis tér (2 kiadvány).
 3. **Mesék és foglalkoztatók** (`mesek-foglalkoztatok`): Mesék a világ körül; 42 színező; Na, most mit csináljak? (3 kiadvány).
 
-A **Hogy vagy?** önreflexiós webes élmény, **nem tizedik termék**, ezért önálló menüpont a kezdőlapon, és nem a termékkatalógus egyik kategóriája. A régi animált füzet, vonalrajz és forgatható gondolatkártyák helyreálltak, mobilon a kártyák nem fedhetik egymást. A valódi kattintási célú gombok **nyíl nélkül** jelennek meg; a puszta szöveges linkek megtarthatják az SVG nyilat.
+A **Hogy vagy?** önreflexiós webes élmény, **nem tizedik termék**, ezért önálló menüpont a kezdőlapon, és nem a termékkatalógus egyik kategóriája. Az animált füzet, vonalrajz és forgatható gondolatkártyák forrása visszakerült, de a 2026-11-21-i iPhone-képernyőképek további vizuális hibákat igazoltak: a mobilkártyák nem fedhetik egymást, és a régi árnyékok/mozgó SVG-k is elvárások. A valódi kattintási célú gombok **nyíl nélkül** jelennek meg; a puszta szöveges linkek megtarthatják az SVG nyilat.
 
 Alexandra profiljának szerkesztői referenciája az **Egy kis tér** című kiadvány 2. oldali személyes bevezetője: szeret gyerekekkel foglalkozni, segíteni, szervezni, és maga is foglalkozik a saját határok kijelölésével. A 2026-11-21-i tájékoztatás szerint a vállalkozás alapítása folyamatban van. A közönségnek szánt oldalon nem szerepelhet igazolatlan cégadat, sem az alkotót lekicsinylő, „nem létező cég” típusú megfogalmazás.
 
@@ -244,6 +244,17 @@ Meleg, papíralapú, könnyed és játékos, de nem gyermeteg. Kézzel készíte
 - **Játékosság:** visszafogott papírlap-kompozíció, finom tipográfiai ritmus, a termékekből következő vizuális motívumok.
 - **Korlát:** ne építs újra teljes termékrácsot a kezdőlap aljára.
 
+### 2026-11-21 — kötelező vizuális regressziójavítás (4 nyelv)
+
+**Tény:** a felhasználó iPhone-képernyőképein a CTA-k túl sötétek, a header nem marad látható görgetés közben, fölötte felesleges üres bézs sáv látszik, a három színes gondolatkártya lapos/statikus, és hiányzik róluk a korábbi animált SVG-dekoráció. A zöld CI és sikeres GitHub Pages deployment ezeket **nem** cáfolja.
+
+- **Központi CTA-paletta:** `--fep-cta-primary: #1f4a3d`, hover `#285a48`, világos gombfelirat. A sötét és korall CTA-k az egységes mélyzöld rendszert használják minden lokalizált oldalon. A sima szöveges linkek ne váljanak gombbá; gombon ne legyen dekoratív nyíl.
+- **Fejléc:** a `styles.css` rögzített header-szabályát felülírja a `catalog.css` `.fep-page .fep-restored-header {position:relative}` szabálya. A javítás egyetlen `sticky; top:0` rendszerrel, dupla `body` felső padding nélkül működjön. A mobil hero a fejléc után kezdődjön, túlméretezett üres sáv nélkül.
+- **Kártyák:** mindhárom korall/kék/sárga valódi gomb marad; rétegzett papírárnyék, enyhe dőlés, mély tintazöld szöveg, folyamatos finom lebegés, dekoratív SVG-vonalak/pontok animációja desktopon **és mobilon**; nincs egymásra csúszás. Kattintásra és érintésre a hátoldalra fordulás működik; `prefers-reduced-motion` alatt nincs díszítő animáció.
+- **Rendszerszintű paritás:** a közös `catalog.css` az egyetlen dizájnforrás; mind a 48 HTML-lokalizáció ugyanazt a friss CSS-cache-verziót használja. A menü, a kilenc termék, az e-mailes előrendelés és a 30/6 „Hogy vagy?” teszt érintetlen marad.
+- **Release-gate:** forrásellenőrzés + GitHub CI + Pages SHA-egyezés mellett iPhone Safari és asztali megjelenítésről screenshot/videó szükséges. Enélkül a kiadás állapota `CI-VERIFIED / VISUAL-QA-PENDING`.
+
+**Végrehajtási leírás:** [`VISUAL_REMEDIATION_2026-11-21.md`](VISUAL_REMEDIATION_2026-11-21.md).
 ### Képek
 
 - **Álló könyv-/füzetborító:** a katalóguskártyán 4:5 arányhoz illesztett képkeret, a teljes borító látható.
@@ -462,12 +473,13 @@ kiadás dokumentált lezárása
 
 ---
 
-## 16. Nyitott és későbbi feladatok – nem jelenlegi hibastátusz
+## 16. Nyitott feladatok — aktuális vizuális regressziók és későbbi fejlesztések
 
-Ezek **nem** a kiadványok szakmai jóváhagyására vonatkoznak: a kiadói tájékoztatás szerint valamennyi tartalom jóváhagyott.
+A kiadványok szakmai jóváhagyása ettől különálló. A fejléc, CTA-paletta, mobilos felső tér és animált kártyák megjelenítése **aktuálisan javítandó hibák**, nem opcionális későbbi fejlesztések.
 
 | Téma | Mi a következő igazolási/fejlesztési feltétel? |
 | --- | --- |
+| **Aktuális vizuális regresszió** | Mélyzöld CTA, sticky header, felső térköz, árnyékolt/animált SVG-kártyák javítása és ellenőrzése |
 | Valós mobil és desktop vizuális QA | Renderelt képernyőképek és interaktív teszt 320–2560 px tartományban |
 | Emberi 5 másodperces érthetőségi próba | Új látogatókkal végzett rövid, dokumentált teszt |
 | Webshop/árak | Valós árazás, szerződéses és fogyasztóvédelmi feltételek, készlet/szállítás, tesztelt fizetés |
@@ -521,6 +533,7 @@ Ezek **nem** a kiadványok szakmai jóváhagyására vonatkoznak: a kiadói táj
 - [Új termékek felvétele](NEW_PRODUCT_PLAYBOOK.md)
 - [„Hogy vagy?” – 30/6 kérdésrendszer](HOGY_VAGY_30_QUESTION_SYSTEM.md)
 - [Négy nyelvű kezdőlapi UX-kiadás](FOUR_LANGUAGE_UX_RELEASE.md)
+- [Vizuális regressziójavítási prompt](VISUAL_REMEDIATION_2026-11-21.md)
 - [Korábbi tartalmi, UX- és PDF-audit](SITE_EDITORIAL_UX_AUDIT_2026-11-21.md)
 - [Központi, géppel olvasható terméknapló](../catalog.json)
 - [A nyilvános AI-átláthatósági nyilatkozat](../ai.txt)
