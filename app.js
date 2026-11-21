@@ -1,112 +1,12 @@
-const extras={hu:{brandTag:"gondolatoknak, kérdéseknek, neked",scrollCue:"nézz körül",card1Back:"Mi lenne az első mondat, ha nem kellene szépen kezdened?",card2Back:"Hol vagy te ebben a napban?",card3Back:"Mi kerülne rá, ha most nem kellene hasznosnak lennie?",notNeededEyebrow:"nem kell",notNeededTitle:"Nem kell ma mindent megértened.",not1:"Nem kell tökéletesen rendszerezettnek lenned.",not2:"Nem kell minden kérdésre tudnod a választ.",not3:"Nem kell újabb teljesítményt kipréselned magadból.",not4:"Nem kell készen lenned.",comingLine:"Egy lap. Egy kérdés. Egy kis hely.",menuEyebrow:"egy kis navigáció",menuQuestions:"Ami ismerős",menuQuiz:"Hogy vagy?",menuComing:"Ami készül",menuNote:"Nem kell sietned. Nézz körül."},en:{brandTag:"for thoughts, questions, and you",scrollCue:"look around",card1Back:"What would the first sentence be if it didn't have to be beautiful?",card2Back:"Where are you in this day?",card3Back:"What would you write if it didn't have to be useful?",notNeededEyebrow:"you don't have to",notNeededTitle:"You don't have to understand everything today.",not1:"You don't have to be perfectly organised.",not2:"You don't have to know the answer to every question.",not3:"You don't have to squeeze out another achievement.",not4:"You don't have to be ready.",comingLine:"One page. One question. A little room.",menuEyebrow:"a little navigation",menuQuestions:"What feels familiar",menuQuiz:"Reflection",menuComing:"What is taking shape",menuNote:"There is no need to hurry. Look around."},de:{brandTag:"für Gedanken, Fragen und dich",scrollCue:"schau dich um",card1Back:"Was wäre der erste Satz, wenn er nicht schön beginnen müsste?",card2Back:"Wo bist du in diesem Tag?",card3Back:"Was würdest du schreiben, wenn es nicht nützlich sein müsste?",notNeededEyebrow:"du musst nicht",notNeededTitle:"Du musst heute nicht alles verstehen.",not1:"Du musst nicht perfekt organisiert sein.",not2:"Du musst nicht auf jede Frage eine Antwort haben.",not3:"Du musst keine weitere Leistung aus dir herauspressen.",not4:"Du musst nicht bereit sein.",comingLine:"Eine Seite. Eine Frage. Ein wenig Raum.",menuEyebrow:"eine kleine Navigation",menuQuestions:"Was vertraut wirkt",menuQuiz:"Reflexion",menuComing:"Was entsteht",menuNote:"Du musst dich nicht beeilen. Schau dich um."},fr:{brandTag:"pour tes pensées, tes questions et toi",scrollCue:"regarde autour de toi",card1Back:"Quelle serait la première phrase si elle n'avait pas besoin d'être parfaite ?",card2Back:"Où es-tu, toi, dans cette journée ?",card3Back:"Qu'écrirais-tu si cela n'avait pas besoin d'être utile ?",notNeededEyebrow:"tu n'as pas besoin de",notNeededTitle:"Tu n'as pas besoin de tout comprendre aujourd'hui.",not1:"Tu n'as pas besoin d'être parfaitement organisé·e.",not2:"Tu n'as pas besoin d'avoir la réponse à chaque question.",not3:"Tu n'as pas besoin de produire encore une performance.",not4:"Tu n'as pas besoin d'être prêt·e.",comingLine:"Une page. Une question. Un peu d'espace.",menuEyebrow:"un peu de navigation",menuQuestions:"Ce qui résonne",menuQuiz:"Réflexion",menuComing:"Ce qui prend forme",menuNote:"Rien ne presse. Regarde autour de toi."}};
-const copy={hu:{eyebrow:"egy kérdés, ami maradhat",heroTitle:"Mikor volt utoljára helyed saját magadnak?",heroLede:"Nem egy újabb módszer. Nem egy újabb lista. Csak egy kis tér annak, amit napközben talán mindig későbbre hagysz.",heroCta:"Szeretnék hallani róla",artNote:"nem kell mindent ma",recognitionEyebrow:"ismerős?",recognitionTitle:"Talán nem több válaszra van szükséged.",card1:"Mindenkihez van egy kérdésed. Magadhoz mikor volt?",card2:"Egész nap intézed az életet, este pedig nem tudod, mi történt veled.",card3:"Tele van a fejed. Üres lapot mégsem találsz.",questionTitle:"Mi lenne, ha nem kellene azonnal rendbe tenni mindent?",q1:"Mit cipelsz magaddal nap mint nap?",q2:"Mit halasztasz mindig későbbre?",q3:"Mi az, amire másoknak már tudsz figyelmet adni, magadnak még nem?",comingEyebrow:"valami készül",comingTitle:"Hamarosan érkezik valami, amit nemcsak elolvasni lehet, hanem kézbe venni is.",comingLede:"Egy gondolatból lassan forma lesz. Addig maradjon ez a kérdés egy kicsit veled.",comingCta:"Szeretnék hallani róla",peekText:"ide még kerül valami",footer:"egy kis hely a nagy napok között"},en:{eyebrow:"one question worth keeping",heroTitle:"When was the last time you made room for yourself?",heroLede:"Not another method. Not another list. Just a little space for what you keep postponing during the day.",heroCta:"I want to hear about it",artNote:"not everything today",recognitionEyebrow:"familiar?",recognitionTitle:"Maybe you don't need more answers.",card1:"You have a question for everyone. When did you last have one for yourself?",card2:"You spend the day managing life, then can't remember what happened to you.",card3:"Your head is full. Somehow, there is still no blank page.",questionTitle:"What if you didn't have to put everything right immediately?",q1:"What do you carry with you, day after day?",q2:"What do you always leave for later?",q3:"What do you already give others attention for, but not yourself?",comingEyebrow:"something is taking shape",comingTitle:"Soon, something will arrive that you can not only read, but hold in your hands.",comingLede:"A thought is slowly becoming a form. Until then, let this question stay with you.",comingCta:"I want to hear about it",peekText:"something will go here",footer:"a little room between the big days"},de:{eyebrow:"eine frage, die bleiben darf",heroTitle:"Wann war zuletzt Platz für dich selbst?",heroLede:"Keine weitere Methode. Keine weitere Liste. Nur ein wenig Raum für das, was du tagsüber immer wieder auf später verschiebst.",heroCta:"Ich möchte davon hören",artNote:"nicht alles heute",recognitionEyebrow:"kommt dir das bekannt vor?",recognitionTitle:"Vielleicht brauchst du nicht mehr Antworten.",card1:"Für alle anderen hast du eine Frage. Wann hattest du zuletzt eine für dich?",card2:"Du organisierst den ganzen Tag das Leben und weißt abends kaum, was mit dir passiert ist.",card3:"Dein Kopf ist voll. Und trotzdem findest du keine leere Seite.",questionTitle:"Was wäre, wenn nicht alles sofort in Ordnung gebracht werden müsste?",q1:"Was trägst du Tag für Tag mit dir herum?",q2:"Was verschiebst du immer wieder auf später?",q3:"Wem schenkst du Aufmerksamkeit, die du dir selbst noch nicht gibst?",comingEyebrow:"etwas entsteht",comingTitle:"Bald kommt etwas, das man nicht nur lesen, sondern auch in die Hand nehmen kann.",comingLede:"Aus einem Gedanken wird langsam eine Form. Bis dahin darf diese Frage ein wenig bei dir bleiben.",comingCta:"Ich möchte davon hören",peekText:"hier kommt noch etwas hin",footer:"ein wenig Raum zwischen den großen Tagen"},fr:{eyebrow:"une question qui peut rester",heroTitle:"Quand as-tu eu de la place pour toi, pour la dernière fois ?",heroLede:"Pas une méthode de plus. Pas une liste de plus. Juste un peu d'espace pour ce que tu repousses peut-être toujours à plus tard.",heroCta:"Je veux en entendre parler",artNote:"pas tout aujourd'hui",recognitionEyebrow:"ça te parle ?",recognitionTitle:"Tu n'as peut-être pas besoin de plus de réponses.",card1:"Tu as une question pour tout le monde. Quand en as-tu eu une pour toi ?",card2:"Tu gères la vie toute la journée, puis tu ne sais plus ce qui s'est passé en toi.",card3:"Ta tête est pleine. Et pourtant, aucune page blanche.",questionTitle:"Et si tu n'avais pas besoin de tout remettre en ordre immédiatement ?",q1:"Que portes-tu avec toi, jour après jour ?",q2:"Que repousses-tu toujours à plus tard ?",q3:"À quoi accordes-tu de l'attention pour les autres, mais pas encore pour toi ?",comingEyebrow:"quelque chose prend forme",comingTitle:"Bientôt, quelque chose arrivera que l'on pourra non seulement lire, mais aussi tenir entre ses mains.",comingLede:"Une pensée devient peu à peu une forme. En attendant, laisse cette question rester un peu avec toi.",comingCta:"Je veux en entendre parler",peekText:"quelque chose viendra ici",footer:"un peu d'espace entre les grands jours"}};
-// Current product language for the home-page spotlight.
-Object.assign(extras.hu,{menuComing:"A kártyacsomag",menuProduct:"Helyed van köztünk"});
-Object.assign(extras.en,{menuComing:"The card set",menuProduct:"Helyed van köztünk"});
-Object.assign(extras.de,{menuComing:"Das Kartenset",menuProduct:"Helyed van köztünk"});
-Object.assign(extras.fr,{menuComing:"Les cartes",menuProduct:"Helyed van köztünk"});
-Object.assign(copy.hu,{heroCta:"Mind a kilenc kiadvány",comingEyebrow:"a kártyacsomag",comingTitle:"Helyed van köztünk.",comingLede:"Beszélgetésindító és segítő kártyacsomag bántalmazás és kiközösítés témájában. Amikor fontos, hogy a nehéz dolgokról is lehessen beszélni.",comingLine:"Egy kérdés. Egy beszélgetés. Egy hely köztünk.",comingCta:"Megismerem a kártyacsomagot"});
-Object.assign(copy.en,{heroCta:"Explore all nine publications",comingEyebrow:"the conversation cards",comingTitle:"Helyed van köztünk.",comingLede:"A Hungarian-language card set for starting conversations about bullying, abuse and exclusion. A little help when difficult things need words.",comingLine:"One question. One conversation. Room for one another.",comingCta:"Discover the cards"});
-Object.assign(copy.de,{heroCta:"Alle neun Publikationen",comingEyebrow:"das Kartenset",comingTitle:"Helyed van köztünk.",comingLede:"Ein ungarischsprachiges Kartenset, das Gespräche über Mobbing, Gewalt und Ausgrenzung erleichtern kann.",comingLine:"Eine Frage. Ein Gespräch. Platz füreinander.",comingCta:"Die Karten kennenlernen"});
-Object.assign(copy.fr,{heroCta:"Découvrir les neuf publications",comingEyebrow:"les cartes",comingTitle:"Helyed van köztünk.",comingLede:"Un jeu de cartes en hongrois pour ouvrir des conversations sur le harcèlement, la maltraitance et l’exclusion.",comingLine:"Une question. Une conversation. Une place pour chacun.",comingCta:"Découvrir les cartes"});
-const fepBrandLines={en:"Room for every journey.",hu:"Minden úton van helyed.",de:"Raum für deinen Weg.",fr:"À chacun son chemin."};
-const fepExtra={
- en:{menuCatalog:"The collection",collectionEyebrow:"An independent creative collection",collectionTitle:"Different paths. A little more room.",collectionIntro:"Conversation cards for children and trusted adults, a reflective workbook, a planner for adults with ADHD, and two covers for the 2027 teacher planner. Each begins with a real-life situation.",productExplore:"Explore the product",miniCardDesc:"Conversation cards about bullying and exclusion",miniAdhdDesc:"An adult planner with room to start again",miniWorkbookDesc:"A professionally approved reflection workbook for adults",collectionCta:"See all five editions",collectionDisclosure:"The planner and workbook covers are digital illustrations rather than product photographs.",footer:"Room for every journey."},
- hu:{menuCatalog:"A termékek",collectionEyebrow:"Egy önálló alkotói termékcsalád",collectionTitle:"Más utak. Egy kis több hely.",collectionIntro:"Beszélgetőkártyák gyerekeknek és biztonságos felnőtteknek, önreflexiós füzet, ADHD-tervező, valamint a 2027-es tanári határidőnapló két borítóval. Mindegyik hétköznapi helyzetekből indul.",productExplore:"Megismerem",miniCardDesc:"Beszélgetőkártyák bántalmazásról és kiközösítésről",miniAdhdDesc:"Felnőtteknek készült tervező, ahol újra lehet kezdeni",miniWorkbookDesc:"Szakmailag jóváhagyott önreflexiós munkafüzet felnőtteknek",collectionCta:"Mind az öt változat",collectionDisclosure:"A tervező és a munkafüzet borítója digitális látványterv, nem valódi termékfotó.",footer:"Minden úton van helyed."},
- de:{menuCatalog:"Die Kollektion",collectionEyebrow:"Eine unabhängige kreative Kollektion",collectionTitle:"Verschiedene Wege. Etwas mehr Raum.",collectionIntro:"Gesprächskarten, ein Arbeitsheft zur Selbstreflexion, ein ADHS-Planer für Erwachsene und zwei Cover für den Lehrerplaner 2027. Der Ausgangspunkt sind echte Alltagssituationen.",productExplore:"Mehr erfahren",miniCardDesc:"Gesprächskarten über Mobbing und Ausgrenzung",miniAdhdDesc:"Ein Planer für Erwachsene, der einen Neustart erlaubt",miniWorkbookDesc:"Ein fachlich freigegebenes Reflexionsheft für Erwachsene",collectionCta:"Alle fünf Ausgaben ansehen",collectionDisclosure:"Die abgebildeten Planer- und Arbeitsheftcover sind digitale Illustrationen, keine Produktfotos.",footer:"Raum für deinen Weg."},
- fr:{menuCatalog:"La collection",collectionEyebrow:"Une collection créative indépendante",collectionTitle:"Des chemins différents. Un peu plus d’espace.",collectionIntro:"Des cartes de dialogue, un cahier de réflexion, un agenda TDAH pour adultes et deux couvertures pour l’agenda enseignant 2027. Des outils qui partent du quotidien.",productExplore:"Découvrir",miniCardDesc:"Cartes de dialogue sur le harcèlement et l’exclusion",miniAdhdDesc:"Un agenda pour adultes où l’on peut recommencer",miniWorkbookDesc:"Un cahier de réflexion validé sur le plan éditorial",collectionCta:"Voir les cinq versions",collectionDisclosure:"Les couvertures du carnet et du cahier sont des illustrations numériques, pas des photographies de produits.",footer:"À chacun son chemin."}
-};
-const newPrayerHomeCopy={
- en:{collectionIntro:"Conversation cards, reflective workbooks, a 30-day Catholic prayer journal and planners for adults and teachers. Different needs, with room for honest questions.",miniPrayerDesc:"A 30-day Catholic prayer journal in Hungarian",collectionCta:"See all six editions",collectionDisclosure:"Some covers, including the prayer journal, are illustrative AI concept images rather than physical-product photographs."},
- hu:{collectionIntro:"Beszélgetőkártyák, önreflexiós füzetek, harmincnapos katolikus imanapló és tervezők felnőtteknek és pedagógusoknak. Különböző élethelyzetekhez.",miniPrayerDesc:"30 napos, magyar nyelvű katolikus imanapló",collectionCta:"Mind a hat változat",collectionDisclosure:"Egyes borítók – köztük az imanaplóé – AI-látványtervek, nem fizikai termékfotók."},
- de:{collectionIntro:"Gesprächskarten, Reflexionshefte, ein katholisches Gebetstagebuch für 30 Tage und Planer für Erwachsene und Lehrkräfte. Raum für unterschiedliche Wege.",miniPrayerDesc:"Katholisches Gebetstagebuch für 30 Tage auf Ungarisch",collectionCta:"Alle sechs Ausgaben entdecken",collectionDisclosure:"Einige Cover, auch beim Gebetstagebuch, sind KI-Visualisierungen und keine Fotografien gedruckter Exemplare."},
- fr:{collectionIntro:"Cartes de dialogue, cahiers de réflexion, journal de prière catholique pour trente jours et agendas pour adultes et enseignants. Plusieurs chemins, sans réponses toutes faites.",miniPrayerDesc:"Journal de prière catholique de 30 jours en hongrois",collectionCta:"Voir les six éditions",collectionDisclosure:"Certaines couvertures, dont celle du journal de prière, sont des visualisations IA et non des photographies d’exemplaires imprimés."}
-};
-for(const lang of ["en","hu","de","fr"])Object.assign(fepExtra[lang],newPrayerHomeCopy[lang]);
-const newDiofaHomeCopy={
- en:{collectionIntro:"Conversation cards, a Catholic prayer journal, planners and three new Diófa Műhely books. Each has its own way to make room for questions.",collectionCta:"See all nine products",diofaEyebrow:"Diófa Műhely · stories and activities",diofaTitle:"A little more room to tell a story.",diofaIntro:"Three professionally approved Hungarian-language A4 publications: stories from 42 countries, 42 matching coloring pages, and 32 everyday dilemmas for children aged 8–11.",diofaRead:"42 stories from 42 countries · A4 book",diofaColor:"42 illustrated A4 coloring pages",diofaWorkshop:"32 stories and creative activities for ages 8–11",diofaDisclaimer:"All three publications have professionally approved content. Their source files remain private; the displayed images are digital mock-ups, not photographs of physical books. Order details are agreed by email."},
- hu:{collectionIntro:"Beszélgetőkártyák, imanapló, tervezők és három új Diófa Műhely-kiadvány. Kérdésekhez, történetekhez és közös alkotáshoz.",collectionCta:"Mind a kilenc termék",diofaEyebrow:"Diófa Műhely · mesék és alkotás",diofaTitle:"Egy történetből sok minden elindulhat.",diofaIntro:"Három végleges, szakmailag jóváhagyott magyar nyelvű A4-es kiadvány: 42 ország meséi, 42 hozzájuk tartozó színező és 32 hétköznapi történet a 8–11 éveseknek.",diofaRead:"42 ország 42 története · A4-es olvasókönyv",diofaColor:"42 A4-es, vonalrajzos színező",diofaWorkshop:"32 történet és alkotófeladat 8–11 éveseknek",diofaDisclaimer:"Mindhárom kiadvány szakmailag jóváhagyott, végleges tartalommal szerepel a kínálatban. A képek digitális látványtervek, nem valódi termékfotók. Az előrendelés feltételeit e-mailben egyeztetjük."},
- de:{collectionIntro:"Gesprächskarten, Gebetstagebuch, Planer und drei neue Diófa Műhely-Publikationen: zum Lesen, Fragen und gemeinsamen Gestalten.",collectionCta:"Alle neun Produkte",diofaEyebrow:"Diófa Műhely · Geschichten und Kreativität",diofaTitle:"Eine Geschichte kann vieles in Gang bringen.",diofaIntro:"Drei fachlich freigegebene ungarischsprachige A4-Publikationen: 42 Geschichten aus 42 Ländern, 42 passende Ausmalseiten und 32 Alltagsgeschichten für Kinder von 8 bis 11 Jahren.",diofaRead:"42 Länder, 42 Geschichten · A4-Lesebuch",diofaColor:"42 A4-Seiten zum Ausmalen",diofaWorkshop:"32 Geschichten und Kreativaufgaben, 8–11 Jahre",diofaDisclaimer:"Alle drei Publikationen sind redaktionell abgeschlossen und fachlich freigegeben. Die Bilder sind digitale Visualisierungen, keine Fotos gedruckter Exemplare. Bestellbedingungen werden per E-Mail vereinbart."},
- fr:{collectionIntro:"Cartes de dialogue, journal de prière, agendas et trois nouvelles publications Diófa Műhely : pour lire, questionner et créer ensemble.",collectionCta:"Voir les neuf produits",diofaEyebrow:"Diófa Műhely · histoires et création",diofaTitle:"Une histoire peut ouvrir bien des chemins.",diofaIntro:"Trois publications A4 en hongrois, validées sur le plan éditorial : 42 récits de 42 pays, 42 coloriages associés et 32 histoires du quotidien pour les 8–11 ans.",diofaRead:"42 pays, 42 histoires · recueil A4",diofaColor:"42 coloriages au format A4",diofaWorkshop:"32 histoires et activités créatives, 8–11 ans",diofaDisclaimer:"Les trois publications ont un contenu finalisé et approuvé. Les images sont des maquettes numériques, non des photos d’exemplaires imprimés. Les conditions de commande sont précisées par e-mail."}
-};
-for(const lang of ["en","hu","de","fr"])Object.assign(fepExtra[lang],newDiofaHomeCopy[lang]);
-
-for(const lang of ["en","hu","de","fr"]){Object.assign(extras[lang],fepExtra[lang],{brandTag:fepBrandLines[lang]});Object.assign(copy[lang],fepExtra[lang]);}
-const fepLangs=["en","hu","de","fr"];
-const fepLinks={catalog:"catalog/",about:"about/",card:"products/helyed-van-koztunk.html",adhd:"products/lepesrol-lepesre-2027.html",workbook:"products/egy-kis-ter.html",prayer:"products/veled-a-mindennapokban.html",worldStories:"products/mesek-a-vilag-korul.html",worldColoring:"products/mesek-a-vilag-korul-szinezo.html",workshopBook:"products/na-most-mit-csinaljak.html"};
-const fepBase=location.pathname.includes("/newvibe/")?"/newvibe/":"/";
-function chooseInitialLang(){
- const requested=new URLSearchParams(location.search).get("lang");if(fepLangs.includes(requested))return requested;
- try{const selected=localStorage.getItem("fep.language");if(fepLangs.includes(selected))return selected;}catch(e){}
- for(const code of navigator.languages||[navigator.language]){const first=String(code).toLowerCase().split("-")[0];if(fepLangs.includes(first))return first;}
- return "en";
-}
-
-const fepQuizUi={
- en:{quizEyebrow:"a moment to check in",quizTitle:"How are you, really, today?",quizIntro:"There is no right or wrong answer. Choose the option that feels closest to your day.",quizStart:"Begin",quizProgress:"one step at a time",quizBack:"← back",resultEyebrow:"what you might be carrying",quizAgain:"Start again"},
- hu:{quizEyebrow:"egy kis önfigyelem",quizTitle:"Mi van most igazán veled?",quizIntro:"Nincs jó vagy rossz válasz. Csak válaszd azt, amelyik ma egy kicsit közelebb van hozzád.",quizStart:"Kezdjük el",quizProgress:"egy pillanat csak",quizBack:"← vissza",resultEyebrow:"amit most talán hordozol",quizAgain:"Megnézem még egyszer"},
- de:{quizEyebrow:"ein kurzer Moment für dich",quizTitle:"Wie geht es dir heute wirklich?",quizIntro:"Es gibt keine richtige oder falsche Antwort. Wähle, was heute am besten zu dir passt.",quizStart:"Anfangen",quizProgress:"Schritt für Schritt",quizBack:"← zurück",resultEyebrow:"was du vielleicht gerade trägst",quizAgain:"Noch einmal"},
- fr:{quizEyebrow:"un moment pour soi",quizTitle:"Comment vas-tu, vraiment, aujourd'hui ?",quizIntro:"Il n'y a pas de bonne ou de mauvaise réponse. Choisis ce qui te correspond aujourd'hui.",quizStart:"Commencer",quizProgress:"pas à pas",quizBack:"← retour",resultEyebrow:"ce que tu portes peut-être",quizAgain:"Recommencer"}
-};
-const fepAccessibleLabels={
- en:{openMenu:"Open menu",closeMenu:"Close menu",scroll:"Scroll to the next section"},
- hu:{openMenu:"Menü megnyitása",closeMenu:"Menü bezárása",scroll:"Görgess a következő szakaszhoz"},
- de:{openMenu:"Menü öffnen",closeMenu:"Menü schließen",scroll:"Zum nächsten Abschnitt scrollen"},
- fr:{openMenu:"Ouvrir le menu",closeMenu:"Fermer le menu",scroll:"Défiler jusqu’à la section suivante"}
-};
-for(const locale of fepLangs)Object.assign(fepQuizUi[locale],({"en":{"quizIntro":"Six short questions to notice how today feels. There are no right or wrong answers.","quizBoundary":"A voluntary reflection for adults, not a psychological test or diagnosis. Answers are not saved or sent.","quizResultNote":"This is one possible reflection, not a diagnosis or a judgement. You choose what, if anything, to explore next.","quizNextTitle":"If you would like to explore further:","quizCatalogCta":"Browse the entire collection","quizProductCta":"Explore the Egy kis tér workbook","quizBrowseCta":"Browse the collection at your own pace","menuQuiz":"How are you?"},"hu":{"quizIntro":"Hat rövid kérdés arról, hogy ma mi foglalkoztat. Nincs jó vagy rossz válasz.","quizBoundary":"Szabadon választható, felnőtteknek szóló önreflexió, nem pszichológiai teszt vagy diagnózis. A válaszokat nem mentjük és nem küldjük el.","quizResultNote":"Ez csak egy lehetséges gondolatindító, nem minősítés vagy diagnózis. Te döntöd el, innen merre mennél tovább.","quizNextTitle":"Ha szívesen lapoznál tovább:","quizCatalogCta":"A teljes kiadványgyűjtemény","quizProductCta":"Ismerd meg az Egy kis tér munkafüzetet","quizBrowseCta":"Nézz körül a kiadványok között","menuQuiz":"Hogy vagy?"},"de":{"quizIntro":"Sechs kurze Fragen, um wahrzunehmen, was dich heute beschäftigt. Es gibt keine richtigen oder falschen Antworten.","quizBoundary":"Eine freiwillige Reflexion für Erwachsene, kein psychologischer Test und keine Diagnose. Antworten werden weder gespeichert noch übermittelt.","quizResultNote":"Dies ist nur ein möglicher Denkanstoß, keine Bewertung und keine Diagnose. Du entscheidest, ob du weiterlesen möchtest.","quizNextTitle":"Wenn du weiterlesen möchtest:","quizCatalogCta":"Die gesamte Kollektion ansehen","quizProductCta":"Das Arbeitsheft Egy kis tér kennenlernen","quizBrowseCta":"In Ruhe durch die Kollektion stöbern","menuQuiz":"Wie geht es dir?"},"fr":{"quizIntro":"Six petites questions pour prendre conscience de ce qui compte aujourd'hui. Il n'y a pas de bonne ou de mauvaise réponse.","quizBoundary":"Une réflexion facultative pour adultes, ni test psychologique ni diagnostic. Les réponses ne sont ni enregistrées ni transmises.","quizResultNote":"Il s'agit simplement d'une piste de réflexion, pas d'un jugement ni d'un diagnostic. Libre à vous de poursuivre ou non.","quizNextTitle":"Si vous souhaitez poursuivre:","quizCatalogCta":"Découvrir toute la collection","quizProductCta":"Découvrir le carnet Egy kis tér","quizBrowseCta":"Parcourir librement la collection","menuQuiz":"Comment allez-vous ?"}})[locale]);
-const fepCheckinRandomCopy={
- en:{quizIntro:"Each time, six different questions are randomly drawn from a bank of thirty. There is no right or wrong answer.",quizAgain:"Another six questions"},
- hu:{quizIntro:"Minden alkalommal harminc kérdésből véletlenszerűen hat különbözőt kapsz. Nincs jó vagy rossz válasz.",quizAgain:"Másik hat kérdés"},
- de:{quizIntro:"Bei jedem Durchgang werden sechs unterschiedliche Fragen zufällig aus dreißig gezogen. Es gibt keine richtigen oder falschen Antworten.",quizAgain:"Sechs neue Fragen"},
- fr:{quizIntro:"À chaque fois, six questions différentes sont tirées au hasard parmi trente. Il n'y a pas de bonne ou de mauvaise réponse.",quizAgain:"Six autres questions"}
-};
-for(const locale of fepLangs)Object.assign(fepQuizUi[locale],fepCheckinRandomCopy[locale]);
-for(const locale of fepLangs)Object.assign(copy[locale],fepQuizUi[locale]);
-
-// Email-only pre-order requests; no payment, reservation, stock or Offer markup.
-const fepPreorderCopy={"en":{"preorderCta":"Pre-order by email","preorderNotice":"Pre-order requests are open by email. Prices and the webshop are coming soon. Your message is not a confirmed order; conditions will be agreed in our reply.","subject":"Pre-order request","greet":"Hello Alexandra,","q":"Quantity requested: ","ask":"Please let me know the price, availability and terms before confirming. This email is not a confirmed purchase.","end":"Thank you!"},"hu":{"preorderCta":"Előrendelés e-mailben","preorderNotice":"Előrendelési igényt már e-mailben is küldhetsz. Az árak és a webshop hamarosan érkeznek. A levél nem visszaigazolt rendelés; a feltételeket válaszban egyeztetjük.","subject":"Előrendelési igény","greet":"Szia Alexandra!","q":"Kért darabszám: ","ask":"Kérlek, válaszban tájékoztass a pontos árról, az elérhetőségről és a feltételekről. Ez a levél még nem visszaigazolt rendelés.","end":"Köszönöm!"},"de":{"preorderCta":"Per E-Mail vorbestellen","preorderNotice":"Vorbestellanfragen sind bereits per E-Mail möglich. Preise und Webshop folgen. Eine Anfrage ist noch keine bestätigte Bestellung; die Bedingungen klären wir in der Antwort.","subject":"Vorbestellanfrage","greet":"Hallo Alexandra,","q":"Gewünschte Menge: ","ask":"Bitte teile mir Preis, Verfügbarkeit und Bedingungen vor der Bestätigung mit. Dies ist noch keine bestätigte Bestellung.","end":"Vielen Dank!"},"fr":{"preorderCta":"Précommander par e-mail","preorderNotice":"Les demandes de précommande sont déjà possibles par e-mail. Les prix et la boutique en ligne suivront. Une demande ne confirme pas la commande ; les conditions seront précisées dans notre réponse.","subject":"Demande de précommande","greet":"Bonjour Alexandra,","q":"Quantité souhaitée : ","ask":"Merci de me préciser le prix, la disponibilité et les conditions avant confirmation. Ce n'est pas une commande confirmée.","end":"Merci !"}};
-const fepPreorderTitles={
-"helyed-van-koztunk":"Helyed van köztünk",
-"egy-kis-ter":"Egy kis tér",
-"lepesrol-lepesre-2027":"Lépésről lépésre · 2027",
-"veled-a-mindennapokban":"Veled a mindennapokban",
-"mesek-a-vilag-korul":"Mesék a világ körül",
-"mesek-a-vilag-korul-szinezo":"Mesék a világ körül – 42 színező",
-"na-most-mit-csinaljak":"Na, most mit csináljak?",
-"tanari-hataridonaplo-2027-szines":"Határidőnapló tanároknak · 2027 (színes borító)",
-"tanari-hataridonaplo-2027-letisztult":"Határidőnapló tanároknak · 2027 (letisztult borító)"
-};
-for(const language of fepLangs)Object.assign(fepExtra[language],{preorderCta:fepPreorderCopy[language].preorderCta,preorderNotice:fepPreorderCopy[language].preorderNotice});
-function fepPreorderMailto(slug,lang){
- const c=fepPreorderCopy[lang],name=fepPreorderTitles[slug];if(!c||!name)return "mailto:diofamuhelykozosseg@gmail.com";
- const subject="For Every Path | "+c.subject+" | "+name;
- const body=c.greet+"\n\n"+c.subject+": "+name+"\n"+c.q+"\n\n"+c.ask+"\n\n"+c.end;
- return "mailto:diofamuhelykozosseg@gmail.com?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
-}
-
-let current=chooseInitialLang();
-function setLanguage(lang,remember=false){
- if(!fepLangs.includes(lang))lang="en";
- current=lang;document.documentElement.lang=lang;
- document.querySelectorAll("[data-i18n]").forEach(el=>{const key=el.dataset.i18n;const val=copy[lang]?.[key]??extras[lang]?.[key];if(val!==undefined){const arrow=el.querySelector(".arrow-icon, .fep-vector-icon");if(arrow){const first=el.firstChild;if(first&&first.nodeType===3)first.textContent=val+" ";else el.insertBefore(document.createTextNode(val+" "),arrow);}else el.textContent=val;}});document.querySelectorAll("[data-i18n-aria]").forEach(el=>{const label=fepAccessibleLabels[lang]?.[el.dataset.i18nAria];if(label)el.setAttribute("aria-label",label);});
- document.querySelectorAll(".lang").forEach(btn=>{const active=btn.dataset.lang===lang;btn.classList.toggle("active",active);btn.setAttribute("aria-pressed",String(active));});
- document.querySelectorAll("[data-lang-link]").forEach(el=>{const target=fepLinks[el.dataset.langLink];if(target)el.href=fepBase+(lang==="en"?"":lang+"/")+target;});
- document.querySelectorAll("[data-preorder-slug]").forEach(link=>{link.href=fepPreorderMailto(link.dataset.preorderSlug,lang);});
- const footer=document.querySelector(".footer [data-i18n=footer]");if(footer)footer.textContent=fepExtra[lang].footer;
- document.title="For Every Path | "+fepBrandLines[lang];
- if(remember){try{localStorage.setItem("fep.language",lang)}catch(e){}}
- window.refreshQuizLanguage?.();
-}
-document.querySelectorAll(".lang").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang,true)));
-setLanguage(current);
-// An incoming ?lang parameter selects the opening language; explicit later changes remain sticky on reload.
-if(new URLSearchParams(location.search).has("lang")){
- const clean=new URL(location.href);clean.searchParams.delete("lang");
- history.replaceState(null,"",clean.pathname+clean.search+clean.hash);
-}
-
-document.querySelectorAll(".note-card").forEach(card=>{const flip=()=>{card.classList.toggle("is-flipped");card.setAttribute("aria-pressed",String(card.classList.contains("is-flipped")));};card.addEventListener("click",flip);card.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();flip();}});});
+/* For Every Path · Hogy vagy? – shared, four-language, in-memory reflection.
+ * The 30-item question bank and secure six-without-replacement draw live in checkin-bank.js.
+ * No analytics, storage of answers, diagnosis, or external calls.
+ */
+(() => {
+"use strict";
+const lang = document.documentElement.lang.slice(0,2);
+const locales=["en","hu","de","fr"];
+if (!locales.includes(lang) || !globalThis.fepCheckinBank) return;
 const quizData={
 hu:{questions:globalThis.fepCheckinBank.questions.hu,
 results:[
@@ -138,36 +38,58 @@ const checkinMixed={
  de:["Mehreres ist heute wichtig","Vielleicht beschäftigen dich mehrere Themen gleichzeitig. Du musst dich nicht auf eine Kategorie festlegen.","Bei welcher Frage hast du kurz innegehalten?"],
  fr:["Plusieurs choses comptent","Plusieurs sujets peuvent te toucher à la fois. Il n'est pas nécessaire de choisir une catégorie.","Quelle question t'a fait réfléchir un instant ?"]
 };
-function initQuiz(){
-let lang=current,step=0,scores=[0,0,0,0],answers=[],selectedQuestions=[];
-// Reflection answers are transient and never saved or submitted.
-const card=document.getElementById("quizCard"),intro=document.querySelector(".quiz-intro"),result=document.getElementById("quizResult");
-const data=()=>quizData[lang]?.questions.length?quizData[lang]:quizData.en;
-function render(){const q=selectedQuestions[step];document.getElementById("quizCount").textContent=`${step+1} / ${selectedQuestions.length}`;document.getElementById("quizProgress").style.width=`${((step+1)/selectedQuestions.length)*100}%`;document.getElementById("quizProgress").setAttribute("aria-valuenow",String(step+1));document.getElementById("quizQuestion").textContent=q.prompt;const wrap=document.getElementById("quizOptions");wrap.innerHTML="";q.choices.forEach((option,i)=>{const b=document.createElement("button");b.className="quiz-option";b.type="button";b.textContent=option;b.onclick=()=>choose(i);wrap.appendChild(b)});document.getElementById("quizBack").style.visibility=step?"visible":"hidden"}
-function choose(i){scores[i]++;answers[step]=i;if(step<selectedQuestions.length-1){step++;render()}else{const max=Math.max(...scores),winner=scores.indexOf(max),tied=scores.filter(value=>value===max).length>1,r=tied?checkinMixed[lang]:data().results[winner];document.getElementById("resultTitle").textContent=r[0];document.getElementById("resultText").textContent=r[1];const resultQuestion=document.getElementById("resultQuestion");resultQuestion.textContent=r[2];
-const product=document.getElementById("quizProductLink"),label=document.getElementById("quizProductLabel");
- if(product&&label){const isPlanning=winner===1||tied;product.dataset.langLink=isPlanning?"catalog":"workbook";product.href=fepBase+(lang==="en"?"":lang+"/")+(isPlanning?fepLinks.catalog:fepLinks.workbook);label.textContent=isPlanning?fepQuizUi[lang].quizBrowseCta:fepQuizUi[lang].quizProductCta;}
-card.hidden=true;result.hidden=false;document.getElementById("resultTitle").focus()}}
-function startNewDraw(){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);intro.hidden=true;card.hidden=false;result.hidden=true;render();card.scrollIntoView({behavior:"smooth",block:"center"});document.getElementById("quizQuestion").focus({preventScroll:true})}
- document.getElementById("startQuiz").onclick=startNewDraw;
-document.getElementById("quizBack").onclick=()=>{if(step){step--;const previous=answers[step];if(Number.isInteger(previous))scores[previous]--;answers.length=step;render()}};
-document.getElementById("quizAgain").onclick=startNewDraw;
-window.refreshQuizLanguage=()=>{lang=current;if(!card.hidden){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);render();}if(!result.hidden){result.hidden=true;intro.hidden=false;step=0;scores=[0,0,0,0];answers=[];}};
 
+const labels={
+ hu:{workbook:"Ismerd meg az Egy kis tér füzetet",catalog:"Nézd meg a kiadványokat"},
+ en:{workbook:"Explore the Egy kis tér workbook",catalog:"Browse the publications"},
+ de:{workbook:"Das Heft Egy kis tér kennenlernen",catalog:"Die Publikationen ansehen"},
+ fr:{workbook:"Découvrir le carnet Egy kis tér",catalog:"Parcourir les publications"}
+};
+const get=id=>document.getElementById(id);
+const card=get("quizCard"),intro=document.querySelector(".quiz-intro"),result=get("quizResult");
+if(!card || !intro || !result)return;
+let step=0,answers=[],scores=[0,0,0,0],selected=[];
+function render(){
+ const q=selected[step];if(!q)return;
+ get("quizCount").textContent=`${step+1} / ${selected.length}`;
+ const progress=get("quizProgress");
+ progress.style.width=`${((step+1)/selected.length)*100}%`;
+ progress.setAttribute("aria-valuenow",String(step+1));
+ get("quizQuestion").textContent=q.prompt;
+ const options=get("quizOptions");options.replaceChildren();
+ q.choices.forEach((answer,i)=>{const btn=document.createElement("button");btn.type="button";btn.className="quiz-option";btn.textContent=answer;btn.addEventListener("click",()=>choose(i));options.append(btn)});
+ get("quizBack").hidden=step===0;
 }
-initQuiz();
-
-const menuToggle=document.getElementById("menuToggle");
-const siteMenu=document.getElementById("siteMenu");
-const menuClose=document.getElementById("menuClose");
-function setMenu(open){
-  if(!menuToggle||!siteMenu)return;
-  siteMenu.hidden=!open;
-  menuToggle.setAttribute("aria-expanded",String(open));
-  document.body.classList.toggle("menu-open",open);
-  if(open) menuClose.focus(); else menuToggle.focus();
+function choose(choice){
+ if(!Number.isInteger(choice)||choice<0||choice>3)return;
+ scores[choice]++;answers[step]=choice;
+ if(step<selected.length-1){step++;render();get("quizQuestion").focus({preventScroll:true});return;}
+ const maximum=Math.max(...scores),tied=scores.filter(score=>score===maximum).length>1;
+ const winner=scores.indexOf(maximum);
+ const message=tied?checkinMixed[lang]:quizData[lang].results[winner];
+ get("resultTitle").textContent=message[0];get("resultText").textContent=message[1];get("resultQuestion").textContent=message[2];
+ const base=lang==="en"?"":"../",product=get("quizProductLink"),productLabel=get("quizProductLabel");
+ const useCatalog=tied || winner===1;
+ product.href=base+(useCatalog?"catalog/":"products/egy-kis-ter.html");
+ productLabel.textContent=useCatalog?labels[lang].catalog:labels[lang].workbook;
+ card.hidden=true;result.hidden=false;get("resultTitle").focus({preventScroll:true});
 }
-menuToggle?.addEventListener("click",()=>setMenu(siteMenu.hidden));
-menuClose?.addEventListener("click",()=>setMenu(false));
-siteMenu?.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>setMenu(false)));
-document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!siteMenu.hidden)setMenu(false)});
+function start(){
+ step=0;answers=[];scores=[0,0,0,0];selected=globalThis.fepCheckinBank.drawSix(lang);
+ intro.hidden=true;card.hidden=false;result.hidden=true;render();
+ card.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth",block:"center"});
+ get("quizQuestion").focus({preventScroll:true});
+}
+get("startQuiz").addEventListener("click",start);
+get("quizAgain").addEventListener("click",start);
+get("quizBack").addEventListener("click",()=>{
+ if(!step)return;
+ step--;const previous=answers[step];
+ if(Number.isInteger(previous)) scores[previous]--;
+ answers.length=step;render();get("quizQuestion").focus({preventScroll:true});
+});
+document.querySelectorAll('a[hreflang]').forEach(a=>a.addEventListener('click',()=>{
+ const target=a.getAttribute("hreflang");
+ if(locales.includes(target))try{localStorage.setItem("fep.language",target)}catch(_){}
+}));
+})();

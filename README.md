@@ -20,14 +20,23 @@ Current published host: https://880rzz.github.io/newvibe/
 Planned domain: `foreverypath.com`, **not configured**. Do not add CNAME or replace canonical/sitemap until DNS, TLS, GitHub Pages custom-domain verification and production URL checks succeed.
 
 ## Site layout
-- `index.html`: editorial interactive English-first homepage, with browser-language detection for EN/HU/DE/FR; manual language selection persists in localStorage.
-- `{hu,de,fr}/index.html`: crawlable local-language home pages.
+- `index.html`, `hu/index.html`, `de/index.html`, `fr/index.html`: equal-footing, independently indexable, fully localized editorial homepages. Each page has the same order: five-second hero → embedded six-of-thirty adult check-in → one catalogue bridge → creator credit.
+- Language switch follows an explicit canonical URL; localStorage/browser language cannot silently redirect an already visited URL. Only an intentional language choice may be stored. No quiz answers are stored.
 - `catalog/index.html` and `{hu,de,fr}/catalog/index.html`: catalogues.
 - `products/*.html` plus `{hu,de,fr}/products/*.html`: product detail pages.
 - `about/index.html` plus translations: editorial provenance, AI Trust and project identity.
 - `helyed-van-koztunk.html`: legacy Hungarian card page, noindex, canonical new HU product page.
 - `catalog.json`: nine product editions and production truth. New products can be added to this catalog with dedicated localized pages and sitemap entries.
-- `catalog.css`: additive design layer preserving the original background, fonts, stationery style, and accessibility.
+- `catalog.css`: shared design for the four editorial homepages, portrait-ratio product covers (4:5) with square genuine card-set photos, restrained Fraunces / DM Sans typography, arrow-ended links without underline, and clear keyboard focus.
+
+## Five-second editorial UX and language parity
+
+- **The homepage does not repeat the product grid**: nine products appear in each dedicated `/catalog/` route only.
+- All 48 localized pages keep canonical/hreflang and stay independently crawlable. Product titles remain in original Hungarian; labels, CTAs, accessibility strings and descriptive copy must be in the page language.
+- The `Hogy vagy?` reflection is directly interactive on every language's homepage; the 30-question bank and secure six-question draw remain in `checkin-bank.js`.
+- The product catalogue presents each portrait mockup without artificial letterboxing; the genuine square card-set photo is the sole 1:1 exception.
+- **Visual QA cannot be claimed from source/CI checks alone.** For mobile, desktop, dynamic states and 5-second comprehension, use rendered screenshots/user testing.
+- See [FOUR_LANGUAGE_UX_RELEASE.md](docs/FOUR_LANGUAGE_UX_RELEASE.md) for the UX intent, explicit-language routing contract, functional gates and release verification requirements.
 
 ## Editorial status
 
@@ -55,6 +64,6 @@ Run the GitHub Actions static quality workflow on each PR. Verify all 48 localiz
 
 ## Pre-order workflow (November 2026)
 - 36 localized product pages show the email pre-order CTA and non-confirmation terms.
-- All four catalogues and localized homepages expose pre-order email links for the nine editions. The English-first interactive homepage localizes its email pre-order links in `app.js`.
+- All four localized catalogues and all 36 product pages provide e-mail preorder links. The four editorial homepages intentionally contain NO full product list or per-product preorder buttons; they lead to the catalogs. The shared `app.js` handles only the voluntary in-memory 30/6 check-in.
 - The `catalog.json` manifest records pre-order **request intake** separately from physical production status. `shop_url` and `price` remain `null`.
 - Confirm the legal operating entity, written preorder/sales terms, consumer information and privacy notice before transforming email requests into binding orders. Do not email bank-card details.
