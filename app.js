@@ -148,7 +148,7 @@ function choose(i){scores[i]++;answers[step]=i;if(step<selectedQuestions.length-
 const product=document.getElementById("quizProductLink"),label=document.getElementById("quizProductLabel");
  if(product&&label){const isPlanning=winner===1||tied;product.dataset.langLink=isPlanning?"catalog":"workbook";product.href=fepBase+(lang==="en"?"":lang+"/")+(isPlanning?fepLinks.catalog:fepLinks.workbook);label.textContent=isPlanning?fepQuizUi[lang].quizBrowseCta:fepQuizUi[lang].quizProductCta;}
 card.hidden=true;result.hidden=false;document.getElementById("resultTitle").focus()}}
-function startNewDraw(){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);intro.hidden=true;card.hidden=false;result.hidden=true;render();card.scrollIntoView({behavior:"smooth",block:"center"})}
+function startNewDraw(){step=0;scores=[0,0,0,0];answers=[];selectedQuestions=globalThis.fepCheckinBank.drawSix(lang);intro.hidden=true;card.hidden=false;result.hidden=true;render();card.scrollIntoView({behavior:"smooth",block:"center"});document.getElementById("quizQuestion").focus({preventScroll:true})}
  document.getElementById("startQuiz").onclick=startNewDraw;
 document.getElementById("quizBack").onclick=()=>{if(step){step--;const previous=answers[step];if(Number.isInteger(previous))scores[previous]--;answers.length=step;render()}};
 document.getElementById("quizAgain").onclick=startNewDraw;
